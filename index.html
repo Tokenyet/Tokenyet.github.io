@@ -67,10 +67,136 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Ubuntu中使用SublimtText3中文輸入法篇" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/" class="article-date">
+  <time datetime="2015-07-13T07:56:34.000Z" itemprop="datePublished">2015-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/">Ubuntu中使用SublimtText3中文輸入法篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言：<br>SublimeText在一些不太會操作需要大量指令的人來說，真的是一個跨平台的神物。<br>在搜尋檔案與查看專案上，真的是各個平台統一操作模式。<br>不過獨獨只缺不能使用中文輸入法了。<br>而本篇主要是讓SublimtText3以某種不是很方便的形式來支持中文輸入法。<br>如果你已經看過其他網路上用Helper的就可以省下時間了。</p>
+<p>需求：<br>SublimeText3 + Package Control已安裝</p>
+<p>1.使用 Ctrl+` 輸入下列程式碼</p>
+<ol>
+<li><p>先從Preferences-&gt; Package Control -&gt; 打Install Package</p>
+</li>
+<li><p>跳出視窗後找Input Helper安裝</p>
+</li>
+<li><p>找到後Ctrl+`，Ctrl+Shift+Z看執行結果<br>會發現一些錯誤訊息。</p>
+</li>
+<li><p>Preferences-&gt; Browse Package 將 InputHelper.sublime-package 從 Installed Package 剪貼到 Packages 資料夾下解壓縮，重開SublimeText。</p>
+</li>
+<li><p>查看Packages資料夾內的 lib 或 InputHelper/lib 找到 linux_text_input_gui.py路徑</p>
+</li>
+<li><p>cd到 linux_text_input_gui.py 路徑後，chmod 777 /home/自己的電腦名稱/.config/sublime-text-3/Packages/[InputHelper/lib](可能不同)/linux_text_input_gui.py</p>
+</li>
+</ol>
+<p>基本上這樣應該就好了。<br>如果還有其他錯誤請參照：<br><a href="http://indianazhao.blogspot.tw/2014/08/sublime-text-3.html" target="_blank" rel="external">indianazhao</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/" data-id="cic1n4n2n000kxtr1tyy0gkz5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SublimeText3/">SublimeText3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ubuntu上安裝Line" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/13/Ubuntu上安裝Line/" class="article-date">
+  <time datetime="2015-07-13T07:34:13.000Z" itemprop="datePublished">2015-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/13/Ubuntu上安裝Line/">Ubuntu上安裝Line</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由於工作需要安裝Line的關係。<br>但是沒有筆記型電腦，又不想用Teamviewer連回家中使用Line。<br>那麼在申請了一個工作的Line之後，開始的繁瑣中作就來了！<br>（不會雙帳號的上網參考一下吧，很簡單的，但你要能裝Bluestacks，我是Teamviewer回家使用這些操作）</p>
+<p>—<br>由於有環境疑慮<br>所以奉上自己版本很低的環境</p>
+<h2 id="Ubuntu_12-4-10">Ubuntu 12.4.10</h2><ol>
+<li><p>首先如果你是跟我一樣64bit ubuntu的同伴們就必須先作一些前置動作，如果你是32bit的請直接看第3點。</p>
+</li>
+<li><p>64bit的同伴們必須先安裝libx11-dev:i386 and libfreetype6-dev:i386這兩個套件。<br>安裝方式如下：</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install libx11-<span class="built_in">dev</span>:i386</span><br><span class="line">sudo apt-<span class="built_in">get</span> install libfreetype6-<span class="built_in">dev</span>:i386</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再來安裝wine最新版即可。（如果有任何疑難雜症請看<a href="Ubuntu疑難雜症">Ubuntu疑難雜症</a>）</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="instruction"> add-apt-repository </span>ppa:ubuntu-wine/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install wine1.7</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安裝三個套件3.[dotnet20],[msxml6],[vcrun2008]</p>
+</li>
+</ol>
+<p>4-1.使用環境參數（這段設好環境參數可自行開tools安裝,這僅有指令版）<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">configure <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32</span><br><span class="line">winetricks dotnet20</span><br><span class="line">winetricks msxml6</span><br><span class="line">winetricks vcrun2008</span><br></pre></td></tr></table></figure></p>
+<p>4-2.整合一鍵執行版<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">env <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32 winetricks dotnet20</span><br><span class="line">env <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32 winetricks msxml6</span><br><span class="line">env <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32 winetricks vcrun2008</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>直接到官方網站下載Line</p>
+</li>
+<li><p>wine LineInst.exe (cd到該資料夾後執行）</p>
+</li>
+<li><p>安裝好後應該就能享受在Ubuntu上使用Line的環境了。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/13/Ubuntu上安裝Line/" data-id="cic1n4n130000xtr10s3pez74" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Line/">Line</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/07/09/hello-world/" class="article-date">
-  <time datetime="2015-07-09T01:57:00.996Z" itemprop="datePublished">2015-07-09</time>
+    <a href="/2015/07/13/hello-world/" class="article-date">
+  <time datetime="2015-07-13T03:10:03.736Z" itemprop="datePublished">2015-07-13</time>
 </a>
     
   <div class="article-category">
@@ -85,7 +211,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/09/hello-world/">Hello World</a>
+      <a class="article-title" href="/2015/07/13/hello-world/">Hello World</a>
     </h1>
   
 
@@ -106,10 +232,83 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/09/hello-world/" data-id="cibw1gn3t000016r1hii7u83e" class="article-share-link">Share</a>
+      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/13/hello-world/" data-id="cic1n4n2h000dxtr1zz7t3eyf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Delete/">Delete</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ubuntu疑難雜症" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/13/Ubuntu疑難雜症/" class="article-date">
+  <time datetime="2015-07-13T02:52:21.000Z" itemprop="datePublished">2015-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/13/Ubuntu疑難雜症/">Ubuntu疑難雜症</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前記：<br>由於在實習的工作中需要用到這個人覺得很難使用的Ubuntu系統<br>所以遇到了種種的挫折與困難，全部寫在這裡了。</p>
+<ol>
+<li>瀏覽器的問題<br>安裝瀏覽器的時候我使用過Opera,Chrome,Firefox這三種。<br>1-1. Opera跟Firefox<br>直接下載能看影片，不過額外裝flash會有較好效果，<br>在擴充插件上，Opera跟Firefox在Ubuntu的支援度較高，<br>*如果要知道如何安裝flash插件請參考1-1-1。<br>*安裝firefox參考1-1-2。<br>1-2.Chrome<br>不需裝插件即可觀看影片內建flash<br>但是在某些版本的Ubuntu上不能裝插件，對Ubuntu的支援度較低較低</li>
+</ol>
+<p>Opera<br>推薦度：☆★★★★<br>Firefox<br>推薦度：★★★★★<br>Chrome<br>推薦度：☆☆★★★</p>
+<p>1-1-1.安裝flashplugin<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install flashplugin-installer</span><br></pre></td></tr></table></figure></p>
+<p>1-1-2.安裝firefox<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> update</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="comment">--purge --reinstall install firefox</span></span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>There is no public key available for the following key IDs<br>如果遇到以上的問題請重新取得Public Key</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> debian-keyring debian-archive-keyring</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>沒有中文輸入法<br>在遇到沒有中文輸入法的情況，先確認是否有Language Support這個選項。<br>3-1. 若無則先安裝Language Support。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> <span class="keyword">language</span>-selector-gnome</span><br><span class="line">sudo gnome-<span class="keyword">language</span>-selector</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>完成後到Language Support的鍵盤輸入法的地方設定ibus為預設輸入法系統。</p>
+<p>3-2. 若已經有Language Support。則只要先暫時清除ibus安裝新酷音後就可以了。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">purge</span> ibus</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> ibus-chewing</span></span><br></pre></td></tr></table></figure></p>
+<p>*在確認一次：語言支援 -&gt; 鍵盤輸入法系統 ibus<br>重新登入後就可以打中文了。<br>*如果是在 SublimeText3 上測試沒顯示是正常的，Sublimetext 目前並不支援中文輸入在Ubuntu上。</p>
+<ol>
+<li>/etc/apt/Source.list遭更換問題<br>有時候由於你碰到的電腦是屬於某些廠商客制化過的，<br>在apt-get這類的指令輸入上想安裝或作任何事情，都會跳出找不到’apt’之類的選項。<br>這時候就要上網找一個正確的Source.list做更換，或是利用舊的Source.list.old把新的更換掉。<br>*sources.list.old這個內容如果很少的話代表就不能用此方式替換</li>
+</ol>
+<p>個人是先把權限輸入密碼的部份拿掉後，另外作一個執行檔來作迅速的更換。<br>（主要是想將source.list換成可update後，如果廠商來看可以把source.list換回原本的，以防問題）<br>主要的過程如下（不包含拿掉權限密碼的教學部份）<br>先將sources.list（被廠商搞過的檔案）與sources.list.old(正常的檔案）<br>分別保存在一個地方，我是放在名為Backup的資料夾裡面。<br>然後兩個各自分類存到 正常的sources 與 廠商的sources<br>之後在替換上就可以使用以下的方法</p>
+<p>-將正常的sources.list取代原本的萬惡廠商sources.list</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">rm -rf <span class="regexp">/etc/</span>apt/sources.list</span><br><span class="line">cp <span class="regexp">/home/</span>自己的電腦名稱<span class="regexp">/Desktop/</span>SourceList<span class="regexp">/Backup/</span>正常的sources<span class="regexp">/sources.list /</span>etc/apt</span><br></pre></td></tr></table></figure>
+<p>*使用sources.list.old的人，記得將其改名為sources.list。</p>
+<p>-如果廠商來看電腦的話就把sources.list換回它的萬惡檔案<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">rm -rf <span class="regexp">/etc/</span>apt/sources.list</span><br><span class="line">cp <span class="regexp">/home/</span>自己的電腦名稱<span class="regexp">/Desktop/</span>SourceList<span class="regexp">/Backup/</span>廠商的sources<span class="regexp">/sources.list /</span>etc/apt</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>找到同個副檔名的檔案並複製到指定資料夾</li>
+</ol>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find</span> . -name <span class="string">"*.TIF"</span> -exec cp &#123;&#125; <span class="keyword">new</span> \;</span><br></pre></td></tr></table></figure>
+<p>簡單解釋一下<br>這個意思就是說<code>find</code>（找） <code>-name</code>（名字是） <code>&quot;*.TIF&quot;</code>(副檔名是TIF)的所有檔案，<br>並 <code>-exec</code> 執行 <code>cp {} new \;</code>後面的這串是 複製集合 {} 到 new 這個資料夾內。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/13/Ubuntu疑難雜症/" data-id="cic1n4n2k000hxtr1co268jgn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
 
     </footer>
   </div>
@@ -153,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/06/28/markdown-test/" data-id="cibw1gn4m000616r1rrq4wb1d" class="article-share-link">Share</a>
+      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/06/28/markdown-test/" data-id="cic1n4n2d0008xtr12sejoc94" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Test/">Test</a></li></ul>
@@ -169,10 +368,136 @@
 
 
   
+    <article id="post-Ubuntu中使用SublimtText3中文輸入法篇" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/" class="article-date">
+  <time datetime="2015-07-13T07:56:34.000Z" itemprop="datePublished">2015-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/">Ubuntu中使用SublimtText3中文輸入法篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言：<br>SublimeText在一些不太會操作需要大量指令的人來說，真的是一個跨平台的神物。<br>在搜尋檔案與查看專案上，真的是各個平台統一操作模式。<br>不過獨獨只缺不能使用中文輸入法了。<br>而本篇主要是讓SublimtText3以某種不是很方便的形式來支持中文輸入法。<br>如果你已經看過其他網路上用Helper的就可以省下時間了。</p>
+<p>需求：<br>SublimeText3 + Package Control已安裝</p>
+<p>1.使用 Ctrl+` 輸入下列程式碼</p>
+<ol>
+<li><p>先從Preferences-&gt; Package Control -&gt; 打Install Package</p>
+</li>
+<li><p>跳出視窗後找Input Helper安裝</p>
+</li>
+<li><p>找到後Ctrl+`，Ctrl+Shift+Z看執行結果<br>會發現一些錯誤訊息。</p>
+</li>
+<li><p>Preferences-&gt; Browse Package 將 InputHelper.sublime-package 從 Installed Package 剪貼到 Packages 資料夾下解壓縮，重開SublimeText。</p>
+</li>
+<li><p>查看Packages資料夾內的 lib 或 InputHelper/lib 找到 linux_text_input_gui.py路徑</p>
+</li>
+<li><p>cd到 linux_text_input_gui.py 路徑後，chmod 777 /home/自己的電腦名稱/.config/sublime-text-3/Packages/[InputHelper/lib](可能不同)/linux_text_input_gui.py</p>
+</li>
+</ol>
+<p>基本上這樣應該就好了。<br>如果還有其他錯誤請參照：<br><a href="http://indianazhao.blogspot.tw/2014/08/sublime-text-3.html" target="_blank" rel="external">indianazhao</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/" data-id="cic1n4n2n000kxtr1tyy0gkz5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SublimeText3/">SublimeText3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ubuntu上安裝Line" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/13/Ubuntu上安裝Line/" class="article-date">
+  <time datetime="2015-07-13T07:34:13.000Z" itemprop="datePublished">2015-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/13/Ubuntu上安裝Line/">Ubuntu上安裝Line</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由於工作需要安裝Line的關係。<br>但是沒有筆記型電腦，又不想用Teamviewer連回家中使用Line。<br>那麼在申請了一個工作的Line之後，開始的繁瑣中作就來了！<br>（不會雙帳號的上網參考一下吧，很簡單的，但你要能裝Bluestacks，我是Teamviewer回家使用這些操作）</p>
+<p>—<br>由於有環境疑慮<br>所以奉上自己版本很低的環境</p>
+<h2 id="Ubuntu_12-4-10">Ubuntu 12.4.10</h2><ol>
+<li><p>首先如果你是跟我一樣64bit ubuntu的同伴們就必須先作一些前置動作，如果你是32bit的請直接看第3點。</p>
+</li>
+<li><p>64bit的同伴們必須先安裝libx11-dev:i386 and libfreetype6-dev:i386這兩個套件。<br>安裝方式如下：</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install libx11-<span class="built_in">dev</span>:i386</span><br><span class="line">sudo apt-<span class="built_in">get</span> install libfreetype6-<span class="built_in">dev</span>:i386</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再來安裝wine最新版即可。（如果有任何疑難雜症請看<a href="Ubuntu疑難雜症">Ubuntu疑難雜症</a>）</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="instruction"> add-apt-repository </span>ppa:ubuntu-wine/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install wine1.7</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安裝三個套件3.[dotnet20],[msxml6],[vcrun2008]</p>
+</li>
+</ol>
+<p>4-1.使用環境參數（這段設好環境參數可自行開tools安裝,這僅有指令版）<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">configure <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32</span><br><span class="line">winetricks dotnet20</span><br><span class="line">winetricks msxml6</span><br><span class="line">winetricks vcrun2008</span><br></pre></td></tr></table></figure></p>
+<p>4-2.整合一鍵執行版<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">env <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32 winetricks dotnet20</span><br><span class="line">env <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32 winetricks msxml6</span><br><span class="line">env <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32 winetricks vcrun2008</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>直接到官方網站下載Line</p>
+</li>
+<li><p>wine LineInst.exe (cd到該資料夾後執行）</p>
+</li>
+<li><p>安裝好後應該就能享受在Ubuntu上使用Line的環境了。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/13/Ubuntu上安裝Line/" data-id="cic1n4n130000xtr10s3pez74" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Line/">Line</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/07/09/hello-world/" class="article-date">
-  <time datetime="2015-07-09T01:57:00.996Z" itemprop="datePublished">2015-07-09</time>
+    <a href="/2015/07/13/hello-world/" class="article-date">
+  <time datetime="2015-07-13T03:10:03.736Z" itemprop="datePublished">2015-07-13</time>
 </a>
     
   <div class="article-category">
@@ -187,7 +512,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/09/hello-world/">Hello World</a>
+      <a class="article-title" href="/2015/07/13/hello-world/">Hello World</a>
     </h1>
   
 
@@ -208,10 +533,83 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/09/hello-world/" data-id="cibw1gn3t000016r1hii7u83e" class="article-share-link">Share</a>
+      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/13/hello-world/" data-id="cic1n4n2h000dxtr1zz7t3eyf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Delete/">Delete</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ubuntu疑難雜症" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/13/Ubuntu疑難雜症/" class="article-date">
+  <time datetime="2015-07-13T02:52:21.000Z" itemprop="datePublished">2015-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/13/Ubuntu疑難雜症/">Ubuntu疑難雜症</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前記：<br>由於在實習的工作中需要用到這個人覺得很難使用的Ubuntu系統<br>所以遇到了種種的挫折與困難，全部寫在這裡了。</p>
+<ol>
+<li>瀏覽器的問題<br>安裝瀏覽器的時候我使用過Opera,Chrome,Firefox這三種。<br>1-1. Opera跟Firefox<br>直接下載能看影片，不過額外裝flash會有較好效果，<br>在擴充插件上，Opera跟Firefox在Ubuntu的支援度較高，<br>*如果要知道如何安裝flash插件請參考1-1-1。<br>*安裝firefox參考1-1-2。<br>1-2.Chrome<br>不需裝插件即可觀看影片內建flash<br>但是在某些版本的Ubuntu上不能裝插件，對Ubuntu的支援度較低較低</li>
+</ol>
+<p>Opera<br>推薦度：☆★★★★<br>Firefox<br>推薦度：★★★★★<br>Chrome<br>推薦度：☆☆★★★</p>
+<p>1-1-1.安裝flashplugin<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install flashplugin-installer</span><br></pre></td></tr></table></figure></p>
+<p>1-1-2.安裝firefox<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> update</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="comment">--purge --reinstall install firefox</span></span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>There is no public key available for the following key IDs<br>如果遇到以上的問題請重新取得Public Key</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> debian-keyring debian-archive-keyring</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>沒有中文輸入法<br>在遇到沒有中文輸入法的情況，先確認是否有Language Support這個選項。<br>3-1. 若無則先安裝Language Support。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> <span class="keyword">language</span>-selector-gnome</span><br><span class="line">sudo gnome-<span class="keyword">language</span>-selector</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>完成後到Language Support的鍵盤輸入法的地方設定ibus為預設輸入法系統。</p>
+<p>3-2. 若已經有Language Support。則只要先暫時清除ibus安裝新酷音後就可以了。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">purge</span> ibus</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> ibus-chewing</span></span><br></pre></td></tr></table></figure></p>
+<p>*在確認一次：語言支援 -&gt; 鍵盤輸入法系統 ibus<br>重新登入後就可以打中文了。<br>*如果是在 SublimeText3 上測試沒顯示是正常的，Sublimetext 目前並不支援中文輸入在Ubuntu上。</p>
+<ol>
+<li>/etc/apt/Source.list遭更換問題<br>有時候由於你碰到的電腦是屬於某些廠商客制化過的，<br>在apt-get這類的指令輸入上想安裝或作任何事情，都會跳出找不到’apt’之類的選項。<br>這時候就要上網找一個正確的Source.list做更換，或是利用舊的Source.list.old把新的更換掉。<br>*sources.list.old這個內容如果很少的話代表就不能用此方式替換</li>
+</ol>
+<p>個人是先把權限輸入密碼的部份拿掉後，另外作一個執行檔來作迅速的更換。<br>（主要是想將source.list換成可update後，如果廠商來看可以把source.list換回原本的，以防問題）<br>主要的過程如下（不包含拿掉權限密碼的教學部份）<br>先將sources.list（被廠商搞過的檔案）與sources.list.old(正常的檔案）<br>分別保存在一個地方，我是放在名為Backup的資料夾裡面。<br>然後兩個各自分類存到 正常的sources 與 廠商的sources<br>之後在替換上就可以使用以下的方法</p>
+<p>-將正常的sources.list取代原本的萬惡廠商sources.list</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">rm -rf <span class="regexp">/etc/</span>apt/sources.list</span><br><span class="line">cp <span class="regexp">/home/</span>自己的電腦名稱<span class="regexp">/Desktop/</span>SourceList<span class="regexp">/Backup/</span>正常的sources<span class="regexp">/sources.list /</span>etc/apt</span><br></pre></td></tr></table></figure>
+<p>*使用sources.list.old的人，記得將其改名為sources.list。</p>
+<p>-如果廠商來看電腦的話就把sources.list換回它的萬惡檔案<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">rm -rf <span class="regexp">/etc/</span>apt/sources.list</span><br><span class="line">cp <span class="regexp">/home/</span>自己的電腦名稱<span class="regexp">/Desktop/</span>SourceList<span class="regexp">/Backup/</span>廠商的sources<span class="regexp">/sources.list /</span>etc/apt</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>找到同個副檔名的檔案並複製到指定資料夾</li>
+</ol>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find</span> . -name <span class="string">"*.TIF"</span> -exec cp &#123;&#125; <span class="keyword">new</span> \;</span><br></pre></td></tr></table></figure>
+<p>簡單解釋一下<br>這個意思就是說<code>find</code>（找） <code>-name</code>（名字是） <code>&quot;*.TIF&quot;</code>(副檔名是TIF)的所有檔案，<br>並 <code>-exec</code> 執行 <code>cp {} new \;</code>後面的這串是 複製集合 {} 到 new 這個資料夾內。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/13/Ubuntu疑難雜症/" data-id="cic1n4n2k000hxtr1co268jgn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
 
     </footer>
   </div>
@@ -255,7 +653,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/06/28/markdown-test/" data-id="cibw1gn4m000616r1rrq4wb1d" class="article-share-link">Share</a>
+      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/06/28/markdown-test/" data-id="cic1n4n2d0008xtr12sejoc94" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Test/">Test</a></li></ul>
@@ -276,7 +674,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/測試/">測試</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/測試/">測試</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -285,7 +683,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Delete/">Delete</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/">Test</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Delete/">Delete</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Line/">Line</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SublimeText3/">SublimeText3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/">Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/">Ubuntu</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -294,7 +692,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Delete/" style="font-size: 10px;">Delete</a> <a href="/tags/Test/" style="font-size: 10px;">Test</a>
+      <a href="/tags/Delete/" style="font-size: 10px;">Delete</a> <a href="/tags/Line/" style="font-size: 10px;">Line</a> <a href="/tags/SublimeText3/" style="font-size: 10px;">SublimeText3</a> <a href="/tags/Test/" style="font-size: 10px;">Test</a> <a href="/tags/Ubuntu/" style="font-size: 20px;">Ubuntu</a>
     </div>
   </div>
 
@@ -303,7 +701,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -315,7 +713,19 @@
       <ul>
         
           <li>
-            <a href="/2015/07/09/hello-world/">Hello World</a>
+            <a href="/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/">Ubuntu中使用SublimtText3中文輸入法篇</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/13/Ubuntu上安裝Line/">Ubuntu上安裝Line</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/13/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/13/Ubuntu疑難雜症/">Ubuntu疑難雜症</a>
           </li>
         
           <li>
