@@ -8,10 +8,10 @@
   <meta name="description" content="前言：由於Dowen是個想完成某項功能就會盡全力去研究的人，雖然建立網站不是我的專長，縱使CSS,Javscript,JQuery只學了半套，而且還不了解什麼node.js還有express，但是憑著一顆堅毅的熱情，總算完成了目錄頁面的建立。當然目錄建立有很簡單的作法，是直接hexo new page categories，但是發現旁邊的widget既然可以自動建立，那為什麼我要自己手動建立呢？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo目錄建立淺說">
-<meta property="og:url" content="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/10/Hexo目錄建立淺說/index.html">
+<meta property="og:url" content="/2015/07/10/Hexo目錄建立淺說/index.html">
 <meta property="og:site_name" content="Dowen's Warudo">
 <meta property="og:description" content="前言：由於Dowen是個想完成某項功能就會盡全力去研究的人，雖然建立網站不是我的專長，縱使CSS,Javscript,JQuery只學了半套，而且還不了解什麼node.js還有express，但是憑著一顆堅毅的熱情，總算完成了目錄頁面的建立。當然目錄建立有很簡單的作法，是直接hexo new page categories，但是發現旁邊的widget既然可以自動建立，那為什麼我要自己手動建立呢？">
-<meta property="og:updated_time" content="2015-07-15T08:12:17.049Z">
+<meta property="og:updated_time" content="2015-07-15T08:12:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo目錄建立淺說">
 <meta name="twitter:description" content="前言：由於Dowen是個想完成某項功能就會盡全力去研究的人，雖然建立網站不是我的專長，縱使CSS,Javscript,JQuery只學了半套，而且還不了解什麼node.js還有express，但是憑著一顆堅毅的熱情，總算完成了目錄頁面的建立。當然目錄建立有很簡單的作法，是直接hexo new page categories，但是發現旁邊的widget既然可以自動建立，那為什麼我要自己手動建立呢？">
@@ -78,7 +78,7 @@ ga('send', 'pageview');
                <a id="nav-search-btn" class="nav-icon verticalLine" title="Search"></a>
              </nav>
            <div id="search-form-wrap">
-             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/Tokenyet/Tokenyet.github.io.git"></form>
+             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value=""></form>
              </div>
          </div>
      </div>
@@ -112,7 +112,7 @@ ga('send', 'pageview');
       
         <p>前言：<br>由於Dowen是個想完成某項功能就會盡全力去研究的人，雖然建立網站不是我的專長，縱使CSS,Javscript,JQuery只學了半套，而且還不了解什麼node.js還有express，但是憑著一顆堅毅的熱情，總算完成了目錄頁面的建立。<br>當然目錄建立有很簡單的作法，是直接<code>hexo new page categories</code>，但是發現旁邊的widget既然可以自動建立，那為什麼我要自己手動建立呢？</p>
 <p>由於上網看了許久，幾乎沒發現有人分享如何從無到有建立起一個自動產生的目錄頁面，除了<a href="http://wzpan.github.io/hexo-theme-freemind/" target="_blank" rel="external">feemind</a>有使用到之後，就沒有其他範例了。</p>
-<p>那麼就開始說明如何自動建立吧！<br>在此之前先感謝<a href="https://github.com/wzpan">freemind作者：Joseph Pan</a>告訴身為初學者的我，該如何找到物件內容的方法(console.log(物件))，否則還真沒有現在的網站。</p>
+<p>那麼就開始說明如何自動建立吧！<br>在此之前先感謝<a href="https://github.com/wzpan" target="_blank" rel="external">freemind作者：Joseph Pan</a>告訴身為初學者的我，該如何找到物件內容的方法(console.log(物件))，否則還真沒有現在的網站。</p>
 <p>首先要能用 hexo server 瀏覽自己的網站 <del> （廢話） </del> </p>
 <p>再來必須知道 layout.ejs 基礎的內容在寫些什麼。</p>
 <p>接下來再 source 頁面中，產生一個categories的資料夾與一個index.html。<br>index.html內容是</p>
@@ -124,17 +124,17 @@ ga('send', 'pageview');
 <p>至於categories.ejs要如何實作呢？<br>首先先參照自己layout/_partial下的archive.ejs是怎麼實作的。</p>
 <p>將那一段他自動為你印出時間與文章的地方記起來後。</p>
 <p>然後把全部內容貼到categories.ejs，把你判斷到是印時間與文章的地方刪掉，你就知道那段是你要實作的地方。</p>
-<p>真正key part就在這裡，我是參照<a href="https://github.com/wzpan/hexo-theme-freemind/blob/master/layout/categories.ejs">freemind的categories.ejs</a>的作法，先從site.categories中取得，每一項category名稱，之後藉由site.posts，取得對應的文章標題與連結然後放在每個category之下。</p>
+<p>真正key part就在這裡，我是參照<a href="https://github.com/wzpan/hexo-theme-freemind/blob/master/layout/categories.ejs" target="_blank" rel="external">freemind的categories.ejs</a>的作法，先從site.categories中取得，每一項category名稱，之後藉由site.posts，取得對應的文章標題與連結然後放在每個category之下。</p>
 <p>關鍵程式碼如下：</p>
 <figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span>&lt;%<span class="ruby"> site.categories.sort(<span class="string">'name'</span>).each(function(item)&#123; </span>%&gt;<span class="xml"></span><br><span class="line">	<span class="tag">&lt;<span class="title">h4</span> <span class="attribute">class</span>=<span class="value">"archive-ul show"</span> <span class="attribute">data-toggle</span>=<span class="value">"collapse"</span> <span class="attribute">id</span>=<span class="value">"</span></span></span>&lt;%=<span class="ruby"> item.name </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">data-target</span>=<span class="value">"#modal-</span></span></span>&lt;%=<span class="ruby"> item.name </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span>&gt;</span> </span><br><span class="line">	</span>&lt;%=<span class="ruby"> item.name </span>%&gt;<span class="xml"> <span class="tag">&lt;<span class="title">b</span> <span class="attribute">class</span>=<span class="value">"caret"</span>&gt;</span><span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;/<span class="title">h4</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"modal-</span></span></span>&lt;%=<span class="ruby"> item.name </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">class</span>=<span class="value">"collapse in"</span>&gt;</span></span><br><span class="line">		</span>&lt;%<span class="ruby"> site.posts.sort(<span class="string">'date'</span>, -<span class="number">1</span>).forEach(function(it)&#123; </span>%&gt;<span class="xml"></span><br><span class="line">			</span>&lt;%<span class="ruby"> <span class="keyword">if</span> (it.categories.length == <span class="number">1</span> &amp;&amp; it.categories.data[<span class="number">0</span>]._id == item._id)&#123; </span>%&gt;<span class="xml"></span><br><span class="line">			<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"listing-item"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"</span></span></span>&lt;%=<span class="ruby"> config.root </span>%&gt;<span class="xml"><span class="tag"><span class="value"></span></span></span>&lt;%=<span class="ruby"> it.path </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> </span></span>&lt;%<span class="ruby"> <span class="keyword">if</span> (it.description) &#123; </span>%&gt;<span class="xml"><span class="tag"> <span class="attribute">title</span>=<span class="value">"</span></span></span>&lt;%=<span class="ruby"> it.description </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> </span></span>&lt;%<span class="ruby"> &#125; </span>%&gt;<span class="xml"><span class="tag">&gt;</span></span>&lt;%=<span class="ruby"> it.title </span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">			</span>&lt;%<span class="ruby"> &#125; </span>%&gt;<span class="xml"></span><br><span class="line">		</span>&lt;%<span class="ruby"> &#125;); </span>%&gt;<span class="xml"></span><br><span class="line">	<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"></span>&lt;%<span class="ruby"> &#125;); </span>%&gt;<span class="xml"></span></span><br></pre></td></tr></table></figure>
-<p>這段就是能否實作目錄的關鍵了。由於知識不夠的我寫的很亂，想看的話就去我<a href="https://github.com/Tokenyet/Website-restore/blob/master/Homepage/themes/landscape-custom/layout/categories.ejs">存網站的地方</a>看吧。</p>
+<p>這段就是能否實作目錄的關鍵了。由於知識不夠的我寫的很亂，想看的話就去我<a href="https://github.com/Tokenyet/Website-restore/blob/master/Homepage/themes/landscape-custom/layout/categories.ejs" target="_blank" rel="external">存網站的地方</a>看吧。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/10/Hexo目錄建立淺說/" data-id="cic4jw0r000000kr1u7a3436n" class="article-share-link">Share</a>
+      <a data-url="/2015/07/10/Hexo目錄建立淺說/" data-id="cic4l0doc000093r1p2e07kfp" class="article-share-link">Share</a>
       
-        <a href="https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/10/Hexo目錄建立淺說/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="/2015/07/10/Hexo目錄建立淺說/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo分類/">Hexo分類</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo目錄/">Hexo目錄</a></li></ul>
@@ -263,7 +263,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'bcmtokenyet';
   
-  var disqus_url = 'https://github.com/Tokenyet/Tokenyet.github.io.git/2015/07/10/Hexo目錄建立淺說/';
+  var disqus_url = '/2015/07/10/Hexo目錄建立淺說/';
   
   (function(){
     var dsq = document.createElement('script');
