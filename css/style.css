@@ -9,6 +9,19 @@ body:after {
 body:after {
   clear: both;
 }
+#comments {
+  background: #fff;
+  -webkit-box-shadow: 1px 2px 3px #ddd;
+  box-shadow: 1px 2px 3px #ddd;
+  padding: 20px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  margin: 50px 0;
+}
+#comments a {
+  color: #258fb8;
+}
 html,
 body,
 div,
@@ -378,7 +391,11 @@ body {
 #main-nav {
   float: left;
   margin-left: -1px;
+<<<<<<< HEAD
   width: 50%;
+=======
+  width: auto;
+>>>>>>> dbf34d03006cfa9ed7440cc302de017c6815e789
 }
 .nav-icon,
 .main-nav-link {
@@ -401,9 +418,13 @@ body {
   font-family: FontAwesome;
   text-align: center;
   font-size: 14px;
-  width: 14px;
+  width: 5%;
   height: 14px;
+<<<<<<< HEAD
   padding: 5px 15px;
+=======
+  padding: 20px 30px;
+>>>>>>> dbf34d03006cfa9ed7440cc302de017c6815e789
   position: relative;
   cursor: pointer;
 }
@@ -413,13 +434,18 @@ body {
   margin-right: 5px;
   background: rgba(26,26,26,0.5);
   text-align: center;
+<<<<<<< HEAD
   width: 12%;
+=======
+  width: 10%;
+>>>>>>> dbf34d03006cfa9ed7440cc302de017c6815e789
 }
 @media screen and (max-width: 479px) {
   .main-nav-link {
     display: none;
   }
 }
+<<<<<<< HEAD
 .icon-home:before {
   content: "\f09e";
 }
@@ -431,6 +457,28 @@ body {
 }
 .icon-user:before {
   content: "\f09e";
+=======
+.icon-background {
+  background: rgba(204,204,204,0.7);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+.icon-home:before {
+  content: "\f015";
+}
+.icon-archive:before {
+  content: "\f073";
+}
+.icon-categories:before {
+  content: "\f022";
+}
+.icon-user:before {
+  content: "\f007";
+}
+.verticalLine {
+  border-left: thick solid;
+  border-color: rgba(179,179,179,0.5);
+>>>>>>> dbf34d03006cfa9ed7440cc302de017c6815e789
 }
 #main-nav-toggle {
   display: none;
@@ -445,7 +493,6 @@ body {
 }
 #sub-nav {
   float: right;
-  margin-right: -15px;
 }
 #nav-rss-link:before {
   content: "\f09e";
