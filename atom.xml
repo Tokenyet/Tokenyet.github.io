@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   
-  <title><![CDATA[Tokenyet's Blog]]></title>
-  <subtitle><![CDATA[first try]]></subtitle>
+  <title><![CDATA[Dowen's Warudo]]></title>
+  <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://github.com/Tokenyet/Tokenyet.github.io.git//"/>
   <updated>2015-07-14T02:12:15.000Z</updated>
   <id>https://github.com/Tokenyet/Tokenyet.github.io.git//</id>
   
   <author>
-    <name><![CDATA[Dowen Den]]></name>
+    <name><![CDATA[Dowen]]></name>
     
   </author>
   
