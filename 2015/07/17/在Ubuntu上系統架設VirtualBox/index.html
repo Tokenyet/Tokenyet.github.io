@@ -3,17 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Hexo分類 | Dowen&#39;s Warudo</title>
+  <title>在Ubuntu上系統架設VirtualBox | Dowen&#39;s Warudo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="記錄著學習中的任何事物。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dowen's Warudo">
-<meta property="og:url" content="http://tokenyet.github.io/tags/Hexo分類/index.html">
+  <meta name="description" content="由於工作的需求越來越多，Ubuntu裝exe程式已經不敷使用。開始了必須在Ubuntu上裝Windows系統的旅程。小抱怨一下，越來越多的系統需求，但是處理器也不升級一下。真的是越來越過份了/o\
+正文開始
+
+首先必須到VirtualBox的官方網站找自己適合的安裝檔，我的是Ubuntu 12.04 LTS (“Precise Pangolin”)  i386 |  AMD64這個版本。
+
+cd到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Ubuntu上系統架設VirtualBox">
+<meta property="og:url" content="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/index.html">
 <meta property="og:site_name" content="Dowen's Warudo">
-<meta property="og:description" content="記錄著學習中的任何事物。">
+<meta property="og:description" content="由於工作的需求越來越多，Ubuntu裝exe程式已經不敷使用。開始了必須在Ubuntu上裝Windows系統的旅程。小抱怨一下，越來越多的系統需求，但是處理器也不升級一下。真的是越來越過份了/o\
+正文開始
+
+首先必須到VirtualBox的官方網站找自己適合的安裝檔，我的是Ubuntu 12.04 LTS (“Precise Pangolin”)  i386 |  AMD64這個版本。
+
+cd到">
+<meta property="og:updated_time" content="2015-07-17T10:06:57.616Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dowen's Warudo">
-<meta name="twitter:description" content="記錄著學習中的任何事物。">
+<meta name="twitter:title" content="在Ubuntu上系統架設VirtualBox">
+<meta name="twitter:description" content="由於工作的需求越來越多，Ubuntu裝exe程式已經不敷使用。開始了必須在Ubuntu上裝Windows系統的旅程。小抱怨一下，越來越多的系統需求，但是處理器也不升級一下。真的是越來越過份了/o\
+正文開始
+
+首先必須到VirtualBox的官方網站找自己適合的安裝檔，我的是Ubuntu 12.04 LTS (“Precise Pangolin”)  i386 |  AMD64這個版本。
+
+cd到">
   
     <link rel="alternative" href="/atom.xml" title="Dowen&#39;s Warudo" type="application/atom+xml">
   
@@ -83,39 +99,85 @@ ga('send', 'pageview');
      </div>
  </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/07/10/Hexo目錄建立淺說/" class="archive-article-date">
-  <time datetime="2015-07-09T17:08:26.000Z" itemprop="datePublished">7月 10</time>
+        <section id="main"><article id="post-在Ubuntu上系統架設VirtualBox" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/17/在Ubuntu上系統架設VirtualBox/" class="article-date">
+  <time datetime="2015-07-17T09:52:26.000Z" itemprop="datePublished">2015-07-17</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/07/10/Hexo目錄建立淺說/">Hexo目錄建立淺說</a>
+    <h1 class="article-title" itemprop="name">
+      在Ubuntu上系統架設VirtualBox
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由於工作的需求越來越多，Ubuntu裝exe程式已經不敷使用。<br>開始了必須在Ubuntu上裝Windows系統的旅程。<br>小抱怨一下，越來越多的系統需求，但是處理器也不升級一下。<br>真的是越來越過份了/o\</p>
+<p>正文開始</p>
+<ol>
+<li><p>首先必須到<a href="https://www.virtualbox.org/wiki/Linux_Downloads" target="_blank" rel="external">VirtualBox的官方網站</a>找自己適合的安裝檔，我的是<em>Ubuntu 12.04 LTS (“Precise Pangolin”)  i386 |  AMD64</em>這個版本。</p>
+</li>
+<li><p>cd到指定下載的資料夾(或你放置該檔案的其他位置)</p>
+</li>
+<li><p><code>sudo dpkg -i virtualbox-5.0_5.0.0-101573-Ubuntu-precise_amd64.deb(自己的檔案)</code></p>
+</li>
+<li><p>安裝好後，自行安裝想要的任何系統，Dowen是安裝 Windows 7。</p>
+</li>
+<li><p>假如以上沒有問題，就安裝好了，但是如果你遇上 VirtualBox error: Kernel driver not installed (rc=-1908)，那就請繼續往下看。</p>
+</li>
+<li><p>其實官方網站有說，為了防止Ubuntu有時後會不相容的問題，必須要安裝dkms所以就要使用以下的指令</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo aptitude <span class="operator"><span class="keyword">update</span></span><br><span class="line">sudo aptitude <span class="keyword">install</span> dkms</span><br><span class="line">sudo /etc/init.d/vboxdrv setup</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>這樣應該就沒什麼問題了，希望有幫到像我一樣苦惱的人。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/" data-id="cic7glmh7000c9pr1kdevsc9w" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VirtualBox/">VirtualBox</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/07/15/建立契機與為何使用Hexo？/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">建立契機與為何使用Hexo？</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 </section>
         
           <aside id="sidebar">
@@ -213,11 +275,13 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'bcmtokenyet';
   
+  var disqus_url = 'http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
