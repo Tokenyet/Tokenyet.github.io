@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   
-  <title><![CDATA[Dowen's Warudo]]></title>
+  <title><![CDATA[Dowenの世界]]></title>
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io//"/>
-  <updated>2015-07-17T10:06:57.616Z</updated>
+  <updated>2015-08-17T05:35:16.851Z</updated>
   <id>http://tokenyet.github.io//</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Ubuntu Tracker-Store問題]]></title>
+    <link href="http://tokenyet.github.io/2015/08/17/Ubuntu%20Tracker-Store%E5%95%8F%E9%A1%8C/"/>
+    <id>http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/</id>
+    <published>2015-08-17T03:28:14.000Z</published>
+    <updated>2015-08-17T05:35:16.851Z</updated>
+    <content type="html"><![CDATA[<p>在升級到14版後<br>安裝了Gnome一段時間又灌了零零總總的東西之後…</p>
+<p>有一次右鍵-&gt;檔案-&gt;屬性的時候<br>竟然桌面當了!? 有關於檔案系統的任何東西都開不起來。</p>
+<p>在使用System monitor觀察後，發現是tracker-store在做怪<br>是安裝gnome之後自動開啟建立索引的程式</p>
+<p>但由於在本系統中已經成為多餘的障礙，所以決定把他拿掉。<br>上網找東找西之後，其實只有一句話就解決問題了！<br>到終端機輸入<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tracker-<span class="keyword">control</span> -r</span><br></pre></td></tr></table></figure></p>
+<h2 id="解決_!">解決 !</h2>]]></content>
+    <summary type="html">
+    <![CDATA[<p>在升級到14版後<br>安裝了Gnome一段時間又灌了零零總總的東西之後…</p>
+<p>有一次右鍵-&gt;檔案-&gt;屬性的時候<br>竟然桌面當了!? 有關於檔案系統的任何東西都開不起來。</p>
+<p>在使用System monitor觀察後，發現是tracker]]>
+    </summary>
+    
+      <category term="Ubuntu" scheme="http://tokenyet.github.io/tags/Ubuntu/"/>
+    
+      <category term="Ubuntu property" scheme="http://tokenyet.github.io/tags/Ubuntu-property/"/>
+    
+      <category term="tracker-store" scheme="http://tokenyet.github.io/tags/tracker-store/"/>
+    
+      <category term="Linux" scheme="http://tokenyet.github.io/categories/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[在Ubuntu上系統架設VirtualBox]]></title>
