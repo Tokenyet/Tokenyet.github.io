@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  
   <title><![CDATA[Dowenの世界]]></title>
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://tokenyet.github.io//"/>
-  <updated>2015-08-17T05:35:16.851Z</updated>
-  <id>http://tokenyet.github.io//</id>
+  <link href="http://tokenyet.github.io/"/>
+  <updated>2015-08-19T15:44:41.588Z</updated>
+  <id>http://tokenyet.github.io/</id>
   
   <author>
     <name><![CDATA[Dowen]]></name>
@@ -16,11 +15,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[線性代數-座標轉換筆記]]></title>
+    <link href="http://tokenyet.github.io/2015/08/19/%E5%BA%A7%E6%A8%99%E8%BD%89%E6%8F%9B%E7%AD%86%E8%A8%98/"/>
+    <id>http://tokenyet.github.io/2015/08/19/座標轉換筆記/</id>
+    <published>2015-08-19T13:08:52.000Z</published>
+    <updated>2015-08-19T15:44:41.588Z</updated>
+    <content type="html"><![CDATA[<ol>
+<li>旋轉證明</li>
+</ol>
+<p><a title="View with the Desmos Graphing Calculator" href="https://www.desmos.com/calculator/p2xvjukzd7" target="_blank" rel="external">  <img src="https://s3.amazonaws.com/calc_thumbs/production/p2xvjukzd7.png" width="200px" height="200px" style="border:1px solid #ccc; border-radius:5px"></a></p>
+<p>假設紅線端點座標為 $ (x1,y1) $<br>假設藍線端點座標為 $ (x,y) $<br>紅線與藍線之夾角為 $ \theta $<br>籃線與 $X$ 軸之夾角為 $ a $<br>長度為 $ r $<br>則得到<br>$ x1 = x \cos \theta - y \sin \theta $<br>$ y1 = x \sin \theta + y \cos \theta $<br>證明如下:</p>
+<p>經由畢氏定理得知:<br>$ x = r \cos a $<br>$ y = r \sin a $</p>
+<p>$ x1 = r \cos (\theta + \a) = r \cos \theta \cos a - r \sin \theta \sin a $<br>$ y1 = r \sin (\theta + \a) = r \sin \theta \cos a + r \sin a \cos \theta $</p>
+<p>$ x1 = r \cos \theta \cos a - r \sin \theta \sin a = x \cos \theta - y \sin theta $<br>$ y1 = r \sin \theta \cos a + r \sin a \cos \theta = x \sin \theta + y \cos theta $</p>
+<p>備註:<br>$ r \cos a = x $<br>$ r \sin a = y $</p>
+<p>因此得證:<br>$ x1 = x \cos \theta - y \sin \theta $<br>$ y1 = x \sin \theta + y \cos \theta $</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<ol>
+<li>旋轉證明</li>
+</ol>
+<p><a title="View with the Desmos Graphing Calculator" href="https://www.desmos.com/calculator/p2xvjukzd7" target="]]>
+    </summary>
+    
+      <category term="座標轉換" scheme="http://tokenyet.github.io/tags/%E5%BA%A7%E6%A8%99%E8%BD%89%E6%8F%9B/"/>
+    
+      <category term="線性代數" scheme="http://tokenyet.github.io/tags/%E7%B7%9A%E6%80%A7%E4%BB%A3%E6%95%B8/"/>
+    
+      <category term="數學筆記" scheme="http://tokenyet.github.io/categories/%E6%95%B8%E5%AD%B8%E7%AD%86%E8%A8%98/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Ubuntu Tracker-Store問題]]></title>
     <link href="http://tokenyet.github.io/2015/08/17/Ubuntu%20Tracker-Store%E5%95%8F%E9%A1%8C/"/>
     <id>http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/</id>
     <published>2015-08-17T03:28:14.000Z</published>
-    <updated>2015-08-17T05:35:16.851Z</updated>
+    <updated>2015-08-19T12:46:27.956Z</updated>
     <content type="html"><![CDATA[<p>在升級到14版後<br>安裝了Gnome一段時間又灌了零零總總的東西之後…</p>
 <p>有一次右鍵-&gt;檔案-&gt;屬性的時候<br>竟然桌面當了!? 有關於檔案系統的任何東西都開不起來。</p>
 <p>在使用System monitor觀察後，發現是tracker-store在做怪<br>是安裝gnome之後自動開啟建立索引的程式</p>
@@ -47,7 +78,7 @@
     <link href="http://tokenyet.github.io/2015/07/17/%E5%9C%A8Ubuntu%E4%B8%8A%E7%B3%BB%E7%B5%B1%E6%9E%B6%E8%A8%ADVirtualBox/"/>
     <id>http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/</id>
     <published>2015-07-17T09:52:26.000Z</published>
-    <updated>2015-07-17T10:06:57.616Z</updated>
+    <updated>2015-08-19T12:46:27.957Z</updated>
     <content type="html"><![CDATA[<p>由於工作的需求越來越多，Ubuntu裝exe程式已經不敷使用。<br>開始了必須在Ubuntu上裝Windows系統的旅程。<br>小抱怨一下，越來越多的系統需求，但是處理器也不升級一下。<br>真的是越來越過份了/o\</p>
 <p>正文開始</p>
 <ol>
@@ -88,7 +119,7 @@
     <link href="http://tokenyet.github.io/2015/07/15/%E5%BB%BA%E7%AB%8B%E5%A5%91%E6%A9%9F%E8%88%87%E7%82%BA%E4%BD%95%E4%BD%BF%E7%94%A8Hexo%EF%BC%9F/"/>
     <id>http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/</id>
     <published>2015-07-15T07:05:37.000Z</published>
-    <updated>2015-07-15T07:29:51.000Z</updated>
+    <updated>2015-07-15T13:22:04.995Z</updated>
     <content type="html"><![CDATA[<p>其實 Dowen 不像許多其他Hexo User一樣有許多的背景。像是從Wordpress或是Octopress之類的，<br>而且對網頁的知識也是不甚了解，但是偶然間逛到了<a href="http://morris821028.github.io/" target="_blank" rel="external">Morris</a>兄的網站。<br>一開始只是查作業系統而已，因為發現<a href="http://morris821028.github.io/" target="_blank" rel="external">Morris</a>兄擁有許多作業系統的好講義，為了考試來逛網站的次數久了後，不小撇了一下旁邊的頁面，發現文章真的都很有內容。</p>
 <p>漸漸地，久違的哲學思考發作，為什麼他要這樣無私地奉獻自己的知識與技術呢？這樣作有什麼好處嗎？難道這又是一種OpenSource的概念嗎？接著靈光一閃，我有了自己的答案。</p>
 <p>在這漫長的學習歲月中，常常因為學了又忘，忘了又學，在這累積知識的大起大落中徘徊不止，如果我能學習兼記錄並抓住那腦袋中忘卻曲線，那我<em>應該</em>能有所進步才對。在此這是我的答案，相信其他人或許是你都有自己建立的契機與動力。</p>
@@ -109,7 +140,7 @@
     <link href="http://tokenyet.github.io/2015/07/13/Ubuntu%E4%B8%AD%E4%BD%BF%E7%94%A8SublimtText3%E4%B8%AD%E6%96%87%E8%BC%B8%E5%85%A5%E6%B3%95%E7%AF%87/"/>
     <id>http://tokenyet.github.io/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/</id>
     <published>2015-07-13T07:56:34.000Z</published>
-    <updated>2015-07-13T08:17:14.000Z</updated>
+    <updated>2015-07-13T13:12:37.572Z</updated>
     <content type="html"><![CDATA[<p>前言：<br>SublimeText在一些不太會操作需要大量指令的人來說，真的是一個跨平台的神物。<br>在搜尋檔案與查看專案上，真的是各個平台統一操作模式。<br>不過獨獨只缺不能使用中文輸入法了。<br>而本篇主要是讓SublimtText3以某種不是很方便的形式來支持中文輸入法。<br>如果你已經看過其他網路上用Helper的就可以省下時間了。</p>
 <p>需求：<br>SublimeText3 + Package Control已安裝</p>
 <p>1.使用 Ctrl+` 輸入下列程式碼</p>
@@ -146,7 +177,7 @@
     <link href="http://tokenyet.github.io/2015/07/13/Ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9DLine/"/>
     <id>http://tokenyet.github.io/2015/07/13/Ubuntu上安裝Line/</id>
     <published>2015-07-13T07:34:13.000Z</published>
-    <updated>2015-07-13T08:17:42.000Z</updated>
+    <updated>2015-07-13T13:12:37.571Z</updated>
     <content type="html"><![CDATA[<p>由於工作需要安裝Line的關係。<br>但是沒有筆記型電腦，又不想用Teamviewer連回家中使用Line。<br>那麼在申請了一個工作的Line之後，開始的繁瑣中作就來了！<br>（不會雙帳號的上網參考一下吧，很簡單的，但你要能裝Bluestacks，我是Teamviewer回家使用這些操作）</p>
 <p>—<br>由於有環境疑慮<br>所以奉上自己版本很低的環境</p>
 <h2 id="Ubuntu_12-4-10">Ubuntu 12.4.10</h2><ol>
@@ -189,7 +220,7 @@
     <link href="http://tokenyet.github.io/2015/07/13/Ubuntu%E7%96%91%E9%9B%A3%E9%9B%9C%E7%97%87/"/>
     <id>http://tokenyet.github.io/2015/07/13/Ubuntu疑難雜症/</id>
     <published>2015-07-13T02:52:21.000Z</published>
-    <updated>2015-07-13T07:32:02.000Z</updated>
+    <updated>2015-07-13T13:12:37.573Z</updated>
     <content type="html"><![CDATA[<p>前記：<br>由於在實習的工作中需要用到這個人覺得很難使用的Ubuntu系統<br>所以遇到了種種的挫折與困難，全部寫在這裡了。</p>
 <ol>
 <li>瀏覽器的問題<br>安裝瀏覽器的時候我使用過Opera,Chrome,Firefox這三種。<br>1-1. Opera跟Firefox<br>直接下載能看影片，不過額外裝flash會有較好效果，<br>在擴充插件上，Opera跟Firefox在Ubuntu的支援度較高，<br>*如果要知道如何安裝flash插件請參考1-1-1。<br>*安裝firefox參考1-1-2。<br>1-2.Chrome<br>不需裝插件即可觀看影片內建flash<br>但是在某些版本的Ubuntu上不能裝插件，對Ubuntu的支援度較低較低</li>
@@ -239,7 +270,7 @@
     <link href="http://tokenyet.github.io/2015/07/10/Hexo%E7%9B%AE%E9%8C%84%E5%BB%BA%E7%AB%8B%E6%B7%BA%E8%AA%AA/"/>
     <id>http://tokenyet.github.io/2015/07/10/Hexo目錄建立淺說/</id>
     <published>2015-07-09T17:08:26.000Z</published>
-    <updated>2015-07-15T08:12:17.000Z</updated>
+    <updated>2015-07-15T13:22:04.994Z</updated>
     <content type="html"><![CDATA[<p>前言：<br>由於Dowen是個想完成某項功能就會盡全力去研究的人，雖然建立網站不是我的專長，縱使CSS,Javscript,JQuery只學了半套，而且還不了解什麼node.js還有express，但是憑著一顆堅毅的熱情，總算完成了目錄頁面的建立。<br>當然目錄建立有很簡單的作法，是直接<code>hexo new page categories</code>，但是發現旁邊的widget既然可以自動建立，那為什麼我要自己手動建立呢？</p>
 <p>由於上網看了許久，幾乎沒發現有人分享如何從無到有建立起一個自動產生的目錄頁面，除了<a href="http://wzpan.github.io/hexo-theme-freemind/" target="_blank" rel="external">feemind</a>有使用到之後，就沒有其他範例了。</p>
 <p>那麼就開始說明如何自動建立吧！<br>在此之前先感謝<a href="https://github.com/wzpan" target="_blank" rel="external">freemind作者：Joseph Pan</a>告訴身為初學者的我，該如何找到物件內容的方法(console.log(物件))，否則還真沒有現在的網站。</p>
