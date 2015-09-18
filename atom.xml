@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2015-08-19T15:44:41.588Z</updated>
+  <updated>2015-09-18T19:19:35.356Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -15,18 +15,108 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Windows 10升級相關問題]]></title>
+    <link href="http://tokenyet.github.io/2015/09/19/Windows-10%E5%8D%87%E7%B4%9A%E7%9B%B8%E9%97%9C%E5%95%8F%E9%A1%8C/"/>
+    <id>http://tokenyet.github.io/2015/09/19/Windows-10升級相關問題/</id>
+    <published>2015-09-18T18:43:56.000Z</published>
+    <updated>2015-09-18T19:19:35.356Z</updated>
+    <content type="html"><![CDATA[<p>第一次進行Windows系列的升級，就遇到了很多問題，為了拯救跟我有相同困擾的人，所以趕緊來發一篇文。</p>
+<hr>
+
+<h2 id="安裝前">安裝前</h2><hr>
+
+<p>我遇到的問題之一<br>首先<strong>直接點Windows10圖示</strong>的時候到85%就停住了。<br>所以通過圖示升級失敗。</p>
+<p>再來遇到的問題是把<strong>Win10燒到光碟</strong>後想要通過<strong>重開機</strong>的boot模式<br>來進行更新，遇到了要不要移除媒體的奇怪問題，我把搖桿跟一些東西移除後，仍不行。<br><em>(這裡順便說一下，有些主機板會因為插了某些3c產品在usb上而導致無法開機<br>像是Dowen我插入了mp3在usb上之後，就卡在boot畫面無法開機。)</em></p>
+<p>再來，用光碟直接在Windows中點選光碟機進行安裝，安裝過程一開始很順利，但是到了真正要安裝的時候卡在0%然後馬上安裝失敗。</p>
+<p><strong>0%的解決辦法是 解除安裝防毒軟體</strong></p>
+<p>之後又遇到了18%安裝失敗</p>
+<p><strong>18%的解決辦法是 點選$Windows.~BT這個資料夾然後把<em>唯讀</em>屬性取消掉</strong></p>
+<p>18%之後的如果有遇到問題通常就是照著解除唯讀去做，因為你解除了一瞬間，下一個tempo又被系統改回唯讀，我想這是win10升級的一個bug…。</p>
+<p>在過了18%大關後，只要等待到最後就可以了。</p>
+<hr>
+
+<h2 id="安裝後">安裝後</h2><hr>
+
+<p>第一個遇到的問題就是<em>點任何檔案都無法回應</em><br>然後在觀察錯誤訊息後，發現新酷音(非TSF版)的ChewingServer.exe作祟。<br>先切換輸入法後，發現一切都正常，然後去控制台把新酷音解安裝了!!</p>
+<p>在來就不是問題，而是使用習慣，自己摸索一些東西後，發現有一些東西要額外安裝。</p>
+<p>**像是視窗的玻璃特效，必須去上網找<a href="http://pan.baidu.com/s/1c50zc" target="_blank" rel="external">AeroGlass 10240</a>##</p>
+<p><strong>像是用不習慣一些介面就可以用<a href="http://www.classicshell.net/" target="_blank" rel="external">Classic Shell</a>傳統介面軟體幫你改回來</strong><br>(像點開始時，那兩塊panel)</p>
+<p><strong>像是開始列的透明化調整，可以用<a href="http://chime.tv/products/glass2k.shtml" target="_blank" rel="external">Glass2k</a></strong><br>(ps.這個透明連icon也被透明化，所以使用自行斟酌)</p>
+<p>剩下未解決的問題:<br>還有一些比較不習慣的問題，<br>像是輸入法在很多editor上，打字會跑在整個螢幕的左上角。<br>像是開始列右邊的icon有關於系統的都無法移動位置，只能關閉。<br>像是桌面的設定，因為是新風格，不習慣想改回win7連結控制台的那種模式。<br>像是folder開起來後上面跟以前不同。<br>像是開始列的透明度無法自行更改，有點失望。</p>
+<p>win10目前給我的感覺<br>少了一些常用的介面設置，<br>很多軟體的支援度還不夠，<br>拿掉了很多我喜歡的酷炫特效，<br>點開始跳出來的兩大Panel讓我有點不知道看哪，<br>最後的最後輸入法變成win+space也需要適應一番。</p>
+<p>如果有什麼功能忽略沒寫到，歡迎通知我!</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>第一次進行Windows系列的升級，就遇到了很多問題，為了拯救跟我有相同困擾的人，所以趕緊來發一篇文。</p>
+<hr>
+
+<h2 id="安裝前">安裝前</h2><hr>
+
+<p>我遇到的問題之一<br>首先<strong>直接點Windows10圖示</strong>]]>
+    </summary>
+    
+      <category term="Win10" scheme="http://tokenyet.github.io/tags/Win10/"/>
+    
+      <category term="Win7" scheme="http://tokenyet.github.io/tags/Win7/"/>
+    
+      <category term="Windows10" scheme="http://tokenyet.github.io/tags/Windows10/"/>
+    
+      <category term="Windows7" scheme="http://tokenyet.github.io/tags/Windows7/"/>
+    
+      <category term="升級" scheme="http://tokenyet.github.io/tags/%E5%8D%87%E7%B4%9A/"/>
+    
+      <category term="Windows" scheme="http://tokenyet.github.io/categories/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Interpolation筆記]]></title>
+    <link href="http://tokenyet.github.io/2015/09/06/Interpolation%E7%AD%86%E8%A8%98/"/>
+    <id>http://tokenyet.github.io/2015/09/06/Interpolation筆記/</id>
+    <published>2015-09-06T06:52:48.000Z</published>
+    <updated>2015-09-06T07:41:25.271Z</updated>
+    <content type="html"><![CDATA[<p><hr></p>
+<h3 id="證明筆記,如有空再補上說明">證明筆記,如有空再補上說明</h3><p><hr><br><strong>1. 線性內插(Linear Interpolation)</strong></p>
+<p>$ y = ax + b , f(x) = ax + b $ </p>
+<p>$ y_i = a x_i + b $</p>
+<p>$ y_{i+1} = a x_{i+1} + b $</p>
+<p>$ y_{i+1} - y_i = a_{i+1} -a x_i $</p>
+<p>$ y_{i+1} - y_i = a (x_{i+1} -a x_i) $</p>
+<p>$ y_{i+1} - y_i/(x_{i+1} -x_i) = a $</p>
+<p>$ y_i = (y_{i+1} - y_i/(x_{i+1} -x_i))x_i + b $</p>
+<p>$ y_i - ax_i = b $</p>
+<p>$ f(x) = (y_{i+1} - yi/(x_{i+1} -x_i))x + yi -ax_i $</p>
+<p>$ f(x) = (y_{i+1} - yi/(x_{i+1} -xi))(x-xi) + yi $</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><hr></p>
+<h3 id="證明筆記,如有空再補上說明">證明筆記,如有空再補上說明</h3><p><hr><br><strong>1. 線性內插(Linear Interpolation)</strong></p>
+<p>$ y = ax + b , f(x) = ]]>
+    </summary>
+    
+      <category term="Interpolation" scheme="http://tokenyet.github.io/tags/Interpolation/"/>
+    
+      <category term="內插" scheme="http://tokenyet.github.io/tags/%E5%85%A7%E6%8F%92/"/>
+    
+      <category term="線性代數" scheme="http://tokenyet.github.io/tags/%E7%B7%9A%E6%80%A7%E4%BB%A3%E6%95%B8/"/>
+    
+      <category term="數學筆記" scheme="http://tokenyet.github.io/categories/%E6%95%B8%E5%AD%B8%E7%AD%86%E8%A8%98/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[線性代數-座標轉換筆記]]></title>
     <link href="http://tokenyet.github.io/2015/08/19/%E5%BA%A7%E6%A8%99%E8%BD%89%E6%8F%9B%E7%AD%86%E8%A8%98/"/>
     <id>http://tokenyet.github.io/2015/08/19/座標轉換筆記/</id>
     <published>2015-08-19T13:08:52.000Z</published>
-    <updated>2015-08-19T15:44:41.588Z</updated>
+    <updated>2015-09-06T07:08:02.813Z</updated>
     <content type="html"><![CDATA[<ol>
 <li>旋轉證明</li>
 </ol>
 <p><a title="View with the Desmos Graphing Calculator" href="https://www.desmos.com/calculator/p2xvjukzd7" target="_blank" rel="external">  <img src="https://s3.amazonaws.com/calc_thumbs/production/p2xvjukzd7.png" width="200px" height="200px" style="border:1px solid #ccc; border-radius:5px"></a></p>
 <p>假設紅線端點座標為 $ (x1,y1) $<br>假設藍線端點座標為 $ (x,y) $<br>紅線與藍線之夾角為 $ \theta $<br>籃線與 $X$ 軸之夾角為 $ a $<br>長度為 $ r $<br>則得到<br>$ x1 = x \cos \theta - y \sin \theta $<br>$ y1 = x \sin \theta + y \cos \theta $<br>證明如下:</p>
 <p>經由畢氏定理得知:<br>$ x = r \cos a $<br>$ y = r \sin a $</p>
-<p>$ x1 = r \cos (\theta + \a) = r \cos \theta \cos a - r \sin \theta \sin a $<br>$ y1 = r \sin (\theta + \a) = r \sin \theta \cos a + r \sin a \cos \theta $</p>
+<p>$ x1 = r \cos (\theta + a) = r \cos \theta \cos a - r \sin \theta \sin a $<br>$ y1 = r \sin (\theta + a) = r \sin \theta \cos a + r \sin a \cos \theta $</p>
 <p>$ x1 = r \cos \theta \cos a - r \sin \theta \sin a = x \cos \theta - y \sin theta $<br>$ y1 = r \sin \theta \cos a + r \sin a \cos \theta = x \sin \theta + y \cos theta $</p>
 <p>備註:<br>$ r \cos a = x $<br>$ r \sin a = y $</p>
 <p>因此得證:<br>$ x1 = x \cos \theta - y \sin \theta $<br>$ y1 = x \sin \theta + y \cos \theta $</p>
@@ -177,7 +267,7 @@
     <link href="http://tokenyet.github.io/2015/07/13/Ubuntu%E4%B8%8A%E5%AE%89%E8%A3%9DLine/"/>
     <id>http://tokenyet.github.io/2015/07/13/Ubuntu上安裝Line/</id>
     <published>2015-07-13T07:34:13.000Z</published>
-    <updated>2015-07-13T13:12:37.571Z</updated>
+    <updated>2015-08-19T15:44:28.279Z</updated>
     <content type="html"><![CDATA[<p>由於工作需要安裝Line的關係。<br>但是沒有筆記型電腦，又不想用Teamviewer連回家中使用Line。<br>那麼在申請了一個工作的Line之後，開始的繁瑣中作就來了！<br>（不會雙帳號的上網參考一下吧，很簡單的，但你要能裝Bluestacks，我是Teamviewer回家使用這些操作）</p>
 <p>—<br>由於有環境疑慮<br>所以奉上自己版本很低的環境</p>
 <h2 id="Ubuntu_12-4-10">Ubuntu 12.4.10</h2><ol>
