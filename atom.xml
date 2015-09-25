@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2015-09-25T08:41:41.390Z</updated>
+  <updated>2015-09-25T09:52:32.004Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -19,12 +19,13 @@
     <link href="http://tokenyet.github.io/2015/09/25/Windows10-System%E8%A8%98%E6%86%B6%E9%AB%94%E5%8D%A0%E7%94%A8/"/>
     <id>http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/</id>
     <published>2015-09-25T08:17:23.000Z</published>
-    <updated>2015-09-25T08:41:41.390Z</updated>
+    <updated>2015-09-25T09:52:32.004Z</updated>
     <content type="html"><![CDATA[<p>前言:<br>升級到Windows10之後，真的是一堆BUGGG阿。<br>認識的人升級到10都跟我說沒什麼問題，只能說相信別人不如自己實測阿。<br>還有輸入法這糟糕的設置，根本只設計給英文使用者嘛。<br>大部分升級的人都說「習慣就好」，我真的很不喜歡這句話。<br>聽過UX嗎?習慣這句話根本就不是UX而是斗M。<br>如果是因為更值得的功能而改變習慣，那在UX上的確有其道理。<br>但是Win8後的輸入法又沒什麼特別的取代性，改了習慣壞了體驗，唉。</p>
 <p>正題:<br>最近開始用VS2013有用到WinAPI，然後用了一段時間後，突然電腦趨近於當機???!!<br>當時我電腦上有Opera，Chrome，Planetside 2，Steam，Line，Telegram，ESET…。<br>然後以為是WinAPI的問題。<br>但是研究後發現是 <font color="red">System (ntoskrnl.exe)</font> 在搞鬼，這東西在Win10上可說是臭名昭彰，還有人藍白當機。</p>
 <p>經由網路上一系列的解法我都嘗試過了，<br>第一個是Regedit<br>在HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Ndu路徑下<br>將 <font color="red">Start</font> 的值從 <font color="red">2</font> 改為 <font color="red">4</font><br>(個人這方法無效)</p>
-<p>第二個是設定(Win10我不解的奇怪新產物)<br>點桌面-&gt;個人化-&gt;設定-&gt;系統-&gt;通知與動作<br>將 <font color="red">顯示關於Windows的通知</font> 關掉!!!<br>(這方法我完成後還未出現Memory占用CPU過高問題)</p>
-<p>建議可以兩個方法都嘗試，如果只嘗試一個無效的話。</p>
+<p>第二個是設定(Win10我不解的奇怪新產物)<br>點桌面-&gt;個人化-&gt;設定-&gt;系統-&gt;通知與動作<br>將 <font color="red">顯示關於Windows的通知</font> 關掉!!!<br>(這方法也沒什麼效果..)</p>
+<p>第三個是關閉Superfetch與Prefetch(沒效也可以減少SSD的操勞)<br>Win+R -&gt; services.msc -&gt; Superfetch disable掉<br>到HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters<br>把EnablePrefetcher與EnableSuperfetch改為0</p>
+<p>建議可以三個方法都嘗試，如果只嘗試一個無效的話。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>前言:<br>升級到Windows10之後，真的是一堆BUGGG阿。<br>認識的人升級到10都跟我說沒什麼問題，只能說相信別人不如自己實測阿。<br>還有輸入法這糟糕的設置，根本只設計給英文使用者嘛。<br>大部分升級的人都說「習慣就好」，我真的很不喜歡這句話。<br>聽]]>
