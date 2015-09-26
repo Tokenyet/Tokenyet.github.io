@@ -3,17 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | Dowenの世界</title>
+  <title>QT中安裝OpenGL教學 | Dowenの世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="記錄著學習中的任何事物。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dowenの世界">
-<meta property="og:url" content="http://tokenyet.github.io/archives/index.html">
+  <meta name="description" content="This is a tutorial for install glew &amp;amp; glfw on ubuntu with qt.
+Enviroment : Ubuntu14 + QT5
+Install glfw
+First. we need to install dependencies on ubuntu
+
+12sudo apt-get install xorg-devsudo apt-get">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QT中安裝OpenGL教學">
+<meta property="og:url" content="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/index.html">
 <meta property="og:site_name" content="Dowenの世界">
-<meta property="og:description" content="記錄著學習中的任何事物。">
+<meta property="og:description" content="This is a tutorial for install glew &amp;amp; glfw on ubuntu with qt.
+Enviroment : Ubuntu14 + QT5
+Install glfw
+First. we need to install dependencies on ubuntu
+
+12sudo apt-get install xorg-devsudo apt-get">
+<meta property="og:updated_time" content="2015-09-26T11:39:47.944Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dowenの世界">
-<meta name="twitter:description" content="記錄著學習中的任何事物。">
+<meta name="twitter:title" content="QT中安裝OpenGL教學">
+<meta name="twitter:description" content="This is a tutorial for install glew &amp;amp; glfw on ubuntu with qt.
+Enviroment : Ubuntu14 + QT5
+Install glfw
+First. we need to install dependencies on ubuntu
+
+12sudo apt-get install xorg-devsudo apt-get">
   
     <link rel="alternative" href="/atom.xml" title="Dowenの世界" type="application/atom+xml">
   
@@ -83,210 +99,99 @@ ga('send', 'pageview');
      </div>
  </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/09/25/Windows10-System記憶體占用/" class="archive-article-date">
-  <time datetime="2015-09-25T08:17:23.000Z" itemprop="datePublished">9月 25</time>
+        <section id="main"><article id="post-QT中安裝OpenGL教學" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/26/QT中安裝OpenGL教學/" class="article-date">
+  <time datetime="2015-08-26T09:40:26.000Z" itemprop="datePublished">2015-08-26</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OpenGL/">OpenGL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/25/Windows10-System記憶體占用/">Windows10 System記憶體占用</a>
+    <h1 class="article-title" itemprop="name">
+      QT中安裝OpenGL教學
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/09/19/Windows10-升級相關問題/" class="archive-article-date">
-  <time datetime="2015-09-18T18:43:56.000Z" itemprop="datePublished">9月 19</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/19/Windows10-升級相關問題/">Windows10 升級相關問題</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/09/06/Interpolation筆記/" class="archive-article-date">
-  <time datetime="2015-09-06T06:52:48.000Z" itemprop="datePublished">9月 6</time>
-</a>
+        <p>This is a tutorial for install glew &amp; glfw on ubuntu with qt.</p>
+<p>Enviroment : Ubuntu14 + QT5</p>
+<h2 id="Install_glfw">Install glfw</h2><ol>
+<li>First. we need to install dependencies on ubuntu</li>
+</ol>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install xorg-<span class="built_in">dev</span></span><br><span class="line">sudo apt-<span class="built_in">get</span> install libglu1-mesa-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<h2 id="Install_glew">Install glew</h2><ol>
+<li><p>Then download source package at <a href="http://glew.sourceforge.net/" target="_blank" rel="external">official</a></p>
+</li>
+<li><p>Extract your package and open your terminal, then cd to what your package location which you just extracted.</p>
+</li>
+<li><p>Do following commnad to install</p>
+</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">make</span> extension</span><br><span class="line"><span class="built_in">make</span> </span><br><span class="line">sudo <span class="built_in">make</span> install</span><br><span class="line">sudo <span class="built_in">make</span> clean</span><br></pre></td></tr></table></figure>
+<h2 id="Open_QT_project_and_set_opengl_settings">Open QT project and set opengl settings</h2><ol>
+<li><p>Open a console project in QT</p>
+</li>
+<li><p>Add following settings in your .pro file anywhere.</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIBS +=<span class="operator">-l</span>GLEW -lglfw3 <span class="operator">-l</span>GL <span class="operator">-l</span>X11 <span class="operator">-l</span>Xi <span class="operator">-l</span>Xrandr <span class="operator">-l</span>Xxf86vm <span class="operator">-l</span>Xinerama <span class="operator">-l</span>Xcursor -lrt -lm -pthread</span><br></pre></td></tr></table></figure>
+<p>Try a simple test.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">define</span> GLEW_STATIC</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;GL/glew.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;GLFW/glfw3.h&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    glfwInit();</span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line">    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Enjoy_it">Enjoy it</h2>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/06/Interpolation筆記/">Interpolation筆記</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/08/26/QT中安裝OpenGL教學/" class="archive-article-date">
-  <time datetime="2015-08-26T09:40:26.000Z" itemprop="datePublished">8月 26</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/" data-id="cif10b1hj00005ckp2lvmswe9" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/26/QT中安裝OpenGL教學/">QT中安裝OpenGL教學</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/08/19/座標轉換筆記/" class="archive-article-date">
-  <time datetime="2015-08-19T13:08:52.000Z" itemprop="datePublished">8月 19</time>
-</a>
+        <a href="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/#disqus_thread" class="article-comment-link">Comments</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/19/座標轉換筆記/">線性代數-座標轉換筆記</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/08/17/Ubuntu Tracker-Store問題/" class="archive-article-date">
-  <time datetime="2015-08-17T03:28:14.000Z" itemprop="datePublished">8月 17</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/17/Ubuntu Tracker-Store問題/">Ubuntu Tracker-Store問題</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QT/">QT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/07/17/在Ubuntu上系統架設VirtualBox/" class="archive-article-date">
-  <time datetime="2015-07-17T09:52:26.000Z" itemprop="datePublished">7月 17</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/07/17/在Ubuntu上系統架設VirtualBox/">在Ubuntu上系統架設VirtualBox</a>
-    </h1>
+    <a href="/2015/09/06/Interpolation筆記/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Interpolation筆記
+        
+      </div>
+    </a>
   
+  
+    <a href="/2015/08/19/座標轉換筆記/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">線性代數-座標轉換筆記</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/07/15/建立契機與為何使用Hexo？/" class="archive-article-date">
-  <time datetime="2015-07-15T07:05:37.000Z" itemprop="datePublished">7月 15</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/07/15/建立契機與為何使用Hexo？/">建立契機與為何使用Hexo？</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/" class="archive-article-date">
-  <time datetime="2015-07-13T07:56:34.000Z" itemprop="datePublished">7月 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/">Ubuntu中使用SublimtText3中文輸入法篇</a>
-    </h1>
-  
 
-    </header>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/07/13/Ubuntu上安裝Line/" class="archive-article-date">
-  <time datetime="2015-07-13T07:34:13.000Z" itemprop="datePublished">7月 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/07/13/Ubuntu上安裝Line/">Ubuntu上安裝Line</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+</section>
 </section>
         
           <aside id="sidebar">
@@ -375,11 +280,13 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'bcmtokenyet';
   
+  var disqus_url = 'http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>

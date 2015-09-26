@@ -133,6 +133,53 @@
   </entry>
   
   <entry>
+    <title><![CDATA[QT中安裝OpenGL教學]]></title>
+    <link href="http://tokenyet.github.io/2015/08/26/QT%E4%B8%AD%E5%AE%89%E8%A3%9DOpenGL%E6%95%99%E5%AD%B8/"/>
+    <id>http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/</id>
+    <published>2015-08-26T09:40:26.000Z</published>
+    <updated>2015-09-26T11:39:47.944Z</updated>
+    <content type="html"><![CDATA[<p>This is a tutorial for install glew &amp; glfw on ubuntu with qt.</p>
+<p>Enviroment : Ubuntu14 + QT5</p>
+<h2 id="Install_glfw">Install glfw</h2><ol>
+<li>First. we need to install dependencies on ubuntu</li>
+</ol>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install xorg-<span class="built_in">dev</span></span><br><span class="line">sudo apt-<span class="built_in">get</span> install libglu1-mesa-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<h2 id="Install_glew">Install glew</h2><ol>
+<li><p>Then download source package at <a href="http://glew.sourceforge.net/" target="_blank" rel="external">official</a></p>
+</li>
+<li><p>Extract your package and open your terminal, then cd to what your package location which you just extracted.</p>
+</li>
+<li><p>Do following commnad to install</p>
+</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">make</span> extension</span><br><span class="line"><span class="built_in">make</span> </span><br><span class="line">sudo <span class="built_in">make</span> install</span><br><span class="line">sudo <span class="built_in">make</span> clean</span><br></pre></td></tr></table></figure>
+<h2 id="Open_QT_project_and_set_opengl_settings">Open QT project and set opengl settings</h2><ol>
+<li><p>Open a console project in QT</p>
+</li>
+<li><p>Add following settings in your .pro file anywhere.</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LIBS +=<span class="operator">-l</span>GLEW -lglfw3 <span class="operator">-l</span>GL <span class="operator">-l</span>X11 <span class="operator">-l</span>Xi <span class="operator">-l</span>Xrandr <span class="operator">-l</span>Xxf86vm <span class="operator">-l</span>Xinerama <span class="operator">-l</span>Xcursor -lrt -lm -pthread</span><br></pre></td></tr></table></figure>
+<p>Try a simple test.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">define</span> GLEW_STATIC</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;GL/glew.h&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;GLFW/glfw3.h&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    glfwInit();</span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line">    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Enjoy_it">Enjoy it</h2>]]></content>
+    <summary type="html">
+    <![CDATA[<p>This is a tutorial for install glew &amp; glfw on ubuntu with qt.</p>
+<p>Enviroment : Ubuntu14 + QT5</p>
+<h2 id="Install_glfw">Install gl]]>
+    </summary>
+    
+      <category term="OpenGL" scheme="http://tokenyet.github.io/tags/OpenGL/"/>
+    
+      <category term="QT" scheme="http://tokenyet.github.io/tags/QT/"/>
+    
+      <category term="Ubuntu" scheme="http://tokenyet.github.io/tags/Ubuntu/"/>
+    
+      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[線性代數-座標轉換筆記]]></title>
     <link href="http://tokenyet.github.io/2015/08/19/%E5%BA%A7%E6%A8%99%E8%BD%89%E6%8F%9B%E7%AD%86%E8%A8%98/"/>
     <id>http://tokenyet.github.io/2015/08/19/座標轉換筆記/</id>
