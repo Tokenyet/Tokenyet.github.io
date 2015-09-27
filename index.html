@@ -85,6 +85,56 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Windows10-桌面圖示排列失效" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/27/Windows10-桌面圖示排列失效/" class="article-date">
+  <time datetime="2015-09-27T04:47:19.000Z" itemprop="datePublished">2015-09-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Windows/">Windows</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/27/Windows10-桌面圖示排列失效/">Windows10 桌面圖示排列失效</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>升上Win10沒多久後發現桌面圖示無法像以前一樣排列到想要的位置。<br>每次開機就會回到左方自動排列，右鍵重新整理也是如此。</p>
+<p>經由ESET論壇的發布，<br>升級上Windwos10後，剛好又是ESET的人才會發生的問題。<br>接下來說明如何解決這問題。<br>(引用自ESET forums:AREZCO)</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HKEY_CLASSES_ROOT<span class="command">\Wow</span>6432Node<span class="command">\CLSID</span><span class="command">\&#123;</span>42aedc87-2188-41fd-b9a3-0c966feabec1<span class="special">&#125;</span><span class="command">\InProcServer</span>32<span class="command">\</span><br><span class="line"></span>HKEY_CLASSES_ROOT<span class="command">\CLSID</span><span class="command">\&#123;</span>42aedc87-2188-41fd-b9a3-0c966feabec1<span class="special">&#125;</span><span class="command">\InProcServer</span>32\</span><br></pre></td></tr></table></figure>
+<p>對於這兩個檔案<br>選取 預設(Default) 將值從 <code>%SystemRoot%\SysWow64\shell32.dll</code> 取代為 <code>%SystemRoot%\system32\windows.storage.dll</code>.</p>
+<p>但你可能會發生權限不夠的問題。<br>這時候在做上述動作之前，必須先取得權限。<br>對<code>InProcServer32</code>右鍵按<code>使用權限</code> (Use Permission)，之後選<code>進階</code> (Advanced)，<br>在上方<code>擁有者</code> (Owner)的位置點選<code>變更</code>，之後繼續點選<code>進階</code> (Advanced)，<br>再來點選<code>立即選找</code> (Find Now) 選擇<code>Administrators</code>後，按下確定。<br>之後回到剛剛看到擁有者點選變更的視窗中，勾選以下:<br><code>取代子容器與物件的擁有者</code> (Replace owner on subcontainers and objects)<br><code>以可從此物件繼承的權限項目取代所有子物件的權限項目</code> (Replace all child object permission entries…)<br>最後回到一開始使用權限的視窗，選擇Administrator並勾選<code>完全控制</code> (Full Control)<br>就取得該註冊資料夾的權限。</p>
+<p>完成後，<code>重開電腦</code> (Reboot)應該就可以得到改善。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/" data-id="cif21z85g000q78kp01cp85ll" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排列失效/">排列失效</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/桌面圖示/">桌面圖示</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重新整理/">重新整理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Windows10-System記憶體占用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/09/25/Windows10-System記憶體占用/" class="article-date">
@@ -121,7 +171,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/" data-id="cieze7ok50013qgkprmmvvv59" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/" data-id="cif21z85q001d78kpmu00myrm" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -189,7 +239,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/" data-id="cieze7ojz000qqgkp23lv71fw" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/" data-id="cif21z85l001378kpfbfovioo" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -245,7 +295,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/09/06/Interpolation筆記/" data-id="cieze7okv001vqgkp2sesmelk" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/09/06/Interpolation筆記/" data-id="cif21z86a002d78kparm31fwu" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/09/06/Interpolation筆記/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -313,7 +363,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/" data-id="cif10b1hj00005ckp2lvmswe9" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/" data-id="cif21z866002578kp6l34kb4g" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -367,7 +417,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/08/19/座標轉換筆記/" data-id="cieze7oju000cqgkpcme3njpw" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/08/19/座標轉換筆記/" data-id="cif21z857000c78kpwejqo2oz" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/08/19/座標轉換筆記/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -415,7 +465,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/" data-id="cieze7okr001oqgkpcekhik9g" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/" data-id="cif21z863001y78kpkazzz72w" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -478,7 +528,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/" data-id="cieze7ojw000jqgkpy5geiwda" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/" data-id="cif21z85c000j78kpmtfiwcfn" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -526,7 +576,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/" data-id="cieze7ojr0008qgkpaj83v1ui" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/" data-id="cif21z84r000878kp43g1q94s" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -588,80 +638,12 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/" data-id="cieze7okc001eqgkp65eehk7e" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/" data-id="cif21z85w001o78kpmeqagwx0" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SublimeText3/">SublimeText3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Ubuntu上安裝Line" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/07/13/Ubuntu上安裝Line/" class="article-date">
-  <time datetime="2015-07-13T07:34:13.000Z" itemprop="datePublished">2015-07-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/13/Ubuntu上安裝Line/">Ubuntu上安裝Line</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>由於工作需要安裝Line的關係。<br>但是沒有筆記型電腦，又不想用Teamviewer連回家中使用Line。<br>那麼在申請了一個工作的Line之後，開始的繁瑣中作就來了！<br>（不會雙帳號的上網參考一下吧，很簡單的，但你要能裝Bluestacks，我是Teamviewer回家使用這些操作）</p>
-<p>—<br>由於有環境疑慮<br>所以奉上自己版本很低的環境</p>
-<h2 id="Ubuntu_12-4-10">Ubuntu 12.4.10</h2><ol>
-<li><p>首先如果你是跟我一樣64bit ubuntu的同伴們就必須先作一些前置動作，如果你是32bit的請直接看第3點。</p>
-</li>
-<li><p>64bit的同伴們必須先安裝libx11-dev:i386 and libfreetype6-dev:i386這兩個套件。<br>安裝方式如下：</p>
-<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install libx11-<span class="built_in">dev</span>:i386</span><br><span class="line">sudo apt-<span class="built_in">get</span> install libfreetype6-<span class="built_in">dev</span>:i386</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>再來安裝wine最新版即可。（如果有任何疑難雜症請看<a href="Ubuntu疑難雜症">Ubuntu疑難雜症</a>）</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="instruction"> add-apt-repository </span>ppa:ubuntu-wine/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install wine1.7</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安裝三個套件3.[dotnet20],[msxml6],[vcrun2008]</p>
-</li>
-</ol>
-<p>4-1.使用環境參數（這段設好環境參數可自行開tools安裝,這僅有指令版）<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">configure <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32</span><br><span class="line">winetricks dotnet20</span><br><span class="line">winetricks msxml6</span><br><span class="line">winetricks vcrun2008</span><br></pre></td></tr></table></figure></p>
-<p>4-2.整合一鍵執行版<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">env <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32 winetricks dotnet20</span><br><span class="line">env <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32 winetricks msxml6</span><br><span class="line">env <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32 winetricks vcrun2008</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li><p>直接到官方網站下載Line</p>
-</li>
-<li><p>wine LineInst.exe (cd到該資料夾後執行）</p>
-</li>
-<li><p>安裝好後應該就能享受在Ubuntu上使用Line的環境了。</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu上安裝Line/" data-id="cieze7okk001jqgkphbp6yq17" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/07/13/Ubuntu上安裝Line/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Line/">Line</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
 
     </footer>
   </div>
@@ -678,6 +660,56 @@ ga('send', 'pageview');
 
 
   
+    <article id="post-Windows10-桌面圖示排列失效" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/27/Windows10-桌面圖示排列失效/" class="article-date">
+  <time datetime="2015-09-27T04:47:19.000Z" itemprop="datePublished">2015-09-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Windows/">Windows</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/27/Windows10-桌面圖示排列失效/">Windows10 桌面圖示排列失效</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>升上Win10沒多久後發現桌面圖示無法像以前一樣排列到想要的位置。<br>每次開機就會回到左方自動排列，右鍵重新整理也是如此。</p>
+<p>經由ESET論壇的發布，<br>升級上Windwos10後，剛好又是ESET的人才會發生的問題。<br>接下來說明如何解決這問題。<br>(引用自ESET forums:AREZCO)</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HKEY_CLASSES_ROOT<span class="command">\Wow</span>6432Node<span class="command">\CLSID</span><span class="command">\&#123;</span>42aedc87-2188-41fd-b9a3-0c966feabec1<span class="special">&#125;</span><span class="command">\InProcServer</span>32<span class="command">\</span><br><span class="line"></span>HKEY_CLASSES_ROOT<span class="command">\CLSID</span><span class="command">\&#123;</span>42aedc87-2188-41fd-b9a3-0c966feabec1<span class="special">&#125;</span><span class="command">\InProcServer</span>32\</span><br></pre></td></tr></table></figure>
+<p>對於這兩個檔案<br>選取 預設(Default) 將值從 <code>%SystemRoot%\SysWow64\shell32.dll</code> 取代為 <code>%SystemRoot%\system32\windows.storage.dll</code>.</p>
+<p>但你可能會發生權限不夠的問題。<br>這時候在做上述動作之前，必須先取得權限。<br>對<code>InProcServer32</code>右鍵按<code>使用權限</code> (Use Permission)，之後選<code>進階</code> (Advanced)，<br>在上方<code>擁有者</code> (Owner)的位置點選<code>變更</code>，之後繼續點選<code>進階</code> (Advanced)，<br>再來點選<code>立即選找</code> (Find Now) 選擇<code>Administrators</code>後，按下確定。<br>之後回到剛剛看到擁有者點選變更的視窗中，勾選以下:<br><code>取代子容器與物件的擁有者</code> (Replace owner on subcontainers and objects)<br><code>以可從此物件繼承的權限項目取代所有子物件的權限項目</code> (Replace all child object permission entries…)<br>最後回到一開始使用權限的視窗，選擇Administrator並勾選<code>完全控制</code> (Full Control)<br>就取得該註冊資料夾的權限。</p>
+<p>完成後，<code>重開電腦</code> (Reboot)應該就可以得到改善。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/" data-id="cif21z85g000q78kp01cp85ll" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排列失效/">排列失效</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/桌面圖示/">桌面圖示</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重新整理/">重新整理</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Windows10-System記憶體占用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/09/25/Windows10-System記憶體占用/" class="article-date">
@@ -714,7 +746,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/" data-id="cieze7ok50013qgkprmmvvv59" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/" data-id="cif21z85q001d78kpmu00myrm" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -782,7 +814,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/" data-id="cieze7ojz000qqgkp23lv71fw" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/" data-id="cif21z85l001378kpfbfovioo" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -838,7 +870,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/09/06/Interpolation筆記/" data-id="cieze7okv001vqgkp2sesmelk" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/09/06/Interpolation筆記/" data-id="cif21z86a002d78kparm31fwu" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/09/06/Interpolation筆記/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -906,7 +938,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/" data-id="cif10b1hj00005ckp2lvmswe9" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/" data-id="cif21z866002578kp6l34kb4g" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -960,7 +992,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/08/19/座標轉換筆記/" data-id="cieze7oju000cqgkpcme3njpw" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/08/19/座標轉換筆記/" data-id="cif21z857000c78kpwejqo2oz" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/08/19/座標轉換筆記/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1008,7 +1040,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/" data-id="cieze7okr001oqgkpcekhik9g" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/" data-id="cif21z863001y78kpkazzz72w" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1071,7 +1103,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/" data-id="cieze7ojw000jqgkpy5geiwda" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/" data-id="cif21z85c000j78kpmtfiwcfn" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1119,7 +1151,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/" data-id="cieze7ojr0008qgkpaj83v1ui" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/" data-id="cif21z84r000878kp43g1q94s" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1181,80 +1213,12 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/" data-id="cieze7okc001eqgkp65eehk7e" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/" data-id="cif21z85w001o78kpmeqagwx0" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SublimeText3/">SublimeText3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Ubuntu上安裝Line" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/07/13/Ubuntu上安裝Line/" class="article-date">
-  <time datetime="2015-07-13T07:34:13.000Z" itemprop="datePublished">2015-07-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/13/Ubuntu上安裝Line/">Ubuntu上安裝Line</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>由於工作需要安裝Line的關係。<br>但是沒有筆記型電腦，又不想用Teamviewer連回家中使用Line。<br>那麼在申請了一個工作的Line之後，開始的繁瑣中作就來了！<br>（不會雙帳號的上網參考一下吧，很簡單的，但你要能裝Bluestacks，我是Teamviewer回家使用這些操作）</p>
-<p>—<br>由於有環境疑慮<br>所以奉上自己版本很低的環境</p>
-<h2 id="Ubuntu_12-4-10">Ubuntu 12.4.10</h2><ol>
-<li><p>首先如果你是跟我一樣64bit ubuntu的同伴們就必須先作一些前置動作，如果你是32bit的請直接看第3點。</p>
-</li>
-<li><p>64bit的同伴們必須先安裝libx11-dev:i386 and libfreetype6-dev:i386這兩個套件。<br>安裝方式如下：</p>
-<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install libx11-<span class="built_in">dev</span>:i386</span><br><span class="line">sudo apt-<span class="built_in">get</span> install libfreetype6-<span class="built_in">dev</span>:i386</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>再來安裝wine最新版即可。（如果有任何疑難雜症請看<a href="Ubuntu疑難雜症">Ubuntu疑難雜症</a>）</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="instruction"> add-apt-repository </span>ppa:ubuntu-wine/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install wine1.7</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安裝三個套件3.[dotnet20],[msxml6],[vcrun2008]</p>
-</li>
-</ol>
-<p>4-1.使用環境參數（這段設好環境參數可自行開tools安裝,這僅有指令版）<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">configure <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32</span><br><span class="line">winetricks dotnet20</span><br><span class="line">winetricks msxml6</span><br><span class="line">winetricks vcrun2008</span><br></pre></td></tr></table></figure></p>
-<p>4-2.整合一鍵執行版<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">env <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32 winetricks dotnet20</span><br><span class="line">env <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32 winetricks msxml6</span><br><span class="line">env <span class="variable">WINEARCH=</span>win32 <span class="variable">WINEPREFIX=</span>~/.wine32 winetricks vcrun2008</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li><p>直接到官方網站下載Line</p>
-</li>
-<li><p>wine LineInst.exe (cd到該資料夾後執行）</p>
-</li>
-<li><p>安裝好後應該就能享受在Ubuntu上使用Line的環境了。</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu上安裝Line/" data-id="cieze7okk001jqgkphbp6yq17" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/07/13/Ubuntu上安裝Line/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Line/">Line</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
 
     </footer>
   </div>
@@ -1276,7 +1240,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenGL/">OpenGL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/數學筆記/">數學筆記</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/網頁相關/">網頁相關</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenGL/">OpenGL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/數學筆記/">數學筆記</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/網頁相關/">網頁相關</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1285,7 +1249,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hexo分類/" style="font-size: 10px;">Hexo分類</a> <a href="/tags/Hexo目錄/" style="font-size: 10px;">Hexo目錄</a> <a href="/tags/Interpolation/" style="font-size: 10px;">Interpolation</a> <a href="/tags/Line/" style="font-size: 10px;">Line</a> <a href="/tags/OpenGL/" style="font-size: 10px;">OpenGL</a> <a href="/tags/QT/" style="font-size: 10px;">QT</a> <a href="/tags/SublimeText3/" style="font-size: 10px;">SublimeText3</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Ubuntu/" style="font-size: 20px;">Ubuntu</a> <a href="/tags/Ubuntu-property/" style="font-size: 10px;">Ubuntu property</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Win10/" style="font-size: 15px;">Win10</a> <a href="/tags/Win7/" style="font-size: 10px;">Win7</a> <a href="/tags/Windows10/" style="font-size: 15px;">Windows10</a> <a href="/tags/Windows7/" style="font-size: 10px;">Windows7</a> <a href="/tags/ntoskrnl-exe/" style="font-size: 10px;">ntoskrnl.exe</a> <a href="/tags/tracker-store/" style="font-size: 10px;">tracker-store</a> <a href="/tags/內插/" style="font-size: 10px;">內插</a> <a href="/tags/升級/" style="font-size: 10px;">升級</a> <a href="/tags/座標轉換/" style="font-size: 10px;">座標轉換</a> <a href="/tags/線性代數/" style="font-size: 15px;">線性代數</a>
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hexo分類/" style="font-size: 10px;">Hexo分類</a> <a href="/tags/Hexo目錄/" style="font-size: 10px;">Hexo目錄</a> <a href="/tags/Interpolation/" style="font-size: 10px;">Interpolation</a> <a href="/tags/Line/" style="font-size: 10px;">Line</a> <a href="/tags/OpenGL/" style="font-size: 10px;">OpenGL</a> <a href="/tags/QT/" style="font-size: 10px;">QT</a> <a href="/tags/SublimeText3/" style="font-size: 10px;">SublimeText3</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Ubuntu/" style="font-size: 20px;">Ubuntu</a> <a href="/tags/Ubuntu-property/" style="font-size: 10px;">Ubuntu property</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Win10/" style="font-size: 16.67px;">Win10</a> <a href="/tags/Win7/" style="font-size: 10px;">Win7</a> <a href="/tags/Windows10/" style="font-size: 16.67px;">Windows10</a> <a href="/tags/Windows7/" style="font-size: 10px;">Windows7</a> <a href="/tags/ntoskrnl-exe/" style="font-size: 10px;">ntoskrnl.exe</a> <a href="/tags/tracker-store/" style="font-size: 10px;">tracker-store</a> <a href="/tags/內插/" style="font-size: 10px;">內插</a> <a href="/tags/升級/" style="font-size: 10px;">升級</a> <a href="/tags/座標轉換/" style="font-size: 10px;">座標轉換</a> <a href="/tags/排列失效/" style="font-size: 10px;">排列失效</a> <a href="/tags/桌面圖示/" style="font-size: 10px;">桌面圖示</a> <a href="/tags/線性代數/" style="font-size: 13.33px;">線性代數</a> <a href="/tags/重新整理/" style="font-size: 10px;">重新整理</a>
     </div>
   </div>
 
@@ -1294,7 +1258,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -1304,6 +1268,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/09/27/Windows10-桌面圖示排列失效/">Windows10 桌面圖示排列失效</a>
+          </li>
         
           <li>
             <a href="/2015/09/25/Windows10-System記憶體占用/">Windows10 System記憶體占用</a>
@@ -1319,10 +1287,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2015/08/26/QT中安裝OpenGL教學/">QT中安裝OpenGL教學</a>
-          </li>
-        
-          <li>
-            <a href="/2015/08/19/座標轉換筆記/">線性代數-座標轉換筆記</a>
           </li>
         
       </ul>

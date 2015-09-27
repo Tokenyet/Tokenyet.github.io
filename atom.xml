@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2015-09-25T09:52:32.004Z</updated>
+  <updated>2015-09-27T05:11:31.049Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -13,6 +13,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Windows10 桌面圖示排列失效]]></title>
+    <link href="http://tokenyet.github.io/2015/09/27/Windows10-%E6%A1%8C%E9%9D%A2%E5%9C%96%E7%A4%BA%E6%8E%92%E5%88%97%E5%A4%B1%E6%95%88/"/>
+    <id>http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/</id>
+    <published>2015-09-27T04:47:19.000Z</published>
+    <updated>2015-09-27T05:11:31.049Z</updated>
+    <content type="html"><![CDATA[<p>升上Win10沒多久後發現桌面圖示無法像以前一樣排列到想要的位置。<br>每次開機就會回到左方自動排列，右鍵重新整理也是如此。</p>
+<p>經由ESET論壇的發布，<br>升級上Windwos10後，剛好又是ESET的人才會發生的問題。<br>接下來說明如何解決這問題。<br>(引用自ESET forums:AREZCO)</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HKEY_CLASSES_ROOT<span class="command">\Wow</span>6432Node<span class="command">\CLSID</span><span class="command">\&#123;</span>42aedc87-2188-41fd-b9a3-0c966feabec1<span class="special">&#125;</span><span class="command">\InProcServer</span>32<span class="command">\</span><br><span class="line"></span>HKEY_CLASSES_ROOT<span class="command">\CLSID</span><span class="command">\&#123;</span>42aedc87-2188-41fd-b9a3-0c966feabec1<span class="special">&#125;</span><span class="command">\InProcServer</span>32\</span><br></pre></td></tr></table></figure>
+<p>對於這兩個檔案<br>選取 預設(Default) 將值從 <code>%SystemRoot%\SysWow64\shell32.dll</code> 取代為 <code>%SystemRoot%\system32\windows.storage.dll</code>.</p>
+<p>但你可能會發生權限不夠的問題。<br>這時候在做上述動作之前，必須先取得權限。<br>對<code>InProcServer32</code>右鍵按<code>使用權限</code> (Use Permission)，之後選<code>進階</code> (Advanced)，<br>在上方<code>擁有者</code> (Owner)的位置點選<code>變更</code>，之後繼續點選<code>進階</code> (Advanced)，<br>再來點選<code>立即選找</code> (Find Now) 選擇<code>Administrators</code>後，按下確定。<br>之後回到剛剛看到擁有者點選變更的視窗中，勾選以下:<br><code>取代子容器與物件的擁有者</code> (Replace owner on subcontainers and objects)<br><code>以可從此物件繼承的權限項目取代所有子物件的權限項目</code> (Replace all child object permission entries…)<br>最後回到一開始使用權限的視窗，選擇Administrator並勾選<code>完全控制</code> (Full Control)<br>就取得該註冊資料夾的權限。</p>
+<p>完成後，<code>重開電腦</code> (Reboot)應該就可以得到改善。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>升上Win10沒多久後發現桌面圖示無法像以前一樣排列到想要的位置。<br>每次開機就會回到左方自動排列，右鍵重新整理也是如此。</p>
+<p>經由ESET論壇的發布，<br>升級上Windwos10後，剛好又是ESET的人才會發生的問題。<br>接下來說明如何解決這問題。<]]>
+    </summary>
+    
+      <category term="Win10" scheme="http://tokenyet.github.io/tags/Win10/"/>
+    
+      <category term="Windows10" scheme="http://tokenyet.github.io/tags/Windows10/"/>
+    
+      <category term="排列失效" scheme="http://tokenyet.github.io/tags/%E6%8E%92%E5%88%97%E5%A4%B1%E6%95%88/"/>
+    
+      <category term="桌面圖示" scheme="http://tokenyet.github.io/tags/%E6%A1%8C%E9%9D%A2%E5%9C%96%E7%A4%BA/"/>
+    
+      <category term="重新整理" scheme="http://tokenyet.github.io/tags/%E9%87%8D%E6%96%B0%E6%95%B4%E7%90%86/"/>
+    
+      <category term="Windows" scheme="http://tokenyet.github.io/categories/Windows/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Windows10 System記憶體占用]]></title>
@@ -48,7 +80,7 @@
     <link href="http://tokenyet.github.io/2015/09/19/Windows10-%E5%8D%87%E7%B4%9A%E7%9B%B8%E9%97%9C%E5%95%8F%E9%A1%8C/"/>
     <id>http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/</id>
     <published>2015-09-18T18:43:56.000Z</published>
-    <updated>2015-09-25T08:48:39.905Z</updated>
+    <updated>2015-09-25T08:49:46.165Z</updated>
     <content type="html"><![CDATA[<p>第一次進行Windows系列的升級，就遇到了很多問題，為了拯救跟我有相同困擾的人，所以趕緊來發一篇文。</p>
 <hr>
 
