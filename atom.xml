@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2015-09-27T05:11:31.049Z</updated>
+  <updated>2015-10-08T11:51:46.471Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -13,6 +13,66 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Windows10-音量控制問題]]></title>
+    <link href="http://tokenyet.github.io/2015/10/08/Windows10-%E9%9F%B3%E9%87%8F%E6%8E%A7%E5%88%B6%E5%95%8F%E9%A1%8C/"/>
+    <id>http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/</id>
+    <published>2015-10-08T11:26:20.000Z</published>
+    <updated>2015-10-08T11:51:46.471Z</updated>
+    <content type="html"><![CDATA[<p>前言:<br>Windows 10問題連連，假設你跟Dowen一樣想玩踩地雷，但是從Windows App載完後發現音量超級大聲，且假設說你喜歡聽自己的音樂，又想聽Windows App的特效的時候，就會發現「什麼?<strong>不能調音量!!</strong>」，因為Win10在Modern UI的這些Metro App中沒有加入適當API，所以在音量混合器中沒有這個選項。<br>因此，繼透明度、Classic Shell…等，為Win10裝插件之旅又開始了。</p>
+<p>正題開始:<br>到<a href="https://github.com/File-New-Project/EarTrumpet/releases" target="_blank" rel="external">EarTrumpet</a>的Release中下載最新版本。<br>如果無法安裝，顯示<strong>This program does not support the version of Windows your computer is running</strong>。<br>則以下這部分就必須依賴有Visual Studio的人，載下Source Code後，自行編譯出來的.EXE跟.DLL放到一個固定位置。<br>將.EXE的捷徑放到啟動中，這樣以後就能隨時開機就自動開啟這個軟體了。<br>這軟體大勝Windows內建的Mixer啊!!!</p>
+<p>如果有人有需求，我在附上自己編譯出來的檔案以供使用。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>前言:<br>Windows 10問題連連，假設你跟Dowen一樣想玩踩地雷，但是從Windows App載完後發現音量超級大聲，且假設說你喜歡聽自己的音樂，又想聽Windows App的特效的時候，就會發現「什麼?<strong>不能調音量!!</strong>」，因為W]]>
+    </summary>
+    
+      <category term="Metro App" scheme="http://tokenyet.github.io/tags/Metro-App/"/>
+    
+      <category term="Modern UI" scheme="http://tokenyet.github.io/tags/Modern-UI/"/>
+    
+      <category term="Win10" scheme="http://tokenyet.github.io/tags/Win10/"/>
+    
+      <category term="Windows Store" scheme="http://tokenyet.github.io/tags/Windows-Store/"/>
+    
+      <category term="Windows10" scheme="http://tokenyet.github.io/tags/Windows10/"/>
+    
+      <category term="音量" scheme="http://tokenyet.github.io/tags/%E9%9F%B3%E9%87%8F/"/>
+    
+      <category term="Windows" scheme="http://tokenyet.github.io/categories/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[OpenCV例外狀況]]></title>
+    <link href="http://tokenyet.github.io/2015/10/08/OpenCV%E4%BE%8B%E5%A4%96%E7%8B%80%E6%B3%81/"/>
+    <id>http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/</id>
+    <published>2015-10-08T05:12:51.000Z</published>
+    <updated>2015-10-08T11:23:50.316Z</updated>
+    <content type="html"><![CDATA[<p>前言:<br>在使用EmguCV的時候，常常在自己的電腦可以，換到其他人電腦的環境後，就萬事皆悲。<br>而在這裡，Dowen寫下幾種解法供大家參考。這裡以EmguCv為例。</p>
+<h1 id="針對_TypeInitializer_Exception_錯誤">針對 TypeInitializer Exception 錯誤</h1><p>解法1. 查看自己的環境設定是否有設定好<br>沒事的話環境PATH的地方建議設定x86即可<br>然後再試試看能不能執行。</p>
+<p>解法2. 在Visual Studio加入參考的地方加入 <code>cvextern.dll, Emgu.CV.dll, Emgu.CV.UI.dll, Emgu.Util.dll</code><br>然後再執行看看是否能運行。<br>建議測試的時候可以加入指令測試。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">using Emgu.CV;&#10;using Emgu.CV.Structure;&#10;&#10;Image&#60;Bgra,Byte&#62; test = new Image&#60;Bgra,Byte&#62;(1,1);</span><br></pre></td></tr></table></figure>
+<p>解法3. 如果最後還是搞不定請將 <code>emgucv-windows-universal 2.4.10.1940\bin\x86</code>下所有檔案<br>複製到你專案底下的 <code>Debug\bin\</code> 裡面(執行檔.EXE的旁邊)。</p>
+<p>總結一下，解法3應該是最後的方法，因為如果將Dll丟進專案內會導致環境變大。<br>對了，為什麼只有針對 TypeInitializer Exception 呢?因為目前還沒遇到其他例外。<br>如往後有遇到在補上囉。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>前言:<br>在使用EmguCV的時候，常常在自己的電腦可以，換到其他人電腦的環境後，就萬事皆悲。<br>而在這裡，Dowen寫下幾種解法供大家參考。這裡以EmguCv為例。</p>
+<h1 id="針對_TypeInitializer_Exception_錯誤">針對 T]]>
+    </summary>
+    
+      <category term="EmguCV" scheme="http://tokenyet.github.io/tags/EmguCV/"/>
+    
+      <category term="Exception" scheme="http://tokenyet.github.io/tags/Exception/"/>
+    
+      <category term="OpenCV" scheme="http://tokenyet.github.io/tags/OpenCV/"/>
+    
+      <category term="Visual Studio" scheme="http://tokenyet.github.io/tags/Visual-Studio/"/>
+    
+      <category term="OpenCV" scheme="http://tokenyet.github.io/categories/OpenCV/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Windows10 桌面圖示排列失效]]></title>
