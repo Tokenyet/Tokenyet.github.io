@@ -391,7 +391,7 @@ body {
 #main-nav {
   float: left;
   margin-left: -1px;
-  width: auto;
+  width: 320px;
 }
 .nav-icon,
 .main-nav-link {
@@ -953,7 +953,7 @@ a.article-title:hover {
   text-shadow: 0 1px #be3221;
 }
 .article-gallery {
-  background: #000;
+  background: #eee;
   position: relative;
 }
 .article-gallery-photos {
