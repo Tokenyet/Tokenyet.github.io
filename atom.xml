@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2016-07-05T16:01:39.530Z</updated>
+  <updated>2016-07-05T16:58:50.010Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/"/>
     <id>http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/</id>
     <published>2016-07-05T11:14:47.000Z</published>
-    <updated>2016-07-05T16:01:39.530Z</updated>
+    <updated>2016-07-05T16:58:50.010Z</updated>
     <content type="html"><![CDATA[<h2 id="環境準備">環境準備</h2><p>開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有興趣再往下閱讀。</p>
 <h2 id="GLFW">GLFW</h2><p><a href="http://www.glfw.org/" target="_blank" rel="external">GLFW</a>主要是將在不同平台( Linux, Windows, Mac ) 間常用的一些使用者需求給獨立出來，這些使用者需求像是Keyboard的資訊、Mouse資訊、視窗建置….等等。將這些不同的使用者需求都統整成一個API就是其中一個GLFW在做的事，此外另一個工作是將OpenGL繪製的東西從buffer顯示到螢幕上的工作，還有一些零零總總的細節操作，最重要的是用了GLFW其實已包含OpenGL的Header，當建置好後，直接可以撰寫OpenGL的Code。</p>
 <p>首先先到<a href="http://www.glfw.org/download.html" target="_blank" rel="external">GLFW官方下載</a>中找一個名為「32-bit Windows binaries」的元件 ( 注意! 64-bit Windows binaries的建議不要使用，Dowen我在建置的時候會遇到非常多問題)，抓下來後接下來就照著以下的圖片設置。</p>
@@ -62,6 +62,7 @@
 <p><code>glfwWindowShouldClose</code>則是偵測視窗是否收到觸發關閉視窗事件的function，像是使用者點擊右上角的X或是按下esc之類的，而<code>glClearColor</code>代表每次清除視窗的時候要用什麼樣的顏色，這裡像是Unity一般畫面有個藍綠色一樣，或是你玩遊戲掉入虛空是黑色那樣都是這個顏色，而<code>GL_COLOR_BUFFER_BIT</code>是顯示到螢幕前的那個buffer，如果不清除就會顯示上個frame(畫面)的顏色。<code>glfwSwapBuffers</code>則是將buffer顯示到螢幕上。<code>glfwPollEvents</code>則是主動去詢問滑鼠事件或鍵盤事件之類的使用者事件，其實有另一個函式是Wait用的，不過那樣是要等你有動作才會執行，不符合一直刷新螢幕的loop<br>，所以幾乎沒人用它。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">glfwDestroyWindow(window);</span><br><span class="line">glfwTerminate();</span><br></pre></td></tr></table></figure>
 <p>而最後的就是glfw不使用的釋放資源方式，通常不需要特別注意這個部分，就跟init一樣，會建置就好。</p>
+<p>最後的結果如下圖:<br><img src="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/result.png" width="420"></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<h2 id="環境準備">環境準備</h2><p>開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在]]>

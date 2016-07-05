@@ -19,7 +19,8 @@
 <meta property="og:image" content="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_include.png">
 <meta property="og:image" content="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_lib.png">
 <meta property="og:image" content="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_input.png">
-<meta property="og:updated_time" content="2016-07-05T16:01:39.530Z">
+<meta property="og:image" content="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/result.png">
+<meta property="og:updated_time" content="2016-07-05T16:58:50.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL Beginner Tutorial 1: Setting up Environment">
 <meta name="twitter:description" content="環境準備開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有">
@@ -164,6 +165,7 @@ ga('send', 'pageview');
 <p><code>glfwWindowShouldClose</code>則是偵測視窗是否收到觸發關閉視窗事件的function，像是使用者點擊右上角的X或是按下esc之類的，而<code>glClearColor</code>代表每次清除視窗的時候要用什麼樣的顏色，這裡像是Unity一般畫面有個藍綠色一樣，或是你玩遊戲掉入虛空是黑色那樣都是這個顏色，而<code>GL_COLOR_BUFFER_BIT</code>是顯示到螢幕前的那個buffer，如果不清除就會顯示上個frame(畫面)的顏色。<code>glfwSwapBuffers</code>則是將buffer顯示到螢幕上。<code>glfwPollEvents</code>則是主動去詢問滑鼠事件或鍵盤事件之類的使用者事件，其實有另一個函式是Wait用的，不過那樣是要等你有動作才會執行，不符合一直刷新螢幕的loop<br>，所以幾乎沒人用它。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">glfwDestroyWindow(window);</span><br><span class="line">glfwTerminate();</span><br></pre></td></tr></table></figure>
 <p>而最後的就是glfw不使用的釋放資源方式，通常不需要特別注意這個部分，就跟init一樣，會建置就好。</p>
+<p>最後的結果如下圖:<br><img src="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/result.png" width="420"></p>
 
       
     </div>
