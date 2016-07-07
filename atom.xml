@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2016-07-07T13:06:47.017Z</updated>
+  <updated>2016-07-07T13:41:54.215Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -19,28 +19,28 @@
     <link href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/"/>
     <id>http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/</id>
     <published>2016-07-05T11:14:47.000Z</published>
-    <updated>2016-07-07T13:06:47.017Z</updated>
+    <updated>2016-07-07T13:41:54.215Z</updated>
     <content type="html"><![CDATA[<h2 id="環境準備">環境準備</h2><p>開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有興趣再往下閱讀。</p>
 <h2 id="GLFW">GLFW</h2><p><a href="http://www.glfw.org/" target="_blank" rel="external">GLFW</a>主要是將在不同平台( Linux, Windows, Mac ) 間常用的一些使用者需求給獨立出來，這些使用者需求像是Keyboard的資訊、Mouse資訊、視窗建置….等等。將這些不同的使用者需求都統整成一個API就是其中一個GLFW在做的事，此外另一個工作是將OpenGL繪製的東西從buffer顯示到螢幕上的工作，還有一些零零總總的細節操作，最重要的是用了GLFW其實已包含OpenGL的Header，當建置好後，直接可以撰寫OpenGL的Code。</p>
 <p>首先先到<a href="http://www.glfw.org/download.html" target="_blank" rel="external">GLFW官方下載</a>中找一個名為「32-bit Windows binaries」的元件 ( 注意! 64-bit Windows binaries的建議不要使用，Dowen我在建置的時候會遇到非常多問題)，抓下來後接下來就照著以下的圖片設置。</p>
-<p>將GLFW放到任何認為合適的地方，之後再點選VS的專案-&gt;屬性，再點選VC++目錄，然後我們主要要變動的有以下兩個，Include目錄與程式庫目錄。<br><img src="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/VSProperty.png" width="600"><br>設定好Include與Library。</p>
+<p>將GLFW放到任何認為合適的地方，之後再點選VS的專案-&gt;屬性，再點選VC++目錄，然後我們主要要變動的有以下兩個，Include目錄與程式庫目錄。<br><img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/VSProperty.png" width="600"><br>設定好Include與Library。</p>
 
 <div class="container-outside-div">
 	<div class="container-inside-div">
-		<img src="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_include.png" style="width: 420px">
+		<img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_include.png" style="width: 420px">
 	</div>
 	<div class="container-inside-div">
-		<img src="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_lib.png" style="width: 420px">
+		<img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_lib.png" style="width: 420px">
 	</div>
 </div>
 
 <p>再來到連結器(Linker) -&gt; 輸入(Input) 去增加lib檔，要新增的有<code>opengl32</code>與<code>glfw3.lib</code>。<br>
 <div class="container-outside-div">
 	<div class="container-inside-div">
-		<img src="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/input.png" style="width: 420px">
+		<img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/input.png" style="width: 420px">
 	</div>
 	<div class="container-inside-div">
-		<img src="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_input_lib.png" style="width: 350px">
+		<img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_input_lib.png" style="width: 350px">
 	</div>
 </div>
 </p>
@@ -49,14 +49,14 @@
 <p>在設定上就像GLFW一樣，要設定三個地方。<br>
 <div class="container-outside-div">
 	<div class="container-inside-div">
-		<img src="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_include.png" style="width: 420px">
+		<img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_include.png" style="width: 420px">
 	</div>
 	<div class="container-inside-div">
-		<img src="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_lib.png" style="width: 420px">
+		<img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_lib.png" style="width: 420px">
 	</div>
 </div>
 </p>
-<img src="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_input.png" width="420">
+<img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_input.png" width="420">
 <p>這樣一切的環境就準備好了。</p>
 <h2 id="基礎視窗環境建置">基礎視窗環境建置</h2><p>先將<a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial/main.cpp" target="_blank" rel="external">基礎的程式碼</a>貼到自己的環境中，直接測試看看，完成沒問題後，以下將一步一步講解每一Part。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GLEW ( help you using functions without retreiving functions )</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> GLEW_STATIC</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;GL\glew.h&gt;</span></span><br><span class="line"><span class="comment">// GLFW ( make you a windows that support opengl operation to work fine with your platform )</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;GLFW\glfw3.h&gt;</span></span><br></pre></td></tr></table></figure>
@@ -68,7 +68,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Init and Check GLFW working properly</span></span><br><span class="line"><span class="keyword">int</span> glfwInitCheck = glfwInit();</span><br><span class="line"><span class="keyword">if</span> (glfwInitCheck == GLFW_FALSE)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"glfw initilization failed."</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>這裡確定你glfw是否能夠初始化正確。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line">glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);</span><br><span class="line">GLFWwindow* window = glfwCreateWindow(<span class="number">640</span>, <span class="number">480</span>, <span class="string">"OpenGL Tutorial"</span>, NULL, NULL);</span><br><span class="line"><span class="keyword">if</span> (window == <span class="keyword">nullptr</span>) <span class="comment">// window creation failed</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">glfwMakeContextCurrent(window);</span><br></pre></td></tr></table></figure>
-<p><code>glfwWindowHint</code>代表的是對<code>glfwCreateWindow</code>所創造出的視窗來做事前設定，而<code>GLFW_OPENGL_PROFILE</code>的設定成<code>GLFW_OPENGL_CORE_PROFILE</code>的意義是，如果我們在使用到OpenGL的function中有用到一些3.3版本之前而且新OpenGL不支援的語法的時候，就會強制跳出錯誤，這樣可以避免誤用一些過時的function。</p>
+<p><code>glfwWindowHint</code>代表的是對<code>glfwCreateWindow</code>所創造出的視窗來做事前設定，而<code>GLFW_OPENGL_PROFILE</code>設定成<code>GLFW_OPENGL_CORE_PROFILE</code>的意義是，如果我們在使用到OpenGL的function中有用到一些3.3版本之前而且新OpenGL不支援的語法的時候，就會強制跳出錯誤，這樣可以避免誤用一些過時的function。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Set GLFW callback functions</span></span><br><span class="line">glfwSetErrorCallback(error_callback);</span><br><span class="line">glfwSetKeyCallback(window, key_callback);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Get error from GLFW for debuging</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">error_callback</span><span class="params">(<span class="keyword">int</span> error, <span class="keyword">const</span> <span class="keyword">char</span>* description)</span></span>;</span><br><span class="line"><span class="comment">// Get keywords from GLFW windows</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">key_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> key, <span class="keyword">int</span> scancode, <span class="keyword">int</span> action, <span class="keyword">int</span> mods)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>這邊結尾為<code>callback</code>的就是我們偵測這些使用者事件的時候會觸發的function，這裡用到的技巧當然就是callback，就是將你寫的function丟進去，然後當事件觸發的時候就通知你這個function做事，然後這些可以callback的function定義都是要自行去GLFW的document查詢，像是這裡用的就是錯誤回饋<code>glfwSetErrorCallback</code>跟針對視窗的keyboard回饋<code>glfwSetKeyCallback</code>。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// According to source code, this make you to access successfully full extension from some latest driver without error.</span></span><br><span class="line">glewExperimental = GL_TRUE;</span><br><span class="line"><span class="comment">// Initialize GLEW to setup the OpenGL Function pointers</span></span><br><span class="line"><span class="keyword">if</span> (glewInit() != GLEW_OK)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to initialize GLEW"</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -79,7 +79,7 @@
 <p><code>glfwWindowShouldClose</code>則是偵測視窗是否收到觸發關閉視窗事件的function，像是使用者點擊右上角的X或是按下esc之類的，而<code>glClearColor</code>代表每次清除視窗的時候要用什麼樣的顏色，這裡像是Unity一般畫面有個藍綠色一樣，或是你玩遊戲掉入虛空是黑色那樣都是這個顏色，而<code>GL_COLOR_BUFFER_BIT</code>是顯示到螢幕前的那個buffer，如果不清除就會顯示上個frame(畫面)的顏色。<code>glfwSwapBuffers</code>則是將buffer顯示到螢幕上。<code>glfwPollEvents</code>則是主動去詢問滑鼠事件或鍵盤事件之類的使用者事件，其實有另一個函式是Wait用的，不過那樣是要等你有動作才會執行，不符合一直刷新螢幕的loop<br>，所以幾乎沒人用它。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">glfwDestroyWindow(window);</span><br><span class="line">glfwTerminate();</span><br></pre></td></tr></table></figure>
 <p>而最後的就是glfw不使用的釋放資源方式，通常不需要特別注意這個部分，就跟init一樣，會建置就好。</p>
-<p>最後的結果如下圖:<br><img src="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/result.png" width="420"></p>
+<p>最後的結果如下圖:<br><img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/result.png" width="420"></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<h2 id="環境準備">環境準備</h2><p>開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在]]>
@@ -104,18 +104,18 @@
     <link href="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/"/>
     <id>http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/</id>
     <published>2016-06-28T13:36:47.000Z</published>
-    <updated>2016-07-05T14:08:54.251Z</updated>
+    <updated>2016-07-07T13:41:53.069Z</updated>
     <content type="html"><![CDATA[<h2 id="前言:">前言:</h2><p>不管開始任何事情之前，必須先對要做的事情先有個了解才能開始，學習OpenGL也不例外。開始前，先說一下我做教學文的風格，由於這是我以一個學中教，教中學的角度來製作，所以可能會有些不精確，希望哪裡有錯誤可以幫忙改正或指教，謝謝。</p>
 <h2 id="簡介:">簡介:</h2><p>首先OpenGL(Graphics Library)是一個API，也就是說他是一個幫助我們在不同的顯示卡配備之間做一個橋樑。聽起來很籠統，更詳細又簡單的說，即是說每張顯示卡在製作的時候，都有不同數量的繪圖處理器與不同晶片(ex.GTX970 1080)。而你不必擔心到底要如何針對不同顯示卡的規格(Spec)而寫那些控制不同機器的語法就是OpenGL的工作。</p>
 <h2 id="歷史:">歷史:</h2><p>而身為一個OpenGL的使用者也需要知曉一點他的過去與未來，過去OpenGL是源自Silicon Graphics這家公司，當時這家公司專門製作繪圖電腦，又貴又大而且寫繪圖語言的時候，不同的繪圖電腦會有不同的寫法，完全沒有一個統一的規範。經過了一段時間，終於想到解法，就是將針對系統部分的程式碼拿掉後，也就是拿掉只能在規格完全符合才可操作API的部分，之後就開發了OpenGL 1.0版本。這個歷史告訴我們，找出邏輯中相同與不同的部分獨立出來，可以增進事務的美好。</p>
-<p><img src="/images/OpenGL-Beginner-Tutorial-0-Introduce/OpenGL_API.jpg" alt="OpenGL Concept"></p>
+<img src="/images/OpenGL-Beginner-Tutorial-0-Introduce/OpenGL_API.jpg" width="420">
 <h2 id="Core-Profile:_(核心模型)">Core-Profile: (核心模型)</h2><p>簡單講完他的歷史與定位後，有一件關於OpenGL核心的事情需要先說，就是在OpenGL 3.0 (2008年)後，分為兩個核心模型，一個稱為Modern版，一個稱為Compatible版。一如字面意思Modern就是現代版本，多了很多Shader,Depth,Stencil,Geometry…的一些新功能，而Compatible就是繼續使用舊的管線(fixed-pipeline)，很難讓使用者客製化。至於為什麼會講核心模型，剛開始就會要使用者講明要使用的哪種核心，才能繼續寫下去，如果說你定義要現代版，但是顯示卡不支援就會馬上知道問題所在。</p>
-<p><img src="/images/OpenGL-Beginner-Tutorial-0-Introduce/OpenGL_Detect.jpg" alt="OpenGL Version Detect"></p>
+<img src="/images/OpenGL-Beginner-Tutorial-0-Introduce/OpenGL_Detect.jpg" width="420">
 <h2 id="Pipelines,_Primitives,_Pixels:_(管線,_繪圖元素,_像素)">Pipelines, Primitives, Pixels: (管線, 繪圖元素, 像素)</h2><p>整個OpenGL大致上的管線的內容分為fixed與shader兩部分，fixed的部分就是我們不可參與程式的部分，而shader的部分是可以加入程式碼深度進行修改的部分。這裡簡單解釋shader，想像這一個shader就是一個超級小的筆刷，然後這個筆刷可以根據螢幕上每一點進行不同的繪製，而為何可以進行不同的繪製呢?因為這個shader就是你可以寫程式的部分，這個一般解釋是著色器，聽起來很難想像的名詞，不知道經過我有點糟的比喻有沒有想像一點。<br>(哦對，這裡的fixed不是指古早OpenGL，而是說流程中有部分是固定不可參與的)</p>
 <p>OpenGL在繪製任何你所指定的東西的時候，都是將它拆解成或千或萬個Primitives之後，才開始進行繪製。而繪圖元素主要有三個，一個是點(point)，到真正實作的時候，你會發現在三維空間中要繪製一個三角形的時候，一定會指派三個點，然後點就是只畫點。另一個是線(line)，只描繪你指定點間的線。還有三角形(triangle)，就是將你指定的點間的像素都畫出來。而介紹繪圖元素的意義就是，當你要畫任何的形狀，臉阿、車子阿、多邊形怪物阿、什麼的都拆成這三個基本繪圖元素，這樣顯示卡只要專心對三角形的繪圖演算法做處理就好了，至於為什麼是三角形除了本身顯卡就只對三角形優化過外，就是Convex(凸邊形)的演算法比Concave(凹邊形)的容易許多。</p>
 <p>其實剛剛講了很多，並不是真正的繪製，只是屬於形狀的分割最佳化，到後面經過你一連串的shader與一些fixed後最終才會經過一個名為rasterizer的傢伙進行著色(真正開始動像素的地方)，中文叫光柵化，簡單想像就是一個幫你將3D的東西繪製到2D上的步驟。</p>
-<h2 id="Extension">Extension</h2><p>這個算是新版OpenGL的一個利於內部人員很好的擴充機制，而這些擴充機制雖然利用開發人員，不過當我們想要使用的時候卻是長得像下面這般模樣。<br><figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const char <span class="built_in">*</span>name = <span class="string">"glGenBuffers"</span>;</span><br><span class="line">void <span class="built_in">*</span>p = <span class="params">(void *)</span>wglGetProcAddress<span class="params">(name)</span>;</span><br><span class="line"><span class="keyword">if</span><span class="params">(p == <span class="number">0</span> ||</span><br><span class="line"><span class="params">(p == <span class="params">(void*)</span><span class="number">0</span>x1)</span> || <span class="params">(p == <span class="params">(void*)</span><span class="number">0</span>x2)</span> || <span class="params">(p == <span class="params">(void*)</span><span class="number">0</span>x3)</span> ||</span><br><span class="line"><span class="params">(p == <span class="params">(void*)</span>-<span class="number">1</span>)</span> )</span></span><br><span class="line">&#123;</span><br><span class="line">	HMODULE <span class="function"><span class="keyword">module</span> =</span> LoadLibraryA<span class="params">(<span class="string">"opengl32.dll"</span>)</span>;</span><br><span class="line">	p = <span class="params">(void *)</span>GetProcAddress<span class="params">(module, name)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>寫了8行Code只為了取得一個function在顯示卡內部的哪個位置，然後拿出來提供我們使用，看到這裡不需要害怕，<a href="../OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment">下篇</a>文章會提到如何使用第三發開發的framework幫助我們解決這些問題。</p>
+<h2 id="Extension">Extension</h2><p>這個算是新版OpenGL的一個利於內部人員的極佳擴充機制，而這些擴充機制雖然利用開發人員，不過當我們想要使用的時候卻是長得像下面這般模樣。<br><figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const char <span class="built_in">*</span>name = <span class="string">"glGenBuffers"</span>;</span><br><span class="line">void <span class="built_in">*</span>p = <span class="params">(void *)</span>wglGetProcAddress<span class="params">(name)</span>;</span><br><span class="line"><span class="keyword">if</span><span class="params">(p == <span class="number">0</span> ||</span><br><span class="line"><span class="params">(p == <span class="params">(void*)</span><span class="number">0</span>x1)</span> || <span class="params">(p == <span class="params">(void*)</span><span class="number">0</span>x2)</span> || <span class="params">(p == <span class="params">(void*)</span><span class="number">0</span>x3)</span> ||</span><br><span class="line"><span class="params">(p == <span class="params">(void*)</span>-<span class="number">1</span>)</span> )</span></span><br><span class="line">&#123;</span><br><span class="line">	HMODULE <span class="function"><span class="keyword">module</span> =</span> LoadLibraryA<span class="params">(<span class="string">"opengl32.dll"</span>)</span>;</span><br><span class="line">	p = <span class="params">(void *)</span>GetProcAddress<span class="params">(module, name)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>寫了8行Code只為了取得一個function在顯示卡內部的哪個位置，然後拿出來提供我們使用，看到這裡不需要害怕，<a href="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment">下篇</a>文章會提到如何使用第三發開發的framework幫助我們解決這些問題。</p>
 <h2 id="小結:">小結:</h2><p>如果聽不懂管線或是對pipelines感到陌生，就當作是一個產品生產的流程圖，先做好車體結構-&gt;再安裝車殼-&gt;再安裝輪胎，這樣的一個流程稱為pipeline。<br>其實本來多弄點圖解，不過實在是有點累(懶)呀，如果有需要的話，我再努力做給大家看。</p>
 ]]></content>
     <summary type="html">
