@@ -769,6 +769,21 @@ a.article-title:hover {
   font-family: FontAwesome;
   padding-right: 6px;
 }
+.article-inline-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container-outside-div {
+  width: 100%;
+  overflow: auto;
+  text-align: center;
+  position: relative;
+  margin: auto;
+}
+.container-inside-div {
+  display: inline-block;
+}
 #article-nav {
   position: relative;
 }
