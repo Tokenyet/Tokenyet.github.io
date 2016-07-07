@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_lib.png">
 <meta property="og:image" content="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_input.png">
 <meta property="og:image" content="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/result.png">
-<meta property="og:updated_time" content="2016-07-07T13:05:41.465Z">
+<meta property="og:updated_time" content="2016-07-07T13:06:47.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL Beginner Tutorial 1: Setting up Environment">
 <meta name="twitter:description" content="環境準備開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有">
@@ -148,7 +148,7 @@ ga('send', 'pageview');
 </div>
 </p>
 <h2 id="GLEW">GLEW</h2><p><a href="http://glew.sourceforge.net/" target="_blank" rel="external">GLEW</a>提供了Modern OpenGL中的各種函式，如果沒有使用GLEW或其他函式庫的人，在撰寫Modern OpenGL的時候就要寫類似這樣的Code。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *name = <span class="string">"glGenBuffers"</span>;</span><br><span class="line"><span class="keyword">void</span> *p = (<span class="keyword">void</span> *)wglGetProcAddress(name);</span><br><span class="line"><span class="keyword">if</span>(p == <span class="number">0</span> ||</span><br><span class="line">(p == (<span class="keyword">void</span>*)<span class="number">0x1</span>) || (p == (<span class="keyword">void</span>*)<span class="number">0x2</span>) || (p == (<span class="keyword">void</span>*)<span class="number">0x3</span>) ||</span><br><span class="line">(p == (<span class="keyword">void</span>*)-<span class="number">1</span>) )</span><br><span class="line">&#123;</span><br><span class="line">	HMODULE module = LoadLibraryA(<span class="string">"opengl32.dll"</span>);</span><br><span class="line">	p = (<span class="keyword">void</span> *)GetProcAddress(module, name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在這邊取得的p代表的就是glGenBuffers的function，這段在寫Code上很常使用，Modern OpenGL使用了這樣的機制的優點是利於任何時候或是任何廠商在自己的顯卡驅動中加入新的function，而有一好沒有兩好，我們在寫的時候會就要每次去挖function。所幸GLEW幫我們解決了這樣的問題，讓我們在使用最新的OpenGL時，免去不斷向記憶體取得新函式的手續。</p>
+<p>在這邊取得的p代表的就是glGenBuffers的function，這段在寫Code上很常使用，Modern OpenGL使用了這樣的機制的優點是利於任何時候或是任何廠商在自己的顯卡驅動中加入新的function，缺點是我們在寫的時候就要每次去向記憶體提取function。所幸GLEW幫我們解決了這樣的問題，讓我們在使用最新的OpenGL時，免去不斷向記憶體取得新函式的手續。</p>
 <p>在設定上就像GLFW一樣，要設定三個地方。<br>
 <div class="container-outside-div">
 	<div class="container-inside-div">
