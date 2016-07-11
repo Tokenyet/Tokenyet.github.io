@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2016-07-07T13:41:54.215Z</updated>
+  <updated>2016-07-11T10:27:53.879Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -13,6 +13,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[OpenGL Beginner Tutorial 2: Strat With Triangle]]></title>
+    <link href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/"/>
+    <id>http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/</id>
+    <published>2016-07-10T15:47:49.000Z</published>
+    <updated>2016-07-11T10:27:53.879Z</updated>
+    <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>本系列文將使用<em>OpenGL 4.5</em>版本，並且以作者能理解的方式進行教學，如有細節那裡誤解或是講錯的部分，或是跳太快應該先講什麼後講什麼的地方，請不吝多多指教！謝謝！</p>
+<h2 id="從點開始">從點開始</h2><p>要畫一個三角形之前，總要會在畫面上繪出一個點來，在那之前，由於使用的是Modern版的OpenGL，所以凡事都要要求的有兩個東西，其中一個是<em>「Vertex Array Object」</em>，簡稱<em>VAO</em>，另一個則是Shader，其中包含基礎的兩個稱為Vertex Shader與Fragment Shader。</p>
+<ul>
+<li>Shader: 其實並不只有Vertex Shader與Fragment Shader，還有Geomerty Shader、Tessellation Control Shader、Tessellation Evaluation Shader，由於屬於初階文章，所以其他的暫不探討。而Shader其中必寫的其實只有Fragment就好，本文不討論這部分。</li>
+</ul>
+<p>首先在了解繪一個點需要看起來很多的東西時，會認為很繁瑣。當深入一點後，將了解僅是一連串常用的手續，以後只要複製貼上加修改。而這裡就先示意部分的OpenGL pipeline，也就是讀者目前為止會碰到的pipeline，倘若一次列出全部流程，會猶豫一陣子。<br><img src="/images/OBT2/opengl_easy_pipeline.png" width="600"><br>上方的流程是說明，使用者可以<em>以某種方式</em>將一些資料傳給Vertex Shader，本文章目前不會先做傳資料的動作，先給一個小概念。 而傳完之後Vertex Shader仍會以<em>某種方式</em>將資料傳給流程中的下一個Shader，就是Fragment Shader，最後Fragment Shader 跑完之後會將圖片輸出到螢幕上。</p>
+<p>理解到OpenGL流程的基礎後，接下來就是從實作中學習，如果沒有環境的讀者可以參考<a href="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment">上篇</a>中的Code來建立基礎環境。</p>
+<h3 id="為OpenGL搭起一個Shader的介面">為OpenGL搭起一個Shader的介面</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);</span><br><span class="line">GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);</span><br><span class="line">glShaderSource(vertexShader, <span class="number">1</span>, &amp;vertexShaderSource, NULL);</span><br><span class="line">glShaderSource(fragmentShader, <span class="number">1</span>, &amp;fragmentShaderSource, NULL);</span><br><span class="line">glCompileShader(vertexShader);</span><br><span class="line">glCompileShader(fragmentShader);</span><br></pre></td></tr></table></figure>
+<p>「數字代表物件，物件管理是OpenGL的事」，這裡必須先提到，OpenGL在實作上由於需符合C/C++，所以物件管理的方式是給我們從Create Function中抽一個序號，然後那個序號就是你的物件編號，有這物件編號後，我們必須<em>妥善保存</em>，然後在任何需要的時候可以跟OpenGL說要設定/刪除，先來解釋一下上面的例子就會明白。<br>首先我們準備了抽序號的物件<code>vertexShader</code>然後向<code>glCreateShader</code>要求一些東西，而這裡是要求Vertex Shader的命令。之後要設定這個<code>vertexShader</code>物件的各種屬性，當然我們看不到是什麼屬性，而是透過將編號(vertexShader)傳給<code>glShaderSource</code>進行設定，這裡的設定是將shader的程式碼傳過去設定，不要想傳程式碼很奇怪，因為Shader就是一個給我們程式設計的地方。</p>
+<p><em>void glShaderSource(GLuint shader, GLsizei count, const GLchar <em>*string, const GLint </em>length);</em></p>
+<ul>
+<li>第一個參數指要用哪個Shader物件。</li>
+<li>第二個是Source Code的String指標跟length指標的個數。</li>
+<li>第三個是程式碼整體的雙重指標。</li>
+<li>第四個是你每一個指標所包含的字串長度應該讀取多少，使用NULL代表就是不指定，讀取到NULL為止。</li>
+</ul>
+<h3 id="Shader編譯後變成_Shader_Program">Shader編譯後變成 Shader Program</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GLuint program = glCreateProgram();</span><br><span class="line">glAttachShader(program, vertexShader);</span><br><span class="line">glAttachShader(program, fragmentShader);</span><br><span class="line">glLinkProgram(program);</span><br><span class="line">...</span><br><span class="line"><span class="comment">// in loop before you want to draw something</span></span><br><span class="line">glUseProgram(program)</span><br></pre></td></tr></table></figure>
+<p>同樣是設定，這裡將剛剛產生的Shader設定在<code>program</code>裡面，接下來的<code>glLinkProgram</code>代表準備好各種Shader後的Compile，就是不給更改了，也就變成一個程式。然後在需要繪製前在使用簡單的<code>glUseProgram</code>就可以在你繪製前，套用要使用的Shader Program。</p>
+<h3 id="Shader_的程式碼">Shader 的程式碼</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> GLchar *vertexShaderSource =</span><br><span class="line">	<span class="string">"#version 450 core\n"</span></span><br><span class="line">	<span class="string">"\n"</span></span><br><span class="line">	<span class="string">"void main(void)\n"</span></span><br><span class="line">	<span class="string">"&#123;\n"</span></span><br><span class="line">	<span class="string">"	gl_Position = vec4(0.0, 1.0, 0.5, 1.0);\n"</span></span><br><span class="line">	<span class="string">"&#125;\n"</span>;</span><br><span class="line"><span class="keyword">const</span> GLchar *fragmentShaderSource =</span><br><span class="line">	<span class="string">"#version 450 core\n"</span></span><br><span class="line">	<span class="string">"\n"</span></span><br><span class="line">	<span class="string">"out vec4 color;\n"</span></span><br><span class="line">	<span class="string">"\n"</span></span><br><span class="line">	<span class="string">"void main(void)\n"</span></span><br><span class="line">	<span class="string">"&#123;\n"</span></span><br><span class="line">	<span class="string">"	color = vec4(0.0, 0.0, 1.0, 1.0);\n"</span></span><br><span class="line">	<span class="string">"&#125;\n"</span>;</span><br></pre></td></tr></table></figure>
+<p><code>vertexShaderSource</code>跟<code>fragmentShaderSource</code>是程式碼，就像寫程式一下要先有Code才能用IDE編譯，而這裡就是Code到時候會丟給OpenGL編譯成一個program如之前的範例，這裡是解釋該如何簡單撰寫一個Shader，根據官方所述，主要是由C下去變形，所以在C的基礎中能做，基本上都可以使用，而一個良好的Shader Code需要標明版本 <code>#version 450 core</code> 與進入點 <code>main</code> 。 有了之後以上就是最基礎的shader, <code>gl_Position</code> 代表的是以NDC空間中的位置，NDC空間簡單解釋就是說到Vertex Shader 這段，未來要做的是將三維空間轉換成NDC空間，未來講MVP矩陣的時候會提到，這裡只要想成Z指向螢幕外,Y是數學所學的上方,X是右方即可，超過1.0跟-1.0會超出螢幕範圍這樣。</p>
+<h3 id="Vertex_Array_Object">Vertex Array Object</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GLuint vertexArrayObject;</span><br><span class="line">glCreateVertexArrays(<span class="number">1</span>, &amp;vertexArrayObject);</span><br></pre></td></tr></table></figure>
+<p>VAO設定到Shader作為Input本篇先不做說明，但必要讓讀者知道的是，OpenGL一定要在有VAO的狀況下才能進行繪製，縱使你產生出來是空的也好。像是下面這樣。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">glUseProgram(program);</span><br><span class="line"><span class="comment">//shader.UseProgram();</span></span><br><span class="line">glBindVertexArray(vertexArrayObject);</span><br><span class="line">glDrawArrays(GL_POINTS, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">glBindVertexArray(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p>使用Shader Program然後綁定輸入點(VAO)，VAO的概念算是當你有Shader Program後，<code>glBindVertexArray</code>綁定的VAO就會在<code>glDrawArrays</code>的時候被傳進Shader。</p>
+<p><em>void glDrawArrays(GLenum mode, GLint first, GLsizei count)</em></p>
+<ul>
+<li>第一個代表以何種Primitive(種類)畫你所提供的材料(VAO)。</li>
+<li>第二個是VAO的起始索引，以後將資料傳給Shader時，會定義格式才有索引。</li>
+<li>第三個是指定要畫的VAO索引數量。</li>
+</ul>
+<p>完成以上的建置後就會長得像以下的的圖。<br><img src="/images/OBT2/nothingresult.png" width="420"></p>
+<p>什麼?你看不出來? 在Loop中加上<code>glPointSize(40.0f);</code>吧！<br><img src="/images/OBT2/goodresult.png" width="420"><br>將要繪製的一個像素放大四十倍後繪製，終於可以看出來了，至於原理如何，由於是在光柵化的時候做的，內建的地方就不去探討。</p>
+<h3 id="Shader大整形">Shader大整形</h3><p>既然已經嘗試完畢我們就來正式開始，將Shader那一大坨的東西改成從檔案裏面讀取，再加上除錯處理，新增一個Class吧！<br><a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial%20-%201/Shader.cpp" target="_blank" rel="external">Shader</a> Class的程式碼在這裡可以參考，由於程式碼主要的地方沒變，只有架構改變，就不討論OO的地方。</p>
+<p>有了之後就可以將之前的Shader程式碼通通砍掉然後創建一個Shader Class來幫助我們輕鬆建立一個Shader Program，還有Debug的功能！之後只要將程式碼改成下方這樣就可以輕鬆使用。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Shader <span class="title">shader</span><span class="params">("shader/basic.vert", "shader/basic.frag")</span></span>;</span><br><span class="line">...</span><br><span class="line">shader.UseProgram(); <span class="comment">// in loop</span></span><br></pre></td></tr></table></figure></p>
+<p>至於那兩個檔案其實並不一定要叫<code>xxx.vert</code>或<code>xxx.frag</code>，不過在OpenGL的開發者中，大部分都這樣命名，而且有Highlight的插件，所以讀者可以考慮習慣看看。<br>這是<a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial%20-%201/shader/basic.vert" target="_blank" rel="external">basic.vert</a>跟<a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial%20-%201/shader/basic.frag" target="_blank" rel="external">basic.frag</a>的程式碼。</p>
+<p>接下來，正式要畫一個三角形，不過我們先用不正式的畫法，到下篇文章再慢慢推進Shader(GPU)與CPU的互動。</p>
+<p>將 basic.vert 修改成以下。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#version 450 core</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">const</span> vec4 vertices[<span class="number">3</span>] = vec4[<span class="number">3</span>](vec4(<span class="number">0.25</span>,-<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>),</span><br><span class="line">					vec4(-<span class="number">0.25</span>,-<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>),</span><br><span class="line">					vec4(<span class="number">0.25</span>,<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>));</span><br><span class="line">	gl_Position = vertices[gl_VertexID];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>裡面內建的vecX是OpenGL提供你的一個型態，就是所謂的向量，這在shader中這語法稱為glsl，很容易進行數學矩陣與向量的相乘。此外這裡有個新的東西是<code>gl_VertexID</code>，這個ID指的是，你在外面繪製命令的時候，是繪製第幾個Vertex的編號。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shader.UseProgram();</span><br><span class="line">glBindVertexArray(vertexArrayObject);</span><br><span class="line">glDrawArrays(GL_TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">glBindVertexArray(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>將loop內改成繪製三角形後，後面改成3個點，當然VAO是空的，只是強迫根據Shader的內容畫三次，每次<code>gl_VertexID</code>會根據繪製的索引而不同。</p>
+<p>接下來畫面應該會長這樣子。<br><img src="/images/OBT2/finalresult.png" width="420"></p>
+<p>附上最後的<a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial%20-%201/main.cpp" target="_blank" rel="external">Code</a>。</p>
+<p>小結:<br>在寫的時候，不知道怎樣算清楚怎樣不清楚，這並不是我最初的學習，有學過一段時間，現在是搭配看原文書加上自己的經驗與網路的參考來撰寫文章，滿擔心只是寫出一堆沒人看得懂的東西 :(</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>本系列文將使用<em>OpenGL 4.5</em>版本，並且以作者能理解的方式進行教學，如有細節那裡誤解或是講錯的部分，或是跳太快應該先講什麼後講什麼的地方，請不吝多多指教！謝謝！</p>
+<h2 id="從點開始">從點]]>
+    </summary>
+    
+      <category term="OpenGL" scheme="http://tokenyet.github.io/tags/OpenGL/"/>
+    
+      <category term="OpenGL Tutorial" scheme="http://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
+    
+      <category term="OpenGL教學" scheme="http://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
+    
+      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[OpenGL Beginner Tutorial 1: Setting up Environment]]></title>
@@ -104,7 +169,7 @@
     <link href="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/"/>
     <id>http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/</id>
     <published>2016-06-28T13:36:47.000Z</published>
-    <updated>2016-07-07T13:41:53.069Z</updated>
+    <updated>2016-07-10T07:05:12.830Z</updated>
     <content type="html"><![CDATA[<h2 id="前言:">前言:</h2><p>不管開始任何事情之前，必須先對要做的事情先有個了解才能開始，學習OpenGL也不例外。開始前，先說一下我做教學文的風格，由於這是我以一個學中教，教中學的角度來製作，所以可能會有些不精確，希望哪裡有錯誤可以幫忙改正或指教，謝謝。</p>
 <h2 id="簡介:">簡介:</h2><p>首先OpenGL(Graphics Library)是一個API，也就是說他是一個幫助我們在不同的顯示卡配備之間做一個橋樑。聽起來很籠統，更詳細又簡單的說，即是說每張顯示卡在製作的時候，都有不同數量的繪圖處理器與不同晶片(ex.GTX970 1080)。而你不必擔心到底要如何針對不同顯示卡的規格(Spec)而寫那些控制不同機器的語法就是OpenGL的工作。</p>
 <h2 id="歷史:">歷史:</h2><p>而身為一個OpenGL的使用者也需要知曉一點他的過去與未來，過去OpenGL是源自Silicon Graphics這家公司，當時這家公司專門製作繪圖電腦，又貴又大而且寫繪圖語言的時候，不同的繪圖電腦會有不同的寫法，完全沒有一個統一的規範。經過了一段時間，終於想到解法，就是將針對系統部分的程式碼拿掉後，也就是拿掉只能在規格完全符合才可操作API的部分，之後就開發了OpenGL 1.0版本。這個歷史告訴我們，找出邏輯中相同與不同的部分獨立出來，可以增進事務的美好。</p>
