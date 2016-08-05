@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>OpenGL 入門教學 3: Pipeline | Dowenの世界</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="開始前介紹為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。
+CPU到GPU第一階段 - Vertex Shader的資料傳送GPU在開始執行Vertex Shader前面，有一個動作稱為Vertex Fetching，這個動作會將我們在程式中寫的一個稱為Vertex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL 入門教學 3: Pipeline">
+<meta property="og:url" content="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-3-Pipeline/index.html">
+<meta property="og:site_name" content="Dowenの世界">
+<meta property="og:description" content="開始前介紹為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。
+CPU到GPU第一階段 - Vertex Shader的資料傳送GPU在開始執行Vertex Shader前面，有一個動作稱為Vertex Fetching，這個動作會將我們在程式中寫的一個稱為Vertex">
+<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/MoveTri.jpg">
+<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/MoveTri.jpg">
+<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/VBO.png">
+<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/Vpx.svg">
+<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/Vpy.svg">
+<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/Vpz.svg">
+<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/clockwise.png">
+<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/counter-clockwise.png">
+<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/gl_pipe.png">
+<meta property="og:updated_time" content="2016-08-05T15:02:14.304Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL 入門教學 3: Pipeline">
+<meta name="twitter:description" content="開始前介紹為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。
+CPU到GPU第一階段 - Vertex Shader的資料傳送GPU在開始執行Vertex Shader前面，有一個動作稱為Vertex Fetching，這個動作會將我們在程式中寫的一個稱為Vertex">
+  
+    <link rel="alternative" href="/atom.xml" title="Dowenの世界" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-65156776-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dowenの世界</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Love Games, Knowledge Sharing.</a>
+        </h2>
+      
+         </div>
+       <div id="header-inner" class="inner">
+         <nav id="main-nav" class="icon-background">
+              
+                
+                  <a class="nav-icon " href="/"><div class=icon-home title='Home'></div></a>
+                
+              
+                
+                  <a class="nav-icon  verticalLine " href="/archives"><div class=icon-archive title='Archives'></div> <!--Archives --></a>
+                
+              
+                
+                  <a class="nav-icon  verticalLine " href="/categories"><div class=icon-categories title='Categories'></div> <!--Categories --></a>
+                
+              
+                
+                  <a class="nav-icon  verticalLine " href="/about"><div class=icon-user title='About'></div> <!--About --></a>
+                
+              
+             </nav>
+           <nav id="sub-nav" class="icon-background">
+             
+                   <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+                 
+               <a id="nav-search-btn" class="nav-icon verticalLine" title="Search"></a>
+             </nav>
+           <div id="search-form-wrap">
+             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tokenyet.github.io"></form>
+             </div>
+         </div>
+     </div>
+ </header>
+      <div class="outer">
+        <section id="main"><article id="post-OpenGL-Beginner-Tutorial-3-Pipeline" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/10/OpenGL-Beginner-Tutorial-3-Pipeline/" class="article-date">
+  <time datetime="2016-07-10T15:47:49.000Z" itemprop="datePublished">2016-07-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OpenGL/">OpenGL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      OpenGL 入門教學 3: Pipeline
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="開始前介紹">開始前介紹</h2><p>為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。</p>
+<h2 id="CPU到GPU第一階段_-_Vertex_Shader的資料傳送">CPU到GPU第一階段 - Vertex Shader的資料傳送</h2><p>GPU在開始執行Vertex Shader前面，有一個動作稱為<em>Vertex Fetching</em>，這個動作會將我們在程式中寫的一個稱為<em>Vertex Attribute</em>的部分讀出來，而後傳送至GPU處。其中GPU必須由 <code>layout (location = 0) in</code> 來定義輸入要從GPU的哪個位置中取出，而CPU則是藉由 <code>glVertexAttribXXX(0, data)</code> 來將資料填入記憶體等待<em>Vertex Fetching</em>到GPU中layout的部分。</p>
+<h3 id="動手做_-_CPU_to_GPU">動手做 - CPU to GPU</h3><p>首先在迴圈中加入要傳遞的資料與其對應的function，都是以 <code>glVertexAttrib</code> 開頭的傳遞函式。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">glBindVertexArray(vertexArrayObject);</span><br><span class="line"></span><br><span class="line">GLfloat data[] = &#123;</span><br><span class="line">	(<span class="keyword">float</span>)<span class="built_in">sin</span>(glfwGetTime()) * <span class="number">0.5f</span>,</span><br><span class="line">	(<span class="keyword">float</span>)<span class="built_in">cos</span>(glfwGetTime()) * <span class="number">0.6f</span>,</span><br><span class="line">	<span class="number">0.0f</span>, <span class="number">0.0f</span></span><br><span class="line">&#125;;</span><br><span class="line">glVertexAttrib4fv(<span class="number">0</span>, data);</span><br><span class="line">glDrawArrays(GL_TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">glBindVertexArray(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p><em>double glfwGetTime(void)</em> : 回傳時間參數</p>
+<p><em>void glVertexAttrib[X/fm/vt]()</em></p>
+<ul>
+<li>X  - 有1,2,3,4等數字表達。</li>
+<li>fm - 以i代表整數,f代表浮點數,還有其他d,s…需自行參考Spec。</li>
+<li>v  - 代表vector，也就是傳入陣列。</li>
+</ul>
+<p>結果:<br><img src="/images/OBT3/MoveTri.jpg" width="420"></p>
+<h3 id="小優化">小優化</h3><p>知道如何傳遞資料給GPU後，我們將三角形的資料提取出來，來從外部傳入三角形Vertex，而不要直接在Shader中寫死。首先將Shader改成以下都從外部傳入的形式。但是這次不用 <code>glVertexAttrib</code>來做連結了，原因稍後解釋。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#version 450 core</span></span><br><span class="line">layout (location = <span class="number">0</span>) in vec4 offset;</span><br><span class="line">layout (location = <span class="number">1</span>) in vec4 vertex;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	gl_Position = vertex + offset;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>回到Code的部分，這次在迴圈外的地方改成以下的形式。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">GLuint vertexArrayObject;</span><br><span class="line">glGenVertexArrays(<span class="number">1</span>, &amp;vertexArrayObject); <span class="comment">//glCreateVertexArrays(1, &amp;vertexArrayObject); // only for 4.5</span></span><br><span class="line">GLuint vertexBufferObject;</span><br><span class="line">GLfloat vertices[] = &#123;</span><br><span class="line">	<span class="number">0.25</span>,-<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>,</span><br><span class="line">	-<span class="number">0.25</span>,-<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>,</span><br><span class="line">	<span class="number">0.25</span>,<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span></span><br><span class="line">&#125;;</span><br><span class="line">glBindVertexArray(vertexArrayObject);</span><br><span class="line">glGenBuffers(<span class="number">1</span>, &amp;vertexBufferObject);</span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject);</span><br><span class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);</span><br><span class="line">glVertexAttribPointer(<span class="number">1</span>, <span class="number">4</span>, GL_FLOAT, GL_FALSE, <span class="number">4</span> * <span class="keyword">sizeof</span>(GLfloat), (GLvoid*)<span class="number">0</span>);</span><br><span class="line">glEnableVertexAttribArray(<span class="number">1</span>);</span><br><span class="line">glBindVertexArray(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p><em>void glGenVertexArrays(GLsizei n, GLuint *arrays)</em></p>
+<ul>
+<li>第一個參數代表陣列是產生幾個VAO物件。</li>
+<li>第二個用來承接產生物件的陣列, 之前提過收到的是物件編號，也就是數字陣列。</li>
+</ul>
+<p><em>void glBindVertexArray(GLuint array)</em> </p>
+<ul>
+<li>變數名稱有點不適當，這裡是代表綁定VAO物件。</li>
+</ul>
+<p><em>void glGenBuffers(GLsizei n, GLuint * buffers)</em></p>
+<ul>
+<li>與 glGenVertexArrays 的概念一樣，只是這裡是產生Buffer物件。</li>
+</ul>
+<p><em>void glBindBuffer(GLenum target, GLuint buffer)</em></p>
+<ul>
+<li>第一個是指定綁定在哪種容器上。</li>
+<li>第二個是將先前產生的buffer綁定到適當的容器中，範例是綁定為VBO物件(稍後說明VBO)，雖然沒有GL_BUFFER_OBJECT，但有GL_ARRAY_BUFFER，別讓名稱誤解，所以不用太針對GL_ARRAY_BUFFER這個名詞深究。</li>
+</ul>
+<p>_void glBufferData(GLenum target, GLsizeiptr size, const GLvoid * data, GLenum usage)</p>
+<ul>
+<li>指定容器，會將後續參數資料填入指定容器中。</li>
+<li>分配需要多少空間。</li>
+<li>要傳遞的資料</li>
+<li>這項有很多選擇性，只提出基本以下 GL_STREAM_DRAW, GL_STATIC_DRAW, GL_DYNAMIC_DRAW，如果data是會更動改變，使用DYNAMIC，而不會則用STATIC，若是只會更改一次的串流用途就會用STREAM。</li>
+</ul>
+<p><em>void glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid * pointer)</em></p>
+<ul>
+<li>指定要進入shader的哪個location中。</li>
+<li>指定要一次讀幾個值。</li>
+<li>指定值的型態。</li>
+<li>指定是否要Normailize (壓縮到-1 ~ 1 的意思)。</li>
+<li>指定讀完資料後，應該移動的距離。</li>
+<li>指定一開始讀資料的時候，要移動的距離。</li>
+</ul>
+<p><em>void glEnableVertexAttribArray(GLuint index)</em></p>
+<ul>
+<li>開啟要使用的location，不開啟的化，Shader該location無法傳入任何值。</li>
+</ul>
+<p>結果(沒變):<br><img src="/images/OBT3/MoveTri.jpg" width="420"></p>
+<h3 id="VBO_與_VAO">VBO 與 VAO</h3><p>VBO的概念是將資料存到記憶體中(<code>glBufferData</code>)，而且可以指定GPU要以什麼樣的方式讀取資料，也就是利用 <code>glVertexAttribPointer</code> 來指定讀取方式，而這樣的好處是什麼? 如果你的陣列之中長得像以下這樣。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GLfloat data[] = &#123;</span><br><span class="line">    <span class="comment">// position          // color          // normalize</span></span><br><span class="line">	<span class="number">0.25</span>,-<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>,<span class="number">1.0f</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>,<span class="number">1.0f</span>,</span><br><span class="line">	-<span class="number">0.25</span>,-<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>,<span class="number">0.0f</span>,<span class="number">1.0f</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>,<span class="number">1.0f</span>,</span><br><span class="line">	<span class="number">0.25</span>,<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>,<span class="number">1.0f</span>,<span class="number">0.0f</span>,<span class="number">0.0f</span>,<span class="number">1.0f</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>一次將許多資料都定義在一起，那麼就很輕鬆就可在送至GPU的時候做好哪筆資料應該傳入哪個location。而這裡要回到之前說的所有事情都是將<em>Vertex Attribute</em>傳送至GPU。只是這次利用Buffer指定格式後，<em>Vertex Fetching</em>會幫我們切割好後，以<em>Vertex Attribute</em>的格式傳入，符合之前所呼應的說明。</p>
+<p>這裡就繪製一下VBO的概念。<br><img src="/images/OBT3/VBO.png" width="800"><br>這裡搭配上方的程式碼解說對照，這裡提offset，為之前沒說到的部分，假設說此時要將RGB的值，指定到Shader中<em>location = 2</em>的位置，這裡就要再加上 <code>glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(GLfloat), (GLvoid*)(4 * sizeof(GLfloat)) );</code> 也就是指定第二個location，讀取長度3，整體長度7，起始跳過4個單位長。那麼每次移動7個單位長就會移動到第二排第4個單位長，因此就成為專門將RGB給分配到location = 2的格式了。 最後別忘記啟用就好 <code>glEnableVertexAttribArray(2)</code> 。</p>
+<p>好了，剛剛稍微轉了一點理解，但其實VBO實際上的概念是這樣，到 <code>glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW)</code> 這裡就已經算結束，也就是說VBO只是配置一個記憶體的空間而已，這樣的空間或說緩衝區時常被用來連結VAO然後傳送至GPU，所以有時候比較難分清楚誰的責任是什麼，而且現代OpenGL強制使用VAO，所以你用VBO就必使用VAO。 因此這裡說明白，VBO只是個空間，VAO則是將VBO做格式定位與欄位啟動的地方，也就是說 <code>glEnableVertexAttribArray</code> 跟 <code>glVertexAttribPointer</code> 是VAO的責任。</p>
+<p>這部分最後稍微想一下, VBO與VAO可否一對多? 多對一? 這答案都是肯定的，VAO參考多個VBO空間的值，或多個VAO參考同個空間的值，都是可以做到的事。</p>
+<h2 id="Tessellation">Tessellation</h2><p>Tessellation是將<em>複雜面</em>(high-order primitive)，而什麼是<em>複雜面</em>，舉例多邊形或<em>Patch</em>等等頂點很多的都是複雜面。而為了使用Tessellation，我們不管是三角形、矩形、多邊形，通通要以Patch的形式傳入，因此Patch是一個為了讓Tessellation知道你要使用他的一個包裹，不管裡面包的是幾邊形，總而言之就是要讓Tessellation知道是個Patch才能進行細分的動作。而這個部分主要有三個階段，第一個階段<em>Tessellation Control Shader</em>屬於可程式，用來接收Vertex Shader的輸出後，定義切割表面的一些參數，並且將資料傳送到下一個階段。第二個階段<em>Tessellation Engine</em>屬於固定流程，得到參數後，依照演算法將一個Patch詳細切割，之後將這些新的點以三角形或四邊形的形式傳入下個階段。第三個階段<em>Tessellation Evaluation Shader</em>屬於可程式，這個階段得到的三角形的點是屬於<em>barycentric coordinate</em>空間的座標，而矩形是在<em>Bilinear interpolation</em>所構成x,y範圍0~1的空間中。由於這部分並非初學，而且屬於<strong>選擇性實作</strong>，所以這裡看不懂可以先知道概念即可。</p>
+<h2 id="Geometry_Shader">Geometry Shader</h2><p>Geometry Shader是在要進入光柵(Rasterization)之前的階段，屬於<strong>選擇性實作</strong>的階段，因此也比較偏難需要另外講的文章，主要運作的模式是接收到一個primitive的數量後執行一次，也就是如果接收三角形則是收到三個頂點後執行一次，而這個階段能做的就是對你收到的點做些調整，舉個簡單的例子就是輸入一個三角形，這個階段可以新增一些點，修改一些點，變成輸出星星的形狀，這部分以後的文章會在探討。</p>
+<h2 id="Primitive_Assembly,_Clipping,_Rasterization">Primitive Assembly, Clipping, Rasterization</h2><p>這幾個階段都是屬於Fixed的部分，操作者在這些階段無法觸及內容，所以這裡就講理論上這幾個階段的功用。</p>
+<h3 id="Primitive_Assembly">Primitive Assembly</h3><p>將收到的點做組裝，像是找在primitive緩衝區中找到代表直線的區塊，假設那區塊有12個連續頂點，那就會轉換成11條直線。</p>
+<h3 id="Clipping">Clipping</h3><p>這邊有一段重要的數學觀念，就是要理解<em>Homogeneous Coordinate System</em>跟<em>Normalize Device Coordinate</em>，還有透視投影(Perspective Proejction)在這之間的關係，這裡也需另外開文解釋，簡單來說我們若要了解3D空間，這個概念就不可或缺，以上幾個概念都是要在會在實作中會碰到的部分，OpengGL的這個階段在數學上是只講Homogeneous空間中的X,Y,Z除以W而已，此動作稱為Projective Division，該動作後就會到NDC空間中了。因此我們要有弄出XYZW的方法，以後的文章會提到。最後如果轉換的點超出NDC範圍就會被Clipping掉，以免浪費GPU運算速度。</p>
+<h3 id="Viewport_Transformation">Viewport Transformation</h3><p>Viewport代表的是我們所定義的視窗大小，而這階段是將NDC空間那些x,y,z屬於 -1 ~ 1的座標拉伸至整個視窗上，而他對應的轉換公式如下。</p>
+<span>$\begin{pmatrix}     \mathbf{x_w} \\     \mathbf{y_w}  \\     \mathbf{z_w}  \\    \end{pmatrix} = \begin{pmatrix}     \frac{P_x}{2}x_d + o_x \\     \frac{P_y}{2}y_d + o_y   \\     \frac{f-m}{2}z_d + \frac{n+f}{2}  \\    \end{pmatrix}$</span><!-- Has MathJax -->
+<p>以上公式根據<br>void glViewport(GLint x,GLint y, GLsizei width, GLsizei height); 與 void glDepthRange(GLdouble nearVal, GLdouble farVal);<br>來運算，通常不會去動glDepthRange，預設是 -1 ~ 1，透視投影後不會有壓縮，而公式中 $o_x$, $o_y$ 的部分則是 $ o_x = x + \frac{weight}{2} $ 與 $ o_y = y + \frac{height}{2} $。</p>
+<p>公式解釋:<br>$x_d$,$y_d$,$z_d$是NDC空間的座標，$x_w$,$y_w$,$z_w$是視窗空間的座標，$f$是遠點座標，$n$是近點座標，而前兩項是將-1 ~ 1的NDC空間拉至螢幕平面上，而最後一項則是算出螢幕中實際上代表的點深度是多少，不過這一項算完後又會被壓縮至0 ~ 1的深度給後續階段，至少我在Fragment 階段所見是這樣，而書上公式是壓縮至-1 ~ 1的公式，但書本上卻說是壓縮至 0 ~ 1，讓我思索了老半天。以下是示意圖，將x拓展至0~800, y:0~600, z:10~500。</p>
+
+<div class="container-outside-div">
+	<div class="container-inside-div">
+		<img src="/images/OBT3/Vpx.svg" style="width: 300px">
+	</div>
+	<div class="container-inside-div">
+		<img src="/images/OBT3/Vpy.svg" style="width: 300px">
+	</div>
+	<div class="container-inside-div">
+		<img src="/images/OBT3/Vpz.svg" style="width: 300px">
+	</div>
+</div>
+
+<h3 id="Culling">Culling</h3><p>一個正方體有其正面與反面，反面的當然就無法進行任何繪製，所以OpenGL有個機制，就是當定義頂點的時候，用逆時鐘(Conter Clockwise)的情況，會視為正面，而順時鐘會視為背面。 提醒一下，這個部分要特別開啟才會有效果(<code>gl_Enable(GL_CULL_FACE)</code>)，如果開啟了在定義點的時候，就必須要遵守順序。</p>
+
+<div class="container-outside-div">
+	<div class="container-inside-div">
+		<img src="/images/OBT3/clockwise.png" style="width: 50%">
+		<p>clockwise</p>
+	</div>
+	<div class="container-inside-div">
+		<img src="/images/OBT3/counter-clockwise.png" style="width: 50%">
+		<p>counter-clockwise</p>
+	</div>
+</div>
+
+<p>也就是說如果陣列定義的是以下這樣，將會無法顯示。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GLfloat data[] = &#123;</span><br><span class="line">    <span class="comment">// position</span></span><br><span class="line">	<span class="number">0.0</span>,<span class="number">0.0</span>,<span class="number">0.0</span>,</span><br><span class="line">	<span class="number">2.0</span>,<span class="number">2.0</span>,<span class="number">0.0</span>,</span><br><span class="line">	<span class="number">4.0</span>,<span class="number">0.0</span>,<span class="number">0.0</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>要改成以下這樣才可顯示。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GLfloat data[] = &#123;</span><br><span class="line">    <span class="comment">// position</span></span><br><span class="line">    <span class="number">2.0</span>,<span class="number">2.0</span>,<span class="number">0.0</span>,</span><br><span class="line">	<span class="number">0.0</span>,<span class="number">0.0</span>,<span class="number">0.0</span>,</span><br><span class="line">	<span class="number">4.0</span>,<span class="number">0.0</span>,<span class="number">0.0</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>其公式如下</p>
+<span>$a = \frac{1}{2}\sum_{i=0}^{n-1} x_w^i y_w^{i \oplus 1} - x_w^{i \oplus 1}y_w^i$</span><!-- Has MathJax -->
+<p>而概念是透過向量外積找到一個垂直的向量，若a值大於0則代表該垂直向量與指向視窗的向量夾角小於90度，則OpenGL會繪製該三角形。</p>
+<h3 id="Rasterization">Rasterization</h3><p>光柵化是得知哪幾個像素是要塗上顏色的地方，其中利用的是half space的方法，而<a href="http://forum.devmaster.net/t/advanced-rasterization/6145" title="Advanced Rasterization from devmaster Nick" target="_blank" rel="external">Rasterizing Triangles from Michael Jones</a>為參考的文章，如果有時間我會開篇文章解說，當初為了解整個流程這部分特別做了點筆記。</p>
+<h2 id="Fragment_Shader">Fragment Shader</h2><p>在光柵後，這個階段決定每個像素該填上的顏色為何。像是我們之前最簡單的例子像是以下這樣。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#version 450 core</span></span><br><span class="line">out vec4 color;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	color = vec4(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>很簡單的填入顏色就代表，不管你是哪個點，就填入藍色就對了。而Fragment Shader 的應用很多樣，光影特效主要就是在這進行，還有各種材質的貼圖，或是畫面特效後製，優化畫面的各種技巧，都是Fragment Shader可以處理的。</p>
+<h2 id="Last_things">Last things</h2><p>還有一些可以參與pipeline，而且是在Fragment Shader輸出後可以進行的東西，如Framebuffer，Scissor Test, Stencil Test，Blend，在這邊簡單介紹一下，讓讀者知道要使用相關的技術應該要利用哪個技巧。<br>Framebuffer  : 一個儲存畫面的buffer，常用的方式是取出當前繪製的螢幕後，進行各種處理，通常拿取該畫面從頭開始跑一次pipeline。<br>Scissor Test : 算是很舊的技術，指定一個矩形區域，讓範圍內的像素有一些變化。<br>Stencil Test : 有點難說明，通常用來把一個物體的outline畫出，也就是類似選取到該物體的感覺，其作法是在每次畫出物體前先設定遮罩，藉由遮罩的AND\OR等計算，讓最後剩下的部分進行著色，例如一個畫出一個正方體，設定遮罩為1，然後畫出一個大一點的純色正方體，然後找遮罩不為1的就是所謂的外框。<br>Blending     : 顏色的混和，簡單可做出玻璃紙特效的效果。</p>
+<p>另外還有一個Shader無關pipeline的，是名為<em>Compute Shader</em>的計算著色器，可以利用GPU平行處理特性，用來處理一些計算處理的功能。</p>
+<h2 id="Review_Pipeline">Review Pipeline</h2><img src="/images/OBT3/gl_pipe.png" width="600">
+<p>從這張圖來檢視一下每個流程的基本概念吧！框邊代表固定的流程，圓邊代表可程式的流程，而每個流程的基本概念是什麼最好能看著圖簡單解釋出來。</p>
+<p>結語:<br>為了只是畫一個三角形付出了這麼多心力，是為了未來在畫面上可以擁有無限的操作可能。然而這篇可能有點說太多了，不過真的是什麼都想說，而且做圖真的不知道該用什麼來做比較好，如果有不錯的繪圖工具或線上繪圖(關於數學或流程的)，請告訴我。也許以後我將這篇文章砍一半，然後將每個Shader提出來分開講，或是其他方式。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cirhvrta0002p3csuj36c7beb" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-3-Pipeline/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Clipping/">Clipping</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fragment-Shader/">Fragment Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Geometry-Shader/">Geometry Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL介紹/">OpenGL介紹</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL基礎/">OpenGL基礎</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/">Rasterization</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shader/">Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tessellation/">Tessellation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tessellation-Control-Shader/">Tessellation Control Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tessellation-Evaluation-Shader/">Tessellation Evaluation Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Viewport-Transform/">Viewport Transform</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">OpenGL 入門教學 2: Strat With Triangle</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenCV/">OpenCV</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenGL/">OpenGL</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/數學筆記/">數學筆記</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/網頁相關/">網頁相關</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Clipping/" style="font-size: 10px;">Clipping</a> <a href="/tags/EmguCV/" style="font-size: 10px;">EmguCV</a> <a href="/tags/Exception/" style="font-size: 10px;">Exception</a> <a href="/tags/Fragment-Shader/" style="font-size: 10px;">Fragment Shader</a> <a href="/tags/GLEW/" style="font-size: 10px;">GLEW</a> <a href="/tags/GLFW/" style="font-size: 10px;">GLFW</a> <a href="/tags/Geometry-Shader/" style="font-size: 10px;">Geometry Shader</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hexo分類/" style="font-size: 10px;">Hexo分類</a> <a href="/tags/Hexo目錄/" style="font-size: 10px;">Hexo目錄</a> <a href="/tags/Interpolation/" style="font-size: 10px;">Interpolation</a> <a href="/tags/Line/" style="font-size: 10px;">Line</a> <a href="/tags/Metro-App/" style="font-size: 10px;">Metro App</a> <a href="/tags/Modern-UI/" style="font-size: 10px;">Modern UI</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/OpenGL/" style="font-size: 17.5px;">OpenGL</a> <a href="/tags/OpenGL-Extension/" style="font-size: 10px;">OpenGL Extension</a> <a href="/tags/OpenGL-Tutorial/" style="font-size: 15px;">OpenGL Tutorial</a> <a href="/tags/OpenGL-intro/" style="font-size: 10px;">OpenGL intro</a> <a href="/tags/OpenGL介紹/" style="font-size: 12.5px;">OpenGL介紹</a> <a href="/tags/OpenGL入門教學/" style="font-size: 15px;">OpenGL入門教學</a> <a href="/tags/OpenGL基礎/" style="font-size: 12.5px;">OpenGL基礎</a> <a href="/tags/OpenGL安裝/" style="font-size: 10px;">OpenGL安裝</a> <a href="/tags/OpenGL教學/" style="font-size: 15px;">OpenGL教學</a> <a href="/tags/QT/" style="font-size: 10px;">QT</a> <a href="/tags/Rasterization/" style="font-size: 10px;">Rasterization</a> <a href="/tags/Shader/" style="font-size: 12.5px;">Shader</a> <a href="/tags/SublimeText3/" style="font-size: 10px;">SublimeText3</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tessellation/" style="font-size: 10px;">Tessellation</a> <a href="/tags/Tessellation-Control-Shader/" style="font-size: 10px;">Tessellation Control Shader</a> <a href="/tags/Tessellation-Evaluation-Shader/" style="font-size: 10px;">Tessellation Evaluation Shader</a> <a href="/tags/Triangle/" style="font-size: 10px;">Triangle</a> <a href="/tags/Ubuntu/" style="font-size: 20px;">Ubuntu</a> <a href="/tags/Ubuntu-property/" style="font-size: 10px;">Ubuntu property</a> <a href="/tags/VAO/" style="font-size: 10px;">VAO</a> <a href="/tags/Viewport-Transform/" style="font-size: 10px;">Viewport Transform</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Visual-Studio/" style="font-size: 12.5px;">Visual Studio</a> <a href="/tags/Win10/" style="font-size: 15px;">Win10</a> <a href="/tags/Win7/" style="font-size: 10px;">Win7</a> <a href="/tags/Windows-Store/" style="font-size: 10px;">Windows Store</a> <a href="/tags/Windows10/" style="font-size: 15px;">Windows10</a> <a href="/tags/Windows7/" style="font-size: 10px;">Windows7</a> <a href="/tags/ntoskrnl-exe/" style="font-size: 10px;">ntoskrnl.exe</a> <a href="/tags/tracker-store/" style="font-size: 10px;">tracker-store</a> <a href="/tags/內插/" style="font-size: 10px;">內插</a> <a href="/tags/升級/" style="font-size: 10px;">升級</a> <a href="/tags/座標轉換/" style="font-size: 10px;">座標轉換</a> <a href="/tags/排列失效/" style="font-size: 10px;">排列失效</a> <a href="/tags/桌面圖示/" style="font-size: 10px;">桌面圖示</a> <a href="/tags/線性代數/" style="font-size: 12.5px;">線性代數</a> <a href="/tags/重新整理/" style="font-size: 10px;">重新整理</a> <a href="/tags/音量/" style="font-size: 10px;">音量</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/07/10/OpenGL-Beginner-Tutorial-3-Pipeline/">OpenGL 入門教學 3: Pipeline</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/">OpenGL 入門教學 2: Strat With Triangle</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/">OpenGL 入門教學 1: Setting up Environment</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/">OpenGL 入門教學 0: Introduce</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/08/Windows10-音量控制問題/">Windows10-音量控制問題</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Dowen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">0</a>
+  
+    <a href="/archives" class="mobile-nav-link">1</a>
+  
+    <a href="/categories" class="mobile-nav-link">2</a>
+  
+    <a href="/about" class="mobile-nav-link">3</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'bcmtokenyet';
+  
+  var disqus_url = 'http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-3-Pipeline/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
