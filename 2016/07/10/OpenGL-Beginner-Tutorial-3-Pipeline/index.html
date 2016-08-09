@@ -16,13 +16,16 @@ CPU到GPU第一階段 - Vertex Shader的資料傳送GPU在開始執行Vertex Sha
 <meta property="og:image" content="http://tokenyet.github.io/images/OBT3/MoveTri.jpg">
 <meta property="og:image" content="http://tokenyet.github.io/images/OBT3/MoveTri.jpg">
 <meta property="og:image" content="http://tokenyet.github.io/images/OBT3/VBO.png">
+<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/tesselation.png">
+<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/geometry.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/OBT3/Vpx.svg">
 <meta property="og:image" content="http://tokenyet.github.io/images/OBT3/Vpy.svg">
 <meta property="og:image" content="http://tokenyet.github.io/images/OBT3/Vpz.svg">
 <meta property="og:image" content="http://tokenyet.github.io/images/OBT3/clockwise.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/OBT3/counter-clockwise.png">
+<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/fragment.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/OBT3/gl_pipe.png">
-<meta property="og:updated_time" content="2016-08-05T15:02:14.304Z">
+<meta property="og:updated_time" content="2016-08-09T10:48:59.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 入門教學 3: Pipeline">
 <meta name="twitter:description" content="開始前介紹為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。
@@ -157,7 +160,7 @@ ga('send', 'pageview');
 <li>第一個是指定綁定在哪種容器上。</li>
 <li>第二個是將先前產生的buffer綁定到適當的容器中，範例是綁定為VBO物件(稍後說明VBO)，雖然沒有GL_BUFFER_OBJECT，但有GL_ARRAY_BUFFER，別讓名稱誤解，所以不用太針對GL_ARRAY_BUFFER這個名詞深究。</li>
 </ul>
-<p>_void glBufferData(GLenum target, GLsizeiptr size, const GLvoid * data, GLenum usage)</p>
+<p><em>void glBufferData(GLenum target, GLsizeiptr size, const GLvoid * data, GLenum usage)</em></p>
 <ul>
 <li>指定容器，會將後續參數資料填入指定容器中。</li>
 <li>分配需要多少空間。</li>
@@ -184,7 +187,19 @@ ga('send', 'pageview');
 <p>好了，剛剛稍微轉了一點理解，但其實VBO實際上的概念是這樣，到 <code>glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW)</code> 這裡就已經算結束，也就是說VBO只是配置一個記憶體的空間而已，這樣的空間或說緩衝區時常被用來連結VAO然後傳送至GPU，所以有時候比較難分清楚誰的責任是什麼，而且現代OpenGL強制使用VAO，所以你用VBO就必使用VAO。 因此這裡說明白，VBO只是個空間，VAO則是將VBO做格式定位與欄位啟動的地方，也就是說 <code>glEnableVertexAttribArray</code> 跟 <code>glVertexAttribPointer</code> 是VAO的責任。</p>
 <p>這部分最後稍微想一下, VBO與VAO可否一對多? 多對一? 這答案都是肯定的，VAO參考多個VBO空間的值，或多個VAO參考同個空間的值，都是可以做到的事。</p>
 <h2 id="Tessellation">Tessellation</h2><p>Tessellation是將<em>複雜面</em>(high-order primitive)，而什麼是<em>複雜面</em>，舉例多邊形或<em>Patch</em>等等頂點很多的都是複雜面。而為了使用Tessellation，我們不管是三角形、矩形、多邊形，通通要以Patch的形式傳入，因此Patch是一個為了讓Tessellation知道你要使用他的一個包裹，不管裡面包的是幾邊形，總而言之就是要讓Tessellation知道是個Patch才能進行細分的動作。而這個部分主要有三個階段，第一個階段<em>Tessellation Control Shader</em>屬於可程式，用來接收Vertex Shader的輸出後，定義切割表面的一些參數，並且將資料傳送到下一個階段。第二個階段<em>Tessellation Engine</em>屬於固定流程，得到參數後，依照演算法將一個Patch詳細切割，之後將這些新的點以三角形或四邊形的形式傳入下個階段。第三個階段<em>Tessellation Evaluation Shader</em>屬於可程式，這個階段得到的三角形的點是屬於<em>barycentric coordinate</em>空間的座標，而矩形是在<em>Bilinear interpolation</em>所構成x,y範圍0~1的空間中。由於這部分並非初學，而且屬於<strong>選擇性實作</strong>，所以這裡看不懂可以先知道概念即可。</p>
+
+<div class="container-outside-div">
+		<img src="/images/OBT3/tesselation.png" style="width: 420px">
+		<p>Tessellation Triangle</p>
+</div>
+
 <h2 id="Geometry_Shader">Geometry Shader</h2><p>Geometry Shader是在要進入光柵(Rasterization)之前的階段，屬於<strong>選擇性實作</strong>的階段，因此也比較偏難需要另外講的文章，主要運作的模式是接收到一個primitive的數量後執行一次，也就是如果接收三角形則是收到三個頂點後執行一次，而這個階段能做的就是對你收到的點做些調整，舉個簡單的例子就是輸入一個三角形，這個階段可以新增一些點，修改一些點，變成輸出星星的形狀，這部分以後的文章會在探討。</p>
+
+<div class="container-outside-div">
+		<img src="/images/OBT3/geometry.png" style="width: 420px">
+		<p>Tessellation + Geometry Triangle</p>
+</div>
+
 <h2 id="Primitive_Assembly,_Clipping,_Rasterization">Primitive Assembly, Clipping, Rasterization</h2><p>這幾個階段都是屬於Fixed的部分，操作者在這些階段無法觸及內容，所以這裡就講理論上這幾個階段的功用。</p>
 <h3 id="Primitive_Assembly">Primitive Assembly</h3><p>將收到的點做組裝，像是找在primitive緩衝區中找到代表直線的區塊，假設那區塊有12個連續頂點，那就會轉換成11條直線。</p>
 <h3 id="Clipping">Clipping</h3><p>這邊有一段重要的數學觀念，就是要理解<em>Homogeneous Coordinate System</em>跟<em>Normalize Device Coordinate</em>，還有透視投影(Perspective Proejction)在這之間的關係，這裡也需另外開文解釋，簡單來說我們若要了解3D空間，這個概念就不可或缺，以上幾個概念都是要在會在實作中會碰到的部分，OpengGL的這個階段在數學上是只講Homogeneous空間中的X,Y,Z除以W而已，此動作稱為Projective Division，該動作後就會到NDC空間中了。因此我們要有弄出XYZW的方法，以後的文章會提到。最後如果轉換的點超出NDC範圍就會被Clipping掉，以免浪費GPU運算速度。</p>
@@ -226,7 +241,13 @@ ga('send', 'pageview');
 <h3 id="Rasterization">Rasterization</h3><p>光柵化是得知哪幾個像素是要塗上顏色的地方，其中利用的是half space的方法，而<a href="http://forum.devmaster.net/t/advanced-rasterization/6145" title="Advanced Rasterization from devmaster Nick" target="_blank" rel="external">Rasterizing Triangles from Michael Jones</a>為參考的文章，如果有時間我會開篇文章解說，當初為了解整個流程這部分特別做了點筆記。</p>
 <h2 id="Fragment_Shader">Fragment Shader</h2><p>在光柵後，這個階段決定每個像素該填上的顏色為何。像是我們之前最簡單的例子像是以下這樣。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#version 450 core</span></span><br><span class="line">out vec4 color;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	color = vec4(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>很簡單的填入顏色就代表，不管你是哪個點，就填入藍色就對了。而Fragment Shader 的應用很多樣，光影特效主要就是在這進行，還有各種材質的貼圖，或是畫面特效後製，優化畫面的各種技巧，都是Fragment Shader可以處理的。</p>
+<p>很簡單的填入顏色意味著不管是哪個點，就填入藍色。而Fragment Shader 的應用很多樣，光影特效主要就是在這進行，還有各種材質的貼圖，或是畫面特效後製，優化畫面的各種技巧，都是Fragment Shader可以處理的。以下是定義三個頂點的顏色後，OpenGL利用內建的Intepolate將未定義的顏色自動內插的結果。</p>
+
+<div class="container-outside-div">
+		<img src="/images/OBT3/fragment.png" style="width: 420px">
+		<p>Interpolated Triangle</p>
+</div>
+
 <h2 id="Last_things">Last things</h2><p>還有一些可以參與pipeline，而且是在Fragment Shader輸出後可以進行的東西，如Framebuffer，Scissor Test, Stencil Test，Blend，在這邊簡單介紹一下，讓讀者知道要使用相關的技術應該要利用哪個技巧。<br>Framebuffer  : 一個儲存畫面的buffer，常用的方式是取出當前繪製的螢幕後，進行各種處理，通常拿取該畫面從頭開始跑一次pipeline。<br>Scissor Test : 算是很舊的技術，指定一個矩形區域，讓範圍內的像素有一些變化。<br>Stencil Test : 有點難說明，通常用來把一個物體的outline畫出，也就是類似選取到該物體的感覺，其作法是在每次畫出物體前先設定遮罩，藉由遮罩的AND\OR等計算，讓最後剩下的部分進行著色，例如一個畫出一個正方體，設定遮罩為1，然後畫出一個大一點的純色正方體，然後找遮罩不為1的就是所謂的外框。<br>Blending     : 顏色的混和，簡單可做出玻璃紙特效的效果。</p>
 <p>另外還有一個Shader無關pipeline的，是名為<em>Compute Shader</em>的計算著色器，可以利用GPU平行處理特性，用來處理一些計算處理的功能。</p>
 <h2 id="Review_Pipeline">Review Pipeline</h2><img src="/images/OBT3/gl_pipe.png" width="600">
@@ -236,7 +257,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cirhvrta0002p3csuj36c7beb" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cirncih6r002pu8vivgt7jyxq" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-3-Pipeline/#disqus_thread" class="article-comment-link">Comments</a>
       
