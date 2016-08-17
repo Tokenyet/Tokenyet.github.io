@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2016-08-09T10:48:59.484Z</updated>
+  <updated>2016-08-17T18:22:07.667Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -15,13 +15,735 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[OpenGL 入門教學 4: 數學]]></title>
+    <link href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/"/>
+    <id>http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/</id>
+    <published>2016-08-11T08:44:20.000Z</published>
+    <updated>2016-08-17T18:22:07.667Z</updated>
+    <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>這一章節主要是介紹一些數學的基礎，如果發現哪個部分不熟的話，最好能親自磨練一下，因為以後常常需要的時候，如果不懂箇中原理，那麼在偵錯或是實作上，會遇到一些麻煩。當然領悟過後能寫起來是最推薦的方式，以後忘了的時候瞟一眼就行了。初學者如果看不懂本篇的話，可以暫且跳過無妨，當有用到再回頭看，因為現在的文章是搭配官方藍寶書的章節推進，而藍寶書比較適合中階以上閱讀者，所以本篇對初學者來說應該很吃力。<br>接下來會介紹的內容基本上有:</p>
+<ul>
+<li>向量</li>
+<li>反射與折射</li>
+<li>矩陣</li>
+<li>相關座標系統</li>
+<li>攝影機</li>
+<li>透視投影與正交投影</li>
+<li>直線與曲線</li>
+<li>GLM</li>
+</ul>
+<a id="more"></a>
+<h2 id="向量">向量</h2><p>這邊應該大家都有學過，在此只是把我自己領略的概念描述出來，如果不懂的話，請參閱其他數學專業網站。</p>
+<h3 id="何謂向量">何謂向量</h3><p>向量的定義是一個方向附帶著一個量的數值，而為什麼需要一個有數值的方向呢？因為想將向量運用到各種不同的地方，這樣就可以不需要同樣的原點與終點來重現這樣的動作。我們假設一個二維的座標平面，上面有一個點 $p_1$ 還有一個點 $p_2$ ，用 $ p_2 - p_1 $  所得到的就是從 $ p_1 $ 指向 $ p_2 $ 的向量，如果想不通就想成 $p_2$ 與原點 $ o $ 的關係是 $ p_2 - o $，也就是從原點指向 $ p_2 $ 的向量。</p>
+<h3 id="基本性質">基本性質</h3><p>向量的加減性質跳過。</p>
+<h3 id="長度">長度</h3><p>如果向量是 $ (1,2,3) $ 長度的定義是 $ \sqrt{1^2 + 2^2 + 3^2} $，向量已經是兩點相減的結果，所以只要將各個分量平方後開根號就是長度。</p>
+<h3 id="單位向量">單位向量</h3><p>若向量是 $ (1,2,3) $ 則單位向量就是其向量除以長度，也就是 $ \left(\frac{1}{\sqrt{14}},\frac{2}{\sqrt{14}},\frac{3}{\sqrt{14}}\right) $<br>這樣的好處是，可以得到往該方向一個單位長度需要多少向量。也就是說上方的各自平方後相加長度等於一。而單位向量的概念在OpenGL中稱之為<strong>Normalize</strong>。</p>
+<h3 id="內積">內積</h3><p>內積的定義是這樣的 $ \vec{a} \cdot \vec{b} = a_xb_x+a_yb_y+a_zb_z $<br>直接看看不出它的意義是什麼，他還有另一個特性是 $ \vec{a} \cdot \vec{b} =  \left| \vec{a} \right| \left| \vec{b} \right| \cos{\theta} $<br>在圖學中內積常常用來求的是角度，也就是說根據上方的另一個性質，將長度移到左方然後算出內積的值，就可以得到 $ value = \cos{\theta} $ 的情況，也就是可以知道角度是多少，這是內積常常運用在圖學中的部分。至於上方的兩定義由來就不探討。</p>
+<h3 id="外積">外積</h3><p>外積的定義是 $ \vec{V}_1 \times \vec{V}_2  = \vec{V}_3$<br><span>$$\begin{bmatrix} 
+V_3.x \\
+V_3.y \\
+V_3.z \\
+\end{bmatrix}
+= 
+\begin{bmatrix} 
+V_1.y \cdot V_2.z - V_1.z \cdot V_2.y \\
+V_1.z \cdot V_2.x - V_1.x \cdot V_2.z \\ 
+V_1.x \cdot V_2.y - V_1.y \cdot V_2.x \\
+\end{bmatrix}$$</span><!-- Has MathJax --><br>得到的 $ \vec{V}_3 $ 就是垂直於  $ \vec{V}_1 , \vec{V}_2 $的向量，依照<a href="https://zh.wikipedia.org/wiki/右手定則" target="_blank" rel="external">弗萊明右手定則</a>就可以知道該垂直向量應該往哪裡垂直，且別擔心，不管怎麼比都會在定則內的。在圖學中，會用到的就是外積算出來垂直於表面的特性，也就是Normal Vector，這個光影特效中時常使用的向量。</p>
+<h2 id="反射與折射">反射與折射</h2><h3 id="反射">反射</h3><p>反射有個特性，就是入射角等於反射角，然後依照圖片所示，我們要算出反射角的方法有兩種。一種是不用將入射角反轉，直接位移兩個垂直平面的分量。另一種是將入射角反轉，移動兩個水平分量，而這裡介紹的是移動兩個垂直分量的方法。<br>結果公式為:<br><span>$R_{reflect} = R_{in} - (2N \cdot R_{in} )N$</span><!-- Has MathJax --><br>解釋 : 反射分量 = 入射分量 - 兩個垂直表面的分量。</p>
+<p>正式理解，我們直觀來看入射角 <span>$R_{in}$</span><!-- Has MathJax --> 應該要減去兩個垂直於法向量 <span>$N$</span><!-- Has MathJax --> 的 <span>$R_{in}$</span><!-- Has MathJax --> 垂直分量。直觀來看就是 <span>$R_{in}$</span><!-- Has MathJax --> 加上兩個 <span>$\left| -R_{in} \right| \cos{\theta} \times \frac{N}{\left|N\right|}$</span><!-- Has MathJax -->，而 <span>$-R_{in}$</span><!-- Has MathJax --> 代表反的入射角，因為要跟垂直分量算夾角，必須要兩向量都從頭個原點出發才行。那為何是 <span>$\left| -R_{in} \right|$</span><!-- Has MathJax --> 呢?因為透過三角形的畢氏定理，就可以換算成在該垂直分量上的長度多少，之後再轉回向量，也就是要乘上 <span>$N$</span><!-- Has MathJax --> 的單位向量 <span>$\frac{N}{\left|N\right|}$</span><!-- Has MathJax -->，就可以得知在該方向上的分量是多少，這裡運用到投影向量的技巧，需要自行去熟悉一下。</p>
+<p>來認真的推看看:<br>原式:<br><span>$R_{in} + 2 \times \left| -R_{in} \right| \cos{\theta} \times \frac{N}{\left|N\right|}$</span><!-- Has MathJax --></p>
+<p>化簡多餘的部分(對了N固定是單位向量，也就是長度為1):<br><span>$R_{in} + 2 \times \left| -R_{in} \right| \cos{\theta} \times N$</span><!-- Has MathJax --></p>
+<p>由於 <span>$-R_{in} \cdot N = \left| -R_{in} \right| \left| N \right|  \cos{\theta}$</span><!-- Has MathJax --></p>
+<p>又可以是 <span>$-R_{in} \cdot N = \left| -R_{in} \right| \cos{\theta}$</span><!-- Has MathJax --></p>
+<p>因此化簡為:<br><span>$R_{in} + 2 \times -R_{in} \cdot N * N$</span><!-- Has MathJax --></p>
+<p>負號提出來:<br><span>$R_{in} - 2 \times R_{in} \cdot N * N$</span><!-- Has MathJax --></p>
+<p>最後將上方的原式拿來比較:<br><span>$R_{reflect} = R_{in} - (2N \cdot R_{in} )N = R_{in} - 2 \times R_{in} \cdot N \times N$</span><!-- Has MathJax --></p>
+<p>得證相等，與理解的無誤。</p>
+<h3 id="折射">折射</h3><p>折射的部分，Dowen也尚未理解，公式牽涉較深物理，理論是說，入射方介質 $ \eta $  小於折射方介質$ \eta $ ，那折射方就會偏向法向量，反之就會偏離，不是物理學者，我想知道概念足矣。<br><span>$$\begin{gather}
+k = 1 - \eta^2(1 - (N \cdot R)^2) \\
+R_{refract} = 
+\begin{cases} 
+0.0 &amp; \text{if $k &lt; 0.0 $} \\[2ex]
+\eta R - (\eta (N \cdot R) + \sqrt{k})N &amp; \text{if $k \ge 0.0$}
+\end{cases}
+\end{gather}$$</span><!-- Has MathJax --></p>
+<h2 id="矩陣">矩陣</h2><p>說到矩陣，以前完全想不透為何經過矩陣轉換，得到的東西是一個有意義的東西。某日深研後，發現矩陣是由方程式的演變而來的，聽起來很理所當然，不過當題目做多了，反思一下卻忘了本源是什麼，就有點慌慌的。接下來就用方程式與矩陣一起說明，不直接用矩陣說明的方式來教學。至於矩陣的乘法，在這裡就不贅述，矩陣只是一種方程式變相的工具使用而已，如果有疑慮請詳閱專業數學相關網站。</p>
+<h3 id="位移">位移</h3><p>假設一物體位於三維空間中 <span>$p_{old} (x, y, z)$</span><!-- Has MathJax --> 點上，那要移動至 <span>$p_{new} (x + 2 ,y + 3 ,z-5)$</span><!-- Has MathJax --> 的點在方程式上該如何表示呢?<br><span>$$p_{old} (x_{old}, y_{old}, z_{old}) , \\
+p_{new} (x_{new}, y_{new}, z_{new}) , \\
+x_{new} = x_{old} + 2 \\
+y_{new} = y_{old} + 3 \\
+z_{new} = z_{old} - 5$$</span><!-- Has MathJax --><br>位移在方程式上算是比較特殊的轉法，一般我們矩陣是3x1(新座標) = 3x3 * 3x1(原座標)。但是可以發現相乘後，只會縮放各個x, y, z的座標後相加。<br><span>$$\begin{bmatrix}
+a_1 &amp; b_1 &amp; c_1 \\
+a_2 &amp; b_2 &amp; c_2 \\
+a_3 &amp; b_3 &amp; c_3 \\
+\end{bmatrix}
+\begin{bmatrix}
+x_{old}\\
+y_{old}\\
+z_{old}\\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+a_1 \cdot x_{old} + b_1 \cdot y_{old} + c_1 \cdot z_{old}\\
+a_2 \cdot x_{old} + b_2 \cdot y_{old} + c_2 \cdot z_{old}\\
+a_3 \cdot x_{old} + b_3 \cdot y_{old} + c_3 \cdot z_{old}\\
+\end{bmatrix}$$</span><!-- Has MathJax --><br>在這裡加上一個四維座標空間的概念，圖學中常常使用到，但實際上仍是三維的一個輔助法。<br><span>$$\begin{bmatrix}
+a_1 &amp; b_1 &amp; c_1 &amp; w_1 \\
+a_2 &amp; b_2 &amp; c_2 &amp; w_2 \\
+a_3 &amp; b_3 &amp; c_3 &amp; w_3 \\
+a_4 &amp; b_4 &amp; c_4 &amp; w_4 \\
+\end{bmatrix}
+\begin{bmatrix}
+x_{old}\\
+y_{old}\\
+z_{old}\\
+w_{old}\\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+a_1 \cdot x_{old} + b_1 \cdot y_{old} + c_1 \cdot z_{old} + w_1 \cdot w_{old} \\
+a_2 \cdot x_{old} + b_2 \cdot y_{old} + c_2 \cdot z_{old} + w_2 \cdot w_{old} \\
+a_3 \cdot x_{old} + b_3 \cdot y_{old} + c_3 \cdot z_{old} + w_3 \cdot w_{old} \\
+a_4 \cdot x_{old} + b_4 \cdot y_{old} + c_4 \cdot z_{old} + w_4 \cdot w_{old} \\
+\end{bmatrix}$$</span><!-- Has MathJax --><br>擴充成四維空間後，這樣看起來沒什麼意義。但是當在不必要的地方填入0，還有必要的地方填入1後，就會變以下這樣。<br><span>$$\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; w_1 \\
+0 &amp; 1 &amp; 0 &amp; w_2 \\
+0 &amp; 0 &amp; 1 &amp; w_3 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+x_{old}\\
+y_{old}\\
+z_{old}\\
+1\\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+1 \cdot x_{old} + 0 \cdot y_{old} + 0 \cdot z_{old} + w_1 \cdot 1 \\
+0 \cdot x_{old} + 1 \cdot y_{old} + 0 \cdot z_{old} + w_2 \cdot 1 \\
+0 \cdot x_{old} + 0 \cdot y_{old} + 1 \cdot z_{old} + w_3 \cdot 1 \\
+0 \cdot x_{old} + 0 \cdot y_{old} + 0 \cdot z_{old} + 1 \cdot 1 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+x_{old} + w_1\\
+y_{old} + w_2\\
+z_{old} + w_3\\
+1\\
+\end{bmatrix}$$</span><!-- Has MathJax --><br>這樣子就變成一個位移專用的矩陣，仍然不會用到我們擴充的第四維，但是又可以輔助三維空間的位移。</p>
+<span>$$\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 2 \\
+0 &amp; 1 &amp; 0 &amp; 3 \\
+0 &amp; 0 &amp; 1 &amp; -5 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+x_{old}\\
+y_{old}\\
+z_{old}\\
+1\\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+1 \cdot x_{old} + 0 \cdot y_{old} + 0 \cdot z_{old} + 2 \cdot 1 \\
+0 \cdot x_{old} + 1 \cdot y_{old} + 0 \cdot z_{old} + 3 \cdot 1 \\
+0 \cdot x_{old} + 0 \cdot y_{old} + 1 \cdot z_{old} - 5 \cdot 1 \\
+0 \cdot x_{old} + 0 \cdot y_{old} + 0 \cdot z_{old} + 1 \cdot 1 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+x_{old} + 2\\
+y_{old} + 3\\
+z_{old} - 5\\
+1\\
+\end{bmatrix}$$</span><!-- Has MathJax -->
+<p>以上就是位移矩陣的由來。在定位一個物體在世界座標中哪個位置時常使用。</p>
+<h3 id="旋轉">旋轉</h3><p>旋轉矩陣我在<a href="/2015/08/19/座標轉換筆記/">這篇</a>文章中有寫過，因此把結果提出來，讓我們知道方程式與矩陣的關係。<br>原本的方程式如下:<br><span>$$x_{new} = x_{old} \cos \theta - y_{old} \sin \theta \\
+y_{new} = x_{old} \sin \theta + y_{old} \cos \theta \\$$</span><!-- Has MathJax --><br>換成矩陣後:<br><span>$$\begin{bmatrix}
+\cos{\theta} &amp; -\sin{\theta} \\
+\sin{\theta} &amp; \cos{\theta}  \\
+\end{bmatrix}
+\begin{bmatrix}
+x_{old}\\
+y_{old}\\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+x_{old} \cos{\theta} - y_{old} \sin{\theta} \\
+x_{old} \sin{\theta} + y_{old} \cos{\theta} \\
+\end{bmatrix}$$</span><!-- Has MathJax --></p>
+<p>如果要放到3D世界來使用，有兩點要思考。</p>
+<ol>
+<li>這樣的旋轉在3D世界中是屬於依照X還是Y還是Z呢? Ans: Z</li>
+<li>要位移怎麼辦?只能是XYZ軸嗎?<br>這篇文章介紹每個大概，只介紹依照XYZ軸的旋轉，如果是依照<a href="http://inside.mines.edu/fs_home/gmurray/ArbitraryAxisRotation/" title="AARotation" target="_blank" rel="external">任意軸</a>，或更勝之是<a href="http://www.3dgep.com/understanding-quaternions/" title="四元數" target="_blank" rel="external">四元數</a>，這些較適合以後開文章討論，或是請讀者至參考連結去閱讀，如果有問題可以提出來討論，Dowen在寫這篇文章的時候都已閱讀完畢。</li>
+</ol>
+<blockquote><h4 id="歐拉角">歐拉角</h4><p>以旋轉矩陣來進行旋轉的集合統稱為歐拉角，順序有先XYZ, ZYX ,YZX, XZY…各種組合。如果是以<strong>世界座標</strong>的XYZ旋轉，不會產生問題。但是如果以<strong>物體座標</strong>的話，就會產生意想不到的問題。怎麼說呢? 拿起手機，螢幕對著自己，當作Z軸指向自己，上方當作Y軸，右方當作X軸。 那如果以ZXY的矩陣來旋轉會產生什麼問題呢?首先以Z轉任意角度，X轉<strong>90度</strong>，之後Y的選轉軸，與Z就重合了。有人會想物體的Z也在變阿? 實際上，電腦藉由矩陣運算的時候，轉完Z之後，轉了X後，Z已經不會有任何改變，因為那是之前轉完的。而X轉了90度後，Y剛好與原Z軸重合，導致Y與Z軸只能轉一樣的方向。 這就是所謂的<a href="https://www.youtube.com/watch?v=zc8b2Jo7mno" target="_blank" rel="external">萬向鎖(Gimbal Lock)</a></p>
+</blockquote>
+<p>先擴充成以Z軸的三維旋轉<br><span>$$\begin{bmatrix}
+\cos{\theta} &amp; -\sin{\theta} &amp; 0\\
+\sin{\theta} &amp; \cos{\theta}  &amp; 0\\
+0 &Tab;&Tab;     &amp; 0             &amp; 1\\
+\end{bmatrix}$$</span><!-- Has MathJax --></p>
+<p>以上讀者可以以之前的方式自行證明。接下來要擴充成四維空間，原因是之前說過的，為了位移的技巧。<br><span>$$\begin{bmatrix}
+\cos{\theta} &amp; -\sin{\theta} &amp; 0 &amp; 0\\
+\sin{\theta} &amp; \cos{\theta}  &amp; 0 &amp; 0\\
+0 &Tab;&Tab;     &amp; 0             &amp; 1 &amp; 0\\
+0 &Tab;&Tab;     &amp; 0             &amp; 0 &amp; 1\\
+\end{bmatrix}$$</span><!-- Has MathJax --><br>順便列出剩下兩個以x與y的旋轉。</p>
+<p>以Y軸旋轉<br><span>$$\begin{bmatrix}
+\cos{\beta}  &amp; 0 &amp; \sin{\beta} &amp; 0\\
+0            &amp; 1 &amp; 0           &amp; 0\\
+-\sin{\beta} &amp; 0 &amp; \cos{\beta} &amp; 0\\
+0 &Tab;&Tab;     &amp; 0 &amp; 0           &amp; 1\\
+\end{bmatrix}$$</span><!-- Has MathJax --></p>
+<p>以X軸旋轉<br><span>$$\begin{bmatrix}
+1 &amp; 0             &amp; 0            &amp; 0\\
+0 &amp; \cos{\alpha}  &amp; -sin{\alpha} &amp; 0\\
+0 &amp; \sin{\alpha}  &amp; cos{\alpha}  &amp; 0\\
+0 &amp; 0             &amp; 0            &amp; 1\\
+\end{bmatrix}$$</span><!-- Has MathJax --></p>
+<p>順便一提，如果自己推出的矩陣與上不符，不一定是錯的，只是在圖學中，上方是符合右手定則，逆時針旋轉，以Z軸旋轉來說，就是Z不變, X軸朝向Y軸移動形成看起來逆時針的旋轉。(圖學中Z軸永遠指向螢幕外，也就是指向自己)</p>
+<h3 id="縮放">縮放</h3><p>縮放其實很簡單，不論你原本的點是在負向的部分還是正向，經由縮放後，會靠近0，或者遠離0，矩陣如下。<br><span>$$\begin{bmatrix}
+x_{old}\\
+y_{old}\\
+z_{old}\\
+1\\
+\end{bmatrix}
+\begin{bmatrix}
+S_x &amp; 0 &amp; 0   &amp; 0\\
+0 &amp; S_y &amp; 0   &amp; 0\\
+0 &amp; 0&Tab;&amp; S_z &amp; 0\\
+0 &amp; 0   &amp; 0   &amp; 1\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+S_x x_{old}\\
+S_y y_{old}\\
+S_z z_{old}\\
+1\\
+\end{bmatrix}$$</span><!-- Has MathJax --></p>
+<h2 id="相關座標空間">相關座標空間</h2><p>使用OpenGL需要接觸到許多三維座標空間，看到以下列出這麼多，也不需要太慌張，其實都是一點一點演變而來的，這一連串的座標空間都息息相關。</p>
+<h3 id="笛卡爾座標">笛卡爾座標</h3><p>這是我們最常使用到的座標系統，直角坐標系統，也稱為笛卡爾座標系統，這個就不多做說明。</p>
+<img src="/images/OBT4/Cartesian.png" width="420">
+<h3 id="齊次座標">齊次座標</h3><p>先來看下面這張圖。<br>
+<div class="container-outside-div">
+		<img src="http://image5.tuku.cn/wallpaper/Landscape%20Wallpapers/10666_1280x800.jpg" style="width: 420px">
+		<p>圖片引用自<a href="http://www.tuku.cn" target="_blank" rel="external">圖庫網</a></p>
+</div>
+<br>鐵軌旁邊兩條平行的軌道，理應是一直線不會交合的，但是現實世界中，他們越遠就會越相近。而距今約兩百年前的天文學家 奧古斯特·費迪南德·莫比烏斯（August Ferdinand Möbius) 發展了齊次座標的概念，使用齊次概念的座標系統，都要在其維度多增加一維。 (而剛好的，增加一維又可以讓位移矩陣發揮作用，這不知道是不是一種數學的巧合呢?)</p>
+<p>而齊次與笛卡爾的關係如下:<br>二維:<br>$ (x,y,w) = \left( \frac{x}{w},\frac{y}{w} \right)  $<br>三維: (投影矩陣部分詳細說明, 先看二維就好)<br>$ (x,y,z,w) = \left( \frac{x}{w},\frac{y}{w},\frac{z}{w} \right)  $<br>舉例如下:<br>$ (2,3,5)_h = \left(\frac{2}{5},\frac{3}{5}\right)_c $<br>$ (4,6,10)_h = \left(\frac{4}{10},\frac{6}{10}\right)_c = \left(\frac{2}{5},\frac{3}{5}\right)_c $<br>$ (2a,3a,5a)_h = \left(\frac{2}{5},\frac{3}{5}\right)_c $</p>
+<p>利用齊次的概念讓兩條平行線有交集:<br><span>$$\begin{cases}
+Ax + By + C = 0 \\
+Ax + By + D = 0
+\end{cases}$$</span><!-- Has MathJax --><br>在上方的笛卡爾空間中，這兩條線除非 $ C = D $ ，否則不可能有交集。<br>而利用齊次的概念就是將 $ w $ 放進來，把 $ x $ 取代為 $ \frac{x}{w} $，$ y $ 取代為 $ \frac{y}{w} $<br>而w 的範圍是 $ 1 \ge w &gt; 0$ ，其意義是遠近的意思。 越遠$w$值越小。<br><span>$$\begin{cases}
+A \frac{x}{w} + B \frac{y}{w} + C = 0 \\
+A \frac{x}{w} + B \frac{y}{w} + D = 0
+\end{cases}$$</span><!-- Has MathJax --><br>如果 $ w = 1 $ 那一切都沒變，但若 $ w $趨近於0，就會發生一件事，前兩項參數的值過於巨大，導致C,D的影響完全不重要。不過換個角度看的話會更明顯，這次改成這樣。<br><span>$$\begin{cases}
+Ax + By + C \times w = 0 \\
+Ax + By + D \times w = 0
+\end{cases}$$</span><!-- Has MathJax --><br>這樣很容易就可看出越遠C,D值越小，導致最後匯聚於一點的狀況。這就是在笛卡爾空間中運用齊次座標的效果。</p>
+<p>以圖來表示:</p>
+<img src="https://s3.amazonaws.com/grapher/exports/ec89zgtdv0.png" width="420">
+<ul>
+<li>紅線: $r = 5x + 50$</li>
+<li>藍線: $b = 5x - 50$</li>
+<li>綠色: $g = 5x - 50 \times w$</li>
+<li>紫色: $p = 5x - 50 \times w$</li>
+<li>$w$(深度): $w = 1 - x/100$ (只要看x = 0 ~ 100的範圍, 超過都不在實驗範圍)<br>上圖表示到$ x = 100$這個點的時候會聚在一起，而且是逐漸匯聚。</li>
+</ul>
+<h3 id="物體座標">物體座標</h3><p>不管事人物、花瓶、球，任何物體在建置的時候都有一個<strong>Local Space</strong>，稱為物體座標，在這物體座標中，建置的每個點都是相對於原點。通常都會把物體的每個頂點都定義在原點附近，因為這不是真正在遊戲或場警中出現的位置，所以在這個空間建置的模型，只需要專注建模即可。</p>
+<img src="/images/OBT4/local.png" width="300">
+<h3 id="世界座標">世界座標</h3><p>把物體放到世界座標(<strong>World Space</strong>)，我們利用一個矩陣稱為<strong>Model矩陣</strong>。這是圖學常見的MVP矩陣中的第一段，將物體定位於世界的空間中。而Model矩陣可以由上方所提出的旋轉、位移、縮放所組成，但要注意順序是有差別的，正常我們會先縮放，再旋轉、在位移，原因是如果先位移，那旋轉轉的就不是模組本身，而是將模組以旋轉的方式位移。另外先旋轉，後縮放，在位移也是等可以的，如果不是這兩種方式，那就是有其他用途。總之，經過Model矩陣後，物體就會被放到世界場景中該有的位置。</p>
+<img src="/images/OBT4/world.png" width="420">
+<h3 id="視覺座標">視覺座標</h3><p>世界座標轉到視覺座標(<strong>View Space</strong>)，這裡使用<strong>View矩陣</strong>，而這空間也可以說是攝影機空間，將所有世界座標中的物體，經過旋轉位移後，移動到攝影機的面前，也就是世界的長相都取決於攝影機的位置，拍攝角度。跟現實不同的是，現實是攝影機移動拍攝世界，圖學中是世界移動到攝影機面前，或是移出攝影機外。</p>
+<img src="/images/OBT4/view.png" width="420">
+<p>右下角那個攝影機拍攝畫面就是視覺座標的樣子。其實這裡以圖來表示不是很正確，因為還經過了正交投影，不懂正交投影的話，就先假設圖中就是正確的，因為正交實際上做的事不多。</p>
+<h3 id="投影座標">投影座標</h3><p>最後來到的這個座標叫做(<strong>Clip Space</strong>)，使用到的矩陣稱為<strong>Projection矩陣</strong>，原理是透過兩個平面，一個近，一個遠，然後這個範圍內的物體影像(頂點)投射到近平面上，如果是線性投射(透視投影)，就會是<strong>仿</strong>現實生活的畫面，但也是我們最習慣看到的畫面，如下。</p>
+
+<div class="container-outside-div">
+	<div class="container-inside-div">
+		<img src="/images/OBT4/pers-near.png" style="width: 300px">
+		<p>近物</p>
+	</div>
+	<div class="container-inside-div">
+		<img src="/images/OBT4/pers-far.png" style="width: 300px">
+		<p>遠物</p>
+	</div>
+</div>
+
+<p>而如果是經過正交投影，直接將範圍透的物體作投射，那麼就不會有遠近的感覺。不過正交投影自然有它存在的價值，像是做影子就會使用到，初學者需要多多消化理解這部分，因為正交視覺上頗為不直觀。</p>
+
+<div class="container-outside-div">
+	<div class="container-inside-div">
+		<img src="/images/OBT4/ortho-near.png" style="width: 300px">
+		<p>近物</p>
+	</div>
+	<div class="container-inside-div">
+		<img src="/images/OBT4/ortho-far.png" style="width: 300px">
+		<p>遠物</p>
+	</div>
+</div>
+
+<h2 id="攝影機">攝影機</h2><p>一台攝影機，有拍攝角度跟攝影機的座標位置。這邊就先從簡單的攝影機位置在視覺座標中，與View矩陣到底有什麼關係說起。開始前先說明，畫面是從投影矩陣過後在xyz為-1 ~ 1之間的影像，所以移動到攝影機前這個動作，可能會聯想到，那原本的攝影機在哪? 為何要移動攝影機? 其實預設是有一個假攝影機，他會將那些頂點位於-1 ~ 1之間的描繪出來，所以之前的<a href="/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline">文章</a>才可以顯示出三角形，而這裡是要給讀者知道，要自訂一台攝影機所需要的知識。</p>
+<h3 id="攝影機的位置">攝影機的位置</h3><p>假設一攝影機位於$(1,2,3)$的三維空間中，那若要以該攝影機為視覺出發點該如何做呢? 簡單來說，就是朝向$(-1,-2,-3)$位移就好了，這裡的疑點應該是，攝影機都在$(1,2,3)$了，為何還要移動$(-1,-2,-3)$呢?原因是假定的這台攝影機，實際上也不存在，所有的視野都只會看到位於$(-1,-1,-1)$到$(1,1,1)$這個正方體(或稱為Normalize Device Coordination)中，也因此正中心是在$(0,0,0)$，也就是說要假裝正中心在$(1,2,3)$的話，那就是這世界的每個物體都要往反方向的$(1,2,3)$移動，也就是$(-1,-2,-3)$。舉個實際的例子，當一台攝影機往右邊平移拍攝的時候，攝影機<strong>假設</strong>沒再動，那也就是拍攝的物體往左方移動了，讓你誤以為往右平移拍攝，上面的原理就是如此，以為攝影機從原點$(0,0,0)$跑到$(1,2,3)$，實際上是所有物體從世界座標的$(x,y,z)$變成$(x-1,y-2,z-3)$，產生攝影機在動的錯覺。對了，不管哪個矩陣都是對每個物體的世界座標做相乘，而不是對攝影機這個抽象物體。<br>而攝影機關於位置的位移矩陣如下:<br><span>$$\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; -Camera_x \\
+0 &amp; 1 &amp; 0 &amp; -Camera_y \\
+0 &amp; 0 &amp; 1 &amp; -Camera_z \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+\end{bmatrix}$$</span><!-- Has MathJax --></p>
+<h3 id="攝影機的拍攝角度">攝影機的拍攝角度</h3><p>攝影機的拍攝角度，基本上是由三個向量所定義而成的，攝影機的前方<span>$\vec{C}_f$</span><!-- Has MathJax -->，攝影機的上方<span>$\vec{C}_u$</span><!-- Has MathJax -->，攝影機的右方<span>$\vec{C}_r$</span><!-- Has MathJax -->，有了這三個方向的向量，就可以知道，要怎麼旋轉，不過與其說是旋轉，不如說是<strong>座標轉換</strong>，將原本軸是$(1,0,0)$,$(0,1,0)$,$(0,0,1)$的三個互相垂直的向量，轉換成以<span>$\vec{C}_r$</span><!-- Has MathJax -->, <span>$\vec{C}_u$</span><!-- Has MathJax -->, <span>$\vec{C}_f$</span><!-- Has MathJax -->為xyz軸的空間。<br>首先要先了解原座標空間在矩陣上是如何表示。<br><span>$$\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_{old}\\
+y_{old}\\
+z_{old}\\
+1\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+x_{old}\\
+y_{old}\\
+z_{old}\\
+1\\
+\end{bmatrix}$$</span><!-- Has MathJax --><br>上方斜對角為一的稱為單位矩陣，撇去名詞，就是一個塞了XYZ三軸單位向量的矩陣，且多了一個不會用到的擴充四維。那麼在攝影機座標空間中是如何看待原座標空間中的點呢? 關係如下:<br><span>$$\begin{bmatrix}
+C_r.x &amp; C_r.y &amp; C_r.z &amp; 0\\
+C_u.x &amp; C_u.y &amp; C_u.z &amp; 0\\
+C_f.x &amp; C_f.y &amp; C_f.z &amp; 0\\
+0     &amp; 0     &amp; 0     &amp; 1\\
+\end{bmatrix}
+\begin{bmatrix}
+x_{old}\\
+y_{old}\\
+z_{old}\\
+1\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+C_r.x \cdot x_{old} + C_r.y \cdot y_{old} + C_r.z \cdot z_{old} \\
+C_u.x \cdot x_{old} + C_u.y \cdot y_{old} + C_u.z \cdot z_{old} \\
+C_f.x \cdot x_{old} + C_f.y \cdot y_{old} + C_f.z \cdot z_{old} \\
+1 &Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;&Tab;\\
+\end{bmatrix}$$</span><!-- Has MathJax --><br>而換算矩陣就是<span>$\vec{C}_r$</span><!-- Has MathJax -->, <span>$\vec{C}_u$</span><!-- Has MathJax -->, <span>$\vec{C}_f$</span><!-- Has MathJax -->所構成的。也就是說如果此時你要在X軸移動一單位，需要$(C_r.x, C_r.y, C_r.z)$個單位才能在畫面上向右移動一格，忘了提到，這裡所使用到的攝影機向量都是單位向量。</p>
+<p>而如果要使用攝影機的話，文末提供的GLM有一個名為<code>LookAt(cameraPositon, target, cameraUp)</code>，這個原理就是上方所講的，只是這裡的三個參數，就可以產生出三個向量，像是<span>$\vec{C}_f$</span><!-- Has MathJax --> 只要利用 target - cameraPositon之後Normalize就可以達成，而<span>$\vec{C}_u$</span><!-- Has MathJax -->就是cameraUp，最後的<span>$\vec{C}_r$</span><!-- Has MathJax -->只要利用<span>$\vec{C}_u \times \vec{C}_f$</span><!-- Has MathJax -->就可以得到最後的向量了，這裡外積的順序是yz相乘得x，如果是zy就會是-x，若無法理解請拿原本的$(0,1,0) \times (0,0,1)$來做測試。</p>
+<p>而要操縱攝影機則要了解攝影機旋轉的概念，主要有三種旋轉方式。一個是Pitch，抬頭與低頭的概念。一個是Yaw，左轉與右轉的概念。一個是Roll，趴睡的時候，你的頭就會轉這種以鼻子為軸的方式旋轉。而概念圖如下:</p>
+<img src="/images/OBT4/Camera.png" width="420">
+<p>在座標系統上的概念如下:<br>
+<div class="container-outside-div">
+	<div class="container-inside-div">
+		<img src="/images/OBT4/pitch.gif" style="width: 50%">
+		<p>Pitch</p>
+	</div>
+	<div class="container-inside-div">
+		<img src="/images/OBT4/yaw.gif" style="width: 50%">
+		<p>Yaw</p>
+	</div>
+</div>
+</p>
+<p>Pitch(抬頭)，即是向量往Y軸移動，若假設向量長度為r，那XYZ三者與Pitch夾角$\theta$關係如下:<br><span>$$\begin{align}
+y&amp; = r\sin{\theta}\\
+x&amp; = r\cos{\theta} \cdot \cos{plane}\\
+z&amp; = r\cos{\theta} \cdot \sin{plane}\\
+\end{align}$$</span><!-- Has MathJax --><br>其中 plane 代表的是原本X,Z在平面上的分量，而且是常數。不過如果加入Yaw(回頭)的話，就可以改變這個情況，如上圖所示，Yaw代表的是X朝向Z的旋轉關係，所以只要把 plane 改為 $ \alpha $ 就可以完成Pitch與Yaw的攝影機。<br><span>$$\begin{align}
+y&amp; = r\sin{\theta}\\
+x&amp; = r\cos{\theta} \cdot \cos{\alpha}\\
+z&amp; = r\cos{\theta} \cdot \sin{\alpha}\\
+\end{align}$$</span><!-- Has MathJax --><br>至於Roll這個旋轉，較少出現在攝影機的移動中，不管遊戲還是編輯器中，所使用的攝影機多半是Pitch與Yaw的組合，也因此這裡不會有萬向鎖的問題。不過這裡要注意的是這裡的Yaw跟Pitch與歐拉角中的旋轉不相等，因為本文中的Pitch一次就動到了xyz三點的值，算是一種對任意軸的旋轉，而之前所介紹的旋轉公式是對固定軸，</p>
+<h2 id="透視投影與正交投影">透視投影與正交投影</h2>
+<div class="container-outside-div">
+	<div class="container-inside-div">
+		<img src="/images/OBT4/pers-near.png" style="width: 300px">
+		<p>透視投影 近物</p>
+	</div>
+	<div class="container-inside-div">
+		<img src="/images/OBT4/pers-far.png" style="width: 300px">
+		<p>透視投影 遠物</p>
+	</div>
+</div>
+
+
+<div class="container-outside-div">
+	<div class="container-inside-div">
+		<img src="/images/OBT4/ortho-near.png" style="width: 300px">
+		<p>正交投影 近物</p>
+	</div>
+	<div class="container-inside-div">
+		<img src="/images/OBT4/ortho-far.png" style="width: 300px">
+		<p>正交投影 遠物</p>
+	</div>
+</div>
+
+<p>回顧一下之前看到的兩張圖，透視投影接近現實，越遠的物體就會越小。正交投影屬於理想向量世界，不管物體遠近，都會顯示他原本定義的大小。而不管透視或正交假想上都有一個遠盤(far plane)，跟一個近盤(near plane)，在兩盤之間的物體就會出現在畫面上，超出兩盤的都無法看見。</p>
+<img src="/images/OBT4/persproj.png" width="300">
+<p>而這個階段的目的是為了將View階段的<span>$x_{view},y_{view},z_{view},1$</span><!-- Has MathJax -->，轉換到Projection階段的<span>$x_{clip},y_{clip},z_{clip},w_{clip}$</span><!-- Has MathJax -->，順道一提，clip space也可以稱為projection space。概念公式如下:<br><span>$$\begin{pmatrix}
+x_{ndc} \\
+y_{ndc} \\
+z_{ndc} \\
+1       \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{x_{clip}}{w_{clip}} \\
+\frac{y_{clip}}{w_{clip}} \\
+\frac{z_{clip}}{w_{clip}} \\
+\frac{w_{clip}}{w_{clip}} \\
+\end{pmatrix}$$</span><!-- Has MathJax --><br>算出Clip space後，交給OpenGL會自動用透視除法(perspective devision)，來轉成NDC空間的座標，而上方除以$w$的概念就是透視除法，也是齊次座標中所使用到的概念，因為<span>$w_{clip}$</span><!-- Has MathJax -->，其實是view space的<span>$z_{view}$</span><!-- Has MathJax -->。</p>
+<h3 id="透視投影">透視投影</h3><p>先從困難的透視投影講起，之後正交就簡單了，在這個階段主要有四個步驟，當然化為程式都是一個數學式，不過要理解透視投影的每個步驟就要一步一步分開詳細探討。</p>
+<h4 id="第一步:X的線性投影">第一步:X的線性投影</h4>
+<div class="container-outside-div">
+	<div class="container-inside-div">
+		<img src="/images/OBT4/persUp.png" style="width: 300px">
+		<p>從上方看透視投影區</p>
+	</div>
+	<div class="container-inside-div">
+		<img src="/images/OBT4/persSide.png" style="width: 300px">
+		<p>從側邊看透視投影區</p>
+	</div>
+</div>
+
+<p>上圖中，e代表的是View Space中的座標，p代表projection座標，要注意的是，這並不是clip space，就是說這個階段是投影座標。<br>這個階段要產出的線性轉換如下:<br><span>$$\begin{align}
+x_p&amp; : x_e = -n : ze \\
+x_p&amp; = -n\frac{x_e}{z_e} = \frac{n x_e}{-z_e} \\
+y_p&amp; : y_e = -n : ze \\
+y_p&amp; = -n\frac{y_e}{z_e} = \frac{n y_e}{-z_e} \\
+\end{align}$$</span><!-- Has MathJax --></p>
+<h4 id="第二步:壓縮至-1_~_1">第二步:壓縮至-1 ~ 1</h4><p>為何要壓縮至-1 ~ 1呢?這不是clip space到NDC空間才要由OpenGL轉換的嗎? 沒錯，不過投影階段直接就運算到最終的空間NDC，最後用了齊次座標的技巧，才讓NDC變回clip空間，接下來可以這技巧是如何變的，不過為什麼不直接給NDC給OpenGL，要換成clip space，個人臆測是因為OpenGL對深度有一個叫做Depth test或Stencil test的部分會用到。</p>
+<p>首先將投影座標與Normalize後座標(NDC)的關係找出來:</p>
+
+<div class="container-outside-div">
+	<div class="container-inside-div">
+		<img src="/images/OBT4/perswidthnormal.png" style="width: 300px">
+	</div>
+	<div class="container-inside-div">
+		<img src="/images/OBT4/pershightnormal.gif" style="width: 300px">
+	</div>
+</div>
+
+<p>上方轉換成數學關係式如下:<br><span>$$\begin{align}
+x_n&amp; = a x_p + b\\
+x_p&amp; = r, x_n = 1 \\
+1&amp; = ar + b\\
+x_p&amp; = l, x_n = -1\\
+-1&amp; = al + b\\
+a&amp; = \frac{1-(-1)}{r-l} ,
+b = \frac{l+r}{l-r} \\
+x_n&amp; = \frac{2}{r-l}x_p + \frac{l+r}{l-r}\\
+\end{align}$$</span><!-- Has MathJax --></p>
+<p>側視圖的公式大同小異:<br><span>$$\begin{align}
+y_n&amp; = a y_p + c\\
+y_p&amp; = t, y_n = 1 \\
+1&amp; = ar + c\\
+t_p&amp; = l, t_n = -1\\
+-1&amp; = ab + c\\
+a&amp; = \frac{1-(-1)}{t-b} ,
+c = \frac{b+t}{b-t} \\
+y_n&amp; = \frac{2}{t-b}x_p + \frac{b+t}{b-t}\\
+\end{align}$$</span><!-- Has MathJax --></p>
+<h4 id="第三步:第一步代入第二步">第三步:第一步代入第二步</h4><p>到這個步驟是view -&gt; proj -&gt; ndc -&gt; clip，第一步找出view -&gt; proj的關係，第二步找出proj -&gt; ndc的關係，這裡當然就是要找出ndc -&gt; clip的關係，以view表示，畢竟要將view轉到clip。那就直接進入數學式吧。<br><span>$$\bbox[5px,border:2px solid black] 
+{
+\begin{equation}
+\begin{split}
+x_n =&amp; \frac{2}{r-l}x_p + \frac{l+r}{l-r} &amp; x_p = \frac{n x_e}{-z_e}\\
+&Tab;=&amp; \frac{2}{r-l}x_p - \frac{l+r}{r-l}
+&Tab;= \frac{2 \cdot \frac{n x_e}{-z_e} }{r-l} - \frac{l+r}{r-l}\\
+&Tab;=&amp; \frac{2 n x_e}{(r-l)(-z_e)} - \frac{l+r}{r-l}
+&Tab;= \frac{\frac{2n}{r-l} \cdot x_e}{-z_e} - \frac{l+r}{r-l}\\
+&Tab;=&amp; \frac{\frac{2n}{r-l} \cdot x_e}{-z_e} + \frac{\frac{l+r}{r-l} \cdot z_e}{-z_e}
+&Tab;= \frac{ \frac{2n}{r-l}\cdot x_e + \frac{l+r}{r-l} \cdot z_e }{-z_e}\\
+&Tab;=&amp; \frac{x_c}{-z_e} &amp; x_c = \frac{2n}{r-l}\cdot x_e + \frac{l+r}{r-l} \cdot z_e \\
+\end{split}
+\end{equation}
+}$$</span><!-- Has MathJax --><br>根據以上的NDC與View之間的關係，得到一個新的Clip座標<span>$x_c$</span><!-- Has MathJax -->，有發現為什麼$-z$會被留在那嗎? 那就是將齊次座標的概念留下，不過只看一個還看不出來，當每個座標都需要$-z$的輔助後，就會理解這樣的用意。不過還是要強調，這個步驟是將NDC的概念退回Clip的步驟，比較不是偏數學的概念，算是程式技巧才有Clip Space的存在。而y的方面就如同上方，讀者可以自行推導，直接進入下一步。</p>
+<h4 id="第四步:建立矩陣與填補矩陣未知部分">第四步:建立矩陣與填補矩陣未知部分</h4><span>$$\begin{bmatrix} 
+x_c \\
+y_c \\
+z_c \\
+w_c \\
+\end{bmatrix}
+= 
+\begin{bmatrix} 
+\frac{2n}{r-l} &amp; 0&Tab;&Tab;&Tab;    &amp; -\frac{r+l}{r-l} &amp; 0\\
+0 &Tab;&Tab;&Tab;   &amp; \frac{2n}{t-b} &amp; \frac{t+b}{t-b} &amp; 0\\ 
+0&Tab;&Tab;&Tab;   &amp; 0&Tab;&Tab;&Tab;    &amp; A &Tab;&Tab;&Tab;  &amp; B\\
+0&Tab;&Tab;&Tab;   &amp; 0 &Tab;&Tab;&Tab;    &amp; -1 &Tab;&Tab;&Tab;  &amp; 0\\
+\\
+\end{bmatrix}
+\begin{bmatrix}
+x_e\\
+y_e\\
+z_e\\
+w_e\\
+\end{bmatrix}$$</span><!-- Has MathJax -->
+<p>首先前兩行(row)，就是我們第三步所推導的，而第四行只有一個$-1$，是因為已經決定讓<span>$-z_e$</span><!-- Has MathJax -->，當作最後要做透視除法的參數，也許可以等第三行推完之後，參考本節一開始所說的概念公式，來理解這段。而第三行前兩個值是$0$，因為透視投影主要是將投影空間中依照深度距離不同位置的$x$,$y$，投影到近盤上，既然其他人都依賴<span>$z_e$</span><!-- Has MathJax -->，<span>$z_e$</span><!-- Has MathJax -->也就不會依賴回去。因此只剩下兩個未知參數需要處理，而View Space中<span>$w_e$</span><!-- Has MathJax -->是$1$，因此B成為輔助參數，讓<span>$z_c$</span><!-- Has MathJax -->與<span>$z_e$</span><!-- Has MathJax -->建立線性關係，就變成以下的形式。<br><span>$z_c = Az_e + B$</span><!-- Has MathJax --><br>而要轉換回可以逆推導的情形，必須轉回NDC，因為clip space本身並沒有實質意義，這部分對剛接觸的人會有很多困惑，因為前面都是正向工程，到這裡要推<span>$z_c$</span><!-- Has MathJax -->卻要用逆向工程，返回<span>$z_n$</span><!-- Has MathJax -->，在回到<span>$z_c$</span><!-- Has MathJax -->。<br><span>$z_n = \frac{z_c}{w_c} = \frac{Az_e + B}{-z_e} = \frac{A z_e + B}{-z_e}$</span><!-- Has MathJax --><br>其實這段Dowen嘗試過正向推導，不過由於沒有<span>$z_p$</span><!-- Has MathJax -->與<span>$z_e$</span><!-- Has MathJax -->的何關係式，所以推不出來。<br><span>$$\begin{align}
+z_n&amp; = \frac{A z_e + B}{-z_e}\\
+z_n&amp; = -1, z_e = -n \\
+-n&amp; = -An + B\\
+z_n&amp; = l, z_e = -f\\
+-f&amp; = -Af + B\\
+a&amp; = -\frac{f+n}{f-n} ,
+b = -\frac{2fn}{f-n} \\
+z_n&amp; = \frac{ -\frac{f+n}{f-n}z_e-\frac{2fn}{f-n} }{-z_e}\\
+\end{align}$$</span><!-- Has MathJax --></p>
+<p>回到矩陣的形式如下:<br><span>$$\begin{bmatrix} 
+x_c \\
+y_c \\
+z_c \\
+w_c \\
+\end{bmatrix}
+= 
+\begin{bmatrix} 
+\frac{2n}{r-l} &amp; 0&Tab;&Tab;&Tab;    &amp; -\frac{r+l}{r-l} &amp; 0\\
+0 &Tab;&Tab;&Tab;   &amp; \frac{2n}{t-b} &amp; \frac{t+b}{t-b} &amp; 0\\ 
+0&Tab;&Tab;&Tab;   &amp; 0&Tab;&Tab;&Tab;    &amp; -\frac{f+n}{f-n}&amp; -\frac{2fn}{f-n}\\
+0&Tab;&Tab;&Tab;   &amp; 0 &Tab;&Tab;&Tab;    &amp; -1 &Tab;&Tab;&Tab;  &amp; 0\\
+\\
+\end{bmatrix}
+\begin{bmatrix}
+x_e\\
+y_e\\
+z_e\\
+w_e\\
+\end{bmatrix}$$</span><!-- Has MathJax --></p>
+<p>以上是最終矩陣，將View轉成Clip空間，而通常不會使用以上的矩陣。我們通常使用的是正方形近盤，所以將$t = r = -l = -b$，矩陣會變換如下:<br><span>$$\begin{bmatrix} 
+\frac{n}{r} &amp; 0&Tab;&Tab;&Tab;    &amp; 0 &amp; 0\\
+0 &Tab;&Tab;&Tab;   &amp; \frac{n}{r} &amp; 0 &amp; 0\\ 
+0&Tab;&Tab;&Tab;   &amp; 0&Tab;&Tab;&Tab;    &amp; -\frac{f+n}{f-n}&amp; -\frac{2fn}{f-n}\\
+0&Tab;&Tab;&Tab;   &amp; 0 &Tab;&Tab;&Tab;    &amp; -1 &Tab;&Tab;&Tab;  &amp; 0\\
+\\
+\end{bmatrix}
+\begin{bmatrix}
+x_e\\
+y_e\\
+z_e\\
+w_e\\
+\end{bmatrix}$$</span><!-- Has MathJax --><br>接下來檢視一下OpenGL會用到的GLM函式<code>glm::perspective(fov, aspect, near, far)</code>。其矩陣原理如下:</p>
+<span>$$\begin{bmatrix} 
+X_{spec} &amp; 0&Tab;&Tab;&Tab;    &amp; 0 &amp; 0\\
+0 &Tab;&Tab;&Tab;   &amp; Y_{spec} &amp; 0 &amp; 0\\ 
+0&Tab;&Tab;&Tab;   &amp; 0&Tab;&Tab;&Tab;    &amp; -\frac{f+n}{f-n}&amp; -\frac{2fn}{f-n}\\
+0&Tab;&Tab;&Tab;   &amp; 0 &Tab;&Tab;&Tab;    &amp; -1 &Tab;&Tab;&Tab;  &amp; 0\\
+\\
+\end{bmatrix}$$</span><!-- Has MathJax -->
+<span>$$\begin{align}
+Y_{spec}&amp; = \cot({fov/2}) \\
+X_{spec}&amp; = \frac{Y_{spec}}{aspect}
+\end{align}$$</span><!-- Has MathJax -->
+<ul>
+<li>fov: field of view，視野的意思，通常視野是$45°$，根據自定義而有所不同，至於為何是$cot$，看一下上上個矩陣，對邊分之鄰邊，而且視野只有一半。</li>
+<li>aspect: 視窗的比例，若視窗是500x500 這裡只要給1.0即可，若是800x600這裡就要給定800/600，在畫面就會顯示正常，原因是整個畫面要顯示-1 ~ 1的正方體，那x的部分就得多壓縮一點。</li>
+</ul>
+<h3 id="正交投影">正交投影</h3><img src="/images/OBT4/ortho.png" width="300">
+<p>正交投影，直接將點平行投影到投影近盤上，所以不會有<span>$x_p$</span><!-- Has MathJax -->與<span>$x_e$</span><!-- Has MathJax -->不同的問題，直接做線性轉換至NDC。<br><span>$$\begin{align}
+x_n&amp; = \frac{2}{r-l}x_e - \frac{r+l}{r-l}\\
+y_n&amp; = \frac{2}{t-b}y_e - \frac{t+b}{t-b}\\
+z_n&amp; = \frac{-2}{f-n}z_e - \frac{f+n}{f-n}\\
+\end{align}$$</span><!-- Has MathJax --><br>由於<span>$x_e$</span><!-- Has MathJax -->與 <span>$x_n$</span><!-- Has MathJax --> 沒有像透視投影跟深度有關，所以矩正很簡單的如下:<br><span>$$\begin{bmatrix} 
+\frac{2}{r-l} &amp; 0&Tab;&Tab;&Tab;    &amp; -\frac{r+l}{r-l} &amp; 0\\
+0 &Tab;&Tab;&Tab;   &amp; \frac{2}{t-b} &amp; -\frac{t+b}{t-b} &amp; 0\\ 
+0&Tab;&Tab;&Tab;   &amp; 0&Tab;&Tab;&Tab;    &amp; -\frac{2}{f-n}&amp; -\frac{f+n}{f-n}\\
+0&Tab;&Tab;&Tab;   &amp; 0 &Tab;&Tab;&Tab;    &amp; -1 &Tab;&Tab;&Tab;  &amp; 0\\
+\\
+\end{bmatrix}$$</span><!-- Has MathJax --></p>
+<h2 id="直線與曲線">直線與曲線</h2><h3 id="直線">直線</h3><p>直線，最常想到的第一個公式是 $ y = ax + b $ ，但是利用向量表示，在電腦繪圖中反而會比較適合做Intepolation。向量表示如下:<br><span>$$\begin{align}
+P&amp; = A + t\vec{D}  \\
+\vec{D}&amp; = (B - A) \\
+P&amp; = A + t(B-A)    \\
+\end{align}$$</span><!-- Has MathJax --><br>上方的公式意義是表示A要往B移動，如果t = 1，表示點P已經從A移動到B。小於1的任何數值都代表還在路途中，這樣的表示法比原本的表示法的移動模式要直觀許多。</p>
+<img src="/images/OBT4/line.png" width="420">
+<blockquote><h4 id="Intepolation(內插)">Intepolation(內插)</h4><p>根據現有的資訊進行階段式前進，除了有關線的公式，利用向量步步前進的概念外，OpenGL在顏色上也有這樣的機制。Fragment Shader階段時，若使用者定義三個點各自的顏色，未給定其他像素的意義，OpenGL就會進行顏色的內插。假設有AB兩點，一者紅，一者藍，OpenGL就會自動用內插的方式進行顏色計算，概念如此: <span>$Color_new = Color_A + t(Color_B - Color_A) = (1-t)Color_A + tColor_B $$</span><!-- Has MathJax -->。而GLSL語法裡面進行這樣計算的是一個叫<code>mix(a, b, t)</code>的內建函式，專門用來處理以上的動作。</p>
+</blockquote>
+<h3 id="曲線">曲線</h3><p>最簡單的直線是利用兩條直線的方式混和移動而成，概念圖如下:</p>
+<img src="/images/OBT4/bicurve.png" width="420">
+<span>$$\begin{align}
+D&amp; = A + t(B-A)&Tab;   \\
+E&amp; = B + t(C-B)&Tab;   \\
+P&amp; = D + t(E-D)&Tab;   \\
+P&amp; = A + t(B-A) + t( B+t(C-B) - (A+t(B-A)) )&Tab;   \\
+P&amp; = A + t(B-A) + Bt+t^2(C-B) - At - t^2(B-A))     \\
+P&amp; = A + t(B-A + B-A) + t^2(C-B-B-A)   &Tab;&Tab;       \\
+P&amp; = A + 2t(B-A) + t^2(C-2B-A)   &Tab;&Tab;           \\
+\end{align}$$</span><!-- Has MathJax -->
+<p>透過兩條線瞬間產生出來的點，在將這兩點做直線移動就是以上的概念，當初Dowen看了許久，到<a href="http://pomax.github.io/bezierinfo/" target="_blank" rel="external">這網站</a>才了解到為何可以這樣混合公式的最初契機。這邊小題外話，有時候數學無法理解，是因為很多網站都沒提到其細部概念，也就是最初觀察到此現象的由來或契機，只說這樣是對的，然後用一堆複雜的數學佐證，所以才導致學習有礙。</p>
+<p>剛剛其實就是有名的貝茲曲線，而這裡是介紹三次貝茲曲線，如果看懂的話，不論幾次也能自己推導了。</p>
+<img src="/images/OBT4/cubiccurve.png" width="420">
+<span>$$\begin{align}
+E&amp; = A + t(B-A)&Tab;   \\
+F&amp; = B + t(C-B)&Tab;   \\
+G&amp; = C + t(D-C)&Tab;   \\
+H&amp; = E + t(F-E)&Tab;   \\
+I&amp; = F + t(G-F)&Tab;   \\
+P&amp; = H + t(I-H)&Tab;   \\
+\end{align}$$</span><!-- Has MathJax -->
+<p>二次懂，三次問題就不大。這裡就提一個貝茲曲線上的專有名詞<strong>Control Point</strong>，像是上方二次貝茲的控制點就是ABC，三次是ABCD，藉由更改這些點的位置，就可以改變曲線角度，理解控制點，就可以微調算出想要的曲線角度了。</p>
+<h2 id="GLM">GLM</h2><p><a href="http://glm.g-truc.net/0.9.7/index.html" target="_blank" rel="external">GLM(OpenGL Mathematics)</a>，是一個專門為OpenGL設計的數學函式庫，特別的是，它只需要將標頭檔加入，不需要引入lib，或是dll之類的組態檔，就可以引入環境中，所以不會有環境建置的困擾，首先只需要將<a href="https://github.com/g-truc/glm/releases" target="_blank" rel="external">標頭檔資料夾</a>放到適當的位置，之後加入Include，就完成基本的載入。</p>
+<img src="/images/OBT4/includeglm.png" width="420">
+<p>之後加入泛用的程式標頭。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;glm/glm.hpp&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;glm/gtc/matrix_transform.hpp&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;glm/gtc/type_ptr.hpp&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>測試一下矩陣乘法，理解一下概念。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>), glm::vec4(<span class="number">2.0</span>), glm::vec4(<span class="number">3.0</span>), glm::vec4(<span class="number">4.0</span>));</span><br><span class="line"><span class="keyword">int</span> mlenght = <span class="number">16</span>;</span><br><span class="line">glm::vec4 helloVector = glm::vec4(<span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line"><span class="keyword">int</span> vlenght = helloVector.length();</span><br><span class="line"><span class="keyword">float</span> *matrix = glm::value_ptr(helloMatrix);</span><br><span class="line"><span class="keyword">float</span> *<span class="built_in">vector</span> = glm::value_ptr(helloVector);</span><br><span class="line">glm::vec4 vresult = helloMatrix * helloVector;</span><br><span class="line"><span class="keyword">float</span> *result = glm::value_ptr(vresult);</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Matrix:"</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mlenght; i++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; matrix[i] &lt;&lt; <span class="string">","</span>;</span><br><span class="line">	<span class="keyword">if</span>((i+<span class="number">1</span>)%<span class="number">4</span> == <span class="number">0</span>)</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Vector:"</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vlenght; i++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">vector</span>[i] &lt;&lt; <span class="string">","</span>;</span><br><span class="line">	<span class="keyword">if</span> (i % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; i != <span class="number">0</span>)</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Result:"</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vlenght; i++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; result[i] &lt;&lt; <span class="string">","</span>;</span><br><span class="line">	<span class="keyword">if</span> (i % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; i != <span class="number">0</span>)</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>這會產生的結果如下:</p>
+<img src="/images/OBT4/glmresult.png" width="420">
+<p>有發現結果不是正常的矩陣運算嗎?因為OpenGL在定義矩陣的時候都是先定義Column，再來才是Row，用數學來檢視一下結果的原因吧。<br><span>$$\begin{bmatrix}
+1&amp;1&amp;1&amp;1 \\
+2&amp;2&amp;2&amp;2 \\
+3&amp;3&amp;3&amp;3 \\
+4&amp;4&amp;4&amp;4 \\
+\end{bmatrix}
+\begin{bmatrix}
+1       \\
+0&Tab;&Tab;\\
+1&Tab;&Tab;\\
+0&Tab;    \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+2       \\
+4&Tab;&Tab;\\
+6&Tab;&Tab;\\
+8&Tab;    \\
+\end{bmatrix}$$</span><!-- Has MathJax --><br>上面如果是想要的結果，但實際上定義的向量是這樣被矩陣擺放的:<br><span>$$\begin{bmatrix}
+1&amp;2&amp;3&amp;4 \\
+1&amp;2&amp;3&amp;4 \\
+1&amp;2&amp;3&amp;4 \\
+1&amp;2&amp;3&amp;4 \\
+\end{bmatrix}
+\begin{bmatrix}
+1       \\
+0&Tab;&Tab;\\
+1&Tab;&Tab;\\
+0&Tab;    \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+4       \\
+4&Tab;&Tab;\\
+4&Tab;&Tab;\\
+4&Tab;    \\
+\end{bmatrix}$$</span><!-- Has MathJax --><br>因此，如果要修正的話必須要改成如下形式:</p>
+<pre><code class="cpp"><span class="comment">//glm::mat4 helloMatrix = glm::mat4(glm::vec4(1.0), glm::vec4(2.0), glm::vec4(3.0), glm::vec4(4.0));</span>
+glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<span class="number">2.0</span>,<span class="number">3.0</span>,<span class="number">4.0</span>), glm::vec4(<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>),
+</code></pre>
+<p>這樣結果就修改完成了。</p>
+<img src="/images/OBT4/glmcorrectresult.png" width="420">
+<p>而<code>glm::value_ptr</code>這個函式，原始的定義是根據傳入GLM的參數，根據其最原始型態傳回該參數的指標。而本範例是傳入GLM矩陣、向量，使其傳回浮點數指標，或說是一段float陣列。</p>
+<h2 id="其他">其他</h2><h4 id="四元數"><a href="http://www.3dgep.com/understanding-quaternions/" title="四元數" target="_blank" rel="external">四元數</a></h4><h4 id="不同的曲線"><a href="https://www.youtube.com/watch?v=LFFPbBe7aAs" target="_blank" rel="external">不同的曲線</a></h4><h4 id="攝影機加入Roll旋轉"><a href="http://in2gpu.com/2016/03/14/opengl-fps-camera-quaternion/" target="_blank" rel="external">攝影機加入Roll旋轉</a></h4><h2 id="結語">結語</h2><p>在研究OpenGL上面會碰到很多數學，但是如果找對適當的文章或是解釋，就能打通那任督二脈。而Dowen就是那種需要自己尋找能理解的文章的人。因為有些網站，或是學校的教學方式，就是教學者自己沒咀嚼好，就抽象地教給學習者，所以導致教者不知學者所礙，中間有代溝。Dowen寫的教學文主要是想解決這樣的代溝，所以努力地做圖跟以自己曾經的困惑，自問自答的方式來幫助有同樣困惑的讀者。不過比較差的是以藍寶書的章節為出文的篇幅，如果以後有足夠的經驗與時間，也許會重新製作一份真正的初心者教學吧!</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>這一章節主要是介紹一些數學的基礎，如果發現哪個部分不熟的話，最好能親自磨練一下，因為以後常常需要的時候，如果不懂箇中原理，那麼在偵錯或是實作上，會遇到一些麻煩。當然領悟過後能寫起來是最推薦的方式，以後忘了的時候瞟一眼就行了。初學者如果看不懂本篇的話，可以暫且跳過無妨，當有用到再回頭看，因為現在的文章是搭配官方藍寶書的章節推進，而藍寶書比較適合中階以上閱讀者，所以本篇對初學者來說應該很吃力。<br>接下來會介紹的內容基本上有:</p>
+<ul>
+<li>向量</li>
+<li>反射與折射</li>
+<li>矩陣</li>
+<li>相關座標系統</li>
+<li>攝影機</li>
+<li>透視投影與正交投影</li>
+<li>直線與曲線</li>
+<li>GLM</li>
+</ul>]]>
+    
+    </summary>
+    
+      <category term="Euler Angle" scheme="http://tokenyet.github.io/tags/Euler-Angle/"/>
+    
+      <category term="GLM" scheme="http://tokenyet.github.io/tags/GLM/"/>
+    
+      <category term="Intepolation" scheme="http://tokenyet.github.io/tags/Intepolation/"/>
+    
+      <category term="OpenGL" scheme="http://tokenyet.github.io/tags/OpenGL/"/>
+    
+      <category term="OpenGL Tutorial" scheme="http://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
+    
+      <category term="OpenGL介紹" scheme="http://tokenyet.github.io/tags/OpenGL%E4%BB%8B%E7%B4%B9/"/>
+    
+      <category term="OpenGL入門教學" scheme="http://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
+    
+      <category term="OpenGL基礎" scheme="http://tokenyet.github.io/tags/OpenGL%E5%9F%BA%E7%A4%8E/"/>
+    
+      <category term="OpenGL教學" scheme="http://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
+    
+      <category term="Reflect" scheme="http://tokenyet.github.io/tags/Reflect/"/>
+    
+      <category term="Refract" scheme="http://tokenyet.github.io/tags/Refract/"/>
+    
+      <category term="Rotation" scheme="http://tokenyet.github.io/tags/Rotation/"/>
+    
+      <category term="bezier curve" scheme="http://tokenyet.github.io/tags/bezier-curve/"/>
+    
+      <category term="canera" scheme="http://tokenyet.github.io/tags/canera/"/>
+    
+      <category term="clip space" scheme="http://tokenyet.github.io/tags/clip-space/"/>
+    
+      <category term="cubic bezier curve" scheme="http://tokenyet.github.io/tags/cubic-bezier-curve/"/>
+    
+      <category term="local space" scheme="http://tokenyet.github.io/tags/local-space/"/>
+    
+      <category term="lookat" scheme="http://tokenyet.github.io/tags/lookat/"/>
+    
+      <category term="matrix" scheme="http://tokenyet.github.io/tags/matrix/"/>
+    
+      <category term="ndc" scheme="http://tokenyet.github.io/tags/ndc/"/>
+    
+      <category term="orthographic" scheme="http://tokenyet.github.io/tags/orthographic/"/>
+    
+      <category term="perspective" scheme="http://tokenyet.github.io/tags/perspective/"/>
+    
+      <category term="perspective division" scheme="http://tokenyet.github.io/tags/perspective-division/"/>
+    
+      <category term="projection" scheme="http://tokenyet.github.io/tags/projection/"/>
+    
+      <category term="scale" scheme="http://tokenyet.github.io/tags/scale/"/>
+    
+      <category term="translate" scheme="http://tokenyet.github.io/tags/translate/"/>
+    
+      <category term="vector" scheme="http://tokenyet.github.io/tags/vector/"/>
+    
+      <category term="view space" scheme="http://tokenyet.github.io/tags/view-space/"/>
+    
+      <category term="世界座標" scheme="http://tokenyet.github.io/tags/%E4%B8%96%E7%95%8C%E5%BA%A7%E6%A8%99/"/>
+    
+      <category term="內插" scheme="http://tokenyet.github.io/tags/%E5%85%A7%E6%8F%92/"/>
+    
+      <category term="內積" scheme="http://tokenyet.github.io/tags/%E5%85%A7%E7%A9%8D/"/>
+    
+      <category term="反射" scheme="http://tokenyet.github.io/tags/%E5%8F%8D%E5%B0%84/"/>
+    
+      <category term="向量" scheme="http://tokenyet.github.io/tags/%E5%90%91%E9%87%8F/"/>
+    
+      <category term="外積" scheme="http://tokenyet.github.io/tags/%E5%A4%96%E7%A9%8D/"/>
+    
+      <category term="座標系統" scheme="http://tokenyet.github.io/tags/%E5%BA%A7%E6%A8%99%E7%B3%BB%E7%B5%B1/"/>
+    
+      <category term="折射" scheme="http://tokenyet.github.io/tags/%E6%8A%98%E5%B0%84/"/>
+    
+      <category term="攝影機" scheme="http://tokenyet.github.io/tags/%E6%94%9D%E5%BD%B1%E6%A9%9F/"/>
+    
+      <category term="歐拉角" scheme="http://tokenyet.github.io/tags/%E6%AD%90%E6%8B%89%E8%A7%92/"/>
+    
+      <category term="正交投影" scheme="http://tokenyet.github.io/tags/%E6%AD%A3%E4%BA%A4%E6%8A%95%E5%BD%B1/"/>
+    
+      <category term="物體座標" scheme="http://tokenyet.github.io/tags/%E7%89%A9%E9%AB%94%E5%BA%A7%E6%A8%99/"/>
+    
+      <category term="直線" scheme="http://tokenyet.github.io/tags/%E7%9B%B4%E7%B7%9A/"/>
+    
+      <category term="矩陣" scheme="http://tokenyet.github.io/tags/%E7%9F%A9%E9%99%A3/"/>
+    
+      <category term="透視投影" scheme="http://tokenyet.github.io/tags/%E9%80%8F%E8%A6%96%E6%8A%95%E5%BD%B1/"/>
+    
+      <category term="透視除法" scheme="http://tokenyet.github.io/tags/%E9%80%8F%E8%A6%96%E9%99%A4%E6%B3%95/"/>
+    
+      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[OpenGL 入門教學 3: Pipeline]]></title>
-    <link href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-3-Pipeline/"/>
-    <id>http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-3-Pipeline/</id>
-    <published>2016-07-10T15:47:49.000Z</published>
-    <updated>2016-08-09T10:48:59.484Z</updated>
+    <link href="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/"/>
+    <id>http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/</id>
+    <published>2016-08-06T06:47:28.000Z</published>
+    <updated>2016-08-17T17:44:09.524Z</updated>
     <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。</p>
-<h2 id="CPU到GPU第一階段_-_Vertex_Shader的資料傳送">CPU到GPU第一階段 - Vertex Shader的資料傳送</h2><p>GPU在開始執行Vertex Shader前面，有一個動作稱為<em>Vertex Fetching</em>，這個動作會將我們在程式中寫的一個稱為<em>Vertex Attribute</em>的部分讀出來，而後傳送至GPU處。其中GPU必須由 <code>layout (location = 0) in</code> 來定義輸入要從GPU的哪個位置中取出，而CPU則是藉由 <code>glVertexAttribXXX(0, data)</code> 來將資料填入記憶體等待<em>Vertex Fetching</em>到GPU中layout的部分。</p>
+<h2 id="CPU到GPU第一階段_-_Vertex_Shader的資料傳送">CPU到GPU第一階段 - Vertex Shader的資料傳送</h2><p>GPU在開始執行Vertex Shader前面，有一個動作稱為<em>Vertex Fetching</em>，這個動作會將我們在程式中寫的一個稱為<em>Vertex Attribute</em>的部分讀出來，而後傳送至GPU處。其中GPU必須由 <code>layout (location = 0) in</code> 來定義輸入要從GPU的哪個位置中取出，而CPU則是藉由 <code>glVertexAttribXXX(0, data)</code> 來將資料填入記憶體等待<em>Vertex Fetching</em>到GPU中layout的部分。<br><a id="more"></a></p>
 <h3 id="動手做_-_CPU_to_GPU">動手做 - CPU to GPU</h3><p>首先在迴圈中加入要傳遞的資料與其對應的function，都是以 <code>glVertexAttrib</code> 開頭的傳遞函式。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">glBindVertexArray(vertexArrayObject);</span><br><span class="line"></span><br><span class="line">GLfloat data[] = &#123;</span><br><span class="line">	(<span class="keyword">float</span>)<span class="built_in">sin</span>(glfwGetTime()) * <span class="number">0.5f</span>,</span><br><span class="line">	(<span class="keyword">float</span>)<span class="built_in">cos</span>(glfwGetTime()) * <span class="number">0.6f</span>,</span><br><span class="line">	<span class="number">0.0f</span>, <span class="number">0.0f</span></span><br><span class="line">&#125;;</span><br><span class="line">glVertexAttrib4fv(<span class="number">0</span>, data);</span><br><span class="line">glDrawArrays(GL_TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">glBindVertexArray(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
 <p><em>double glfwGetTime(void)</em> : 回傳時間參數</p>
 <p><em>void glVertexAttrib[X/fm/vt]()</em></p>
@@ -147,7 +869,8 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。</p>
-<h2 id="CPU到GPU第]]>
+<h2 id="CPU到GPU第一階段_-_Vertex_Shader的資料傳送">CPU到GPU第一階段 - Vertex Shader的資料傳送</h2><p>GPU在開始執行Vertex Shader前面，有一個動作稱為<em>Vertex Fetching</em>，這個動作會將我們在程式中寫的一個稱為<em>Vertex Attribute</em>的部分讀出來，而後傳送至GPU處。其中GPU必須由 <code>layout (location = 0) in</code> 來定義輸入要從GPU的哪個位置中取出，而CPU則是藉由 <code>glVertexAttribXXX(0, data)</code> 來將資料填入記憶體等待<em>Vertex Fetching</em>到GPU中layout的部分。<br>]]>
+    
     </summary>
     
       <category term="Clipping" scheme="http://tokenyet.github.io/tags/Clipping/"/>
@@ -189,14 +912,14 @@
     <link href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/"/>
     <id>http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/</id>
     <published>2016-07-10T15:47:49.000Z</published>
-    <updated>2016-08-05T15:02:04.436Z</updated>
+    <updated>2016-08-15T16:59:58.486Z</updated>
     <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>本系列文將使用<em>OpenGL 4.5</em>版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！</p>
 <h2 id="從點開始">從點開始</h2><p>要畫一個三角形之前，總要會在畫面上畫出一個點來。在那之前，由於使用的是Modern版OpenGL，所以做任何事都要準備兩個東西，其中一個是<em>「Vertex Array Object」</em>，簡稱<em>VAO</em>，另一個則是Shader，包含基礎的兩個稱為Vertex Shader與Fragment Shader。</p>
 <ul>
 <li>Shader: 其實並不只有Vertex Shader與Fragment Shader，還有Geomerty Shader、Tessellation Control Shader、Tessellation Evaluation Shader，由於屬於初階文章，所以暫不探討。而Shader其中必寫的其實只有Fragment就好，詳細請上網考查。</li>
 </ul>
 <p>首先在了解畫一個點需要準備貌似很多東西時，會認為很繁瑣。當深入一點後，將了解僅是一連串常用的手續，以後只要複製貼上加修改。而這裡就先示意部分的OpenGL pipeline，也就是讀者將碰到的pipeline，倘若一次列出全部流程，會猶豫一陣子。<br><img src="/images/OBT2/opengl_easy_pipeline.png" width="600"><br>上方的流程是說明，使用者可以<em>以某種方式</em>將一些資料傳給Vertex Shader，本文章目前不會先做傳資料的動作，先給一個小概念。 而傳完之後Vertex Shader仍會以<em>某種方式</em>將資料傳給流程中的下一個Shader，就是Fragment Shader，最後Fragment Shader 跑完之後會將圖片輸出到螢幕上。</p>
-<p>理解到OpenGL基礎流程後，接下來就是從實作中學習，如果沒有環境的讀者可以參考<a href="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment">上篇</a>中的Code來建立基礎環境。</p>
+<p>理解到OpenGL基礎流程後，接下來就是從實作中學習，如果沒有環境的讀者可以參考<a href="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment">上篇</a>中的Code來建立基礎環境。<br><a id="more"></a></p>
 <h3 id="為OpenGL搭起一個Shader的介面">為OpenGL搭起一個Shader的介面</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);</span><br><span class="line">GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);</span><br><span class="line">glShaderSource(vertexShader, <span class="number">1</span>, &amp;vertexShaderSource, NULL);</span><br><span class="line">glShaderSource(fragmentShader, <span class="number">1</span>, &amp;fragmentShaderSource, NULL);</span><br><span class="line">glCompileShader(vertexShader);</span><br><span class="line">glCompileShader(fragmentShader);</span><br></pre></td></tr></table></figure>
 <p>這裡必須先提到 「數字代表物件，物件管理是OpenGL的事」，OpenGL在實作上由於需符合C/C++，所以物件管理的方式是給我們從Create Function中抽一個序號，然後那個序號就是你的物件編號，有這物件編號後，我們必須<em>妥善保存</em>，然後在任何需要的時候可以跟OpenGL說要設定/刪除，先來解釋一下上面的例子就會明白。<br>首先我們準備了抽序號的物件<code>vertexShader</code>然後向<code>glCreateShader</code>要求一些東西，而這裡要求創建Vertex Shader的命令。之後要設定這個<code>vertexShader</code>物件的各種屬性，則是透過將編號(vertexShader)傳給OpenGL函式<code>glShaderSource</code>進行設定，這裡的設定是將shader的程式碼傳過去設定，可能認為傳程式碼很奇怪，但Shader就是一個給我們程式設計的地方。</p>
 <p><em>void glShaderSource(GLuint shader, GLsizei count, const GLchar <em>*string, const GLint </em>length);</em></p>
@@ -236,7 +959,13 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>本系列文將使用<em>OpenGL 4.5</em>版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！</p>
-<h2 id="從點開始">從點開始</h2>]]>
+<h2 id="從點開始">從點開始</h2><p>要畫一個三角形之前，總要會在畫面上畫出一個點來。在那之前，由於使用的是Modern版OpenGL，所以做任何事都要準備兩個東西，其中一個是<em>「Vertex Array Object」</em>，簡稱<em>VAO</em>，另一個則是Shader，包含基礎的兩個稱為Vertex Shader與Fragment Shader。</p>
+<ul>
+<li>Shader: 其實並不只有Vertex Shader與Fragment Shader，還有Geomerty Shader、Tessellation Control Shader、Tessellation Evaluation Shader，由於屬於初階文章，所以暫不探討。而Shader其中必寫的其實只有Fragment就好，詳細請上網考查。</li>
+</ul>
+<p>首先在了解畫一個點需要準備貌似很多東西時，會認為很繁瑣。當深入一點後，將了解僅是一連串常用的手續，以後只要複製貼上加修改。而這裡就先示意部分的OpenGL pipeline，也就是讀者將碰到的pipeline，倘若一次列出全部流程，會猶豫一陣子。<br><img src="/images/OBT2/opengl_easy_pipeline.png" width="600"><br>上方的流程是說明，使用者可以<em>以某種方式</em>將一些資料傳給Vertex Shader，本文章目前不會先做傳資料的動作，先給一個小概念。 而傳完之後Vertex Shader仍會以<em>某種方式</em>將資料傳給流程中的下一個Shader，就是Fragment Shader，最後Fragment Shader 跑完之後會將圖片輸出到螢幕上。</p>
+<p>理解到OpenGL基礎流程後，接下來就是從實作中學習，如果沒有環境的讀者可以參考<a href="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment">上篇</a>中的Code來建立基礎環境。<br>]]>
+    
     </summary>
     
       <category term="OpenGL" scheme="http://tokenyet.github.io/tags/OpenGL/"/>
@@ -266,12 +995,11 @@
     <link href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/"/>
     <id>http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/</id>
     <published>2016-07-05T11:14:47.000Z</published>
-    <updated>2016-07-23T16:21:23.306Z</updated>
+    <updated>2016-08-15T17:00:04.607Z</updated>
     <content type="html"><![CDATA[<h2 id="環境準備">環境準備</h2><p>開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有興趣再往下閱讀。</p>
 <h2 id="GLFW">GLFW</h2><p><a href="http://www.glfw.org/" target="_blank" rel="external">GLFW</a>主要是將在不同平台( Linux, Windows, Mac ) 間常用的一些使用者需求給獨立出來，這些使用者需求像是Keyboard的資訊、Mouse資訊、視窗建置….等等。將這些不同的使用者需求都統整成一個API就是其中一個GLFW在做的事，此外另一個工作是將OpenGL繪製的東西從buffer顯示到螢幕上的工作，還有一些零零總總的細節操作，最重要的是用了GLFW其實已包含OpenGL的Header，當建置好後，直接可以撰寫OpenGL的Code。</p>
 <p>首先先到<a href="http://www.glfw.org/download.html" target="_blank" rel="external">GLFW官方下載</a>中找一個名為「32-bit Windows binaries」的元件 ( 注意! 64-bit Windows binaries的建議不要使用，Dowen我在建置的時候會遇到非常多問題)，抓下來後接下來就照著以下的圖片設置。</p>
-<p>將GLFW放到任何認為合適的地方，之後再點選VS的專案-&gt;屬性，再點選VC++目錄，然後我們主要要變動的有以下兩個，Include目錄與程式庫目錄。<br><img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/VSProperty.png" width="600"><br>設定好Include與Library。</p>
-
+<p>將GLFW放到任何認為合適的地方，之後再點選VS的專案-&gt;屬性，再點選VC++目錄，然後我們主要要變動的有以下兩個，Include目錄與程式庫目錄。<br><img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/VSProperty.png" width="600"><br>設定好Include與Library。<br><a id="more"></a><br>
 <div class="container-outside-div">
 	<div class="container-inside-div">
 		<img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_include.png" style="width: 420px">
@@ -280,7 +1008,7 @@
 		<img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_lib.png" style="width: 420px">
 	</div>
 </div>
-
+</p>
 <p>再來到連結器(Linker) -&gt; 輸入(Input) 去增加lib檔，要新增的有<code>opengl32</code>與<code>glfw3.lib</code>。<br>
 <div class="container-outside-div">
 	<div class="container-inside-div">
@@ -329,7 +1057,11 @@
 <p>最後的結果如下圖:<br><img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/result.png" width="420"></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="環境準備">環境準備</h2><p>開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在]]>
+    <![CDATA[<h2 id="環境準備">環境準備</h2><p>開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有興趣再往下閱讀。</p>
+<h2 id="GLFW">GLFW</h2><p><a href="http://www.glfw.org/">GLFW</a>主要是將在不同平台( Linux, Windows, Mac ) 間常用的一些使用者需求給獨立出來，這些使用者需求像是Keyboard的資訊、Mouse資訊、視窗建置….等等。將這些不同的使用者需求都統整成一個API就是其中一個GLFW在做的事，此外另一個工作是將OpenGL繪製的東西從buffer顯示到螢幕上的工作，還有一些零零總總的細節操作，最重要的是用了GLFW其實已包含OpenGL的Header，當建置好後，直接可以撰寫OpenGL的Code。</p>
+<p>首先先到<a href="http://www.glfw.org/download.html">GLFW官方下載</a>中找一個名為「32-bit Windows binaries」的元件 ( 注意! 64-bit Windows binaries的建議不要使用，Dowen我在建置的時候會遇到非常多問題)，抓下來後接下來就照著以下的圖片設置。</p>
+<p>將GLFW放到任何認為合適的地方，之後再點選VS的專案-&gt;屬性，再點選VC++目錄，然後我們主要要變動的有以下兩個，Include目錄與程式庫目錄。<br><img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/VSProperty.png" width="600"><br>設定好Include與Library。<br>]]>
+    
     </summary>
     
       <category term="GLEW" scheme="http://tokenyet.github.io/tags/GLEW/"/>
@@ -357,11 +1089,12 @@
     <link href="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/"/>
     <id>http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/</id>
     <published>2016-06-28T13:36:47.000Z</published>
-    <updated>2016-07-23T16:21:24.218Z</updated>
+    <updated>2016-08-15T17:00:09.657Z</updated>
     <content type="html"><![CDATA[<h2 id="前言:">前言:</h2><p>不管開始任何事情之前，必須先對要做的事情先有個了解才能開始，學習OpenGL也不例外。開始前，先說一下我做教學文的風格，由於這是我以一個學中教，教中學的角度來製作，所以可能會有些不精確，希望哪裡有錯誤可以幫忙改正或指教，謝謝。</p>
 <h2 id="簡介:">簡介:</h2><p>首先OpenGL(Graphics Library)是一個API，也就是說他是一個幫助我們在不同的顯示卡配備之間做一個橋樑。聽起來很籠統，更詳細又簡單的說，即是說每張顯示卡在製作的時候，都有不同數量的繪圖處理器與不同晶片(ex.GTX970 1080)。而你不必擔心到底要如何針對不同顯示卡的規格(Spec)而寫那些控制不同機器的語法就是OpenGL的工作。</p>
 <h2 id="歷史:">歷史:</h2><p>而身為一個OpenGL的使用者也需要知曉一點他的過去與未來，過去OpenGL是源自Silicon Graphics這家公司，當時這家公司專門製作繪圖電腦，又貴又大而且寫繪圖語言的時候，不同的繪圖電腦會有不同的寫法，完全沒有一個統一的規範。經過了一段時間，終於想到解法，就是將針對系統部分的程式碼拿掉後，也就是拿掉只能在規格完全符合才可操作API的部分，之後就開發了OpenGL 1.0版本。這個歷史告訴我們，找出邏輯中相同與不同的部分獨立出來，可以增進事務的美好。</p>
 <img src="/images/OpenGL-Beginner-Tutorial-0-Introduce/OpenGL_API.jpg" width="420">
+<a id="more"></a>
 <h2 id="Core-Profile:_(核心模型)">Core-Profile: (核心模型)</h2><p>簡單講完他的歷史與定位後，有一件關於OpenGL核心的事情需要先說，就是在OpenGL 3.0 (2008年)後，分為兩個核心模型，一個稱為Modern版，一個稱為Compatible版。一如字面意思Modern就是現代版本，多了很多Shader,Depth,Stencil,Geometry…的一些新功能，而Compatible就是繼續使用舊的管線(fixed-pipeline)，很難讓使用者客製化。至於為什麼會講核心模型，剛開始就會要使用者講明要使用的哪種核心，才能繼續寫下去，如果說你定義要現代版，但是顯示卡不支援就會馬上知道問題所在。</p>
 <img src="/images/OpenGL-Beginner-Tutorial-0-Introduce/OpenGL_Detect.jpg" width="420">
 <h2 id="Pipelines,_Primitives,_Pixels:_(管線,_繪圖元素,_像素)">Pipelines, Primitives, Pixels: (管線, 繪圖元素, 像素)</h2><p>整個OpenGL大致上的管線的內容分為fixed與shader兩部分，fixed的部分就是我們不可參與程式的部分，而shader的部分是可以加入程式碼深度進行修改的部分。這裡簡單解釋shader，想像這一個shader就是一個超級小的筆刷，然後這個筆刷可以根據螢幕上每一點進行不同的繪製，而為何可以進行不同的繪製呢?因為這個shader就是你可以寫程式的部分，這個一般解釋是著色器，聽起來很難想像的名詞，不知道經過我有點糟的比喻有沒有想像一點。<br>(哦對，這裡的fixed不是指古早OpenGL，而是說流程中有部分是固定不可參與的)</p>
@@ -372,7 +1105,11 @@
 <h2 id="小結:">小結:</h2><p>如果聽不懂管線或是對pipelines感到陌生，就當作是一個產品生產的流程圖，先做好車體結構-&gt;再安裝車殼-&gt;再安裝輪胎，這樣的一個流程稱為pipeline。<br>其實本來多弄點圖解，不過實在是有點累(懶)呀，如果有需要的話，我再努力做給大家看。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h2 id="前言:">前言:</h2><p>不管開始任何事情之前，必須先對要做的事情先有個了解才能開始，學習OpenGL也不例外。開始前，先說一下我做教學文的風格，由於這是我以一個學中教，教中學的角度來製作，所以可能會有些不精確，希望哪裡有錯誤可以幫忙改正或指教，謝謝。</p]]>
+    <![CDATA[<h2 id="前言:">前言:</h2><p>不管開始任何事情之前，必須先對要做的事情先有個了解才能開始，學習OpenGL也不例外。開始前，先說一下我做教學文的風格，由於這是我以一個學中教，教中學的角度來製作，所以可能會有些不精確，希望哪裡有錯誤可以幫忙改正或指教，謝謝。</p>
+<h2 id="簡介:">簡介:</h2><p>首先OpenGL(Graphics Library)是一個API，也就是說他是一個幫助我們在不同的顯示卡配備之間做一個橋樑。聽起來很籠統，更詳細又簡單的說，即是說每張顯示卡在製作的時候，都有不同數量的繪圖處理器與不同晶片(ex.GTX970 1080)。而你不必擔心到底要如何針對不同顯示卡的規格(Spec)而寫那些控制不同機器的語法就是OpenGL的工作。</p>
+<h2 id="歷史:">歷史:</h2><p>而身為一個OpenGL的使用者也需要知曉一點他的過去與未來，過去OpenGL是源自Silicon Graphics這家公司，當時這家公司專門製作繪圖電腦，又貴又大而且寫繪圖語言的時候，不同的繪圖電腦會有不同的寫法，完全沒有一個統一的規範。經過了一段時間，終於想到解法，就是將針對系統部分的程式碼拿掉後，也就是拿掉只能在規格完全符合才可操作API的部分，之後就開發了OpenGL 1.0版本。這個歷史告訴我們，找出邏輯中相同與不同的部分獨立出來，可以增進事務的美好。</p>
+<img src="/images/OpenGL-Beginner-Tutorial-0-Introduce/OpenGL_API.jpg" width="420">]]>
+    
     </summary>
     
       <category term="OpenGL" scheme="http://tokenyet.github.io/tags/OpenGL/"/>
@@ -653,7 +1390,7 @@
     <link href="http://tokenyet.github.io/2015/08/19/%E5%BA%A7%E6%A8%99%E8%BD%89%E6%8F%9B%E7%AD%86%E8%A8%98/"/>
     <id>http://tokenyet.github.io/2015/08/19/座標轉換筆記/</id>
     <published>2015-08-19T13:08:52.000Z</published>
-    <updated>2015-09-06T07:08:02.813Z</updated>
+    <updated>2016-08-11T14:45:01.340Z</updated>
     <content type="html"><![CDATA[<ol>
 <li>旋轉證明</li>
 </ol>
@@ -661,7 +1398,7 @@
 <p>假設紅線端點座標為 $ (x1,y1) $<br>假設藍線端點座標為 $ (x,y) $<br>紅線與藍線之夾角為 $ \theta $<br>籃線與 $X$ 軸之夾角為 $ a $<br>長度為 $ r $<br>則得到<br>$ x1 = x \cos \theta - y \sin \theta $<br>$ y1 = x \sin \theta + y \cos \theta $<br>證明如下:</p>
 <p>經由畢氏定理得知:<br>$ x = r \cos a $<br>$ y = r \sin a $</p>
 <p>$ x1 = r \cos (\theta + a) = r \cos \theta \cos a - r \sin \theta \sin a $<br>$ y1 = r \sin (\theta + a) = r \sin \theta \cos a + r \sin a \cos \theta $</p>
-<p>$ x1 = r \cos \theta \cos a - r \sin \theta \sin a = x \cos \theta - y \sin theta $<br>$ y1 = r \sin \theta \cos a + r \sin a \cos \theta = x \sin \theta + y \cos theta $</p>
+<p>$ x1 = r \cos \theta \cos a - r \sin \theta \sin a = x \cos \theta - y \sin \theta $<br>$ y1 = r \sin \theta \cos a + r \sin a \cos \theta = x \sin \theta + y \cos \theta $</p>
 <p>備註:<br>$ r \cos a = x $<br>$ r \sin a = y $</p>
 <p>因此得證:<br>$ x1 = x \cos \theta - y \sin \theta $<br>$ y1 = x \sin \theta + y \cos \theta $</p>
 ]]></content>
