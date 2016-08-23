@@ -20,7 +20,7 @@ body:after {
   margin: 50px 0;
 }
 #comments a {
-  color: #258fb8;
+  color: #4183c4;
 }
 html,
 body,
@@ -137,11 +137,11 @@ body,
 }
 body {
   background: #eee;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 16px "Times New Roman", "Open Sans Light", "Georgia", "Helvetica Neue", "Helvetica", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 .outer {
-  max-width: 1220px;
+  max-width: 1270px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -156,8 +156,8 @@ body {
 .inner {
   display: inline;
   float: left;
-  width: 98.3333333333333%;
-  margin: 0 0.8333333333333%;
+  width: 98.4%;
+  margin: 0 0.8%;
 }
 .left,
 .alignleft {
@@ -187,7 +187,6 @@ body {
   -ms-transition: 0.2s ease-out;
   transition: 0.2s ease-out;
   z-index: 1;
-  background: #eee;
 }
 .mobile-nav-on #wrap {
   left: 280px;
@@ -196,23 +195,24 @@ body {
   #main {
     display: inline;
     float: left;
-    width: 73.3333333333333%;
-    margin: 0 0.8333333333333%;
+    width: 74.4%;
+    margin: 0 0.8%;
   }
 }
 .article-date,
+.article-category,
 .article-category-link,
 .archive-year,
 .widget-title {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #999;
+  color: #333;
   margin-bottom: 1em;
   margin-left: 5px;
   line-height: 1em;
-  text-shadow: 0 1px #fff;
   font-weight: bold;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 .article-inner,
 .archive-article-inner {
@@ -376,6 +376,7 @@ body {
   text-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 #logo {
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 40px;
   line-height: 40px;
   letter-spacing: 2px;
@@ -413,9 +414,9 @@ body {
 .nav-icon {
   font-family: FontAwesome;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   width: 5%;
-  height: 14px;
+  height: 16px;
   padding: 20px 30px;
   position: relative;
   cursor: pointer;
@@ -513,7 +514,7 @@ body {
   background: none;
   color: #555;
   width: 100%;
-  font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 13px "Times New Roman", "Open Sans Light", "Georgia", "Helvetica Neue", "Helvetica", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", Helvetica, Arial, sans-serif;
   outline: none;
 }
 .search-form-input::-webkit-search-results-decoration,
@@ -555,8 +556,6 @@ body {
 .article-category {
   float: left;
   line-height: 1em;
-  color: #ccc;
-  text-shadow: 0 1px #fff;
   margin-left: 8px;
 }
 .article-category:before {
@@ -580,7 +579,7 @@ body {
   transition: color 0.2s;
 }
 a.article-title:hover {
-  color: #258fb8;
+  color: #4183c4;
 }
 .article-entry {
   color: #555;
@@ -617,7 +616,7 @@ a.article-title:hover {
   margin: 1.1em 0;
 }
 .article-entry a {
-  color: #258fb8;
+  color: #4183c4;
   text-decoration: none;
 }
 .article-entry a:hover {
@@ -656,13 +655,14 @@ a.article-title:hover {
 .article-entry blockquote {
   padding: 0 20px;
   position: relative;
-  border: 1px solid #e3e3e3;
-  border-left: 5px solid #ddd;
+  background: #d8f5d8;
+  border: 2px solid #afdfaf;
+  margin: 20px;
 }
 .article-entry blockquote footer {
-  font-size: 14px;
+  font-size: 16px;
   margin: 1.6em 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Times New Roman", "Open Sans Light", "Georgia", "Helvetica Neue", "Helvetica", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .article-entry blockquote footer cite:before {
   content: "—";
@@ -713,14 +713,34 @@ a.article-title:hover {
   border-radius: 15px;
   background: #eee;
   color: #999;
-  text-shadow: 0 1px #fff;
   text-decoration: none;
 }
 .article-more-link a:hover {
-  background: #258fb8;
+  background: #4183c4;
   color: #fff;
   text-decoration: none;
-  text-shadow: 0 1px #1e7293;
+}
+.article-medium {
+  font-size: 0.85em;
+  line-height: 1.6em;
+  border-top: 2px solid #999;
+  padding-top: 1.6em;
+  margin: 20px 20px -24px 20px;
+}
+.article-medium:before,
+.article-medium:after {
+  content: "";
+  display: table;
+}
+.article-medium:after {
+  clear: both;
+}
+.article-medium a {
+  color: #999;
+  text-decoration: none;
+}
+.article-medium a:hover {
+  color: #555;
 }
 .article-footer {
   font-size: 0.85em;
@@ -886,7 +906,7 @@ a.article-title:hover {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 14px "Times New Roman", "Open Sans Light", "Georgia", "Helvetica Neue", "Helvetica", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 0 15px;
   color: #555;
   outline: none;
@@ -1003,7 +1023,7 @@ a.article-title:hover {
   margin: 50px 0;
 }
 #comments a {
-  color: #258fb8;
+  color: #4183c4;
 }
 .archives-wrap {
   margin: 50px 0;
@@ -1059,7 +1079,7 @@ a.article-title:hover {
   line-height: 1.6em;
 }
 .archive-article-title:hover {
-  color: #258fb8;
+  color: #4183c4;
 }
 .archive-article-footer {
   margin-top: 1em;
@@ -1134,7 +1154,7 @@ a.article-title:hover {
   color: #999;
 }
 #footer a {
-  color: #258fb8;
+  color: #4183c4;
   text-decoration: none;
 }
 #footer a:hover {
@@ -1154,7 +1174,7 @@ a.article-title:hover {
   border-width: 1px 0;
   overflow: auto;
   color: #ccc;
-  line-height: 22.400000000000002px;
+  line-height: 25.6px;
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
@@ -1166,7 +1186,10 @@ a.article-title:hover {
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
 }
 .article-entry code {
-  background: #eee;
+  color: #822;
+  font-weight: bold;
+  border-bottom: 1px solid #c1c1c1;
+  font-family: monospace;
   text-shadow: 0 1px #fff;
   padding: 0 0.3em;
 }
@@ -1174,6 +1197,9 @@ a.article-title:hover {
   background: none;
   text-shadow: none;
   padding: 0;
+}
+.article-entry .highlight {
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .article-entry .highlight pre {
   border: none;
@@ -1210,7 +1236,7 @@ a.article-title:hover {
   padding-right: 20px;
 }
 .article-entry .highlight .line {
-  height: 22.400000000000002px;
+  height: 25.6px;
 }
 .article-entry .gist {
   margin: 0 -20px;
@@ -1245,14 +1271,14 @@ a.article-title:hover {
 .article-entry .gist .gist-file .gist-meta {
   background: #2d2d2d;
   color: #999;
-  font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 0.85em "Times New Roman", "Open Sans Light", "Georgia", "Helvetica Neue", "Helvetica", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;
   margin-left: 20px;
 }
 .article-entry .gist .gist-file .gist-meta a {
-  color: #258fb8;
+  color: #4183c4;
   font-weight: normal;
 }
 .article-entry .gist .gist-file .gist-meta a:hover {
@@ -1341,8 +1367,9 @@ pre .javascript .function {
   #sidebar {
     display: inline;
     float: left;
-    width: 23.3333333333333%;
-    margin: 0 0.8333333333333%;
+    width: 22.400000000000002%;
+    margin: 0 0.8%;
+    margin: 0 0 0 1.52%;
   }
 }
 .widget-wrap {
@@ -1350,7 +1377,6 @@ pre .javascript .function {
 }
 .widget {
   color: #777;
-  text-shadow: 0 1px #fff;
   background: #ddd;
   -webkit-box-shadow: 0 -1px 4px #ccc inset;
   box-shadow: 0 -1px 4px #ccc inset;
@@ -1360,7 +1386,7 @@ pre .javascript .function {
   border-radius: 3px;
 }
 .widget a {
-  color: #258fb8;
+  color: #4183c4;
   text-decoration: none;
 }
 .widget a:hover {

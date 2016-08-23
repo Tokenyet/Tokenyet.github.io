@@ -113,6 +113,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cis78rtzt002pcoub5fhjky2m" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="開始前介紹">開始前介紹</h2><p>這一章節主要是介紹一些數學的基礎，如果發現哪個部分不熟的話，最好能親自磨練一下，因為以後常常需要的時候，如果不懂箇中原理，那麼在偵錯或是實作上，會遇到一些麻煩。當然領悟過後能寫起來是最推薦的方式，以後忘了的時候瞟一眼就行了。初學者如果看不懂本篇的話，可以暫且跳過無妨，當有用到再回頭看，因為現在的文章是搭配官方藍寶書的章節推進，而藍寶書比較適合中階以上閱讀者，所以本篇對初學者來說應該很吃力。<br>接下來會介紹的內容基本上有:</p>
@@ -134,10 +140,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cirz6ywlu002pqoviz0yynohx" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Euler-Angle/">Euler Angle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GLM/">GLM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Intepolation/">Intepolation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL介紹/">OpenGL介紹</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL基礎/">OpenGL基礎</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reflect/">Reflect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Refract/">Refract</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rotation/">Rotation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bezier-curve/">bezier curve</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canera/">canera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/clip-space/">clip space</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cubic-bezier-curve/">cubic bezier curve</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/local-space/">local space</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lookat/">lookat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matrix/">matrix</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ndc/">ndc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/orthographic/">orthographic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/perspective/">perspective</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/perspective-division/">perspective division</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/projection/">projection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scale/">scale</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/translate/">translate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vector/">vector</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/view-space/">view space</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/世界座標/">世界座標</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/內插/">內插</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/內積/">內積</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/反射/">反射</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/向量/">向量</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/外積/">外積</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/座標系統/">座標系統</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/折射/">折射</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/攝影機/">攝影機</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/歐拉角/">歐拉角</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正交投影/">正交投影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/物體座標/">物體座標</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/直線/">直線</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/矩陣/">矩陣</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/透視投影/">透視投影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/透視除法/">透視除法</a></li></ul>
 
@@ -172,6 +174,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cis78ru0f0056coubsifnrnhr" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="開始前介紹">開始前介紹</h2><p>為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。</p>
@@ -184,10 +192,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cirz6ywmk0056qovikrqnjw54" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Clipping/">Clipping</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fragment-Shader/">Fragment Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Geometry-Shader/">Geometry Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL介紹/">OpenGL介紹</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL基礎/">OpenGL基礎</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/">Rasterization</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shader/">Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tessellation/">Tessellation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tessellation-Control-Shader/">Tessellation Control Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tessellation-Evaluation-Shader/">Tessellation Evaluation Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Viewport-Transform/">Viewport Transform</a></li></ul>
 
@@ -222,6 +226,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="cis78ru0m005wcoub4jvs41b3" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="開始前介紹">開始前介紹</h2><p>本系列文將使用<em>OpenGL 4.5</em>版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！</p>
@@ -239,10 +249,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="cirz6ywmt005wqoviuzn4rlvc" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL介紹/">OpenGL介紹</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL基礎/">OpenGL基礎</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shader/">Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Triangle/">Triangle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VAO/">VAO</a></li></ul>
 
@@ -277,6 +283,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cis78ru0x0069coub6b46gpph" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="環境準備">環境準備</h2><p>開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有興趣再往下閱讀。</p>
@@ -291,10 +303,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cirz6ywn20069qovipto8irie" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GLEW/">GLEW</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GLFW/">GLFW</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL安裝/">OpenGL安裝</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a></li></ul>
 
@@ -329,6 +337,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/" data-id="cis78ru14006ncoub3pfuan50" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言:">前言:</h2><p>不管開始任何事情之前，必須先對要做的事情先有個了解才能開始，學習OpenGL也不例外。開始前，先說一下我做教學文的風格，由於這是我以一個學中教，教中學的角度來製作，所以可能會有些不精確，希望哪裡有錯誤可以幫忙改正或指教，謝謝。</p>
@@ -343,10 +357,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/" data-id="cirz6ywn8006nqovirykvknkl" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Extension/">OpenGL Extension</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-intro/">OpenGL intro</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li></ul>
 
@@ -381,6 +391,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/" data-id="cis78rty2000qcoubcxb19rnk" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <p>前言:<br>Windows 10問題連連，假設你跟Dowen一樣想玩踩地雷，但是從Windows App載完後發現音量超級大聲，且假設說你喜歡聽自己的音樂，又想聽Windows App的特效的時候，就會發現「什麼?<strong>不能調音量!!</strong>」，因為Win10在Modern UI的這些Metro App中沒有加入適當API，所以在音量混合器中沒有這個選項。<br>因此，繼透明度、Classic Shell…等，為Win10裝插件之旅又開始了。</p>
@@ -390,10 +406,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/" data-id="cirz6ywjz000qqoviky8ethp9" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Metro-App/">Metro App</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-UI/">Modern UI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows-Store/">Windows Store</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/音量/">音量</a></li></ul>
 
@@ -428,6 +440,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/" data-id="cis78ru1b006xcoub58a5imvk" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <p>前言:<br>在使用EmguCV的時候，常常在自己的電腦可以，換到其他人電腦的環境後，就萬事皆悲。<br>而在這裡，Dowen寫下幾種解法供大家參考。這裡以EmguCv為例。</p>
@@ -440,10 +458,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/" data-id="cirz6ywnh006xqoviadruqiqt" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EmguCV/">EmguCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exception/">Exception</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a></li></ul>
 
@@ -478,6 +492,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/" data-id="cis78rty90015coubbympyaw5" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <p>升上Win10沒多久後發現桌面圖示無法像以前一樣排列到想要的位置。<br>每次開機就會回到左方自動排列，右鍵重新整理也是如此。</p>
@@ -490,10 +510,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/" data-id="cirz6ywka0015qoviog2ght4c" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排列失效/">排列失效</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/桌面圖示/">桌面圖示</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重新整理/">重新整理</a></li></ul>
 
@@ -528,6 +544,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/" data-id="cis78rtyz001pcoubkg7q4ddf" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <p>前言:<br>升級到Windows10之後，真的是一堆BUGGG阿。<br>認識的人升級到10都跟我說沒什麼問題，只能說相信別人不如自己實測阿。<br>還有輸入法這糟糕的設置，根本只設計給英文使用者嘛。<br>大部分升級的人都說「習慣就好」，我真的很不喜歡這句話。<br>聽過UX嗎?習慣這句話根本就不是UX而是斗M。<br>如果是因為更值得的功能而改變習慣，那在UX上的確有其道理。<br>但是Win8後的輸入法又沒什麼特別的取代性，改了習慣壞了體驗，唉。</p>
@@ -540,10 +562,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/" data-id="cirz6ywl2001pqovihjc76mg1" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ntoskrnl-exe/">ntoskrnl.exe</a></li></ul>
 
@@ -578,6 +596,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/" data-id="cis78rtyt001fcoub68r6r6hp" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <p>第一次進行Windows系列的升級，就遇到了很多問題，為了拯救跟我有相同困擾的人，所以趕緊來發一篇文。</p>
@@ -608,10 +632,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/" data-id="cirz6ywku001fqovi3knbu852" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win7/">Win7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows7/">Windows7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/升級/">升級</a></li></ul>
 
@@ -654,6 +674,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cis78rtzt002pcoub5fhjky2m" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="開始前介紹">開始前介紹</h2><p>這一章節主要是介紹一些數學的基礎，如果發現哪個部分不熟的話，最好能親自磨練一下，因為以後常常需要的時候，如果不懂箇中原理，那麼在偵錯或是實作上，會遇到一些麻煩。當然領悟過後能寫起來是最推薦的方式，以後忘了的時候瞟一眼就行了。初學者如果看不懂本篇的話，可以暫且跳過無妨，當有用到再回頭看，因為現在的文章是搭配官方藍寶書的章節推進，而藍寶書比較適合中階以上閱讀者，所以本篇對初學者來說應該很吃力。<br>接下來會介紹的內容基本上有:</p>
@@ -675,10 +701,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cirz6ywlu002pqoviz0yynohx" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Euler-Angle/">Euler Angle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GLM/">GLM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Intepolation/">Intepolation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL介紹/">OpenGL介紹</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL基礎/">OpenGL基礎</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reflect/">Reflect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Refract/">Refract</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rotation/">Rotation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bezier-curve/">bezier curve</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canera/">canera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/clip-space/">clip space</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cubic-bezier-curve/">cubic bezier curve</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/local-space/">local space</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lookat/">lookat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matrix/">matrix</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ndc/">ndc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/orthographic/">orthographic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/perspective/">perspective</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/perspective-division/">perspective division</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/projection/">projection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scale/">scale</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/translate/">translate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vector/">vector</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/view-space/">view space</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/世界座標/">世界座標</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/內插/">內插</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/內積/">內積</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/反射/">反射</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/向量/">向量</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/外積/">外積</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/座標系統/">座標系統</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/折射/">折射</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/攝影機/">攝影機</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/歐拉角/">歐拉角</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正交投影/">正交投影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/物體座標/">物體座標</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/直線/">直線</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/矩陣/">矩陣</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/透視投影/">透視投影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/透視除法/">透視除法</a></li></ul>
 
@@ -713,6 +735,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cis78ru0f0056coubsifnrnhr" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="開始前介紹">開始前介紹</h2><p>為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。</p>
@@ -725,10 +753,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cirz6ywmk0056qovikrqnjw54" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Clipping/">Clipping</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fragment-Shader/">Fragment Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Geometry-Shader/">Geometry Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL介紹/">OpenGL介紹</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL基礎/">OpenGL基礎</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rasterization/">Rasterization</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shader/">Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tessellation/">Tessellation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tessellation-Control-Shader/">Tessellation Control Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tessellation-Evaluation-Shader/">Tessellation Evaluation Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Viewport-Transform/">Viewport Transform</a></li></ul>
 
@@ -763,6 +787,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="cis78ru0m005wcoub4jvs41b3" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="開始前介紹">開始前介紹</h2><p>本系列文將使用<em>OpenGL 4.5</em>版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！</p>
@@ -780,10 +810,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="cirz6ywmt005wqoviuzn4rlvc" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL介紹/">OpenGL介紹</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL基礎/">OpenGL基礎</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shader/">Shader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Triangle/">Triangle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VAO/">VAO</a></li></ul>
 
@@ -818,6 +844,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cis78ru0x0069coub6b46gpph" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="環境準備">環境準備</h2><p>開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有興趣再往下閱讀。</p>
@@ -832,10 +864,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cirz6ywn20069qovipto8irie" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GLEW/">GLEW</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GLFW/">GLFW</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL安裝/">OpenGL安裝</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a></li></ul>
 
@@ -870,6 +898,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/" data-id="cis78ru14006ncoub3pfuan50" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言:">前言:</h2><p>不管開始任何事情之前，必須先對要做的事情先有個了解才能開始，學習OpenGL也不例外。開始前，先說一下我做教學文的風格，由於這是我以一個學中教，教中學的角度來製作，所以可能會有些不精確，希望哪裡有錯誤可以幫忙改正或指教，謝謝。</p>
@@ -884,10 +918,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/" data-id="cirz6ywn8006nqovirykvknkl" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Extension/">OpenGL Extension</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-intro/">OpenGL intro</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li></ul>
 
@@ -922,6 +952,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/" data-id="cis78rty2000qcoubcxb19rnk" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <p>前言:<br>Windows 10問題連連，假設你跟Dowen一樣想玩踩地雷，但是從Windows App載完後發現音量超級大聲，且假設說你喜歡聽自己的音樂，又想聽Windows App的特效的時候，就會發現「什麼?<strong>不能調音量!!</strong>」，因為Win10在Modern UI的這些Metro App中沒有加入適當API，所以在音量混合器中沒有這個選項。<br>因此，繼透明度、Classic Shell…等，為Win10裝插件之旅又開始了。</p>
@@ -931,10 +967,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/" data-id="cirz6ywjz000qqoviky8ethp9" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Metro-App/">Metro App</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-UI/">Modern UI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows-Store/">Windows Store</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/音量/">音量</a></li></ul>
 
@@ -969,6 +1001,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/" data-id="cis78ru1b006xcoub58a5imvk" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <p>前言:<br>在使用EmguCV的時候，常常在自己的電腦可以，換到其他人電腦的環境後，就萬事皆悲。<br>而在這裡，Dowen寫下幾種解法供大家參考。這裡以EmguCv為例。</p>
@@ -981,10 +1019,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/" data-id="cirz6ywnh006xqoviadruqiqt" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EmguCV/">EmguCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exception/">Exception</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a></li></ul>
 
@@ -1019,6 +1053,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/" data-id="cis78rty90015coubbympyaw5" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <p>升上Win10沒多久後發現桌面圖示無法像以前一樣排列到想要的位置。<br>每次開機就會回到左方自動排列，右鍵重新整理也是如此。</p>
@@ -1031,10 +1071,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/" data-id="cirz6ywka0015qoviog2ght4c" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排列失效/">排列失效</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/桌面圖示/">桌面圖示</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重新整理/">重新整理</a></li></ul>
 
@@ -1069,6 +1105,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/" data-id="cis78rtyz001pcoubkg7q4ddf" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <p>前言:<br>升級到Windows10之後，真的是一堆BUGGG阿。<br>認識的人升級到10都跟我說沒什麼問題，只能說相信別人不如自己實測阿。<br>還有輸入法這糟糕的設置，根本只設計給英文使用者嘛。<br>大部分升級的人都說「習慣就好」，我真的很不喜歡這句話。<br>聽過UX嗎?習慣這句話根本就不是UX而是斗M。<br>如果是因為更值得的功能而改變習慣，那在UX上的確有其道理。<br>但是Win8後的輸入法又沒什麼特別的取代性，改了習慣壞了體驗，唉。</p>
@@ -1081,10 +1123,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/" data-id="cirz6ywl2001pqovihjc76mg1" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ntoskrnl-exe/">ntoskrnl.exe</a></li></ul>
 
@@ -1119,6 +1157,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/" data-id="cis78rtyt001fcoub68r6r6hp" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <p>第一次進行Windows系列的升級，就遇到了很多問題，為了拯救跟我有相同困擾的人，所以趕緊來發一篇文。</p>
@@ -1149,10 +1193,6 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/" data-id="cirz6ywku001fqovi3knbu852" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win7/">Win7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows7/">Windows7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/升級/">升級</a></li></ul>
 

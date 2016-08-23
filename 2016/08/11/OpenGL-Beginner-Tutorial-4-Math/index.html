@@ -40,7 +40,7 @@
 <meta property="og:image" content="http://tokenyet.github.io/images/OBT4/includeglm.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/OBT4/glmresult.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/OBT4/glmcorrectresult.png">
-<meta property="og:updated_time" content="2016-08-17T18:22:07.667Z">
+<meta property="og:updated_time" content="2016-08-22T12:53:43.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 入門教學 4: 數學">
 <meta name="twitter:description" content="開始前介紹這一章節主要是介紹一些數學的基礎，如果發現哪個部分不熟的話，最好能親自磨練一下，因為以後常常需要的時候，如果不懂箇中原理，那麼在偵錯或是實作上，會遇到一些麻煩。當然領悟過後能寫起來是最推薦的方式，以後忘了的時候瞟一眼就行了。初學者如果看不懂本篇的話，可以暫且跳過無妨，當有用到再回頭看，因為現在的文章是搭配官方藍寶書的章節推進，而藍寶書比較適合中階以上閱讀者，所以本篇對初學者來說應該很吃力">
@@ -141,6 +141,12 @@ ga('send', 'pageview');
 
       </header>
     
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cis78rtzt002pcoub5fhjky2m" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="開始前介紹">開始前介紹</h2><p>這一章節主要是介紹一些數學的基礎，如果發現哪個部分不熟的話，最好能親自磨練一下，因為以後常常需要的時候，如果不懂箇中原理，那麼在偵錯或是實作上，會遇到一些麻煩。當然領悟過後能寫起來是最推薦的方式，以後忘了的時候瞟一眼就行了。初學者如果看不懂本篇的話，可以暫且跳過無妨，當有用到再回頭看，因為現在的文章是搭配官方藍寶書的章節推進，而藍寶書比較適合中階以上閱讀者，所以本篇對初學者來說應該很吃力。<br>接下來會介紹的內容基本上有:</p>
@@ -676,7 +682,7 @@ P&amp; = A + t\vec{D}  \\
 P&amp; = A + t(B-A)    \\
 \end{align}$$</span><!-- Has MathJax --><br>上方的公式意義是表示A要往B移動，如果t = 1，表示點P已經從A移動到B。小於1的任何數值都代表還在路途中，這樣的表示法比原本的表示法的移動模式要直觀許多。</p>
 <img src="/images/OBT4/line.png" width="420">
-<blockquote><h4 id="Intepolation(內插)">Intepolation(內插)</h4><p>根據現有的資訊進行階段式前進，除了有關線的公式，利用向量步步前進的概念外，OpenGL在顏色上也有這樣的機制。Fragment Shader階段時，若使用者定義三個點各自的顏色，未給定其他像素的意義，OpenGL就會進行顏色的內插。假設有AB兩點，一者紅，一者藍，OpenGL就會自動用內插的方式進行顏色計算，概念如此: <span>$Color_new = Color_A + t(Color_B - Color_A) = (1-t)Color_A + tColor_B $$</span><!-- Has MathJax -->。而GLSL語法裡面進行這樣計算的是一個叫<code>mix(a, b, t)</code>的內建函式，專門用來處理以上的動作。</p>
+<blockquote><h4 id="Intepolation(內插)">Intepolation(內插)</h4><p>根據現有的資訊進行階段式前進，除了有關線的公式，利用向量步步前進的概念外，OpenGL在顏色上也有這樣的機制。Fragment Shader階段時，若使用者定義三個點各自的顏色，未給定其他像素的意義，OpenGL就會進行顏色的內插。假設有AB兩點，一者紅，一者藍，OpenGL就會自動用內插的方式進行顏色計算，概念如此: <span>$Color_{new} = Color_A + t(Color_B - Color_A) = (1-t)Color_A + tColor_B$</span><!-- Has MathJax -->。而GLSL語法裡面進行這樣計算的是一個叫<code>mix(a, b, t)</code>的內建函式，專門用來處理以上的動作。</p>
 </blockquote>
 <h3 id="曲線">曲線</h3><p>最簡單的直線是利用兩條直線的方式混和移動而成，概念圖如下:</p>
 <img src="/images/OBT4/bicurve.png" width="420">
@@ -755,10 +761,6 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cirz6ywlu002pqoviz0yynohx" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/#disqus_thread" class="article-comment-link">Comments</a>
-      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Euler-Angle/">Euler Angle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GLM/">GLM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Intepolation/">Intepolation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL介紹/">OpenGL介紹</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL基礎/">OpenGL基礎</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reflect/">Reflect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Refract/">Refract</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rotation/">Rotation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bezier-curve/">bezier curve</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canera/">canera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/clip-space/">clip space</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cubic-bezier-curve/">cubic bezier curve</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/local-space/">local space</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lookat/">lookat</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matrix/">matrix</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ndc/">ndc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/orthographic/">orthographic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/perspective/">perspective</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/perspective-division/">perspective division</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/projection/">projection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scale/">scale</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/translate/">translate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vector/">vector</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/view-space/">view space</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/世界座標/">世界座標</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/內插/">內插</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/內積/">內積</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/反射/">反射</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/向量/">向量</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/外積/">外積</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/座標系統/">座標系統</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/折射/">折射</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/攝影機/">攝影機</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/歐拉角/">歐拉角</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正交投影/">正交投影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/物體座標/">物體座標</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/直線/">直線</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/矩陣/">矩陣</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/透視投影/">透視投影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/透視除法/">透視除法</a></li></ul>
 

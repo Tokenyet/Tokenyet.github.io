@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2016-08-17T18:22:07.667Z</updated>
+  <updated>2016-08-22T12:53:43.314Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/"/>
     <id>http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/</id>
     <published>2016-08-11T08:44:20.000Z</published>
-    <updated>2016-08-17T18:22:07.667Z</updated>
+    <updated>2016-08-22T12:53:43.314Z</updated>
     <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>這一章節主要是介紹一些數學的基礎，如果發現哪個部分不熟的話，最好能親自磨練一下，因為以後常常需要的時候，如果不懂箇中原理，那麼在偵錯或是實作上，會遇到一些麻煩。當然領悟過後能寫起來是最推薦的方式，以後忘了的時候瞟一眼就行了。初學者如果看不懂本篇的話，可以暫且跳過無妨，當有用到再回頭看，因為現在的文章是搭配官方藍寶書的章節推進，而藍寶書比較適合中階以上閱讀者，所以本篇對初學者來說應該很吃力。<br>接下來會介紹的內容基本上有:</p>
 <ul>
 <li>向量</li>
@@ -553,7 +553,7 @@ P&amp; = A + t\vec{D}  \\
 P&amp; = A + t(B-A)    \\
 \end{align}$$</span><!-- Has MathJax --><br>上方的公式意義是表示A要往B移動，如果t = 1，表示點P已經從A移動到B。小於1的任何數值都代表還在路途中，這樣的表示法比原本的表示法的移動模式要直觀許多。</p>
 <img src="/images/OBT4/line.png" width="420">
-<blockquote><h4 id="Intepolation(內插)">Intepolation(內插)</h4><p>根據現有的資訊進行階段式前進，除了有關線的公式，利用向量步步前進的概念外，OpenGL在顏色上也有這樣的機制。Fragment Shader階段時，若使用者定義三個點各自的顏色，未給定其他像素的意義，OpenGL就會進行顏色的內插。假設有AB兩點，一者紅，一者藍，OpenGL就會自動用內插的方式進行顏色計算，概念如此: <span>$Color_new = Color_A + t(Color_B - Color_A) = (1-t)Color_A + tColor_B $$</span><!-- Has MathJax -->。而GLSL語法裡面進行這樣計算的是一個叫<code>mix(a, b, t)</code>的內建函式，專門用來處理以上的動作。</p>
+<blockquote><h4 id="Intepolation(內插)">Intepolation(內插)</h4><p>根據現有的資訊進行階段式前進，除了有關線的公式，利用向量步步前進的概念外，OpenGL在顏色上也有這樣的機制。Fragment Shader階段時，若使用者定義三個點各自的顏色，未給定其他像素的意義，OpenGL就會進行顏色的內插。假設有AB兩點，一者紅，一者藍，OpenGL就會自動用內插的方式進行顏色計算，概念如此: <span>$Color_{new} = Color_A + t(Color_B - Color_A) = (1-t)Color_A + tColor_B$</span><!-- Has MathJax -->。而GLSL語法裡面進行這樣計算的是一個叫<code>mix(a, b, t)</code>的內建函式，專門用來處理以上的動作。</p>
 </blockquote>
 <h3 id="曲線">曲線</h3><p>最簡單的直線是利用兩條直線的方式混和移動而成，概念圖如下:</p>
 <img src="/images/OBT4/bicurve.png" width="420">
@@ -741,7 +741,7 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
     <link href="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/"/>
     <id>http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/</id>
     <published>2016-08-06T06:47:28.000Z</published>
-    <updated>2016-08-17T17:44:09.524Z</updated>
+    <updated>2016-08-17T18:23:39.563Z</updated>
     <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。</p>
 <h2 id="CPU到GPU第一階段_-_Vertex_Shader的資料傳送">CPU到GPU第一階段 - Vertex Shader的資料傳送</h2><p>GPU在開始執行Vertex Shader前面，有一個動作稱為<em>Vertex Fetching</em>，這個動作會將我們在程式中寫的一個稱為<em>Vertex Attribute</em>的部分讀出來，而後傳送至GPU處。其中GPU必須由 <code>layout (location = 0) in</code> 來定義輸入要從GPU的哪個位置中取出，而CPU則是藉由 <code>glVertexAttribXXX(0, data)</code> 來將資料填入記憶體等待<em>Vertex Fetching</em>到GPU中layout的部分。<br><a id="more"></a></p>
 <h3 id="動手做_-_CPU_to_GPU">動手做 - CPU to GPU</h3><p>首先在迴圈中加入要傳遞的資料與其對應的function，都是以 <code>glVertexAttrib</code> 開頭的傳遞函式。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">glBindVertexArray(vertexArrayObject);</span><br><span class="line"></span><br><span class="line">GLfloat data[] = &#123;</span><br><span class="line">	(<span class="keyword">float</span>)<span class="built_in">sin</span>(glfwGetTime()) * <span class="number">0.5f</span>,</span><br><span class="line">	(<span class="keyword">float</span>)<span class="built_in">cos</span>(glfwGetTime()) * <span class="number">0.6f</span>,</span><br><span class="line">	<span class="number">0.0f</span>, <span class="number">0.0f</span></span><br><span class="line">&#125;;</span><br><span class="line">glVertexAttrib4fv(<span class="number">0</span>, data);</span><br><span class="line">glDrawArrays(GL_TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">glBindVertexArray(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
