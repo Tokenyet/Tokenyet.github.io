@@ -2,28 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/</loc>
-    <lastmod>2016-08-22T12:53:43.314Z</lastmod>
+    <loc>http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/</loc>
+    <lastmod>2016-08-25T14:07:36.029Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/</loc>
+    <lastmod>2016-08-25T14:04:52.298Z</lastmod>
   </url>
   
   <url>
     <loc>http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/</loc>
-    <lastmod>2016-08-17T18:23:39.563Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/</loc>
-    <lastmod>2016-08-15T17:00:09.657Z</lastmod>
+    <lastmod>2016-08-25T09:54:11.118Z</lastmod>
   </url>
   
   <url>
     <loc>http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/</loc>
-    <lastmod>2016-08-15T17:00:04.607Z</lastmod>
+    <lastmod>2016-08-25T08:27:02.112Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/</loc>
+    <lastmod>2016-08-25T08:26:55.522Z</lastmod>
   </url>
   
   <url>
     <loc>http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/</loc>
-    <lastmod>2016-08-15T16:59:58.486Z</lastmod>
+    <lastmod>2016-08-25T08:26:55.101Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/</loc>
+    <lastmod>2016-08-25T08:26:49.815Z</lastmod>
   </url>
   
   <url>

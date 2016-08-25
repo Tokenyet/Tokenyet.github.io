@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2016-08-22T12:53:43.314Z</updated>
+  <updated>2016-08-25T14:04:52.298Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -15,11 +15,112 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[OpenGL 入門教學 4: 數學]]></title>
+    <title><![CDATA[OpenGL 藍寶入門教學 5: 資料型態]]></title>
+    <link href="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/"/>
+    <id>http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/</id>
+    <published>2016-08-25T08:30:29.000Z</published>
+    <updated>2016-08-25T14:04:52.298Z</updated>
+    <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>本篇將會大略的提及OpenGL中Buffer,Unifrom還有一點點Shader Storage Block的部分，而關於Atomic或同步問題，就先略過。如果對Shader中GPU與CPU不熟，可能會對本篇閱讀有礙。畢竟藍寶書竟然將Shader的部分放在後頭，Shader連結部分都還不熟，就先切入細節Buffer,Uniform的部分。</p>
+<a id="more"></a>
+<h2 id="Buffer">Buffer</h2><p>對於Buffer的使用第三篇與第二篇，足夠初學者使用，因此這部分將章節所使用到的Buffer函式列出來逐步講解。</p>
+<ul>
+<li><code>glCreateBuffers(GLsizei n, GLuint* buffer)</code> : 與OpenGL要buffer的編號，與glGenBuffers功能相同。</li>
+<li><code>glBindBuffer(GLenum target, GLuint buffer)</code> : 將某編號buffer綁訂在要求的target容器上。</li>
+<li><code>glBufferStorage(GLenum target, GLsizeiptr size, const void* data, GLbitfield flags)</code> : 將指定容器的空間與資料填入,並告訴OpenGL後續用途，這樣才會配置最佳存取空間。</li>
+<li><code>glNameBufferStorage(GLuint buffer, GLsizeiptr size, const void* data, GLbitfield flags)</code> : 與 <code>glBufferStorage</code>相同，只是指定的是buffer編號。</li>
+<li><code>glBufferSubData(GLenum target, GLintptr offset, GLsizeptr size, const GLvoid* data)</code> : 根據offset與size的定義，將資料放在指定記憶體位置處。</li>
+<li><code>glNameBufferSubData(GLuint buffer, GLintptr offset, GLsizeptr size, const GLvoid* data)</code> : 同<code>glBufferSubData</code>。</li>
+<li><code>glMapBuffer(GLenum target, GLenum usage)</code> : 從指定容器取出Pointer，可直接進行記憶體配置，不須像<code>glBufferStorage</code>或<code>glBufferData</code>需要多一個copy。</li>
+<li><code>glMapNamedBuffer(GLuint buffer, GLenum usage)</code> : 同<code>glMapBuffer(GLenum target, GLenum usage)</code>。</li>
+<li><code>glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLenum usage)</code> : 指定要修改的記憶體區域，回傳Pointer可直接進行記憶體配置 。</li>
+<li><code>glMapNamedBufferRange(GLuint buffer, GLintptr offset, GLsizeiptr length, GLenum usage)</code> : 同<code>glMapBufferRange</code>。</li>
+<li><code>glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void* data)</code> : 用來清除buffer特定區域的值，然後可用data取代。</li>
+<li><code>glClearNamedBufferSubData(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void* data)</code> : 同<code>glClearBufferSubData</code>。</li>
+<li><code>glCopyBufferSubData(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)</code> : 將Buffer資料複製到指定Buffer中。</li>
+<li><code>glCopyNamedBufferSubData(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)</code> : 同<code>glCopyBufferSubData</code>。</li>
+<li><code>glVertexArrayAttribBinding(GLuint vaobj, GLuint attribindex, GLuint bindingindex)</code> : 從binding區域中取出buffer，之後對應到vao使用的shader中的位置。</li>
+<li><code>glVertexArrayVertexBuffer(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)</code> : 將buffer的指定記憶體區域綁定到binding區域。</li>
+</ul>
+<blockquote><h4 id="Binding區域">Binding區域</h4><p>Binding區域是一個OpenGL定義的一個待綁區，可以想像成一串陣列，可根據指定vbo buffer或是簡稱buffer，將有資料的buffer放到指定綁定索引後，不同的vao即可以方便使用同個buffer。</p>
+</blockquote>
+<ul>
+<li><code>glVertexArrayAttribFormat(GLuint vaobj, GLuint attribindex, GLuint size, GLenum type, GLboolean normalized, GLuint relativeoffset)</code> : 定義第幾個location讀取buffer資料時，要以什麼方式進行讀取，如同第三篇所用到的<code>glVertexAttribPointer</code>。</li>
+<li><code>glEnableVertexArrayAttrib(GLuint vao, GLuint index )</code> : 啟動第幾個位置，不啟動Vertex Shader無法接收。</li>
+<li><code>glDisableVertexArrayAttrib(GLuint vao, GLuint index )</code> : 關閉VS的接收。</li>
+</ul>
+<h2 id="Uniforms">Uniforms</h2><p>Unifrom與VertexAttribute的差別對初學者來說應該差異不大，因為都能夠傳送資料進入Shader。不過這裡可以先給一個概念，VertexAttribute強調的是Vertex，也就是根據每個頂點，而有所變動。而Unifrom的中文意思是制式，不變的，利用Unifrom通常只會在一個繪製才能變動一次值，畢竟跑Shader的時候，Uniform的值已經進入GPU。</p>
+<p>而Unifrom有兩種形式，一種稱為<strong>Default Block Uniforms</strong>，另一種稱為<strong> Uniform Block</strong>。</p>
+<h3 id="Default_Block_Unifroms">Default Block Unifroms</h3><p>Uniform的使用，最傳統的方式如下:</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uniform</span> <span class="keyword">float</span> time;</span><br><span class="line"><span class="keyword">uniform</span> <span class="keyword">int</span> selection;</span><br><span class="line"><span class="keyword">uniform</span> <span class="keyword">vec4</span> backgroundColor;</span><br><span class="line"><span class="keyword">uniform</span> <span class="keyword">mat4</span> mvp;</span><br></pre></td></tr></table></figure>
+<p>而進階一點可以定義每個uniform的位置，如果沒定義，如上方的形式，就會預設自動配一個，因此通常沒必要定義。</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">layout</span> (location = <span class="number">87</span>) <span class="keyword">uniform</span> <span class="keyword">vec4</span> specificStuff;</span><br></pre></td></tr></table></figure>
+<p>而如果沒有定義location的一般用法，要傳值的話需要使用<code>glGetUnifromLocation(program, name)</code>，傳入編譯好的program與想要傳值的變數名稱，就可以取得其location。</p>
+<h4 id="實際情形模擬">實際情形模擬</h4><p>假設實際位置如下:</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">layout</span> (location = <span class="number">0</span>) <span class="keyword">uniform</span> <span class="keyword">float</span> time;</span><br><span class="line"><span class="keyword">layout</span> (location = <span class="number">1</span>) <span class="keyword">uniform</span> <span class="keyword">int</span> selection;</span><br><span class="line"><span class="keyword">layout</span> (location = <span class="number">2</span>) <span class="keyword">uniform</span> <span class="keyword">vec4</span> backgroundColor;</span><br><span class="line"><span class="keyword">layout</span> (location = <span class="number">3</span>) <span class="keyword">uniform</span> <span class="keyword">mat4</span> mvp;</span><br></pre></td></tr></table></figure>
+<p>那麼再傳值的時候就要用適當的<code>glUnifromXY</code>，X代表數字Y代表型態，如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">glUseProgram(program);</span><br><span class="line">glUniform1f(<span class="number">0</span>, (GLfloat)systemTime);</span><br><span class="line">glUniform1i(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">glUniform4f(<span class="number">2</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);</span><br><span class="line">glUniformMatrix4fv(<span class="number">3</span>, <span class="number">1</span>, GL_FALSE, glm::value_ptr(mvp));</span><br></pre></td></tr></table></figure>
+<h3 id="Uniform_Blocks">Uniform Blocks</h3><p>有時候不同Shader會傳入相同的值(如光影中幾乎需要攝影機的位置)，這時候Uniform Block就派上用場了，在OpenGL程式中，定義一個<strong>Uniform Buffer Object</strong>，然後傳入每個需要用到此Uniform的Shader中，直接從記憶體傳入GPU就可以免去每個Shader程式都需要用<code>glUniform</code>來傳遞。</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">layout</span> (location = <span class="number">0</span>) <span class="keyword">in</span> <span class="keyword">vec4</span> position;</span><br><span class="line"><span class="keyword">layout</span>(std140) <span class="keyword">uniform</span> CommonParameter</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> invisible;</span><br><span class="line">	<span class="keyword">float</span> time;</span><br><span class="line">	<span class="keyword">float</span> strange[<span class="number">3</span>];</span><br><span class="line">	<span class="keyword">vec3</span> camera;</span><br><span class="line">	<span class="keyword">mat4</span> mvp;</span><br><span class="line">	<span class="keyword">int</span> another;</span><br><span class="line">&#125; common;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main()</span><br><span class="line">&#123;</span><br><span class="line">	... <span class="comment">// some shader code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面就是Unifrom Block最常用的方式，而<code>std140</code>代表的是標準格式，代表每個型態的格式大小規範。而定義的模式是，一筆資料的邊界必須是16 bytes對齊，float代表16 bytes，vec1~2代表8 bytes, vec3~4代表16 bytes，mat則是4個16byte。概念如下:</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">layout</span>(std140) <span class="keyword">uniform</span> CommonParameter</span><br><span class="line">&#123;</span><br><span class="line">                          <span class="comment">//base_aligment-aligment_offset</span></span><br><span class="line">	<span class="keyword">int</span> invisible;        <span class="comment">//  4-0</span></span><br><span class="line">	<span class="keyword">float</span> time;           <span class="comment">// 16-16</span></span><br><span class="line">	<span class="keyword">float</span> strange[<span class="number">3</span>];     <span class="comment">// 16-32</span></span><br><span class="line">	                      <span class="comment">// 16-48</span></span><br><span class="line">	                      <span class="comment">// 16-64</span></span><br><span class="line">	<span class="keyword">vec3</span> camera;          <span class="comment">// 16-80</span></span><br><span class="line">	<span class="keyword">mat4</span> mvp;             <span class="comment">// 16-96</span></span><br><span class="line">	                      <span class="comment">// 16-112</span></span><br><span class="line">	                      <span class="comment">// 16-128</span></span><br><span class="line">	                      <span class="comment">// 16-144</span></span><br><span class="line">	<span class="keyword">int</span> another;          <span class="comment">//  4-160</span></span><br><span class="line">&#125; common;</span><br></pre></td></tr></table></figure>
+<h4 id="初始化UBO">初始化UBO</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GLuint ubo;</span><br><span class="line">glGenBuffers(<span class="number">1</span>, &amp;ubo);</span><br><span class="line">glBindBuffer(GL_UNIFORM_BUFFER, ubo);</span><br><span class="line">glBufferData(GL_UNIFORM_BUFFER, <span class="number">160</span>, NULL, GL_STATIC_DRAW);</span><br><span class="line">glBindBuffer(GL_UNIFORM_BUFFER, <span class="number">0</span>);</span><br><span class="line">glBindBufferBase(GL_UNIFORM_BUFFER, <span class="number">0</span>, ubo); <span class="comment">// binding point to 0</span></span><br></pre></td></tr></table></figure>
+<h4 id="填入內容">填入內容</h4><p>通常會在loop的階段使用，除非永遠是Const，那<code>glBufferSubData</code>就可以在迴圈外使用。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">GLuint invisible = getInvis();</span><br><span class="line">GLfloat time = geTime();</span><br><span class="line">glm::mat4 mvp = getMvp();</span><br><span class="line">GLfloat strange[<span class="number">3</span>] = getSomeStrange();</span><br><span class="line">glm::vec3 cameraPos = getCamPos();</span><br><span class="line">GLuint another = getValue();</span><br><span class="line">glBindBuffer(GL_UNIFORM_BUFFER, ubo);</span><br><span class="line"><span class="keyword">int</span> offset = <span class="number">0</span>;</span><br><span class="line">glBufferSubData(GL_UNIFORM_BUFFER, offset, <span class="keyword">sizeof</span>(GLuint), glm::value_ptr(invisible));</span><br><span class="line">offset += <span class="keyword">sizeof</span>(GLuint);</span><br><span class="line">glBufferSubData(GL_UNIFORM_BUFFER, offset, <span class="keyword">sizeof</span>(GLfloat), glm::value_ptr(time));</span><br><span class="line">offset += <span class="keyword">sizeof</span>(GLfloat);</span><br><span class="line">glBufferSubData(GL_UNIFORM_BUFFER, offset, <span class="number">3</span> * <span class="keyword">sizeof</span>(GLfloat), glm::value_ptr(strange));</span><br><span class="line">offset += <span class="number">3</span> * <span class="keyword">sizeof</span>(GLfloat);</span><br><span class="line">glBufferSubData(GL_UNIFORM_BUFFER, offset, <span class="keyword">sizeof</span>(glm::vec3), glm::value_ptr(cameraPos));</span><br><span class="line">offset += <span class="keyword">sizeof</span>(glm::vec3);</span><br><span class="line">glBufferSubData(GL_UNIFORM_BUFFER, offset, <span class="keyword">sizeof</span>(glm::mat4), glm::value_ptr(mvp));</span><br><span class="line">offset += <span class="keyword">sizeof</span>(glm::mat4);</span><br><span class="line">glBufferSubData(GL_UNIFORM_BUFFER, offset, <span class="keyword">sizeof</span>(GLuint), glm::value_ptr(another));</span><br><span class="line">glBindBuffer(GL_UNIFORM_BUFFER, <span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<h4 id="Shader綁定UBO">Shader綁定UBO</h4><p>這段不用再迴圈內，事先定義好要取得的BindingPoint，Buffer不管怎麼變，Shader都取的到。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GLuint shaderUsedUBO1 = glGetUnifromBlockLocationIndex(program1, <span class="string">"CommonParameter"</span>);</span><br><span class="line">GLuint shaderUsedUBO2 = glGetUnifromBlockLocationIndex(program2, <span class="string">"CommonParameter"</span>);</span><br><span class="line">GLuint shaderUsedUBO2 = glGetUnifromBlockLocationIndex(program3, <span class="string">"CommonParameter"</span>);</span><br><span class="line"></span><br><span class="line">glGetUnifromBlockBinding(program1, shaderUsedUBO1, <span class="number">0</span>);</span><br><span class="line">glGetUnifromBlockBinding(program2, shaderUsedUBO2, <span class="number">0</span>);</span><br><span class="line">glGetUnifromBlockBinding(program3, shaderUsedUBO3, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Shader_Storage_Block">Shader Storage Block</h2><p>與UBO很相似，但不同的地方在於這裡可以讓Shader進行修改裡面的內容，而且這會影響到OpenGL程式端的Buffer內容。定義如下:</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">layout</span> (binding=<span class="number">0</span>, std430) buffer stblock</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">vec4</span> data;</span><br><span class="line">    <span class="keyword">int</span> test;</span><br><span class="line">    <span class="keyword">vec3</span> color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>主要是把uniform改為buffer，而這裡的<code>std430</code>代表一個更嚴格的格式，在此不多做說明，用<code>std140</code>即可。</p>
+<h2 id="其他">其他</h2><p>Shader Storage Block還有一個Atomic的應用，主要關於平行處理中的一些細節問題。還有一個特別的Atomic Counter是一些進階技巧，Dowen也未曾碰過。</p>
+<h2 id="小結">小結</h2><p>在書中的第五章剩餘還有Texture的部分，是有關於材質貼圖的部分，算是一個極為重要的一Part，但是需要介紹到一個新的圖片載入函式庫，可能會使篇幅變得如同第四篇一樣巨大，因此本篇就先到此結尾。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>本篇將會大略的提及OpenGL中Buffer,Unifrom還有一點點Shader Storage Block的部分，而關於Atomic或同步問題，就先略過。如果對Shader中GPU與CPU不熟，可能會對本篇閱讀有礙。畢竟藍寶書竟然將Shader的部分放在後頭，Shader連結部分都還不熟，就先切入細節Buffer,Uniform的部分。</p>]]>
+    
+    </summary>
+    
+      <category term="OpenGL" scheme="http://tokenyet.github.io/tags/OpenGL/"/>
+    
+      <category term="OpenGL Extension" scheme="http://tokenyet.github.io/tags/OpenGL-Extension/"/>
+    
+      <category term="OpenGL Tutorial" scheme="http://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
+    
+      <category term="OpenGL intro" scheme="http://tokenyet.github.io/tags/OpenGL-intro/"/>
+    
+      <category term="OpenGL入門教學" scheme="http://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
+    
+      <category term="OpenGL教學" scheme="http://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
+    
+      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[OpenGL 關於藍寶入門教學]]></title>
+    <link href="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/"/>
+    <id>http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/</id>
+    <published>2016-08-25T07:30:29.000Z</published>
+    <updated>2016-08-25T14:07:36.029Z</updated>
+    <content type="html"><![CDATA[<h2 id="關於本篇說明">關於本篇說明</h2><p>藍寶書本來認為是一本<strong>適合入門</strong>者的書，但是漸漸的發現，完全跟入門無緣。因此標題從「OpenGL 入門教學」更改為「OpenGL 藍寶入門教學」，跟著藍寶書走馬看花，真的<strong>想用藍寶書學習者可以跟著教學走</strong>。打個遊戲的比方來說，如果說學習OpenGL有分為簡單、普通、困難、極難來講，Dowen認為<strong>本書屬於困難到極難</strong>的等級，而自己是普通的一周目玩家，要通關這本書，可能要技巧性的完成，比方說將一些艱深，身為初學者根本用不到且體會不到的部分先略過，僅提及而不深究。</p>
+<p>自己照著藍寶的教學，隨興才會寫，目前Dowen打算先自己看完，教學先擱置，如果有讀者需要幫助可以留言詢問，或許會促進我發文的動力。終於體會到論壇中，「你的回覆是我發文的最大動力」這句話了XD</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="關於本篇說明">關於本篇說明</h2><p>藍寶書本來認為是一本<strong>適合入門</strong>者的書，但是漸漸的發現，完全跟入門無緣。因此標題從「OpenGL 入門教學」更改為「OpenGL 藍寶入門教學」，跟著藍寶書走馬看花，真的<strong>想用]]>
+    </summary>
+    
+      <category term="OpenGL入門教學" scheme="http://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
+    
+      <category term="藍寶書" scheme="http://tokenyet.github.io/tags/%E8%97%8D%E5%AF%B6%E6%9B%B8/"/>
+    
+      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[OpenGL 藍寶入門教學 4: 數學]]></title>
     <link href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/"/>
     <id>http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/</id>
     <published>2016-08-11T08:44:20.000Z</published>
-    <updated>2016-08-22T12:53:43.314Z</updated>
+    <updated>2016-08-25T08:26:49.815Z</updated>
     <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>這一章節主要是介紹一些數學的基礎，如果發現哪個部分不熟的話，最好能親自磨練一下，因為以後常常需要的時候，如果不懂箇中原理，那麼在偵錯或是實作上，會遇到一些麻煩。當然領悟過後能寫起來是最推薦的方式，以後忘了的時候瞟一眼就行了。初學者如果看不懂本篇的話，可以暫且跳過無妨，當有用到再回頭看，因為現在的文章是搭配官方藍寶書的章節推進，而藍寶書比較適合中階以上閱讀者，所以本篇對初學者來說應該很吃力。<br>接下來會介紹的內容基本上有:</p>
 <ul>
 <li>向量</li>
@@ -737,11 +838,11 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
   </entry>
   
   <entry>
-    <title><![CDATA[OpenGL 入門教學 3: Pipeline]]></title>
+    <title><![CDATA[OpenGL 藍寶入門教學 3: Pipeline]]></title>
     <link href="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/"/>
     <id>http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/</id>
     <published>2016-08-06T06:47:28.000Z</published>
-    <updated>2016-08-17T18:23:39.563Z</updated>
+    <updated>2016-08-25T09:54:11.118Z</updated>
     <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。</p>
 <h2 id="CPU到GPU第一階段_-_Vertex_Shader的資料傳送">CPU到GPU第一階段 - Vertex Shader的資料傳送</h2><p>GPU在開始執行Vertex Shader前面，有一個動作稱為<em>Vertex Fetching</em>，這個動作會將我們在程式中寫的一個稱為<em>Vertex Attribute</em>的部分讀出來，而後傳送至GPU處。其中GPU必須由 <code>layout (location = 0) in</code> 來定義輸入要從GPU的哪個位置中取出，而CPU則是藉由 <code>glVertexAttribXXX(0, data)</code> 來將資料填入記憶體等待<em>Vertex Fetching</em>到GPU中layout的部分。<br><a id="more"></a></p>
 <h3 id="動手做_-_CPU_to_GPU">動手做 - CPU to GPU</h3><p>首先在迴圈中加入要傳遞的資料與其對應的function，都是以 <code>glVertexAttrib</code> 開頭的傳遞函式。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">glBindVertexArray(vertexArrayObject);</span><br><span class="line"></span><br><span class="line">GLfloat data[] = &#123;</span><br><span class="line">	(<span class="keyword">float</span>)<span class="built_in">sin</span>(glfwGetTime()) * <span class="number">0.5f</span>,</span><br><span class="line">	(<span class="keyword">float</span>)<span class="built_in">cos</span>(glfwGetTime()) * <span class="number">0.6f</span>,</span><br><span class="line">	<span class="number">0.0f</span>, <span class="number">0.0f</span></span><br><span class="line">&#125;;</span><br><span class="line">glVertexAttrib4fv(<span class="number">0</span>, data);</span><br><span class="line">glDrawArrays(GL_TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">glBindVertexArray(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
@@ -908,11 +1009,11 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
   </entry>
   
   <entry>
-    <title><![CDATA[OpenGL 入門教學 2: Strat With Triangle]]></title>
+    <title><![CDATA[OpenGL 藍寶入門教學 2: Strat With Triangle]]></title>
     <link href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/"/>
     <id>http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/</id>
     <published>2016-07-10T15:47:49.000Z</published>
-    <updated>2016-08-15T16:59:58.486Z</updated>
+    <updated>2016-08-25T08:26:55.101Z</updated>
     <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>本系列文將使用<em>OpenGL 4.5</em>版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！</p>
 <h2 id="從點開始">從點開始</h2><p>要畫一個三角形之前，總要會在畫面上畫出一個點來。在那之前，由於使用的是Modern版OpenGL，所以做任何事都要準備兩個東西，其中一個是<em>「Vertex Array Object」</em>，簡稱<em>VAO</em>，另一個則是Shader，包含基礎的兩個稱為Vertex Shader與Fragment Shader。</p>
 <ul>
@@ -991,11 +1092,11 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
   </entry>
   
   <entry>
-    <title><![CDATA[OpenGL 入門教學 1: Setting up Environment]]></title>
+    <title><![CDATA[OpenGL 藍寶入門教學 1: Setting up Environment]]></title>
     <link href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/"/>
     <id>http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/</id>
     <published>2016-07-05T11:14:47.000Z</published>
-    <updated>2016-08-15T17:00:04.607Z</updated>
+    <updated>2016-08-25T08:27:02.112Z</updated>
     <content type="html"><![CDATA[<h2 id="環境準備">環境準備</h2><p>開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有興趣再往下閱讀。</p>
 <h2 id="GLFW">GLFW</h2><p><a href="http://www.glfw.org/" target="_blank" rel="external">GLFW</a>主要是將在不同平台( Linux, Windows, Mac ) 間常用的一些使用者需求給獨立出來，這些使用者需求像是Keyboard的資訊、Mouse資訊、視窗建置….等等。將這些不同的使用者需求都統整成一個API就是其中一個GLFW在做的事，此外另一個工作是將OpenGL繪製的東西從buffer顯示到螢幕上的工作，還有一些零零總總的細節操作，最重要的是用了GLFW其實已包含OpenGL的Header，當建置好後，直接可以撰寫OpenGL的Code。</p>
 <p>首先先到<a href="http://www.glfw.org/download.html" target="_blank" rel="external">GLFW官方下載</a>中找一個名為「32-bit Windows binaries」的元件 ( 注意! 64-bit Windows binaries的建議不要使用，Dowen我在建置的時候會遇到非常多問題)，抓下來後接下來就照著以下的圖片設置。</p>
@@ -1085,11 +1186,11 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
   </entry>
   
   <entry>
-    <title><![CDATA[OpenGL 入門教學 0: Introduce]]></title>
+    <title><![CDATA[OpenGL 藍寶入門教學 0: Introduce]]></title>
     <link href="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/"/>
     <id>http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/</id>
     <published>2016-06-28T13:36:47.000Z</published>
-    <updated>2016-08-15T17:00:09.657Z</updated>
+    <updated>2016-08-25T08:26:55.522Z</updated>
     <content type="html"><![CDATA[<h2 id="前言:">前言:</h2><p>不管開始任何事情之前，必須先對要做的事情先有個了解才能開始，學習OpenGL也不例外。開始前，先說一下我做教學文的風格，由於這是我以一個學中教，教中學的角度來製作，所以可能會有些不精確，希望哪裡有錯誤可以幫忙改正或指教，謝謝。</p>
 <h2 id="簡介:">簡介:</h2><p>首先OpenGL(Graphics Library)是一個API，也就是說他是一個幫助我們在不同的顯示卡配備之間做一個橋樑。聽起來很籠統，更詳細又簡單的說，即是說每張顯示卡在製作的時候，都有不同數量的繪圖處理器與不同晶片(ex.GTX970 1080)。而你不必擔心到底要如何針對不同顯示卡的規格(Spec)而寫那些控制不同機器的語法就是OpenGL的工作。</p>
 <h2 id="歷史:">歷史:</h2><p>而身為一個OpenGL的使用者也需要知曉一點他的過去與未來，過去OpenGL是源自Silicon Graphics這家公司，當時這家公司專門製作繪圖電腦，又貴又大而且寫繪圖語言的時候，不同的繪圖電腦會有不同的寫法，完全沒有一個統一的規範。經過了一段時間，終於想到解法，就是將針對系統部分的程式碼拿掉後，也就是拿掉只能在規格完全符合才可操作API的部分，之後就開發了OpenGL 1.0版本。這個歷史告訴我們，找出邏輯中相同與不同的部分獨立出來，可以增進事務的美好。</p>
@@ -1583,93 +1684,6 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
       <category term="Ubuntu" scheme="http://tokenyet.github.io/tags/Ubuntu/"/>
     
       <category term="Linux" scheme="http://tokenyet.github.io/categories/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Ubuntu疑難雜症]]></title>
-    <link href="http://tokenyet.github.io/2015/07/13/Ubuntu%E7%96%91%E9%9B%A3%E9%9B%9C%E7%97%87/"/>
-    <id>http://tokenyet.github.io/2015/07/13/Ubuntu疑難雜症/</id>
-    <published>2015-07-13T02:52:21.000Z</published>
-    <updated>2015-07-13T13:12:37.573Z</updated>
-    <content type="html"><![CDATA[<p>前記：<br>由於在實習的工作中需要用到這個人覺得很難使用的Ubuntu系統<br>所以遇到了種種的挫折與困難，全部寫在這裡了。</p>
-<ol>
-<li>瀏覽器的問題<br>安裝瀏覽器的時候我使用過Opera,Chrome,Firefox這三種。<br>1-1. Opera跟Firefox<br>直接下載能看影片，不過額外裝flash會有較好效果，<br>在擴充插件上，Opera跟Firefox在Ubuntu的支援度較高，<br>*如果要知道如何安裝flash插件請參考1-1-1。<br>*安裝firefox參考1-1-2。<br>1-2.Chrome<br>不需裝插件即可觀看影片內建flash<br>但是在某些版本的Ubuntu上不能裝插件，對Ubuntu的支援度較低較低</li>
-</ol>
-<p>Opera<br>推薦度：☆★★★★<br>Firefox<br>推薦度：★★★★★<br>Chrome<br>推薦度：☆☆★★★</p>
-<p>1-1-1.安裝flashplugin<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install flashplugin-installer</span><br></pre></td></tr></table></figure></p>
-<p>1-1-2.安裝firefox<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> update</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="comment">--purge --reinstall install firefox</span></span><br></pre></td></tr></table></figure></p>
-<ol>
-<li><p>There is no public key available for the following key IDs<br>如果遇到以上的問題請重新取得Public Key</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> debian-keyring debian-archive-keyring</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>沒有中文輸入法<br>在遇到沒有中文輸入法的情況，先確認是否有Language Support這個選項。<br>3-1. 若無則先安裝Language Support。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> <span class="keyword">language</span>-selector-gnome</span><br><span class="line">sudo gnome-<span class="keyword">language</span>-selector</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>完成後到Language Support的鍵盤輸入法的地方設定ibus為預設輸入法系統。</p>
-<p>3-2. 若已經有Language Support。則只要先暫時清除ibus安裝新酷音後就可以了。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">purge</span> ibus</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> ibus-chewing</span></span><br></pre></td></tr></table></figure></p>
-<p>*在確認一次：語言支援 -&gt; 鍵盤輸入法系統 ibus<br>重新登入後就可以打中文了。<br>*如果是在 SublimeText3 上測試沒顯示是正常的，Sublimetext 目前並不支援中文輸入在Ubuntu上。</p>
-<ol>
-<li>/etc/apt/Source.list遭更換問題<br>有時候由於你碰到的電腦是屬於某些廠商客制化過的，<br>在apt-get這類的指令輸入上想安裝或作任何事情，都會跳出找不到’apt’之類的選項。<br>這時候就要上網找一個正確的Source.list做更換，或是利用舊的Source.list.old把新的更換掉。<br>*sources.list.old這個內容如果很少的話代表就不能用此方式替換</li>
-</ol>
-<p>個人是先把權限輸入密碼的部份拿掉後，另外作一個執行檔來作迅速的更換。<br>（主要是想將source.list換成可update後，如果廠商來看可以把source.list換回原本的，以防問題）<br>主要的過程如下（不包含拿掉權限密碼的教學部份）<br>先將sources.list（被廠商搞過的檔案）與sources.list.old(正常的檔案）<br>分別保存在一個地方，我是放在名為Backup的資料夾裡面。<br>然後兩個各自分類存到 正常的sources 與 廠商的sources<br>之後在替換上就可以使用以下的方法</p>
-<p>-將正常的sources.list取代原本的萬惡廠商sources.list</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">rm -rf <span class="regexp">/etc/</span>apt/sources.list</span><br><span class="line">cp <span class="regexp">/home/</span>自己的電腦名稱<span class="regexp">/Desktop/</span>SourceList<span class="regexp">/Backup/</span>正常的sources<span class="regexp">/sources.list /</span>etc/apt</span><br></pre></td></tr></table></figure>
-<p>*使用sources.list.old的人，記得將其改名為sources.list。</p>
-<p>-如果廠商來看電腦的話就把sources.list換回它的萬惡檔案<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">rm -rf <span class="regexp">/etc/</span>apt/sources.list</span><br><span class="line">cp <span class="regexp">/home/</span>自己的電腦名稱<span class="regexp">/Desktop/</span>SourceList<span class="regexp">/Backup/</span>廠商的sources<span class="regexp">/sources.list /</span>etc/apt</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>找到同個副檔名的檔案並複製到指定資料夾</li>
-</ol>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find</span> . -name <span class="string">"*.TIF"</span> -exec cp &#123;&#125; <span class="keyword">new</span> \;</span><br></pre></td></tr></table></figure>
-<p>簡單解釋一下<br>這個意思就是說<code>find</code>（找） <code>-name</code>（名字是） <code>&quot;*.TIF&quot;</code>(副檔名是TIF)的所有檔案，<br>並 <code>-exec</code> 執行 <code>cp {} new \;</code>後面的這串是 複製集合 {} 到 new 這個資料夾內。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>前記：<br>由於在實習的工作中需要用到這個人覺得很難使用的Ubuntu系統<br>所以遇到了種種的挫折與困難，全部寫在這裡了。</p>
-<ol>
-<li>瀏覽器的問題<br>安裝瀏覽器的時候我使用過Opera,Chrome,Firefox這三種。<br>1-1. Oper]]>
-    </summary>
-    
-      <category term="Ubuntu" scheme="http://tokenyet.github.io/tags/Ubuntu/"/>
-    
-      <category term="Linux" scheme="http://tokenyet.github.io/categories/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Hexo目錄建立淺說]]></title>
-    <link href="http://tokenyet.github.io/2015/07/10/Hexo%E7%9B%AE%E9%8C%84%E5%BB%BA%E7%AB%8B%E6%B7%BA%E8%AA%AA/"/>
-    <id>http://tokenyet.github.io/2015/07/10/Hexo目錄建立淺說/</id>
-    <published>2015-07-09T17:08:26.000Z</published>
-    <updated>2015-07-15T13:22:04.994Z</updated>
-    <content type="html"><![CDATA[<p>前言：<br>由於Dowen是個想完成某項功能就會盡全力去研究的人，雖然建立網站不是我的專長，縱使CSS,Javscript,JQuery只學了半套，而且還不了解什麼node.js還有express，但是憑著一顆堅毅的熱情，總算完成了目錄頁面的建立。<br>當然目錄建立有很簡單的作法，是直接<code>hexo new page categories</code>，但是發現旁邊的widget既然可以自動建立，那為什麼我要自己手動建立呢？</p>
-<p>由於上網看了許久，幾乎沒發現有人分享如何從無到有建立起一個自動產生的目錄頁面，除了<a href="http://wzpan.github.io/hexo-theme-freemind/" target="_blank" rel="external">feemind</a>有使用到之後，就沒有其他範例了。</p>
-<p>那麼就開始說明如何自動建立吧！<br>在此之前先感謝<a href="https://github.com/wzpan" target="_blank" rel="external">freemind作者：Joseph Pan</a>告訴身為初學者的我，該如何找到物件內容的方法(console.log(物件))，否則還真沒有現在的網站。</p>
-<p>首先要能用 hexo server 瀏覽自己的網站 <del> （廢話） </del> </p>
-<p>再來必須知道 layout.ejs 基礎的內容在寫些什麼。</p>
-<p>接下來再 source 頁面中，產生一個categories的資料夾與一個index.html。<br>index.html內容是</p>
-<blockquote>
-<p>title: Categories<br>layout: categories</p>
-</blockquote>
-<p>接下來重點來了，在themes/自己的主題/layout/ 中，產生一個categories.ejs。</p>
-<p>Hexo就會自動幫你把 index.html 要的內容從 ejs 中印出來。</p>
-<p>至於categories.ejs要如何實作呢？<br>首先先參照自己layout/_partial下的archive.ejs是怎麼實作的。</p>
-<p>將那一段他自動為你印出時間與文章的地方記起來後。</p>
-<p>然後把全部內容貼到categories.ejs，把你判斷到是印時間與文章的地方刪掉，你就知道那段是你要實作的地方。</p>
-<p>真正key part就在這裡，我是參照<a href="https://github.com/wzpan/hexo-theme-freemind/blob/master/layout/categories.ejs" target="_blank" rel="external">freemind的categories.ejs</a>的作法，先從site.categories中取得，每一項category名稱，之後藉由site.posts，取得對應的文章標題與連結然後放在每個category之下。</p>
-<p>關鍵程式碼如下：</p>
-<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span>&lt;%<span class="ruby"> site.categories.sort(<span class="string">'name'</span>).each(function(item)&#123; </span>%&gt;<span class="xml"></span><br><span class="line">	<span class="tag">&lt;<span class="title">h4</span> <span class="attribute">class</span>=<span class="value">"archive-ul show"</span> <span class="attribute">data-toggle</span>=<span class="value">"collapse"</span> <span class="attribute">id</span>=<span class="value">"</span></span></span>&lt;%=<span class="ruby"> item.name </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">data-target</span>=<span class="value">"#modal-</span></span></span>&lt;%=<span class="ruby"> item.name </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span>&gt;</span> </span><br><span class="line">	</span>&lt;%=<span class="ruby"> item.name </span>%&gt;<span class="xml"> <span class="tag">&lt;<span class="title">b</span> <span class="attribute">class</span>=<span class="value">"caret"</span>&gt;</span><span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;/<span class="title">h4</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"modal-</span></span></span>&lt;%=<span class="ruby"> item.name </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> <span class="attribute">class</span>=<span class="value">"collapse in"</span>&gt;</span></span><br><span class="line">		</span>&lt;%<span class="ruby"> site.posts.sort(<span class="string">'date'</span>, -<span class="number">1</span>).forEach(function(it)&#123; </span>%&gt;<span class="xml"></span><br><span class="line">			</span>&lt;%<span class="ruby"> <span class="keyword">if</span> (it.categories.length == <span class="number">1</span> &amp;&amp; it.categories.data[<span class="number">0</span>]._id == item._id)&#123; </span>%&gt;<span class="xml"></span><br><span class="line">			<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"listing-item"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"</span></span></span>&lt;%=<span class="ruby"> config.root </span>%&gt;<span class="xml"><span class="tag"><span class="value"></span></span></span>&lt;%=<span class="ruby"> it.path </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> </span></span>&lt;%<span class="ruby"> <span class="keyword">if</span> (it.description) &#123; </span>%&gt;<span class="xml"><span class="tag"> <span class="attribute">title</span>=<span class="value">"</span></span></span>&lt;%=<span class="ruby"> it.description </span>%&gt;<span class="xml"><span class="tag"><span class="value">"</span> </span></span>&lt;%<span class="ruby"> &#125; </span>%&gt;<span class="xml"><span class="tag">&gt;</span></span>&lt;%=<span class="ruby"> it.title </span>%&gt;<span class="xml"><span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">			</span>&lt;%<span class="ruby"> &#125; </span>%&gt;<span class="xml"></span><br><span class="line">		</span>&lt;%<span class="ruby"> &#125;); </span>%&gt;<span class="xml"></span><br><span class="line">	<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"></span>&lt;%<span class="ruby"> &#125;); </span>%&gt;<span class="xml"></span></span><br></pre></td></tr></table></figure>
-<p>這段就是能否實作目錄的關鍵了。由於知識不夠的我寫的很亂，想看的話就去我<a href="https://github.com/Tokenyet/Website-restore/blob/master/Homepage/themes/landscape-custom/layout/categories.ejs" target="_blank" rel="external">存網站的地方</a>看吧。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>前言：<br>由於Dowen是個想完成某項功能就會盡全力去研究的人，雖然建立網站不是我的專長，縱使CSS,Javscript,JQuery只學了半套，而且還不了解什麼node.js還有express，但是憑著一顆堅毅的熱情，總算完成了目錄頁面的建立。<br>當然目錄建立有很]]>
-    </summary>
-    
-      <category term="Hexo分類" scheme="http://tokenyet.github.io/tags/Hexo%E5%88%86%E9%A1%9E/"/>
-    
-      <category term="Hexo目錄" scheme="http://tokenyet.github.io/tags/Hexo%E7%9B%AE%E9%8C%84/"/>
-    
-      <category term="網頁相關" scheme="http://tokenyet.github.io/categories/%E7%B6%B2%E9%A0%81%E7%9B%B8%E9%97%9C/"/>
     
   </entry>
   
