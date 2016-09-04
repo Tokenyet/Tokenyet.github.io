@@ -89,6 +89,73 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-OpenGL-Questionl-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/04/OpenGL-Questionl-1/" class="article-date">
+  <time datetime="2016-09-04T15:10:18.000Z" itemprop="datePublished">2016-09-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OpenGL/">OpenGL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/04/OpenGL-Questionl-1/">OpenGL之沒有蠢問題 1 - glGetUniformLocation</a>
+    </h1>
+  
+
+      </header>
+    
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/" data-id="cisosm3uu002pygubduzw59so" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="小聊">小聊</h2><p>最近在將學過的技巧慢慢聚集起來，零散的學過<strong>Phong</strong>，<strong>Normal Mapping</strong>，<strong>gBuffer</strong>，<strong>Assimp</strong>，<strong>Instancing</strong>，<strong>Parallax Mapping</strong>….。靈機一動，想藉由開發遊戲引擎將各種技巧整合起來，參閱網路上神人的概念，拼拼湊湊總算是有一點點的雛形，但其中遇到最頭痛也最簡單的問題就是<code>glGetUniformLocation</code>這傢伙，因此這系列就當我遇到的蠢問題紀錄吧！</p>
+<h2 id="glGetUniformLocation">glGetUniformLocation</h2><p>在這邊給一個大大的標題，以示尊敬。glGetUniformLocation是碰到Shader即會用到的function，但是Shader爆炸了，卻找不到問題，首先就會面對的也是<code>glGetUniformLocation</code>。</p>
+<p>先展示一下Dowen有問題的Shader與Code:</p>
+<p>Shader:<br><figure class="highlight cpp"><figcaption><span>shader</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#version 330 core</span></span><br><span class="line"><span class="keyword">struct</span> Material </span><br><span class="line">&#123;</span><br><span class="line">    sampler2D diffuse0;</span><br><span class="line">    sampler2D specular0;</span><br><span class="line">    <span class="keyword">float</span> shininess;</span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> Light </span><br><span class="line">&#123;</span><br><span class="line">    vec3 position;</span><br><span class="line">    vec3 ambient;</span><br><span class="line">    vec3 diffuse;</span><br><span class="line">    vec3 specular;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">in vec2 TexCoords;</span><br><span class="line">in vec3 FragPos;</span><br><span class="line">in vec3 Normal;</span><br><span class="line">out vec4 color;</span><br><span class="line"></span><br><span class="line">uniform vec3 viewPos;</span><br><span class="line">uniform Material material;</span><br><span class="line">uniform Light light;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	vec3 lightPos = light.position;</span><br><span class="line">    <span class="comment">// Ambient</span></span><br><span class="line">    vec3 ambient = light.ambient * vec3(texture(material.diffuse0, TexCoords));</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Diffuse</span></span><br><span class="line">	vec3 norm = normalize(Normal);</span><br><span class="line">	vec3 lightDir = normalize(lightPos - FragPos);  </span><br><span class="line">	<span class="keyword">float</span> diff = max(dot(norm, lightDir), <span class="number">0.0</span>);</span><br><span class="line">    vec3 diffuse = light.diffuse * diff * vec3(texture(material.diffuse0, TexCoords));</span><br><span class="line"></span><br><span class="line">	    <span class="comment">// Specular</span></span><br><span class="line">    vec3 viewDir = normalize(viewPos - FragPos);</span><br><span class="line">    vec3 reflectDir = reflect(-lightDir, norm);  </span><br><span class="line">    <span class="keyword">float</span> spec = <span class="built_in">pow</span>(max(dot(viewDir, reflectDir), <span class="number">0.0</span>), material.shininess);</span><br><span class="line">    vec3 specular = light.specular * spec * vec3(texture(material.specular0, TexCoords));</span><br><span class="line">    <span class="comment">//color = vec4(1.0f, 0.5f, 0.2f, 1.0f);</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//color = vec4(ambient + diffuse + specular, 1.0f);  </span></span><br><span class="line">	color = vec4(specular, <span class="number">1.0f</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>CPP原始碼的部分:<br><figure class="highlight cpp"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> StaticShader::SetDiffuseTexture(GLuint texture)</span><br><span class="line">&#123;</span><br><span class="line">	glActiveTexture(GL_TEXTURE0 + diffuseCount);</span><br><span class="line">	glBindTexture(GL_TEXTURE_2D, texture);</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> diffuse = <span class="string">"material.diffuse"</span> + <span class="built_in">std</span>::to_string(diffuseCount);</span><br><span class="line">	<span class="keyword">int</span> loc = GetUniformLocation(diffuse.c_str());</span><br><span class="line">	<span class="keyword">if</span> (loc == -<span class="number">1</span>) Debug::Log(<span class="string">"Diffuse texture Setting Fail."</span>);</span><br><span class="line">	glUniform1i(loc, diffuseCount);</span><br><span class="line">	diffuseCount++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>好了，看起來完美地有做debug處理，所以自製的Debug在Visual Studio下方的輸出視窗中印出了這樣的訊息。</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Diffuse texture <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br><span class="line">Light Ambient <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br><span class="line">Light Diffuse <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br></pre></td></tr></table></figure>
+<p>原因是<code>glGetUniformLocation</code>回傳$-1$，意思是找不到該Uniform位置。然後我Double Check，Triple Check，….Check，複製貼上確保命名問題正確等手法，還是出現同樣地訊息。</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Diffuse texture <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br><span class="line">Light Ambient <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br><span class="line">Light Diffuse <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br></pre></td></tr></table></figure>
+<p>之後想找更深入的Debug方法，於是就找上了列出所有Attribute與Uniform的偵錯技巧，<a href="http://stackoverflow.com/questions/440144/in-opengl-is-there-a-way-to-get-a-list-of-all-uniforms-attribs-used-by-a-shade" title="get all uniform and attributes" target="_blank" rel="external">原文</a>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">ListAttributes</span><span class="params">()</span> </span><br><span class="line"></span>&#123;</span><br><span class="line">	GLint i;</span><br><span class="line">	GLint count;</span><br><span class="line"></span><br><span class="line">	GLint size; <span class="comment">// size of the variable</span></span><br><span class="line">	GLenum type; <span class="comment">// type of the variable (float, vec3 or mat4, etc)</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> GLsizei bufSize = <span class="number">16</span>; <span class="comment">// maximum name length</span></span><br><span class="line">	GLchar name[bufSize]; <span class="comment">// variable name in GLSL</span></span><br><span class="line">	GLsizei length; <span class="comment">// name length</span></span><br><span class="line"></span><br><span class="line">	glGetProgramiv(program, GL_ACTIVE_ATTRIBUTES, &amp;count);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Active Attributes: %d\n"</span>, count);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; count; i++)</span><br><span class="line">	&#123;</span><br><span class="line">	glGetActiveAttrib(program, (GLuint)i, bufSize, &amp;length, &amp;size, &amp;type, name);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Attribute #%d Type: %u Name: %s\n"</span>, i, type, name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>列出來的訊息如下:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Active <span class="string">Attributes:</span> <span class="number">3</span></span><br><span class="line">Attribute #<span class="number">0</span> <span class="string">Type :</span><span class="number">35665</span><span class="string">Name :</span> normal</span><br><span class="line">Attribute #<span class="number">1</span> <span class="string">Type :</span><span class="number">35665</span><span class="string">Name :</span> position</span><br><span class="line">Attribute #<span class="number">2</span> <span class="string">Type :</span><span class="number">35664</span><span class="string">Name :</span> texCoord</span><br><span class="line">Active <span class="string">Uniforms:</span> <span class="number">8</span></span><br><span class="line">Uniform #<span class="number">0</span> <span class="string">Type :</span><span class="number">35665</span><span class="string">Name :</span> light.position</span><br><span class="line">Uniform #<span class="number">1</span> <span class="string">Type :</span><span class="number">35665</span><span class="string">Name :</span> light.specular</span><br><span class="line">Uniform #<span class="number">2</span> <span class="string">Type :</span><span class="number">5126</span><span class="string">Name :</span> material.shinin</span><br><span class="line">Uniform #<span class="number">3</span> <span class="string">Type :</span><span class="number">35678</span><span class="string">Name :</span> material.specul</span><br><span class="line">Uniform #<span class="number">4</span> <span class="string">Type :</span><span class="number">35676</span><span class="string">Name :</span> model</span><br><span class="line">Uniform #<span class="number">5</span> <span class="string">Type :</span><span class="number">35676</span><span class="string">Name :</span> projection</span><br><span class="line">Uniform #<span class="number">6</span> <span class="string">Type :</span><span class="number">35676</span><span class="string">Name :</span> view</span><br><span class="line">Uniform #<span class="number">7</span> <span class="string">Type :</span><span class="number">35665</span><span class="string">Name :</span> viewPos</span><br></pre></td></tr></table></figure>
+<p>果然少了<strong>原本</strong>應該要出現的那幾項，因此Dowen就開始反覆的重建專案，清除，重建，重開整個project，想說這招也許能成功，一個非常祈禱式的Debug(?)。</p>
+<p>最後終於找到了一篇理念型文章，告知了我一些重要的概念，<a href="http://stackoverflow.com/questions/20751157/glsl-vertex-shader-glgetuniformlocation-fails" title="glGetUniformLocation fails" target="_blank" rel="external">原文</a>在此，整篇的大致概念是這樣的。<code>glGetUniformLocation</code>是一個取得<strong>Active Uniform</strong>，<strong>Active Uniform</strong>，<strong>Active Uniform</strong>的一個function。又什麼是<strong>Active Uniform</strong>呢? 假設手上有Vertex Shader跟Fragment Shader，將兩者合為一個Program之後，OpenGL會非常貼心地，幫我們把那些不會被用到的變數給移除，就如之前貼的Shader來講好了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vec3 viewDir = normalize(viewPos - FragPos);</span><br><span class="line">vec3 reflectDir = reflect(-lightDir, norm);  </span><br><span class="line"><span class="keyword">float</span> spec = <span class="built_in">pow</span>(max(dot(viewDir, reflectDir), <span class="number">0.0</span>), material.shininess);</span><br><span class="line">vec3 specular = light.specular * spec * vec3(texture(material.specular0, TexCoords));</span><br><span class="line"></span><br><span class="line"><span class="comment">//color = vec4(ambient + diffuse + specular, 1.0f);  </span></span><br><span class="line">color = vec4(specular, <span class="number">1.0f</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Diffuse texture <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br><span class="line">Light Ambient <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br><span class="line">Light Diffuse <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br></pre></td></tr></table></figure>
+<p>由於輸出的<code>color</code>是藉由<code>specular</code>的值，然後<code>specular</code>是源自於<code>material.specular0</code>，跟<code>material.diffuse0</code>完全無關，所以<code>diffuse0</code>就被從Shader Code中移除，而<code>light.ambient</code>跟<code>light.diffuse</code>也是同<code>material.diffuse0</code>一樣，被斷定為無用之人，因此被踢出了菁因工會，哦不是，我是說Shader Program。</p>
+<p>在理解到這個精粹(?)後，Dowen將註解解開(本來是想單獨檢視<code>specular</code>所以才這樣註解)，然後將目前的輸出註解掉。天堂的門就打開了！</p>
+<img src="/images/OQ1/complete.png" width="420">
+<h2 id="小結">小結</h2><p>希望對剛使用OpenGL，然後Debug一整天的人有幫助，像Dowen解了有五小時之多啊！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL問題/">OpenGL問題</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/glGetUniformLocation/">glGetUniformLocation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/glGetUniformLocation-bug/">glGetUniformLocation bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/glGetUniformLocation-fails/">glGetUniformLocation fails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/glGetUniformLocation-問題/">glGetUniformLocation 問題</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-OpenGL-Beginner-Tutorial-5-Data" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/" class="article-date">
@@ -114,7 +181,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/" data-id="cisaem7o9002v7wubg8v9r681" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/" data-id="cisosm3v70037ygubg20setnh" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -165,7 +232,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/" data-id="cisaem7o5002p7wubu015gf1u" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/" data-id="cisosm3v30031ygubnztkffuw" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -213,7 +280,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cisaem7od00377wub2wufhkqh" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cisosm3vb003jygub60gaddar" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -274,7 +341,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cisaem7p2005l7wubcc0o9f3e" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cisosm3w8005xygubxdm13t62" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -326,7 +393,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="cisaem7pe006b7wubrtyi62mf" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="cisosm3wn006nygubnu7rr0eb" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -383,7 +450,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cisaem7pm006o7wub64wb3tj6" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cisosm3wt0070ygub15laktmq" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -437,7 +504,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/" data-id="cisaem7pq00727wubyiyscb6y" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/" data-id="cisosm3x1007eygubt9iqrzma" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -491,7 +558,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/" data-id="cisaem7mx000q7wubaregku1f" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/" data-id="cisosm3t2000qygubwp3lz078" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -540,7 +607,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/" data-id="cisaem7pt007a7wub4a0oq085" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/" data-id="cisosm3x4007mygubxue3bogk" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -559,58 +626,6 @@ ga('send', 'pageview');
     <footer class="article-footer">
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EmguCV/">EmguCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exception/">Exception</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Windows10-桌面圖示排列失效" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/09/27/Windows10-桌面圖示排列失效/" class="article-date">
-  <time datetime="2015-09-27T04:47:19.000Z" itemprop="datePublished">2015-09-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Windows/">Windows</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/27/Windows10-桌面圖示排列失效/">Windows10 桌面圖示排列失效</a>
-    </h1>
-  
-
-      </header>
-    
-    <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/" data-id="cisaem7ne00157wub373zd161" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/#disqus_thread" class="article-comment-link">Comments</a>
-      
-    </footer>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>升上Win10沒多久後發現桌面圖示無法像以前一樣排列到想要的位置。<br>每次開機就會回到左方自動排列，右鍵重新整理也是如此。</p>
-<p>經由ESET論壇的發布，<br>升級上Windwos10後，剛好又是ESET的人才會發生的問題。<br>接下來說明如何解決這問題。<br>(引用自ESET forums:AREZCO)</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HKEY_CLASSES_ROOT<span class="command">\Wow</span>6432Node<span class="command">\CLSID</span><span class="command">\&#123;</span>42aedc87-2188-41fd-b9a3-0c966feabec1<span class="special">&#125;</span><span class="command">\InProcServer</span>32<span class="command">\</span><br><span class="line"></span>HKEY_CLASSES_ROOT<span class="command">\CLSID</span><span class="command">\&#123;</span>42aedc87-2188-41fd-b9a3-0c966feabec1<span class="special">&#125;</span><span class="command">\InProcServer</span>32\</span><br></pre></td></tr></table></figure>
-<p>對於這兩個檔案<br>選取 預設(Default) 將值從 <code>%SystemRoot%\SysWow64\shell32.dll</code> 取代為 <code>%SystemRoot%\system32\windows.storage.dll</code>.</p>
-<p>但你可能會發生權限不夠的問題。<br>這時候在做上述動作之前，必須先取得權限。<br>對<code>InProcServer32</code>右鍵按<code>使用權限</code> (Use Permission)，之後選<code>進階</code> (Advanced)，<br>在上方<code>擁有者</code> (Owner)的位置點選<code>變更</code>，之後繼續點選<code>進階</code> (Advanced)，<br>再來點選<code>立即選找</code> (Find Now) 選擇<code>Administrators</code>後，按下確定。<br>之後回到剛剛看到擁有者點選變更的視窗中，勾選以下:<br><code>取代子容器與物件的擁有者</code> (Replace owner on subcontainers and objects)<br><code>以可從此物件繼承的權限項目取代所有子物件的權限項目</code> (Replace all child object permission entries…)<br>最後回到一開始使用權限的視窗，選擇Administrator並勾選<code>完全控制</code> (Full Control)<br>就取得該註冊資料夾的權限。</p>
-<p>完成後，<code>重開電腦</code> (Reboot)應該就可以得到改善。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排列失效/">排列失效</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/桌面圖示/">桌面圖示</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重新整理/">重新整理</a></li></ul>
 
     </footer>
   </div>
@@ -627,6 +642,73 @@ ga('send', 'pageview');
 
 
   
+    <article id="post-OpenGL-Questionl-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/04/OpenGL-Questionl-1/" class="article-date">
+  <time datetime="2016-09-04T15:10:18.000Z" itemprop="datePublished">2016-09-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OpenGL/">OpenGL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/04/OpenGL-Questionl-1/">OpenGL之沒有蠢問題 1 - glGetUniformLocation</a>
+    </h1>
+  
+
+      </header>
+    
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/" data-id="cisosm3uu002pygubduzw59so" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="小聊">小聊</h2><p>最近在將學過的技巧慢慢聚集起來，零散的學過<strong>Phong</strong>，<strong>Normal Mapping</strong>，<strong>gBuffer</strong>，<strong>Assimp</strong>，<strong>Instancing</strong>，<strong>Parallax Mapping</strong>….。靈機一動，想藉由開發遊戲引擎將各種技巧整合起來，參閱網路上神人的概念，拼拼湊湊總算是有一點點的雛形，但其中遇到最頭痛也最簡單的問題就是<code>glGetUniformLocation</code>這傢伙，因此這系列就當我遇到的蠢問題紀錄吧！</p>
+<h2 id="glGetUniformLocation">glGetUniformLocation</h2><p>在這邊給一個大大的標題，以示尊敬。glGetUniformLocation是碰到Shader即會用到的function，但是Shader爆炸了，卻找不到問題，首先就會面對的也是<code>glGetUniformLocation</code>。</p>
+<p>先展示一下Dowen有問題的Shader與Code:</p>
+<p>Shader:<br><figure class="highlight cpp"><figcaption><span>shader</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#version 330 core</span></span><br><span class="line"><span class="keyword">struct</span> Material </span><br><span class="line">&#123;</span><br><span class="line">    sampler2D diffuse0;</span><br><span class="line">    sampler2D specular0;</span><br><span class="line">    <span class="keyword">float</span> shininess;</span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> Light </span><br><span class="line">&#123;</span><br><span class="line">    vec3 position;</span><br><span class="line">    vec3 ambient;</span><br><span class="line">    vec3 diffuse;</span><br><span class="line">    vec3 specular;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">in vec2 TexCoords;</span><br><span class="line">in vec3 FragPos;</span><br><span class="line">in vec3 Normal;</span><br><span class="line">out vec4 color;</span><br><span class="line"></span><br><span class="line">uniform vec3 viewPos;</span><br><span class="line">uniform Material material;</span><br><span class="line">uniform Light light;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	vec3 lightPos = light.position;</span><br><span class="line">    <span class="comment">// Ambient</span></span><br><span class="line">    vec3 ambient = light.ambient * vec3(texture(material.diffuse0, TexCoords));</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Diffuse</span></span><br><span class="line">	vec3 norm = normalize(Normal);</span><br><span class="line">	vec3 lightDir = normalize(lightPos - FragPos);  </span><br><span class="line">	<span class="keyword">float</span> diff = max(dot(norm, lightDir), <span class="number">0.0</span>);</span><br><span class="line">    vec3 diffuse = light.diffuse * diff * vec3(texture(material.diffuse0, TexCoords));</span><br><span class="line"></span><br><span class="line">	    <span class="comment">// Specular</span></span><br><span class="line">    vec3 viewDir = normalize(viewPos - FragPos);</span><br><span class="line">    vec3 reflectDir = reflect(-lightDir, norm);  </span><br><span class="line">    <span class="keyword">float</span> spec = <span class="built_in">pow</span>(max(dot(viewDir, reflectDir), <span class="number">0.0</span>), material.shininess);</span><br><span class="line">    vec3 specular = light.specular * spec * vec3(texture(material.specular0, TexCoords));</span><br><span class="line">    <span class="comment">//color = vec4(1.0f, 0.5f, 0.2f, 1.0f);</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//color = vec4(ambient + diffuse + specular, 1.0f);  </span></span><br><span class="line">	color = vec4(specular, <span class="number">1.0f</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>CPP原始碼的部分:<br><figure class="highlight cpp"><figcaption><span>code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> StaticShader::SetDiffuseTexture(GLuint texture)</span><br><span class="line">&#123;</span><br><span class="line">	glActiveTexture(GL_TEXTURE0 + diffuseCount);</span><br><span class="line">	glBindTexture(GL_TEXTURE_2D, texture);</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> diffuse = <span class="string">"material.diffuse"</span> + <span class="built_in">std</span>::to_string(diffuseCount);</span><br><span class="line">	<span class="keyword">int</span> loc = GetUniformLocation(diffuse.c_str());</span><br><span class="line">	<span class="keyword">if</span> (loc == -<span class="number">1</span>) Debug::Log(<span class="string">"Diffuse texture Setting Fail."</span>);</span><br><span class="line">	glUniform1i(loc, diffuseCount);</span><br><span class="line">	diffuseCount++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>好了，看起來完美地有做debug處理，所以自製的Debug在Visual Studio下方的輸出視窗中印出了這樣的訊息。</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Diffuse texture <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br><span class="line">Light Ambient <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br><span class="line">Light Diffuse <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br></pre></td></tr></table></figure>
+<p>原因是<code>glGetUniformLocation</code>回傳$-1$，意思是找不到該Uniform位置。然後我Double Check，Triple Check，….Check，複製貼上確保命名問題正確等手法，還是出現同樣地訊息。</p>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Diffuse texture <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br><span class="line">Light Ambient <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br><span class="line">Light Diffuse <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br></pre></td></tr></table></figure>
+<p>之後想找更深入的Debug方法，於是就找上了列出所有Attribute與Uniform的偵錯技巧，<a href="http://stackoverflow.com/questions/440144/in-opengl-is-there-a-way-to-get-a-list-of-all-uniforms-attribs-used-by-a-shade" title="get all uniform and attributes" target="_blank" rel="external">原文</a>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">ListAttributes</span><span class="params">()</span> </span><br><span class="line"></span>&#123;</span><br><span class="line">	GLint i;</span><br><span class="line">	GLint count;</span><br><span class="line"></span><br><span class="line">	GLint size; <span class="comment">// size of the variable</span></span><br><span class="line">	GLenum type; <span class="comment">// type of the variable (float, vec3 or mat4, etc)</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> GLsizei bufSize = <span class="number">16</span>; <span class="comment">// maximum name length</span></span><br><span class="line">	GLchar name[bufSize]; <span class="comment">// variable name in GLSL</span></span><br><span class="line">	GLsizei length; <span class="comment">// name length</span></span><br><span class="line"></span><br><span class="line">	glGetProgramiv(program, GL_ACTIVE_ATTRIBUTES, &amp;count);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Active Attributes: %d\n"</span>, count);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; count; i++)</span><br><span class="line">	&#123;</span><br><span class="line">	glGetActiveAttrib(program, (GLuint)i, bufSize, &amp;length, &amp;size, &amp;type, name);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Attribute #%d Type: %u Name: %s\n"</span>, i, type, name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>列出來的訊息如下:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Active <span class="string">Attributes:</span> <span class="number">3</span></span><br><span class="line">Attribute #<span class="number">0</span> <span class="string">Type :</span><span class="number">35665</span><span class="string">Name :</span> normal</span><br><span class="line">Attribute #<span class="number">1</span> <span class="string">Type :</span><span class="number">35665</span><span class="string">Name :</span> position</span><br><span class="line">Attribute #<span class="number">2</span> <span class="string">Type :</span><span class="number">35664</span><span class="string">Name :</span> texCoord</span><br><span class="line">Active <span class="string">Uniforms:</span> <span class="number">8</span></span><br><span class="line">Uniform #<span class="number">0</span> <span class="string">Type :</span><span class="number">35665</span><span class="string">Name :</span> light.position</span><br><span class="line">Uniform #<span class="number">1</span> <span class="string">Type :</span><span class="number">35665</span><span class="string">Name :</span> light.specular</span><br><span class="line">Uniform #<span class="number">2</span> <span class="string">Type :</span><span class="number">5126</span><span class="string">Name :</span> material.shinin</span><br><span class="line">Uniform #<span class="number">3</span> <span class="string">Type :</span><span class="number">35678</span><span class="string">Name :</span> material.specul</span><br><span class="line">Uniform #<span class="number">4</span> <span class="string">Type :</span><span class="number">35676</span><span class="string">Name :</span> model</span><br><span class="line">Uniform #<span class="number">5</span> <span class="string">Type :</span><span class="number">35676</span><span class="string">Name :</span> projection</span><br><span class="line">Uniform #<span class="number">6</span> <span class="string">Type :</span><span class="number">35676</span><span class="string">Name :</span> view</span><br><span class="line">Uniform #<span class="number">7</span> <span class="string">Type :</span><span class="number">35665</span><span class="string">Name :</span> viewPos</span><br></pre></td></tr></table></figure>
+<p>果然少了<strong>原本</strong>應該要出現的那幾項，因此Dowen就開始反覆的重建專案，清除，重建，重開整個project，想說這招也許能成功，一個非常祈禱式的Debug(?)。</p>
+<p>最後終於找到了一篇理念型文章，告知了我一些重要的概念，<a href="http://stackoverflow.com/questions/20751157/glsl-vertex-shader-glgetuniformlocation-fails" title="glGetUniformLocation fails" target="_blank" rel="external">原文</a>在此，整篇的大致概念是這樣的。<code>glGetUniformLocation</code>是一個取得<strong>Active Uniform</strong>，<strong>Active Uniform</strong>，<strong>Active Uniform</strong>的一個function。又什麼是<strong>Active Uniform</strong>呢? 假設手上有Vertex Shader跟Fragment Shader，將兩者合為一個Program之後，OpenGL會非常貼心地，幫我們把那些不會被用到的變數給移除，就如之前貼的Shader來講好了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vec3 viewDir = normalize(viewPos - FragPos);</span><br><span class="line">vec3 reflectDir = reflect(-lightDir, norm);  </span><br><span class="line"><span class="keyword">float</span> spec = <span class="built_in">pow</span>(max(dot(viewDir, reflectDir), <span class="number">0.0</span>), material.shininess);</span><br><span class="line">vec3 specular = light.specular * spec * vec3(texture(material.specular0, TexCoords));</span><br><span class="line"></span><br><span class="line"><span class="comment">//color = vec4(ambient + diffuse + specular, 1.0f);  </span></span><br><span class="line">color = vec4(specular, <span class="number">1.0f</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Diffuse texture <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br><span class="line">Light Ambient <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br><span class="line">Light Diffuse <span class="keyword">Setting</span> <span class="keyword">Fail</span>.</span><br></pre></td></tr></table></figure>
+<p>由於輸出的<code>color</code>是藉由<code>specular</code>的值，然後<code>specular</code>是源自於<code>material.specular0</code>，跟<code>material.diffuse0</code>完全無關，所以<code>diffuse0</code>就被從Shader Code中移除，而<code>light.ambient</code>跟<code>light.diffuse</code>也是同<code>material.diffuse0</code>一樣，被斷定為無用之人，因此被踢出了菁因工會，哦不是，我是說Shader Program。</p>
+<p>在理解到這個精粹(?)後，Dowen將註解解開(本來是想單獨檢視<code>specular</code>所以才這樣註解)，然後將目前的輸出註解掉。天堂的門就打開了！</p>
+<img src="/images/OQ1/complete.png" width="420">
+<h2 id="小結">小結</h2><p>希望對剛使用OpenGL，然後Debug一整天的人有幫助，像Dowen解了有五小時之多啊！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL問題/">OpenGL問題</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/glGetUniformLocation/">glGetUniformLocation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/glGetUniformLocation-bug/">glGetUniformLocation bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/glGetUniformLocation-fails/">glGetUniformLocation fails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/glGetUniformLocation-問題/">glGetUniformLocation 問題</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-OpenGL-Beginner-Tutorial-5-Data" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/" class="article-date">
@@ -652,7 +734,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/" data-id="cisaem7o9002v7wubg8v9r681" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/" data-id="cisosm3v70037ygubg20setnh" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -703,7 +785,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/" data-id="cisaem7o5002p7wubu015gf1u" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/" data-id="cisosm3v30031ygubnztkffuw" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -751,7 +833,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cisaem7od00377wub2wufhkqh" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cisosm3vb003jygub60gaddar" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -812,7 +894,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cisaem7p2005l7wubcc0o9f3e" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cisosm3w8005xygubxdm13t62" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -864,7 +946,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="cisaem7pe006b7wubrtyi62mf" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="cisosm3wn006nygubnu7rr0eb" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -921,7 +1003,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cisaem7pm006o7wub64wb3tj6" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cisosm3wt0070ygub15laktmq" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -975,7 +1057,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/" data-id="cisaem7pq00727wubyiyscb6y" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/" data-id="cisosm3x1007eygubt9iqrzma" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1029,7 +1111,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/" data-id="cisaem7mx000q7wubaregku1f" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/" data-id="cisosm3t2000qygubwp3lz078" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1078,7 +1160,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/" data-id="cisaem7pt007a7wub4a0oq085" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/" data-id="cisosm3x4007mygubxue3bogk" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1097,58 +1179,6 @@ ga('send', 'pageview');
     <footer class="article-footer">
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EmguCV/">EmguCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exception/">Exception</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV/">OpenCV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Windows10-桌面圖示排列失效" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/09/27/Windows10-桌面圖示排列失效/" class="article-date">
-  <time datetime="2015-09-27T04:47:19.000Z" itemprop="datePublished">2015-09-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Windows/">Windows</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/27/Windows10-桌面圖示排列失效/">Windows10 桌面圖示排列失效</a>
-    </h1>
-  
-
-      </header>
-    
-    <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/" data-id="cisaem7ne00157wub373zd161" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/#disqus_thread" class="article-comment-link">Comments</a>
-      
-    </footer>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>升上Win10沒多久後發現桌面圖示無法像以前一樣排列到想要的位置。<br>每次開機就會回到左方自動排列，右鍵重新整理也是如此。</p>
-<p>經由ESET論壇的發布，<br>升級上Windwos10後，剛好又是ESET的人才會發生的問題。<br>接下來說明如何解決這問題。<br>(引用自ESET forums:AREZCO)</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HKEY_CLASSES_ROOT<span class="command">\Wow</span>6432Node<span class="command">\CLSID</span><span class="command">\&#123;</span>42aedc87-2188-41fd-b9a3-0c966feabec1<span class="special">&#125;</span><span class="command">\InProcServer</span>32<span class="command">\</span><br><span class="line"></span>HKEY_CLASSES_ROOT<span class="command">\CLSID</span><span class="command">\&#123;</span>42aedc87-2188-41fd-b9a3-0c966feabec1<span class="special">&#125;</span><span class="command">\InProcServer</span>32\</span><br></pre></td></tr></table></figure>
-<p>對於這兩個檔案<br>選取 預設(Default) 將值從 <code>%SystemRoot%\SysWow64\shell32.dll</code> 取代為 <code>%SystemRoot%\system32\windows.storage.dll</code>.</p>
-<p>但你可能會發生權限不夠的問題。<br>這時候在做上述動作之前，必須先取得權限。<br>對<code>InProcServer32</code>右鍵按<code>使用權限</code> (Use Permission)，之後選<code>進階</code> (Advanced)，<br>在上方<code>擁有者</code> (Owner)的位置點選<code>變更</code>，之後繼續點選<code>進階</code> (Advanced)，<br>再來點選<code>立即選找</code> (Find Now) 選擇<code>Administrators</code>後，按下確定。<br>之後回到剛剛看到擁有者點選變更的視窗中，勾選以下:<br><code>取代子容器與物件的擁有者</code> (Replace owner on subcontainers and objects)<br><code>以可從此物件繼承的權限項目取代所有子物件的權限項目</code> (Replace all child object permission entries…)<br>最後回到一開始使用權限的視窗，選擇Administrator並勾選<code>完全控制</code> (Full Control)<br>就取得該註冊資料夾的權限。</p>
-<p>完成後，<code>重開電腦</code> (Reboot)應該就可以得到改善。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排列失效/">排列失效</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/桌面圖示/">桌面圖示</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重新整理/">重新整理</a></li></ul>
 
     </footer>
   </div>
@@ -1170,7 +1200,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenCV/">OpenCV</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenGL/">OpenGL</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/數學筆記/">數學筆記</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/網頁相關/">網頁相關</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenCV/">OpenCV</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenGL/">OpenGL</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/數學筆記/">數學筆記</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/網頁相關/">網頁相關</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1179,7 +1209,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Clipping/" style="font-size: 10px;">Clipping</a> <a href="/tags/EmguCV/" style="font-size: 10px;">EmguCV</a> <a href="/tags/Euler-Angle/" style="font-size: 10px;">Euler Angle</a> <a href="/tags/Exception/" style="font-size: 10px;">Exception</a> <a href="/tags/Fragment-Shader/" style="font-size: 10px;">Fragment Shader</a> <a href="/tags/GLEW/" style="font-size: 10px;">GLEW</a> <a href="/tags/GLFW/" style="font-size: 10px;">GLFW</a> <a href="/tags/GLM/" style="font-size: 10px;">GLM</a> <a href="/tags/Geometry-Shader/" style="font-size: 10px;">Geometry Shader</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hexo分類/" style="font-size: 10px;">Hexo分類</a> <a href="/tags/Hexo目錄/" style="font-size: 10px;">Hexo目錄</a> <a href="/tags/Intepolation/" style="font-size: 10px;">Intepolation</a> <a href="/tags/Interpolation/" style="font-size: 10px;">Interpolation</a> <a href="/tags/Line/" style="font-size: 10px;">Line</a> <a href="/tags/Metro-App/" style="font-size: 10px;">Metro App</a> <a href="/tags/Modern-UI/" style="font-size: 10px;">Modern UI</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/OpenGL/" style="font-size: 20px;">OpenGL</a> <a href="/tags/OpenGL-Extension/" style="font-size: 12px;">OpenGL Extension</a> <a href="/tags/OpenGL-Tutorial/" style="font-size: 18px;">OpenGL Tutorial</a> <a href="/tags/OpenGL-intro/" style="font-size: 12px;">OpenGL intro</a> <a href="/tags/OpenGL介紹/" style="font-size: 14px;">OpenGL介紹</a> <a href="/tags/OpenGL入門教學/" style="font-size: 20px;">OpenGL入門教學</a> <a href="/tags/OpenGL基礎/" style="font-size: 14px;">OpenGL基礎</a> <a href="/tags/OpenGL安裝/" style="font-size: 10px;">OpenGL安裝</a> <a href="/tags/OpenGL教學/" style="font-size: 18px;">OpenGL教學</a> <a href="/tags/QT/" style="font-size: 10px;">QT</a> <a href="/tags/Rasterization/" style="font-size: 10px;">Rasterization</a> <a href="/tags/Reflect/" style="font-size: 10px;">Reflect</a> <a href="/tags/Refract/" style="font-size: 10px;">Refract</a> <a href="/tags/Rotation/" style="font-size: 10px;">Rotation</a> <a href="/tags/Shader/" style="font-size: 12px;">Shader</a> <a href="/tags/SublimeText3/" style="font-size: 10px;">SublimeText3</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tessellation/" style="font-size: 10px;">Tessellation</a> <a href="/tags/Tessellation-Control-Shader/" style="font-size: 10px;">Tessellation Control Shader</a> <a href="/tags/Tessellation-Evaluation-Shader/" style="font-size: 10px;">Tessellation Evaluation Shader</a> <a href="/tags/Triangle/" style="font-size: 10px;">Triangle</a> <a href="/tags/Ubuntu/" style="font-size: 18px;">Ubuntu</a> <a href="/tags/Ubuntu-property/" style="font-size: 10px;">Ubuntu property</a> <a href="/tags/VAO/" style="font-size: 10px;">VAO</a> <a href="/tags/Viewport-Transform/" style="font-size: 10px;">Viewport Transform</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Visual-Studio/" style="font-size: 12px;">Visual Studio</a> <a href="/tags/Win10/" style="font-size: 16px;">Win10</a> <a href="/tags/Win7/" style="font-size: 10px;">Win7</a> <a href="/tags/Windows-Store/" style="font-size: 10px;">Windows Store</a> <a href="/tags/Windows10/" style="font-size: 16px;">Windows10</a> <a href="/tags/Windows7/" style="font-size: 10px;">Windows7</a> <a href="/tags/bezier-curve/" style="font-size: 10px;">bezier curve</a> <a href="/tags/canera/" style="font-size: 10px;">canera</a> <a href="/tags/clip-space/" style="font-size: 10px;">clip space</a> <a href="/tags/cubic-bezier-curve/" style="font-size: 10px;">cubic bezier curve</a> <a href="/tags/local-space/" style="font-size: 10px;">local space</a> <a href="/tags/lookat/" style="font-size: 10px;">lookat</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/ndc/" style="font-size: 10px;">ndc</a> <a href="/tags/ntoskrnl-exe/" style="font-size: 10px;">ntoskrnl.exe</a> <a href="/tags/orthographic/" style="font-size: 10px;">orthographic</a> <a href="/tags/perspective/" style="font-size: 10px;">perspective</a> <a href="/tags/perspective-division/" style="font-size: 10px;">perspective division</a> <a href="/tags/projection/" style="font-size: 10px;">projection</a> <a href="/tags/scale/" style="font-size: 10px;">scale</a> <a href="/tags/tracker-store/" style="font-size: 10px;">tracker-store</a> <a href="/tags/translate/" style="font-size: 10px;">translate</a> <a href="/tags/vector/" style="font-size: 10px;">vector</a> <a href="/tags/view-space/" style="font-size: 10px;">view space</a> <a href="/tags/世界座標/" style="font-size: 10px;">世界座標</a> <a href="/tags/內插/" style="font-size: 12px;">內插</a> <a href="/tags/內積/" style="font-size: 10px;">內積</a> <a href="/tags/升級/" style="font-size: 10px;">升級</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/向量/" style="font-size: 10px;">向量</a> <a href="/tags/外積/" style="font-size: 10px;">外積</a> <a href="/tags/座標系統/" style="font-size: 10px;">座標系統</a> <a href="/tags/座標轉換/" style="font-size: 10px;">座標轉換</a> <a href="/tags/折射/" style="font-size: 10px;">折射</a> <a href="/tags/排列失效/" style="font-size: 10px;">排列失效</a> <a href="/tags/攝影機/" style="font-size: 10px;">攝影機</a> <a href="/tags/桌面圖示/" style="font-size: 10px;">桌面圖示</a> <a href="/tags/歐拉角/" style="font-size: 10px;">歐拉角</a> <a href="/tags/正交投影/" style="font-size: 10px;">正交投影</a> <a href="/tags/物體座標/" style="font-size: 10px;">物體座標</a> <a href="/tags/直線/" style="font-size: 10px;">直線</a> <a href="/tags/矩陣/" style="font-size: 10px;">矩陣</a> <a href="/tags/線性代數/" style="font-size: 12px;">線性代數</a> <a href="/tags/藍寶書/" style="font-size: 10px;">藍寶書</a> <a href="/tags/透視投影/" style="font-size: 10px;">透視投影</a> <a href="/tags/透視除法/" style="font-size: 10px;">透視除法</a> <a href="/tags/重新整理/" style="font-size: 10px;">重新整理</a> <a href="/tags/音量/" style="font-size: 10px;">音量</a>
+      <a href="/tags/Clipping/" style="font-size: 10px;">Clipping</a> <a href="/tags/EmguCV/" style="font-size: 10px;">EmguCV</a> <a href="/tags/Euler-Angle/" style="font-size: 10px;">Euler Angle</a> <a href="/tags/Exception/" style="font-size: 10px;">Exception</a> <a href="/tags/Fragment-Shader/" style="font-size: 10px;">Fragment Shader</a> <a href="/tags/GLEW/" style="font-size: 10px;">GLEW</a> <a href="/tags/GLFW/" style="font-size: 10px;">GLFW</a> <a href="/tags/GLM/" style="font-size: 10px;">GLM</a> <a href="/tags/Geometry-Shader/" style="font-size: 10px;">Geometry Shader</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hexo分類/" style="font-size: 10px;">Hexo分類</a> <a href="/tags/Hexo目錄/" style="font-size: 10px;">Hexo目錄</a> <a href="/tags/Intepolation/" style="font-size: 10px;">Intepolation</a> <a href="/tags/Interpolation/" style="font-size: 10px;">Interpolation</a> <a href="/tags/Line/" style="font-size: 10px;">Line</a> <a href="/tags/Metro-App/" style="font-size: 10px;">Metro App</a> <a href="/tags/Modern-UI/" style="font-size: 10px;">Modern UI</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/OpenGL/" style="font-size: 20px;">OpenGL</a> <a href="/tags/OpenGL-Extension/" style="font-size: 12px;">OpenGL Extension</a> <a href="/tags/OpenGL-Tutorial/" style="font-size: 18px;">OpenGL Tutorial</a> <a href="/tags/OpenGL-intro/" style="font-size: 12px;">OpenGL intro</a> <a href="/tags/OpenGL介紹/" style="font-size: 14px;">OpenGL介紹</a> <a href="/tags/OpenGL入門教學/" style="font-size: 20px;">OpenGL入門教學</a> <a href="/tags/OpenGL問題/" style="font-size: 10px;">OpenGL問題</a> <a href="/tags/OpenGL基礎/" style="font-size: 14px;">OpenGL基礎</a> <a href="/tags/OpenGL安裝/" style="font-size: 10px;">OpenGL安裝</a> <a href="/tags/OpenGL教學/" style="font-size: 18px;">OpenGL教學</a> <a href="/tags/QT/" style="font-size: 10px;">QT</a> <a href="/tags/Rasterization/" style="font-size: 10px;">Rasterization</a> <a href="/tags/Reflect/" style="font-size: 10px;">Reflect</a> <a href="/tags/Refract/" style="font-size: 10px;">Refract</a> <a href="/tags/Rotation/" style="font-size: 10px;">Rotation</a> <a href="/tags/Shader/" style="font-size: 12px;">Shader</a> <a href="/tags/SublimeText3/" style="font-size: 10px;">SublimeText3</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tessellation/" style="font-size: 10px;">Tessellation</a> <a href="/tags/Tessellation-Control-Shader/" style="font-size: 10px;">Tessellation Control Shader</a> <a href="/tags/Tessellation-Evaluation-Shader/" style="font-size: 10px;">Tessellation Evaluation Shader</a> <a href="/tags/Triangle/" style="font-size: 10px;">Triangle</a> <a href="/tags/Ubuntu/" style="font-size: 18px;">Ubuntu</a> <a href="/tags/Ubuntu-property/" style="font-size: 10px;">Ubuntu property</a> <a href="/tags/VAO/" style="font-size: 10px;">VAO</a> <a href="/tags/Viewport-Transform/" style="font-size: 10px;">Viewport Transform</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Visual-Studio/" style="font-size: 12px;">Visual Studio</a> <a href="/tags/Win10/" style="font-size: 16px;">Win10</a> <a href="/tags/Win7/" style="font-size: 10px;">Win7</a> <a href="/tags/Windows-Store/" style="font-size: 10px;">Windows Store</a> <a href="/tags/Windows10/" style="font-size: 16px;">Windows10</a> <a href="/tags/Windows7/" style="font-size: 10px;">Windows7</a> <a href="/tags/bezier-curve/" style="font-size: 10px;">bezier curve</a> <a href="/tags/canera/" style="font-size: 10px;">canera</a> <a href="/tags/clip-space/" style="font-size: 10px;">clip space</a> <a href="/tags/cubic-bezier-curve/" style="font-size: 10px;">cubic bezier curve</a> <a href="/tags/glGetUniformLocation/" style="font-size: 10px;">glGetUniformLocation</a> <a href="/tags/glGetUniformLocation-bug/" style="font-size: 10px;">glGetUniformLocation bug</a> <a href="/tags/glGetUniformLocation-fails/" style="font-size: 10px;">glGetUniformLocation fails</a> <a href="/tags/glGetUniformLocation-問題/" style="font-size: 10px;">glGetUniformLocation 問題</a> <a href="/tags/local-space/" style="font-size: 10px;">local space</a> <a href="/tags/lookat/" style="font-size: 10px;">lookat</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/ndc/" style="font-size: 10px;">ndc</a> <a href="/tags/ntoskrnl-exe/" style="font-size: 10px;">ntoskrnl.exe</a> <a href="/tags/orthographic/" style="font-size: 10px;">orthographic</a> <a href="/tags/perspective/" style="font-size: 10px;">perspective</a> <a href="/tags/perspective-division/" style="font-size: 10px;">perspective division</a> <a href="/tags/projection/" style="font-size: 10px;">projection</a> <a href="/tags/scale/" style="font-size: 10px;">scale</a> <a href="/tags/tracker-store/" style="font-size: 10px;">tracker-store</a> <a href="/tags/translate/" style="font-size: 10px;">translate</a> <a href="/tags/vector/" style="font-size: 10px;">vector</a> <a href="/tags/view-space/" style="font-size: 10px;">view space</a> <a href="/tags/世界座標/" style="font-size: 10px;">世界座標</a> <a href="/tags/內插/" style="font-size: 12px;">內插</a> <a href="/tags/內積/" style="font-size: 10px;">內積</a> <a href="/tags/升級/" style="font-size: 10px;">升級</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/向量/" style="font-size: 10px;">向量</a> <a href="/tags/外積/" style="font-size: 10px;">外積</a> <a href="/tags/座標系統/" style="font-size: 10px;">座標系統</a> <a href="/tags/座標轉換/" style="font-size: 10px;">座標轉換</a> <a href="/tags/折射/" style="font-size: 10px;">折射</a> <a href="/tags/排列失效/" style="font-size: 10px;">排列失效</a> <a href="/tags/攝影機/" style="font-size: 10px;">攝影機</a> <a href="/tags/桌面圖示/" style="font-size: 10px;">桌面圖示</a> <a href="/tags/歐拉角/" style="font-size: 10px;">歐拉角</a> <a href="/tags/正交投影/" style="font-size: 10px;">正交投影</a> <a href="/tags/物體座標/" style="font-size: 10px;">物體座標</a> <a href="/tags/直線/" style="font-size: 10px;">直線</a> <a href="/tags/矩陣/" style="font-size: 10px;">矩陣</a> <a href="/tags/線性代數/" style="font-size: 12px;">線性代數</a> <a href="/tags/藍寶書/" style="font-size: 10px;">藍寶書</a> <a href="/tags/透視投影/" style="font-size: 10px;">透視投影</a> <a href="/tags/透視除法/" style="font-size: 10px;">透視除法</a> <a href="/tags/重新整理/" style="font-size: 10px;">重新整理</a> <a href="/tags/音量/" style="font-size: 10px;">音量</a>
     </div>
   </div>
 
@@ -1188,7 +1218,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -1198,6 +1228,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/09/04/OpenGL-Questionl-1/">OpenGL之沒有蠢問題 1 - glGetUniformLocation</a>
+          </li>
         
           <li>
             <a href="/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/">OpenGL 藍寶入門教學 5: 資料型態</a>
@@ -1213,10 +1247,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/">OpenGL 藍寶入門教學 3: Pipeline</a>
-          </li>
-        
-          <li>
-            <a href="/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/">OpenGL 藍寶入門教學 2: Strat With Triangle</a>
           </li>
         
       </ul>
@@ -1237,7 +1267,7 @@ ga('send', 'pageview');
   </div>
 </footer>
     </div>
-    <nav id="mobile-nav">
+    <!-- <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">0</a>
   
@@ -1247,7 +1277,7 @@ ga('send', 'pageview');
   
     <a href="/about" class="mobile-nav-link">3</a>
   
-</nav>
+</nav> -->
     
 <script>
   var disqus_shortname = 'bcmtokenyet';
@@ -1272,5 +1302,35 @@ ga('send', 'pageview');
 <script src="/js/script.js" type="text/javascript"></script>
 
   </div>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </body>
 </html>
