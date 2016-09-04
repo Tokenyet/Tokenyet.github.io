@@ -5,17 +5,17 @@
   
   <title>OpenGL之沒有蠢問題 1 - glGetUniformLocation | Dowenの世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="小聊最近在正藉由開發遊戲引擎將以往學過的各種技巧逐步整合起來，像是Phong，Normal Mapping，gBuffer，Assimp，Instancing，Parallax Mapping…等。然後參閱網路上神人的概念，左吸收右吐納總算是有點雛形，但其中遇到最Impress的問題是glGetUniformLocation，就由它來做蠢問題系列的第一集主角吧！">
+  <meta name="description" content="閒談最近在正藉由開發遊戲引擎將以往學過的各種技巧逐步整合起來，像是Phong，Normal Mapping，gBuffer，Assimp，Instancing，Parallax Mapping…等。然後參閱網路上神人的概念，左吸收右吐納總算是有點雛形，但其中遇到最Impress的問題是glGetUniformLocation，就由它來做蠢問題系列的第一集主角吧！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL之沒有蠢問題 1 - glGetUniformLocation">
 <meta property="og:url" content="http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/index.html">
 <meta property="og:site_name" content="Dowenの世界">
-<meta property="og:description" content="小聊最近在正藉由開發遊戲引擎將以往學過的各種技巧逐步整合起來，像是Phong，Normal Mapping，gBuffer，Assimp，Instancing，Parallax Mapping…等。然後參閱網路上神人的概念，左吸收右吐納總算是有點雛形，但其中遇到最Impress的問題是glGetUniformLocation，就由它來做蠢問題系列的第一集主角吧！">
+<meta property="og:description" content="閒談最近在正藉由開發遊戲引擎將以往學過的各種技巧逐步整合起來，像是Phong，Normal Mapping，gBuffer，Assimp，Instancing，Parallax Mapping…等。然後參閱網路上神人的概念，左吸收右吐納總算是有點雛形，但其中遇到最Impress的問題是glGetUniformLocation，就由它來做蠢問題系列的第一集主角吧！">
 <meta property="og:image" content="http://tokenyet.github.io/images/OQ1/complete.png">
-<meta property="og:updated_time" content="2016-09-04T15:55:43.745Z">
+<meta property="og:updated_time" content="2016-09-04T15:58:28.618Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL之沒有蠢問題 1 - glGetUniformLocation">
-<meta name="twitter:description" content="小聊最近在正藉由開發遊戲引擎將以往學過的各種技巧逐步整合起來，像是Phong，Normal Mapping，gBuffer，Assimp，Instancing，Parallax Mapping…等。然後參閱網路上神人的概念，左吸收右吐納總算是有點雛形，但其中遇到最Impress的問題是glGetUniformLocation，就由它來做蠢問題系列的第一集主角吧！">
+<meta name="twitter:description" content="閒談最近在正藉由開發遊戲引擎將以往學過的各種技巧逐步整合起來，像是Phong，Normal Mapping，gBuffer，Assimp，Instancing，Parallax Mapping…等。然後參閱網路上神人的概念，左吸收右吐納總算是有點雛形，但其中遇到最Impress的問題是glGetUniformLocation，就由它來做蠢問題系列的第一集主角吧！">
   
     <link rel="alternative" href="/atom.xml" title="Dowenの世界" type="application/atom+xml">
   
@@ -121,7 +121,7 @@ ga('send', 'pageview');
     </footer>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="小聊">小聊</h2><p>最近在正藉由開發遊戲引擎將以往學過的各種技巧逐步整合起來，像是<strong>Phong</strong>，<strong>Normal Mapping</strong>，<strong>gBuffer</strong>，<strong>Assimp</strong>，<strong>Instancing</strong>，<strong>Parallax Mapping</strong>…等。然後參閱網路上神人的概念，左吸收右吐納總算是有點雛形，但其中遇到最Impress的問題是<code>glGetUniformLocation</code>，就由它來做蠢問題系列的第一集主角吧！</p>
+        <h2 id="閒談">閒談</h2><p>最近在正藉由開發遊戲引擎將以往學過的各種技巧逐步整合起來，像是<strong>Phong</strong>，<strong>Normal Mapping</strong>，<strong>gBuffer</strong>，<strong>Assimp</strong>，<strong>Instancing</strong>，<strong>Parallax Mapping</strong>…等。然後參閱網路上神人的概念，左吸收右吐納總算是有點雛形，但其中遇到最Impress的問題是<code>glGetUniformLocation</code>，就由它來做蠢問題系列的第一集主角吧！</p>
 <a id="more"></a>
 <h2 id="glGetUniformLocation">glGetUniformLocation</h2><p><code>glGetUniformLocation</code>是碰到Shader即會用到的function，但是Shader爆炸了，卻找不到問題，首先就會面對的也是<code>glGetUniformLocation</code>。</p>
 <p>先展示一下Dowen有問題的Shader與Code:</p>
