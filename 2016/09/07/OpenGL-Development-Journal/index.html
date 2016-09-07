@@ -9,16 +9,17 @@
 系統環境: Windows 10開發軟體: Visual Studio 2015硬體設備: i7-3770 and">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL 遊戲引擎開發日誌">
-<meta property="og:url" content="http://tokenyet.github.io/2016/09/06/OpenGL-Development-Journal/index.html">
+<meta property="og:url" content="http://tokenyet.github.io/2016/09/07/OpenGL-Development-Journal/index.html">
 <meta property="og:site_name" content="Dowenの世界">
 <meta property="og:description" content="本篇說明開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。
 系統環境: Windows 10開發軟體: Visual Studio 2015硬體設備: i7-3770 and">
+<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160907screenshot.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160906screenshot.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160905screenshot.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/long-time-dragon.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/flat-terrian.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/flat-terrian-line.png">
-<meta property="og:updated_time" content="2016-09-06T14:13:15.244Z">
+<meta property="og:updated_time" content="2016-09-07T15:35:59.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 遊戲引擎開發日誌">
 <meta name="twitter:description" content="本篇說明開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。
@@ -98,8 +99,8 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main"><article id="post-OpenGL-Development-Journal" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/09/06/OpenGL-Development-Journal/" class="article-date">
-  <time datetime="2016-09-06T14:10:49.000Z" itemprop="datePublished">2016-09-06</time>
+    <a href="/2016/09/07/OpenGL-Development-Journal/" class="article-date">
+  <time datetime="2016-09-07T15:39:15.000Z" itemprop="datePublished">2016-09-07</time>
 </a>
     
   <div class="article-category">
@@ -121,9 +122,9 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/09/06/OpenGL-Development-Journal/" data-id="cisrk4crl0031goub4ybdryir" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/09/07/OpenGL-Development-Journal/" data-id="cisrk4crl0031goub4ybdryir" class="article-share-link">Share</a>
       
-        <a href="http://tokenyet.github.io/2016/09/06/OpenGL-Development-Journal/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://tokenyet.github.io/2016/09/07/OpenGL-Development-Journal/#disqus_thread" class="article-comment-link">Comments</a>
       
     </footer>
     <div class="article-entry" itemprop="articleBody">
@@ -132,6 +133,17 @@ ga('send', 'pageview');
 <p>系統環境: Windows 10<br>開發軟體: Visual Studio 2015<br>硬體設備: i7-3770 and GTX960<br>核心接口: <a href="http://www.glfw.org/" title="GLFW" target="_blank" rel="external">GLFW</a>/<a href="http://glew.sourceforge.net/" title="GLEW" target="_blank" rel="external">GLEW</a>/<a href="http://glm.g-truc.net/" title="GLM" target="_blank" rel="external">GLM</a>/<a href="http://www.assimp.org/" title="Assimp" target="_blank" rel="external">Assimp</a>/<a href="https://bitbucket.org/SpartanJ/soil2" title="SOIL2" target="_blank" rel="external">SOIL2</a><br>輔助插件: <a href="http://www.horsedrawngames.com/shader-syntax-highlighting-in-visual-studio-2013/" title="Nshader" target="_blank" rel="external">Nshader for Visual Studio 2015</a></p>
 <h4 id="其他事項">其他事項</h4><p><strong> 2016/09/05 前的日誌乃日根據記憶回朔，09/05方開始打算紀錄。 </strong></p>
 <a id="more"></a>
+<h4 id="2016/09/07">2016/09/07</h4><p>Think&amp;Imp: 增加草地物件與迷霧效果</p>
+<ol>
+<li>修改SOIL讀取圖片格式從SOIL_LOAD_RGB -&gt; SOIL_LOAD_RGBA，支援透明度。</li>
+<li>修改一般Shader中遇到透明會自動discard。</li>
+<li>將Texture.ID改為Texture.GetID(),C++的Readonly public variable不可信任。</li>
+<li>草地運用trick: Fake Lighting，使Normal都朝上，讓光源一致。</li>
+<li>將各種Shader從Renderer中拔出，將共同參數交給MasterRenderer一起設置，以免未來更改Super Shader需要從每個Renderer中逐一修改。</li>
+<li>針對單一天空顏色產生遠處迷霧效果，僅光源暫時不參與迷霧效果。</li>
+</ol>
+<p>Question: 迷霧效果是實踐於Vertex Shader，其原理與常用的深度轉換FragCoord.z相似，是否應實踐於Fragment且改用深度轉換效果較佳，因為Vertex Shader到Fragment是Intepolate的方式產生插值，就如早期光影<a href="https://en.wikipedia.org/wiki/Gouraud_shading" target="_blank" rel="external">Gouraud Shading</a>的視覺差異。</p>
+<img src="/images/ODJ/20160907screenshot.png" width="420">
 <h4 id="2016/09/06">2016/09/06</h4><p>Think&amp;Imp: 增加平坦地形相關繪製功能</p>
 <ol>
 <li>增加Terrain物件。</li>
@@ -280,7 +292,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2016/09/06/OpenGL-Development-Journal/">OpenGL 遊戲引擎開發日誌</a>
+            <a href="/2016/09/07/OpenGL-Development-Journal/">OpenGL 遊戲引擎開發日誌</a>
           </li>
         
           <li>
@@ -332,7 +344,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'bcmtokenyet';
   
-  var disqus_url = 'http://tokenyet.github.io/2016/09/06/OpenGL-Development-Journal/';
+  var disqus_url = 'http://tokenyet.github.io/2016/09/07/OpenGL-Development-Journal/';
   
   (function(){
     var dsq = document.createElement('script');
