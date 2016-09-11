@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2016-09-11T14:09:49.508Z</updated>
+  <updated>2016-09-11T18:49:09.659Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -13,6 +13,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Sublimetext 3 中文側欄與黑側欄]]></title>
+    <link href="http://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/"/>
+    <id>http://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/</id>
+    <published>2016-09-11T18:30:37.000Z</published>
+    <updated>2016-09-11T18:49:09.659Z</updated>
+    <content type="html"><![CDATA[<h2 id="文前說明">文前說明</h2><p>經過數年，Sublimetext3官方依然沒有對不同解析度中文字體的解決方案，網路上指流傳著一個一定要屈服才可顯示中文的方法<code>&quot;dpi_scale&quot; : 1.0</code>，逼著大螢幕的中文程式設計師使用小到極致的字體來用這套完美的軟體。而如今終於有專家提出藥方，接下來就跟著本篇慢慢實裝到自己的環境吧！</p>
+<h3 id="老方法">老方法</h3><p>首先大家知道的老方法還是提一下，就是<strong>Preferences</strong> -&gt; <strong> Settings-User</strong> 裡面增加一行文字:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	"<span class="attribute">dpi_scale</span>": <span class="value"><span class="number">1.0</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<p>抱歉，舊方法實在太令我印象深刻了，如果有人因為這行滿意就不用往下看下去。</p>
+<h3 id="新方法">新方法</h3><p>根據此議題最新的<a href="https://github.com/SublimeTextIssues/Core/issues/1066#issuecomment-240116281" target="_blank" rel="external">Issue報告</a>，<a href="https://github.com/vovkkk" target="_blank" rel="external">Vova Kolobok</a>專家提出了一道解方，就是在<code>Default.sublime-theme</code>中新增以下文字，左方的側欄字體就會變大。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"sidebar_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"tab_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"tool_tip_label_control"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_path_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_score_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>Q1. <strong>Default.sublime-theme</strong> 在哪?<br>點<strong>Preferences</strong> -&gt; <strong>Browse Packages</strong>可以到<strong>Package資料夾</strong>，點進<strong>User</strong>後，自行新增<strong>Default.sublime-theme</strong>，記住副檔名是<strong>.sublime-theme</strong>，不是<strong>.txt</strong>。</p>
+<p>Q2. 你說側邊攔中文字體仍顯示方框?<br>因為必須搭配老方法，<code>&quot;dpi_scale&quot; : 1.0</code>才可以正確的使字體變大。</p>
+<p>Q3. 左方中文字體變大後很醜怎麼辦?<br>接下來介紹最後一個方法將是目前最完美的解決方案。</p>
+<h3 id="完美解決方案">完美解決方案</h3><p>意外地找到<a href="http://buymeasoda.github.io/soda-theme/" target="_blank" rel="external">SODA</a>這個SublimeText3的主題插件，本來只是想將左方側欄也弄成黑底，但意外地<a href="http://buymeasoda.github.io/soda-theme/" target="_blank" rel="external">SODA</a>提供了一個Retina的功能，把Mac的解析度方案搬到Sublime插件裡，Dowen稱此插件作者是天才也不為過。</p>
+<ol>
+<li>開啟清單(Ctrl + Shift + P)。</li>
+<li>使用 Package Control: Install Package 打上<strong>Theme - Soda</strong>。</li>
+<li><strong>Preferences</strong> -&gt; <strong> Settings-User</strong></li>
+<li><p>新增theme參數，完成後側邊欄位應為黑/白色。</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="expression">&#123;</span><br><span class="line">    <span class="string">"theme"</span>: <span class="string">"Soda Dark 3.sublime-theme"</span></span><br><span class="line">    //<span class="string">"theme"</span>: <span class="string">"Soda Light 3.sublime-theme"</span> /<span class="end-block">/ <span class="keyword">If</span> you want light theme</span></span><br><span class="line">&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>將老方法<strong>“dpi_scale”: 1.0</strong>移除，新方法與本方法步驟都正確的話應該會跟Dowen的Sublimetext長得相似。</p>
+</li>
+</ol>
+<img src="/images/Sub3Ch/editor.png" width="420">
+<h4 id="額外補充">額外補充</h4><p>新方法中調整過font.face改成微軟正黑體(Microsoft JhengHei)後字體雖然會變好看，但是使用搜尋欄(Ctrl + F)時，會產生破圖現象。不過字體大小不會影響破圖與否，可以盡情調整。另外，讀者如果有更好的方法，希望可與Dowen分享，謝謝！</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="文前說明">文前說明</h2><p>經過數年，Sublimetext3官方依然沒有對不同解析度中文字體的解決方案，網路上指流傳著一個一定要屈服才可顯示中文的方法<code>&quot;dpi_scale&quot; : 1.0</code>，逼著大螢幕的中文程式設]]>
+    </summary>
+    
+      <category term="Sidebar" scheme="http://tokenyet.github.io/tags/Sidebar/"/>
+    
+      <category term="Sublimetext" scheme="http://tokenyet.github.io/tags/Sublimetext/"/>
+    
+      <category term="中文亂碼" scheme="http://tokenyet.github.io/tags/%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC/"/>
+    
+      <category term="側欄" scheme="http://tokenyet.github.io/tags/%E5%81%B4%E6%AC%84/"/>
+    
+      <category term="Other" scheme="http://tokenyet.github.io/categories/Other/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[OpenGL 遊戲引擎開發日誌]]></title>
@@ -1778,27 +1823,6 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
       <category term="VirtualBox" scheme="http://tokenyet.github.io/tags/VirtualBox/"/>
     
       <category term="Linux" scheme="http://tokenyet.github.io/categories/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[建立契機與為何使用Hexo？]]></title>
-    <link href="http://tokenyet.github.io/2015/07/15/%E5%BB%BA%E7%AB%8B%E5%A5%91%E6%A9%9F%E8%88%87%E7%82%BA%E4%BD%95%E4%BD%BF%E7%94%A8Hexo%EF%BC%9F/"/>
-    <id>http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/</id>
-    <published>2015-07-15T07:05:37.000Z</published>
-    <updated>2015-07-15T13:22:04.995Z</updated>
-    <content type="html"><![CDATA[<p>其實 Dowen 不像許多其他Hexo User一樣有許多的背景。像是從Wordpress或是Octopress之類的，<br>而且對網頁的知識也是不甚了解，但是偶然間逛到了<a href="http://morris821028.github.io/" target="_blank" rel="external">Morris</a>兄的網站。<br>一開始只是查作業系統而已，因為發現<a href="http://morris821028.github.io/" target="_blank" rel="external">Morris</a>兄擁有許多作業系統的好講義，為了考試來逛網站的次數久了後，不小撇了一下旁邊的頁面，發現文章真的都很有內容。</p>
-<p>漸漸地，久違的哲學思考發作，為什麼他要這樣無私地奉獻自己的知識與技術呢？這樣作有什麼好處嗎？難道這又是一種OpenSource的概念嗎？接著靈光一閃，我有了自己的答案。</p>
-<p>在這漫長的學習歲月中，常常因為學了又忘，忘了又學，在這累積知識的大起大落中徘徊不止，如果我能學習兼記錄並抓住那腦袋中忘卻曲線，那我<em>應該</em>能有所進步才對。在此這是我的答案，相信其他人或許是你都有自己建立的契機與動力。</p>
-<p>想想以前，常常覺得知識是祕寶，不願與人分享的那段光陰，還真的是小心眼，沒有遠見。為此，我將我所知所得，慢慢的補記錄在本世界(網站)中。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>其實 Dowen 不像許多其他Hexo User一樣有許多的背景。像是從Wordpress或是Octopress之類的，<br>而且對網頁的知識也是不甚了解，但是偶然間逛到了<a href="http://morris821028.github.io/" target="_]]>
-    </summary>
-    
-      <category term="Hexo" scheme="http://tokenyet.github.io/tags/Hexo/"/>
-    
-      <category term="網頁相關" scheme="http://tokenyet.github.io/categories/%E7%B6%B2%E9%A0%81%E7%9B%B8%E9%97%9C/"/>
     
   </entry>
   

@@ -89,6 +89,74 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Sublimetext3-Chinese" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/12/Sublimetext3-Chinese/" class="article-date">
+  <time datetime="2016-09-11T18:30:37.000Z" itemprop="datePublished">2016-09-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Other/">Other</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/12/Sublimetext3-Chinese/">Sublimetext 3 中文側欄與黑側欄</a>
+    </h1>
+  
+
+      </header>
+    
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/" data-id="cisyyyyh0002h8wub5ltwukx5" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="文前說明">文前說明</h2><p>經過數年，Sublimetext3官方依然沒有對不同解析度中文字體的解決方案，網路上指流傳著一個一定要屈服才可顯示中文的方法<code>&quot;dpi_scale&quot; : 1.0</code>，逼著大螢幕的中文程式設計師使用小到極致的字體來用這套完美的軟體。而如今終於有專家提出藥方，接下來就跟著本篇慢慢實裝到自己的環境吧！</p>
+<h3 id="老方法">老方法</h3><p>首先大家知道的老方法還是提一下，就是<strong>Preferences</strong> -&gt; <strong> Settings-User</strong> 裡面增加一行文字:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	"<span class="attribute">dpi_scale</span>": <span class="value"><span class="number">1.0</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<p>抱歉，舊方法實在太令我印象深刻了，如果有人因為這行滿意就不用往下看下去。</p>
+<h3 id="新方法">新方法</h3><p>根據此議題最新的<a href="https://github.com/SublimeTextIssues/Core/issues/1066#issuecomment-240116281" target="_blank" rel="external">Issue報告</a>，<a href="https://github.com/vovkkk" target="_blank" rel="external">Vova Kolobok</a>專家提出了一道解方，就是在<code>Default.sublime-theme</code>中新增以下文字，左方的側欄字體就會變大。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"sidebar_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"tab_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"tool_tip_label_control"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_path_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_score_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>Q1. <strong>Default.sublime-theme</strong> 在哪?<br>點<strong>Preferences</strong> -&gt; <strong>Browse Packages</strong>可以到<strong>Package資料夾</strong>，點進<strong>User</strong>後，自行新增<strong>Default.sublime-theme</strong>，記住副檔名是<strong>.sublime-theme</strong>，不是<strong>.txt</strong>。</p>
+<p>Q2. 你說側邊攔中文字體仍顯示方框?<br>因為必須搭配老方法，<code>&quot;dpi_scale&quot; : 1.0</code>才可以正確的使字體變大。</p>
+<p>Q3. 左方中文字體變大後很醜怎麼辦?<br>接下來介紹最後一個方法將是目前最完美的解決方案。</p>
+<h3 id="完美解決方案">完美解決方案</h3><p>意外地找到<a href="http://buymeasoda.github.io/soda-theme/" target="_blank" rel="external">SODA</a>這個SublimeText3的主題插件，本來只是想將左方側欄也弄成黑底，但意外地<a href="http://buymeasoda.github.io/soda-theme/" target="_blank" rel="external">SODA</a>提供了一個Retina的功能，把Mac的解析度方案搬到Sublime插件裡，Dowen稱此插件作者是天才也不為過。</p>
+<ol>
+<li>開啟清單(Ctrl + Shift + P)。</li>
+<li>使用 Package Control: Install Package 打上<strong>Theme - Soda</strong>。</li>
+<li><strong>Preferences</strong> -&gt; <strong> Settings-User</strong></li>
+<li><p>新增theme參數，完成後側邊欄位應為黑/白色。</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="expression">&#123;</span><br><span class="line">    <span class="string">"theme"</span>: <span class="string">"Soda Dark 3.sublime-theme"</span></span><br><span class="line">    //<span class="string">"theme"</span>: <span class="string">"Soda Light 3.sublime-theme"</span> /<span class="end-block">/ <span class="keyword">If</span> you want light theme</span></span><br><span class="line">&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>將老方法<strong>“dpi_scale”: 1.0</strong>移除，新方法與本方法步驟都正確的話應該會跟Dowen的Sublimetext長得相似。</p>
+</li>
+</ol>
+<img src="/images/Sub3Ch/editor.png" width="420">
+<h4 id="額外補充">額外補充</h4><p>新方法中調整過font.face改成微軟正黑體(Microsoft JhengHei)後字體雖然會變好看，但是使用搜尋欄(Ctrl + F)時，會產生破圖現象。不過字體大小不會影響破圖與否，可以盡情調整。另外，讀者如果有更好的方法，希望可與Dowen分享，謝謝！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sidebar/">Sidebar</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sublimetext/">Sublimetext</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/中文亂碼/">中文亂碼</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/側欄/">側欄</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-OpenGL-Development-Journal" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/09/11/OpenGL-Development-Journal/" class="article-date">
@@ -114,7 +182,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/09/11/OpenGL-Development-Journal/" data-id="cisypin9u003180ubb3brjsd4" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/09/11/OpenGL-Development-Journal/" data-id="cisyyyyhe003c8wubotjw8so7" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/09/11/OpenGL-Development-Journal/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -167,7 +235,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/" data-id="cisypin9n002p80ubhiuvog0y" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/" data-id="cisyyyyha00308wubvr4hbvx0" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -218,7 +286,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/" data-id="cisypina4003e80ubooscvgbm" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/" data-id="cisyyyyho003p8wub42koxi1o" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -269,7 +337,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/" data-id="cisypina1003880ubbic5bltw" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/" data-id="cisyyyyhi003j8wubey8823h4" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -317,7 +385,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cisypinae003q80ubofuha8mn" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cisyyyyht00418wub4iwziwni" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -378,7 +446,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cisypinb0006480ube21v2wn1" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cisyyyyif006f8wubtvyltxjg" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -430,7 +498,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="cisypinbc006u80ub7z0bu9pa" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="cisyyyyiq00758wubfgw0gjvc" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -487,7 +555,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cisypinbh007780ubxjlc4g1w" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cisyyyyiv007i8wubw88kbcah" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -541,7 +609,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/" data-id="cisypinbp007l80ubepvmo946" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/" data-id="cisyyyyjw007w8wubpw1npo7p" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -562,55 +630,6 @@ ga('send', 'pageview');
     <footer class="article-footer">
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Extension/">OpenGL Extension</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-intro/">OpenGL intro</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Windows10-音量控制問題" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/08/Windows10-音量控制問題/" class="article-date">
-  <time datetime="2015-10-08T11:26:20.000Z" itemprop="datePublished">2015-10-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Windows/">Windows</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/08/Windows10-音量控制問題/">Windows10-音量控制問題</a>
-    </h1>
-  
-
-      </header>
-    
-    <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/" data-id="cisypin8a000q80ub6qkmmq5u" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/#disqus_thread" class="article-comment-link">Comments</a>
-      
-    </footer>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前言:<br>Windows 10問題連連，假設你跟Dowen一樣想玩踩地雷，但是從Windows App載完後發現音量超級大聲，且假設說你喜歡聽自己的音樂，又想聽Windows App的特效的時候，就會發現「什麼?<strong>不能調音量!!</strong>」，因為Win10在Modern UI的這些Metro App中沒有加入適當API，所以在音量混合器中沒有這個選項。<br>因此，繼透明度、Classic Shell…等，為Win10裝插件之旅又開始了。</p>
-<p>正題開始:<br>到<a href="https://github.com/File-New-Project/EarTrumpet/releases" target="_blank" rel="external">EarTrumpet</a>的Release中下載最新版本。<br>如果無法安裝，顯示<strong>This program does not support the version of Windows your computer is running</strong>。<br>則以下這部分就必須依賴有Visual Studio的人，載下Source Code後，自行編譯出來的.EXE跟.DLL放到一個固定位置。<br>將.EXE的捷徑放到啟動中，這樣以後就能隨時開機就自動開啟這個軟體了。<br>這軟體大勝Windows內建的Mixer啊!!!</p>
-<p>如果有人有需求，我在附上自己編譯出來的檔案以供使用。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Metro-App/">Metro App</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-UI/">Modern UI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows-Store/">Windows Store</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/音量/">音量</a></li></ul>
 
     </footer>
   </div>
@@ -627,6 +646,74 @@ ga('send', 'pageview');
 
 
   
+    <article id="post-Sublimetext3-Chinese" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/12/Sublimetext3-Chinese/" class="article-date">
+  <time datetime="2016-09-11T18:30:37.000Z" itemprop="datePublished">2016-09-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Other/">Other</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/12/Sublimetext3-Chinese/">Sublimetext 3 中文側欄與黑側欄</a>
+    </h1>
+  
+
+      </header>
+    
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/" data-id="cisyyyyh0002h8wub5ltwukx5" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="文前說明">文前說明</h2><p>經過數年，Sublimetext3官方依然沒有對不同解析度中文字體的解決方案，網路上指流傳著一個一定要屈服才可顯示中文的方法<code>&quot;dpi_scale&quot; : 1.0</code>，逼著大螢幕的中文程式設計師使用小到極致的字體來用這套完美的軟體。而如今終於有專家提出藥方，接下來就跟著本篇慢慢實裝到自己的環境吧！</p>
+<h3 id="老方法">老方法</h3><p>首先大家知道的老方法還是提一下，就是<strong>Preferences</strong> -&gt; <strong> Settings-User</strong> 裡面增加一行文字:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	"<span class="attribute">dpi_scale</span>": <span class="value"><span class="number">1.0</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<p>抱歉，舊方法實在太令我印象深刻了，如果有人因為這行滿意就不用往下看下去。</p>
+<h3 id="新方法">新方法</h3><p>根據此議題最新的<a href="https://github.com/SublimeTextIssues/Core/issues/1066#issuecomment-240116281" target="_blank" rel="external">Issue報告</a>，<a href="https://github.com/vovkkk" target="_blank" rel="external">Vova Kolobok</a>專家提出了一道解方，就是在<code>Default.sublime-theme</code>中新增以下文字，左方的側欄字體就會變大。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"sidebar_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"tab_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"tool_tip_label_control"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_path_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_score_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>Q1. <strong>Default.sublime-theme</strong> 在哪?<br>點<strong>Preferences</strong> -&gt; <strong>Browse Packages</strong>可以到<strong>Package資料夾</strong>，點進<strong>User</strong>後，自行新增<strong>Default.sublime-theme</strong>，記住副檔名是<strong>.sublime-theme</strong>，不是<strong>.txt</strong>。</p>
+<p>Q2. 你說側邊攔中文字體仍顯示方框?<br>因為必須搭配老方法，<code>&quot;dpi_scale&quot; : 1.0</code>才可以正確的使字體變大。</p>
+<p>Q3. 左方中文字體變大後很醜怎麼辦?<br>接下來介紹最後一個方法將是目前最完美的解決方案。</p>
+<h3 id="完美解決方案">完美解決方案</h3><p>意外地找到<a href="http://buymeasoda.github.io/soda-theme/" target="_blank" rel="external">SODA</a>這個SublimeText3的主題插件，本來只是想將左方側欄也弄成黑底，但意外地<a href="http://buymeasoda.github.io/soda-theme/" target="_blank" rel="external">SODA</a>提供了一個Retina的功能，把Mac的解析度方案搬到Sublime插件裡，Dowen稱此插件作者是天才也不為過。</p>
+<ol>
+<li>開啟清單(Ctrl + Shift + P)。</li>
+<li>使用 Package Control: Install Package 打上<strong>Theme - Soda</strong>。</li>
+<li><strong>Preferences</strong> -&gt; <strong> Settings-User</strong></li>
+<li><p>新增theme參數，完成後側邊欄位應為黑/白色。</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="expression">&#123;</span><br><span class="line">    <span class="string">"theme"</span>: <span class="string">"Soda Dark 3.sublime-theme"</span></span><br><span class="line">    //<span class="string">"theme"</span>: <span class="string">"Soda Light 3.sublime-theme"</span> /<span class="end-block">/ <span class="keyword">If</span> you want light theme</span></span><br><span class="line">&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>將老方法<strong>“dpi_scale”: 1.0</strong>移除，新方法與本方法步驟都正確的話應該會跟Dowen的Sublimetext長得相似。</p>
+</li>
+</ol>
+<img src="/images/Sub3Ch/editor.png" width="420">
+<h4 id="額外補充">額外補充</h4><p>新方法中調整過font.face改成微軟正黑體(Microsoft JhengHei)後字體雖然會變好看，但是使用搜尋欄(Ctrl + F)時，會產生破圖現象。不過字體大小不會影響破圖與否，可以盡情調整。另外，讀者如果有更好的方法，希望可與Dowen分享，謝謝！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sidebar/">Sidebar</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sublimetext/">Sublimetext</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/中文亂碼/">中文亂碼</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/側欄/">側欄</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-OpenGL-Development-Journal" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/09/11/OpenGL-Development-Journal/" class="article-date">
@@ -652,7 +739,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/09/11/OpenGL-Development-Journal/" data-id="cisypin9u003180ubb3brjsd4" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/09/11/OpenGL-Development-Journal/" data-id="cisyyyyhe003c8wubotjw8so7" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/09/11/OpenGL-Development-Journal/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -705,7 +792,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/" data-id="cisypin9n002p80ubhiuvog0y" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/" data-id="cisyyyyha00308wubvr4hbvx0" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -756,7 +843,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/" data-id="cisypina4003e80ubooscvgbm" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/" data-id="cisyyyyho003p8wub42koxi1o" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -807,7 +894,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/" data-id="cisypina1003880ubbic5bltw" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/" data-id="cisyyyyhi003j8wubey8823h4" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -855,7 +942,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cisypinae003q80ubofuha8mn" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cisyyyyht00418wub4iwziwni" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -916,7 +1003,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cisypinb0006480ube21v2wn1" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cisyyyyif006f8wubtvyltxjg" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -968,7 +1055,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="cisypinbc006u80ub7z0bu9pa" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="cisyyyyiq00758wubfgw0gjvc" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1025,7 +1112,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cisypinbh007780ubxjlc4g1w" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cisyyyyiv007i8wubw88kbcah" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1079,7 +1166,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/" data-id="cisypinbp007l80ubepvmo946" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/" data-id="cisyyyyjw007w8wubpw1npo7p" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1100,55 +1187,6 @@ ga('send', 'pageview');
     <footer class="article-footer">
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/">OpenGL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Extension/">OpenGL Extension</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-Tutorial/">OpenGL Tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL-intro/">OpenGL intro</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL入門教學/">OpenGL入門教學</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL教學/">OpenGL教學</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Windows10-音量控制問題" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/08/Windows10-音量控制問題/" class="article-date">
-  <time datetime="2015-10-08T11:26:20.000Z" itemprop="datePublished">2015-10-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Windows/">Windows</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/08/Windows10-音量控制問題/">Windows10-音量控制問題</a>
-    </h1>
-  
-
-      </header>
-    
-    <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/" data-id="cisypin8a000q80ub6qkmmq5u" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/#disqus_thread" class="article-comment-link">Comments</a>
-      
-    </footer>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前言:<br>Windows 10問題連連，假設你跟Dowen一樣想玩踩地雷，但是從Windows App載完後發現音量超級大聲，且假設說你喜歡聽自己的音樂，又想聽Windows App的特效的時候，就會發現「什麼?<strong>不能調音量!!</strong>」，因為Win10在Modern UI的這些Metro App中沒有加入適當API，所以在音量混合器中沒有這個選項。<br>因此，繼透明度、Classic Shell…等，為Win10裝插件之旅又開始了。</p>
-<p>正題開始:<br>到<a href="https://github.com/File-New-Project/EarTrumpet/releases" target="_blank" rel="external">EarTrumpet</a>的Release中下載最新版本。<br>如果無法安裝，顯示<strong>This program does not support the version of Windows your computer is running</strong>。<br>則以下這部分就必須依賴有Visual Studio的人，載下Source Code後，自行編譯出來的.EXE跟.DLL放到一個固定位置。<br>將.EXE的捷徑放到啟動中，這樣以後就能隨時開機就自動開啟這個軟體了。<br>這軟體大勝Windows內建的Mixer啊!!!</p>
-<p>如果有人有需求，我在附上自己編譯出來的檔案以供使用。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Metro-App/">Metro App</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Modern-UI/">Modern UI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows-Store/">Windows Store</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/音量/">音量</a></li></ul>
 
     </footer>
   </div>
@@ -1170,7 +1208,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenCV/">OpenCV</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenGL/">OpenGL</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/數學筆記/">數學筆記</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/網頁相關/">網頁相關</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenCV/">OpenCV</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenGL/">OpenGL</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/數學筆記/">數學筆記</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/網頁相關/">網頁相關</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1179,7 +1217,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Clipping/" style="font-size: 10px;">Clipping</a> <a href="/tags/Development-Journal/" style="font-size: 10px;">Development Journal</a> <a href="/tags/EmguCV/" style="font-size: 10px;">EmguCV</a> <a href="/tags/Euler-Angle/" style="font-size: 10px;">Euler Angle</a> <a href="/tags/Exception/" style="font-size: 10px;">Exception</a> <a href="/tags/Fragment-Shader/" style="font-size: 10px;">Fragment Shader</a> <a href="/tags/GLEW/" style="font-size: 10px;">GLEW</a> <a href="/tags/GLFW/" style="font-size: 10px;">GLFW</a> <a href="/tags/GLM/" style="font-size: 10px;">GLM</a> <a href="/tags/Geometry-Shader/" style="font-size: 10px;">Geometry Shader</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hexo分類/" style="font-size: 10px;">Hexo分類</a> <a href="/tags/Hexo目錄/" style="font-size: 10px;">Hexo目錄</a> <a href="/tags/Intepolation/" style="font-size: 10px;">Intepolation</a> <a href="/tags/Interpolation/" style="font-size: 10px;">Interpolation</a> <a href="/tags/Line/" style="font-size: 10px;">Line</a> <a href="/tags/Metro-App/" style="font-size: 10px;">Metro App</a> <a href="/tags/Modern-UI/" style="font-size: 10px;">Modern UI</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/OpenGL/" style="font-size: 20px;">OpenGL</a> <a href="/tags/OpenGL-Extension/" style="font-size: 11.67px;">OpenGL Extension</a> <a href="/tags/OpenGL-Tutorial/" style="font-size: 16.67px;">OpenGL Tutorial</a> <a href="/tags/OpenGL-intro/" style="font-size: 11.67px;">OpenGL intro</a> <a href="/tags/OpenGL介紹/" style="font-size: 13.33px;">OpenGL介紹</a> <a href="/tags/OpenGL入門教學/" style="font-size: 18.33px;">OpenGL入門教學</a> <a href="/tags/OpenGL問題/" style="font-size: 10px;">OpenGL問題</a> <a href="/tags/OpenGL基礎/" style="font-size: 13.33px;">OpenGL基礎</a> <a href="/tags/OpenGL安裝/" style="font-size: 10px;">OpenGL安裝</a> <a href="/tags/OpenGL教學/" style="font-size: 16.67px;">OpenGL教學</a> <a href="/tags/QT/" style="font-size: 10px;">QT</a> <a href="/tags/Rasterization/" style="font-size: 10px;">Rasterization</a> <a href="/tags/Reflect/" style="font-size: 10px;">Reflect</a> <a href="/tags/Refract/" style="font-size: 10px;">Refract</a> <a href="/tags/Rotation/" style="font-size: 10px;">Rotation</a> <a href="/tags/Shader/" style="font-size: 11.67px;">Shader</a> <a href="/tags/SublimeText3/" style="font-size: 10px;">SublimeText3</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tessellation/" style="font-size: 10px;">Tessellation</a> <a href="/tags/Tessellation-Control-Shader/" style="font-size: 10px;">Tessellation Control Shader</a> <a href="/tags/Tessellation-Evaluation-Shader/" style="font-size: 10px;">Tessellation Evaluation Shader</a> <a href="/tags/Triangle/" style="font-size: 10px;">Triangle</a> <a href="/tags/Ubuntu/" style="font-size: 16.67px;">Ubuntu</a> <a href="/tags/Ubuntu-property/" style="font-size: 10px;">Ubuntu property</a> <a href="/tags/VAO/" style="font-size: 10px;">VAO</a> <a href="/tags/Viewport-Transform/" style="font-size: 10px;">Viewport Transform</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Win10/" style="font-size: 15px;">Win10</a> <a href="/tags/Win7/" style="font-size: 10px;">Win7</a> <a href="/tags/Windows-Store/" style="font-size: 10px;">Windows Store</a> <a href="/tags/Windows10/" style="font-size: 15px;">Windows10</a> <a href="/tags/Windows7/" style="font-size: 10px;">Windows7</a> <a href="/tags/bezier-curve/" style="font-size: 10px;">bezier curve</a> <a href="/tags/canera/" style="font-size: 10px;">canera</a> <a href="/tags/clip-space/" style="font-size: 10px;">clip space</a> <a href="/tags/cubic-bezier-curve/" style="font-size: 10px;">cubic bezier curve</a> <a href="/tags/glGetUniformLocation/" style="font-size: 10px;">glGetUniformLocation</a> <a href="/tags/glGetUniformLocation-bug/" style="font-size: 10px;">glGetUniformLocation bug</a> <a href="/tags/glGetUniformLocation-fails/" style="font-size: 10px;">glGetUniformLocation fails</a> <a href="/tags/glGetUniformLocation-問題/" style="font-size: 10px;">glGetUniformLocation 問題</a> <a href="/tags/local-space/" style="font-size: 10px;">local space</a> <a href="/tags/lookat/" style="font-size: 10px;">lookat</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/ndc/" style="font-size: 10px;">ndc</a> <a href="/tags/ntoskrnl-exe/" style="font-size: 10px;">ntoskrnl.exe</a> <a href="/tags/orthographic/" style="font-size: 10px;">orthographic</a> <a href="/tags/perspective/" style="font-size: 10px;">perspective</a> <a href="/tags/perspective-division/" style="font-size: 10px;">perspective division</a> <a href="/tags/projection/" style="font-size: 10px;">projection</a> <a href="/tags/scale/" style="font-size: 10px;">scale</a> <a href="/tags/tracker-store/" style="font-size: 10px;">tracker-store</a> <a href="/tags/translate/" style="font-size: 10px;">translate</a> <a href="/tags/vector/" style="font-size: 10px;">vector</a> <a href="/tags/view-space/" style="font-size: 10px;">view space</a> <a href="/tags/世界座標/" style="font-size: 10px;">世界座標</a> <a href="/tags/內插/" style="font-size: 11.67px;">內插</a> <a href="/tags/內積/" style="font-size: 10px;">內積</a> <a href="/tags/升級/" style="font-size: 10px;">升級</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/向量/" style="font-size: 10px;">向量</a> <a href="/tags/外積/" style="font-size: 10px;">外積</a> <a href="/tags/座標系統/" style="font-size: 10px;">座標系統</a> <a href="/tags/座標轉換/" style="font-size: 10px;">座標轉換</a> <a href="/tags/折射/" style="font-size: 10px;">折射</a> <a href="/tags/排列失效/" style="font-size: 10px;">排列失效</a> <a href="/tags/攝影機/" style="font-size: 10px;">攝影機</a> <a href="/tags/桌面圖示/" style="font-size: 10px;">桌面圖示</a> <a href="/tags/歐拉角/" style="font-size: 10px;">歐拉角</a> <a href="/tags/正交投影/" style="font-size: 10px;">正交投影</a> <a href="/tags/物體座標/" style="font-size: 10px;">物體座標</a> <a href="/tags/直線/" style="font-size: 10px;">直線</a> <a href="/tags/矩陣/" style="font-size: 10px;">矩陣</a> <a href="/tags/線性代數/" style="font-size: 11.67px;">線性代數</a> <a href="/tags/藍寶書/" style="font-size: 10px;">藍寶書</a> <a href="/tags/透視投影/" style="font-size: 10px;">透視投影</a> <a href="/tags/透視除法/" style="font-size: 10px;">透視除法</a> <a href="/tags/重新整理/" style="font-size: 10px;">重新整理</a> <a href="/tags/開發日誌/" style="font-size: 10px;">開發日誌</a> <a href="/tags/音量/" style="font-size: 10px;">音量</a>
+      <a href="/tags/Clipping/" style="font-size: 10px;">Clipping</a> <a href="/tags/Development-Journal/" style="font-size: 10px;">Development Journal</a> <a href="/tags/EmguCV/" style="font-size: 10px;">EmguCV</a> <a href="/tags/Euler-Angle/" style="font-size: 10px;">Euler Angle</a> <a href="/tags/Exception/" style="font-size: 10px;">Exception</a> <a href="/tags/Fragment-Shader/" style="font-size: 10px;">Fragment Shader</a> <a href="/tags/GLEW/" style="font-size: 10px;">GLEW</a> <a href="/tags/GLFW/" style="font-size: 10px;">GLFW</a> <a href="/tags/GLM/" style="font-size: 10px;">GLM</a> <a href="/tags/Geometry-Shader/" style="font-size: 10px;">Geometry Shader</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hexo分類/" style="font-size: 10px;">Hexo分類</a> <a href="/tags/Hexo目錄/" style="font-size: 10px;">Hexo目錄</a> <a href="/tags/Intepolation/" style="font-size: 10px;">Intepolation</a> <a href="/tags/Interpolation/" style="font-size: 10px;">Interpolation</a> <a href="/tags/Line/" style="font-size: 10px;">Line</a> <a href="/tags/Metro-App/" style="font-size: 10px;">Metro App</a> <a href="/tags/Modern-UI/" style="font-size: 10px;">Modern UI</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/OpenGL/" style="font-size: 20px;">OpenGL</a> <a href="/tags/OpenGL-Extension/" style="font-size: 11.67px;">OpenGL Extension</a> <a href="/tags/OpenGL-Tutorial/" style="font-size: 16.67px;">OpenGL Tutorial</a> <a href="/tags/OpenGL-intro/" style="font-size: 11.67px;">OpenGL intro</a> <a href="/tags/OpenGL介紹/" style="font-size: 13.33px;">OpenGL介紹</a> <a href="/tags/OpenGL入門教學/" style="font-size: 18.33px;">OpenGL入門教學</a> <a href="/tags/OpenGL問題/" style="font-size: 10px;">OpenGL問題</a> <a href="/tags/OpenGL基礎/" style="font-size: 13.33px;">OpenGL基礎</a> <a href="/tags/OpenGL安裝/" style="font-size: 10px;">OpenGL安裝</a> <a href="/tags/OpenGL教學/" style="font-size: 16.67px;">OpenGL教學</a> <a href="/tags/QT/" style="font-size: 10px;">QT</a> <a href="/tags/Rasterization/" style="font-size: 10px;">Rasterization</a> <a href="/tags/Reflect/" style="font-size: 10px;">Reflect</a> <a href="/tags/Refract/" style="font-size: 10px;">Refract</a> <a href="/tags/Rotation/" style="font-size: 10px;">Rotation</a> <a href="/tags/Shader/" style="font-size: 11.67px;">Shader</a> <a href="/tags/Sidebar/" style="font-size: 10px;">Sidebar</a> <a href="/tags/SublimeText3/" style="font-size: 10px;">SublimeText3</a> <a href="/tags/Sublimetext/" style="font-size: 10px;">Sublimetext</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tessellation/" style="font-size: 10px;">Tessellation</a> <a href="/tags/Tessellation-Control-Shader/" style="font-size: 10px;">Tessellation Control Shader</a> <a href="/tags/Tessellation-Evaluation-Shader/" style="font-size: 10px;">Tessellation Evaluation Shader</a> <a href="/tags/Triangle/" style="font-size: 10px;">Triangle</a> <a href="/tags/Ubuntu/" style="font-size: 16.67px;">Ubuntu</a> <a href="/tags/Ubuntu-property/" style="font-size: 10px;">Ubuntu property</a> <a href="/tags/VAO/" style="font-size: 10px;">VAO</a> <a href="/tags/Viewport-Transform/" style="font-size: 10px;">Viewport Transform</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Win10/" style="font-size: 15px;">Win10</a> <a href="/tags/Win7/" style="font-size: 10px;">Win7</a> <a href="/tags/Windows-Store/" style="font-size: 10px;">Windows Store</a> <a href="/tags/Windows10/" style="font-size: 15px;">Windows10</a> <a href="/tags/Windows7/" style="font-size: 10px;">Windows7</a> <a href="/tags/bezier-curve/" style="font-size: 10px;">bezier curve</a> <a href="/tags/canera/" style="font-size: 10px;">canera</a> <a href="/tags/clip-space/" style="font-size: 10px;">clip space</a> <a href="/tags/cubic-bezier-curve/" style="font-size: 10px;">cubic bezier curve</a> <a href="/tags/glGetUniformLocation/" style="font-size: 10px;">glGetUniformLocation</a> <a href="/tags/glGetUniformLocation-bug/" style="font-size: 10px;">glGetUniformLocation bug</a> <a href="/tags/glGetUniformLocation-fails/" style="font-size: 10px;">glGetUniformLocation fails</a> <a href="/tags/glGetUniformLocation-問題/" style="font-size: 10px;">glGetUniformLocation 問題</a> <a href="/tags/local-space/" style="font-size: 10px;">local space</a> <a href="/tags/lookat/" style="font-size: 10px;">lookat</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/ndc/" style="font-size: 10px;">ndc</a> <a href="/tags/ntoskrnl-exe/" style="font-size: 10px;">ntoskrnl.exe</a> <a href="/tags/orthographic/" style="font-size: 10px;">orthographic</a> <a href="/tags/perspective/" style="font-size: 10px;">perspective</a> <a href="/tags/perspective-division/" style="font-size: 10px;">perspective division</a> <a href="/tags/projection/" style="font-size: 10px;">projection</a> <a href="/tags/scale/" style="font-size: 10px;">scale</a> <a href="/tags/tracker-store/" style="font-size: 10px;">tracker-store</a> <a href="/tags/translate/" style="font-size: 10px;">translate</a> <a href="/tags/vector/" style="font-size: 10px;">vector</a> <a href="/tags/view-space/" style="font-size: 10px;">view space</a> <a href="/tags/世界座標/" style="font-size: 10px;">世界座標</a> <a href="/tags/中文亂碼/" style="font-size: 10px;">中文亂碼</a> <a href="/tags/側欄/" style="font-size: 10px;">側欄</a> <a href="/tags/內插/" style="font-size: 11.67px;">內插</a> <a href="/tags/內積/" style="font-size: 10px;">內積</a> <a href="/tags/升級/" style="font-size: 10px;">升級</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/向量/" style="font-size: 10px;">向量</a> <a href="/tags/外積/" style="font-size: 10px;">外積</a> <a href="/tags/座標系統/" style="font-size: 10px;">座標系統</a> <a href="/tags/座標轉換/" style="font-size: 10px;">座標轉換</a> <a href="/tags/折射/" style="font-size: 10px;">折射</a> <a href="/tags/排列失效/" style="font-size: 10px;">排列失效</a> <a href="/tags/攝影機/" style="font-size: 10px;">攝影機</a> <a href="/tags/桌面圖示/" style="font-size: 10px;">桌面圖示</a> <a href="/tags/歐拉角/" style="font-size: 10px;">歐拉角</a> <a href="/tags/正交投影/" style="font-size: 10px;">正交投影</a> <a href="/tags/物體座標/" style="font-size: 10px;">物體座標</a> <a href="/tags/直線/" style="font-size: 10px;">直線</a> <a href="/tags/矩陣/" style="font-size: 10px;">矩陣</a> <a href="/tags/線性代數/" style="font-size: 11.67px;">線性代數</a> <a href="/tags/藍寶書/" style="font-size: 10px;">藍寶書</a> <a href="/tags/透視投影/" style="font-size: 10px;">透視投影</a> <a href="/tags/透視除法/" style="font-size: 10px;">透視除法</a> <a href="/tags/重新整理/" style="font-size: 10px;">重新整理</a> <a href="/tags/開發日誌/" style="font-size: 10px;">開發日誌</a> <a href="/tags/音量/" style="font-size: 10px;">音量</a>
     </div>
   </div>
 
@@ -1188,7 +1226,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -1198,6 +1236,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/09/12/Sublimetext3-Chinese/">Sublimetext 3 中文側欄與黑側欄</a>
+          </li>
         
           <li>
             <a href="/2016/09/11/OpenGL-Development-Journal/">OpenGL 遊戲引擎開發日誌</a>
@@ -1213,10 +1255,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/">OpenGL 關於藍寶入門教學</a>
-          </li>
-        
-          <li>
-            <a href="/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/">OpenGL 藍寶入門教學 4: 數學</a>
           </li>
         
       </ul>
