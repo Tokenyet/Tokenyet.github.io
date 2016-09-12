@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2016-09-11T18:51:34.192Z</updated>
+  <updated>2016-09-12T14:08:47.408Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -15,65 +15,22 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Sublimetext 3 中文側欄與黑側欄]]></title>
-    <link href="http://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/"/>
-    <id>http://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/</id>
-    <published>2016-09-11T18:30:37.000Z</published>
-    <updated>2016-09-11T18:51:34.192Z</updated>
-    <content type="html"><![CDATA[<h2 id="文前說明">文前說明</h2><p>經過數年，Sublimetext3官方依然沒有對不同解析度中文字體的解決方案，網路上指流傳著一個一定要屈服才可顯示中文的方法<code>&quot;dpi_scale&quot; : 1.0</code>，逼著大螢幕的中文程式設計師使用小到極致的字體來用這套完美的軟體。而如今終於有專家提出藥方，接下來就跟著本篇慢慢實裝到自己的環境吧！</p>
-<h3 id="老方法">老方法</h3><p>首先大家知道的老方法還是提一下，就是<strong>Preferences</strong> -&gt; <strong> Settings-User</strong> 裡面增加一行文字:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	"<span class="attribute">dpi_scale</span>": <span class="value"><span class="number">1.0</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
-<p>抱歉，舊方法實在太令我印象深刻了，如果有人因為這行滿意就不用往下看下去。</p>
-<a id="more"></a>
-<h3 id="新方法">新方法</h3><p>根據此議題最新的<a href="https://github.com/SublimeTextIssues/Core/issues/1066#issuecomment-240116281" target="_blank" rel="external">Issue報告</a>，<a href="https://github.com/vovkkk" target="_blank" rel="external">Vova Kolobok</a>專家提出了一道解方，就是在<code>Default.sublime-theme</code>中新增以下文字，左方的側欄字體就會變大。</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"sidebar_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"tab_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"tool_tip_label_control"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_path_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_score_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>Q1. <strong>Default.sublime-theme</strong> 在哪?<br>點<strong>Preferences</strong> -&gt; <strong>Browse Packages</strong>可以到<strong>Package資料夾</strong>，點進<strong>User</strong>後，自行新增<strong>Default.sublime-theme</strong>，記住副檔名是<strong>.sublime-theme</strong>，不是<strong>.txt</strong>。</p>
-<p>Q2. 你說側邊攔中文字體仍顯示方框?<br>因為必須搭配老方法，<code>&quot;dpi_scale&quot; : 1.0</code>才可以正確的使字體變大。</p>
-<p>Q3. 左方中文字體變大後很醜怎麼辦?<br>接下來介紹最後一個方法將是目前最完美的解決方案。</p>
-<h3 id="完美解決方案">完美解決方案</h3><p>意外地找到<a href="http://buymeasoda.github.io/soda-theme/" target="_blank" rel="external">SODA</a>這個SublimeText3的主題插件，本來只是想將左方側欄也弄成黑底，但意外地<a href="http://buymeasoda.github.io/soda-theme/" target="_blank" rel="external">SODA</a>提供了一個Retina的功能，把Mac的解析度方案搬到Sublime插件裡，Dowen稱此插件作者是天才也不為過。</p>
-<ol>
-<li>開啟清單(Ctrl + Shift + P)。</li>
-<li>使用 Package Control: Install Package 打上<strong>Theme - Soda</strong>。</li>
-<li><strong>Preferences</strong> -&gt; <strong> Settings-User</strong></li>
-<li><p>新增theme參數，完成後側邊欄位應為黑/白色。</p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="expression">&#123;</span><br><span class="line">    <span class="string">"theme"</span>: <span class="string">"Soda Dark 3.sublime-theme"</span></span><br><span class="line">    //<span class="string">"theme"</span>: <span class="string">"Soda Light 3.sublime-theme"</span> /<span class="end-block">/ <span class="keyword">If</span> you want light theme</span></span><br><span class="line">&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>將老方法<strong>“dpi_scale”: 1.0</strong>移除，新方法與本方法步驟都正確的話應該會跟Dowen的Sublimetext長得相似。</p>
-</li>
-</ol>
-<img src="/images/Sub3Ch/editor.png" width="420">
-<h4 id="額外補充">額外補充</h4><p>新方法中調整過font.face改成微軟正黑體(Microsoft JhengHei)後字體雖然會變好看，但是使用搜尋欄(Ctrl + F)時，會產生破圖現象。不過字體大小不會影響破圖與否，可以盡情調整。另外，讀者如果有更好的方法，希望可與Dowen分享，謝謝！</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h2 id="文前說明">文前說明</h2><p>經過數年，Sublimetext3官方依然沒有對不同解析度中文字體的解決方案，網路上指流傳著一個一定要屈服才可顯示中文的方法<code>&quot;dpi_scale&quot; : 1.0</code>，逼著大螢幕的中文程式設計師使用小到極致的字體來用這套完美的軟體。而如今終於有專家提出藥方，接下來就跟著本篇慢慢實裝到自己的環境吧！</p>
-<h3 id="老方法">老方法</h3><p>首先大家知道的老方法還是提一下，就是<strong>Preferences</strong> -&gt; <strong> Settings-User</strong> 裡面增加一行文字:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	"<span class="attribute">dpi_scale</span>": <span class="value"><span class="number">1.0</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
-<p>抱歉，舊方法實在太令我印象深刻了，如果有人因為這行滿意就不用往下看下去。</p>]]>
-    
-    </summary>
-    
-      <category term="Sidebar" scheme="http://tokenyet.github.io/tags/Sidebar/"/>
-    
-      <category term="Sublimetext" scheme="http://tokenyet.github.io/tags/Sublimetext/"/>
-    
-      <category term="中文亂碼" scheme="http://tokenyet.github.io/tags/%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC/"/>
-    
-      <category term="側欄" scheme="http://tokenyet.github.io/tags/%E5%81%B4%E6%AC%84/"/>
-    
-      <category term="Other" scheme="http://tokenyet.github.io/categories/Other/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[OpenGL 遊戲引擎開發日誌]]></title>
-    <link href="http://tokenyet.github.io/2016/09/11/OpenGL-Development-Journal/"/>
-    <id>http://tokenyet.github.io/2016/09/11/OpenGL-Development-Journal/</id>
-    <published>2016-09-11T14:00:37.000Z</published>
-    <updated>2016-09-11T14:09:49.508Z</updated>
+    <link href="http://tokenyet.github.io/2016/09/12/OpenGL-Development-Journal/"/>
+    <id>http://tokenyet.github.io/2016/09/12/OpenGL-Development-Journal/</id>
+    <published>2016-09-12T14:00:37.000Z</published>
+    <updated>2016-09-12T14:08:47.408Z</updated>
     <content type="html"><![CDATA[<h2 id="本篇說明">本篇說明</h2><p>開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。</p>
 <p>系統環境: Windows 10<br>開發軟體: Visual Studio 2015<br>硬體設備: i7-3770 and GTX960<br>核心接口: <a href="http://www.glfw.org/" title="GLFW" target="_blank" rel="external">GLFW</a>/<a href="http://glew.sourceforge.net/" title="GLEW" target="_blank" rel="external">GLEW</a>/<a href="http://glm.g-truc.net/" title="GLM" target="_blank" rel="external">GLM</a>/<a href="http://www.assimp.org/" title="Assimp" target="_blank" rel="external">Assimp</a>/<a href="https://bitbucket.org/SpartanJ/soil2" title="SOIL2" target="_blank" rel="external">SOIL2</a><br>輔助插件: <a href="http://www.horsedrawngames.com/shader-syntax-highlighting-in-visual-studio-2013/" title="Nshader" target="_blank" rel="external">Nshader for Visual Studio 2015</a></p>
 <h4 id="其他事項">其他事項</h4><p><strong> 2016/09/05 前的日誌乃日根據記憶回朔，09/05方開始打算紀錄。 </strong></p>
 <a id="more"></a>
+<h4 id="2016/09/12">2016/09/12</h4><p>Think&amp;Imp: 地形碰撞偵測，場景物體貼齊地形</p>
+<ol>
+<li>記錄地形每點高度，利用重心座標系平緩高度變化。</li>
+</ol>
+<p>Note 1: 地形碰撞偵測使用到Barycentric Coordinate，相關數學知識紀錄於數學筆記區中。</p>
+<p>Big Isuue: 許多資料型態都應使用指標較符合使用情境，C++中動態記錄陣列必定要使用指標為宣告方式，否則在會被馬上解構，因此地形全改為使用指標式，從表層改入裏層。難怪Cocos2d任何物體都使用<code>-&gt;</code>來操作物件，而不是<code>.</code>。C++真是個難開發的語言阿…。</p>
+<img src="/images/ODJ/20160912screenshot.png" width="420">
 <h4 id="2016/09/11">2016/09/11</h4><p>Think&amp;Imp: 進階地形&amp;整理程式</p>
 <ol>
 <li>支援24bit Height Map調整地形起伏變化。</li>
@@ -208,6 +165,118 @@
       <category term="開發日誌" scheme="http://tokenyet.github.io/tags/%E9%96%8B%E7%99%BC%E6%97%A5%E8%AA%8C/"/>
     
       <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[重心座標概念理解與實作]]></title>
+    <link href="http://tokenyet.github.io/2016/09/12/%E9%87%8D%E5%BF%83%E5%BA%A7%E6%A8%99%E7%B3%BB%E7%B5%B1/"/>
+    <id>http://tokenyet.github.io/2016/09/12/重心座標系統/</id>
+    <published>2016-09-12T09:50:37.000Z</published>
+    <updated>2016-09-12T14:12:22.582Z</updated>
+    <content type="html"><![CDATA[<h2 id="關於本篇">關於本篇</h2><p>重心座標(Barycentric coordinate)是Dowen應用於地形碰撞偵測上的數學，此外在OpenGL的Tesselation中也會用到，如此重要的座標概念，幾乎沒有中文文獻，或許是因為容易理解，不過對Dowen來說還是花了不少時間。</p>
+<h2 id="重心座標_(Barycentric_coordinate)">重心座標 (Barycentric coordinate)</h2><p>國中的時候我們教過，三角形中腺交於一點稱為重心，而重心公式大家應該都還記得就是三點相加後除以三。</p>
+<img src="/images/Mbay/bayer1.png" width="420">
+<span>$G = \frac{1}{3}A + \frac{1}{3}B + \frac{1}{3}C$</span><!-- Has MathJax -->
+<p>而其中的三個$\frac{1}{3}$，化為向量就是$\left(\frac{1}{3},\frac{1}{3},\frac{1}{3}\right)$，而重心座標系的性質即是三個參數相加為一。</p>
+<a id="more"></a>
+<h3 id="正式定義">正式定義</h3><p>重心座標系中，定義每個點各自擁有一個比例參數$\lambda$，其各點乘上比例參數可以完美地表達該點座標。而這樣的比例參數化為向量就是重心座標系中的座標。以下面這張示意圖來看，要表達點$P$，用重心座標系的表示法就會如下:</p>
+<img src="/images/Mbay/bayer2.png" width="420">
+<span>$P = \lambda_A A + \lambda_B B + \lambda_C C$</span><!-- Has MathJax -->
+<p>在國中時，通常會給各個線段的比例與一些值，但實際上到了圖學中，我們所知道的反而是$A$,$B$,$C$,$P$，然後要求出各個比例參數，看起來很不可思議，但是接下來我們會利用向量來解決這樣的問題。</p>
+<h3 id="比例參數">比例參數</h3><p>首先引入下方這張圖，代表我們會使用到的概念:</p>
+<img src="/images/Mbay/bayer3.png" width="420">
+<p>那麼$P$點的表達示如下:</p>
+<span>$P = A + u \cdot (C-A) + v \cdot (B-A)$</span><!-- Has MathJax -->
+<p>然後以向量表示且將A位移後:</p>
+<span>$P - A = u V_0 + v V_1$</span><!-- Has MathJax -->
+<p>由於這個公式中有兩個未知數$u$,$v$，因此需要兩條公式才可以求解，因此利用向量的內積，產生兩條式子。</p>
+<span>$$\begin{cases}
+V_2 \cdot V_0 = u V_0 \cdot V_0 + v V_1 \cdot V_0 \\
+V_2 \cdot V_1 = u V_0 \cdot V_1 + v V_1 \cdot V_1
+\end{cases}$$</span><!-- Has MathJax -->
+<p>整理過後得到解果如下:</p>
+<span>$$u = \frac{(V_1 \cdot V_1)(V_2 \cdot V_0)-(V_1 \cdot V_0)(V_2 \cdot V_1)}{(V_0 \cdot V_0)(V_1 \cdot V_1) - (V_0 \cdot V_1)(V_1 \cdot V_0)}\\
+v = \frac{(V_0 \cdot V_0)(V_2 \cdot V_1)-(V_0 \cdot V_1)(V_2 \cdot V_0)}{(V_0 \cdot V_0)(V_1 \cdot V_1) - (V_0 \cdot V_1)(V_1 \cdot V_0)}$$</span><!-- Has MathJax -->
+<p>其化為程式最佳寫法如下:<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// Compute vectors        </span><br><span class="line">v0 = C - A</span><br><span class="line">v1 = B - A</span><br><span class="line">v2 = P - A</span><br><span class="line"></span><br><span class="line">// Compute dot products</span><br><span class="line">dot00 = dot<span class="list">(<span class="keyword">v0</span>, v0)</span></span><br><span class="line">dot01 = dot<span class="list">(<span class="keyword">v0</span>, v1)</span></span><br><span class="line">dot02 = dot<span class="list">(<span class="keyword">v0</span>, v2)</span></span><br><span class="line">dot11 = dot<span class="list">(<span class="keyword">v1</span>, v1)</span></span><br><span class="line">dot12 = dot<span class="list">(<span class="keyword">v1</span>, v2)</span></span><br><span class="line"></span><br><span class="line">// Compute barycentric coordinates</span><br><span class="line">invDenom = <span class="number">1</span> / <span class="list">(<span class="keyword">dot00</span> <span class="variable">* dot11 - dot01 *</span> dot01)</span></span><br><span class="line">u = <span class="list">(<span class="keyword">dot11</span> <span class="variable">* dot02 - dot01 *</span> dot12)</span> * invDenom</span><br><span class="line">v = <span class="list">(<span class="keyword">dot00</span> <span class="variable">* dot12 - dot01 *</span> dot02)</span> * invDenom</span><br></pre></td></tr></table></figure></p>
+<p>回到原本說需要有三個比例參數。為什麼只剩下兩個?讓Dowen在往後推幾步，就會有所明瞭。</p>
+<p>第一步 將向量換回座標:</p>
+<span>$V_2 = u V_0 + v V_1$</span><!-- Has MathJax -->
+<p>第二步 展開，並將$A$移回去:</p>
+<span>$$P = A + u \cdot C - u \cdot A + v \cdot B - v \cdot A \\
+P = (1 - u - v) \cdot A + u \cdot C + v \cdot B
+P = \lambda_A A + \lambda_B B + \lambda_C C$$</span><!-- Has MathJax -->
+<p>提取出三個$\lambda$成為<span>$(\lambda_A ,\lambda_B, \lambda_C)$</span><!-- Has MathJax -->，就取得重心座標系的座標了。</p>
+<p>而要換成我們一般直角坐標就是利用<span>$P = \lambda_A A + \lambda_B B + \lambda_C C$</span><!-- Has MathJax -->，就可以得到原座標。</p>
+<h4 id="小結">小結</h4><p>本篇從直角坐標系推倒出重心座標系，又從重心座標系轉回直角坐標系，直觀上不出什麼有用的價值，但是在圖學中地形上，我們有一個三角形與一個缺少高度的XZ座標或說UV座標，做法是只看XZ平面，算出測試座標在XZ平面上的哪一個重心座標系，利用重心座標系在三角形平面上的比例將頂點三點的高度做轉換，即可獲得3D直角坐標系的高度座標，即可完成地形的碰撞偵測。</p>
+<p>參考資料:<a href="http://blackpawn.com/texts/pointinpoly/default.html" target="_blank" rel="external">Point in triangle test</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="關於本篇">關於本篇</h2><p>重心座標(Barycentric coordinate)是Dowen應用於地形碰撞偵測上的數學，此外在OpenGL的Tesselation中也會用到，如此重要的座標概念，幾乎沒有中文文獻，或許是因為容易理解，不過對Dowen來說還是花了不少時間。</p>
+<h2 id="重心座標_(Barycentric_coordinate)">重心座標 (Barycentric coordinate)</h2><p>國中的時候我們教過，三角形中腺交於一點稱為重心，而重心公式大家應該都還記得就是三點相加後除以三。</p>
+<img src="/images/Mbay/bayer1.png" width="420">
+<span>$G = \frac{1}{3}A + \frac{1}{3}B + \frac{1}{3}C$</span><!-- Has MathJax -->
+<p>而其中的三個$\frac{1}{3}$，化為向量就是$\left(\frac{1}{3},\frac{1}{3},\frac{1}{3}\right)$，而重心座標系的性質即是三個參數相加為一。</p>]]>
+    
+    </summary>
+    
+      <category term="Barycentric coordinate" scheme="http://tokenyet.github.io/tags/Barycentric-coordinate/"/>
+    
+      <category term="質心座標" scheme="http://tokenyet.github.io/tags/%E8%B3%AA%E5%BF%83%E5%BA%A7%E6%A8%99/"/>
+    
+      <category term="重心座標" scheme="http://tokenyet.github.io/tags/%E9%87%8D%E5%BF%83%E5%BA%A7%E6%A8%99/"/>
+    
+      <category term="數學筆記" scheme="http://tokenyet.github.io/categories/%E6%95%B8%E5%AD%B8%E7%AD%86%E8%A8%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Sublimetext 3 中文側欄與黑側欄]]></title>
+    <link href="http://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/"/>
+    <id>http://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/</id>
+    <published>2016-09-11T18:30:37.000Z</published>
+    <updated>2016-09-11T18:51:34.192Z</updated>
+    <content type="html"><![CDATA[<h2 id="文前說明">文前說明</h2><p>經過數年，Sublimetext3官方依然沒有對不同解析度中文字體的解決方案，網路上指流傳著一個一定要屈服才可顯示中文的方法<code>&quot;dpi_scale&quot; : 1.0</code>，逼著大螢幕的中文程式設計師使用小到極致的字體來用這套完美的軟體。而如今終於有專家提出藥方，接下來就跟著本篇慢慢實裝到自己的環境吧！</p>
+<h3 id="老方法">老方法</h3><p>首先大家知道的老方法還是提一下，就是<strong>Preferences</strong> -&gt; <strong> Settings-User</strong> 裡面增加一行文字:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	"<span class="attribute">dpi_scale</span>": <span class="value"><span class="number">1.0</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<p>抱歉，舊方法實在太令我印象深刻了，如果有人因為這行滿意就不用往下看下去。</p>
+<a id="more"></a>
+<h3 id="新方法">新方法</h3><p>根據此議題最新的<a href="https://github.com/SublimeTextIssues/Core/issues/1066#issuecomment-240116281" target="_blank" rel="external">Issue報告</a>，<a href="https://github.com/vovkkk" target="_blank" rel="external">Vova Kolobok</a>專家提出了一道解方，就是在<code>Default.sublime-theme</code>中新增以下文字，左方的側欄字體就會變大。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"sidebar_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"tab_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"tool_tip_label_control"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_path_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        "<span class="attribute">class</span>": <span class="value"><span class="string">"quick_panel_score_label"</span></span>,</span><br><span class="line">        "<span class="attribute">font.face</span>": <span class="value"><span class="string">"monospace"</span></span>,</span><br><span class="line">        "<span class="attribute">font.size</span>": <span class="value"><span class="number">18</span></span><br><span class="line">    </span>&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>Q1. <strong>Default.sublime-theme</strong> 在哪?<br>點<strong>Preferences</strong> -&gt; <strong>Browse Packages</strong>可以到<strong>Package資料夾</strong>，點進<strong>User</strong>後，自行新增<strong>Default.sublime-theme</strong>，記住副檔名是<strong>.sublime-theme</strong>，不是<strong>.txt</strong>。</p>
+<p>Q2. 你說側邊攔中文字體仍顯示方框?<br>因為必須搭配老方法，<code>&quot;dpi_scale&quot; : 1.0</code>才可以正確的使字體變大。</p>
+<p>Q3. 左方中文字體變大後很醜怎麼辦?<br>接下來介紹最後一個方法將是目前最完美的解決方案。</p>
+<h3 id="完美解決方案">完美解決方案</h3><p>意外地找到<a href="http://buymeasoda.github.io/soda-theme/" target="_blank" rel="external">SODA</a>這個SublimeText3的主題插件，本來只是想將左方側欄也弄成黑底，但意外地<a href="http://buymeasoda.github.io/soda-theme/" target="_blank" rel="external">SODA</a>提供了一個Retina的功能，把Mac的解析度方案搬到Sublime插件裡，Dowen稱此插件作者是天才也不為過。</p>
+<ol>
+<li>開啟清單(Ctrl + Shift + P)。</li>
+<li>使用 Package Control: Install Package 打上<strong>Theme - Soda</strong>。</li>
+<li><strong>Preferences</strong> -&gt; <strong> Settings-User</strong></li>
+<li><p>新增theme參數，完成後側邊欄位應為黑/白色。</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="expression">&#123;</span><br><span class="line">    <span class="string">"theme"</span>: <span class="string">"Soda Dark 3.sublime-theme"</span></span><br><span class="line">    //<span class="string">"theme"</span>: <span class="string">"Soda Light 3.sublime-theme"</span> /<span class="end-block">/ <span class="keyword">If</span> you want light theme</span></span><br><span class="line">&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>將老方法<strong>“dpi_scale”: 1.0</strong>移除，新方法與本方法步驟都正確的話應該會跟Dowen的Sublimetext長得相似。</p>
+</li>
+</ol>
+<img src="/images/Sub3Ch/editor.png" width="420">
+<h4 id="額外補充">額外補充</h4><p>新方法中調整過font.face改成微軟正黑體(Microsoft JhengHei)後字體雖然會變好看，但是使用搜尋欄(Ctrl + F)時，會產生破圖現象。不過字體大小不會影響破圖與否，可以盡情調整。另外，讀者如果有更好的方法，希望可與Dowen分享，謝謝！</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="文前說明">文前說明</h2><p>經過數年，Sublimetext3官方依然沒有對不同解析度中文字體的解決方案，網路上指流傳著一個一定要屈服才可顯示中文的方法<code>&quot;dpi_scale&quot; : 1.0</code>，逼著大螢幕的中文程式設計師使用小到極致的字體來用這套完美的軟體。而如今終於有專家提出藥方，接下來就跟著本篇慢慢實裝到自己的環境吧！</p>
+<h3 id="老方法">老方法</h3><p>首先大家知道的老方法還是提一下，就是<strong>Preferences</strong> -&gt; <strong> Settings-User</strong> 裡面增加一行文字:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	"<span class="attribute">dpi_scale</span>": <span class="value"><span class="number">1.0</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<p>抱歉，舊方法實在太令我印象深刻了，如果有人因為這行滿意就不用往下看下去。</p>]]>
+    
+    </summary>
+    
+      <category term="Sidebar" scheme="http://tokenyet.github.io/tags/Sidebar/"/>
+    
+      <category term="Sublimetext" scheme="http://tokenyet.github.io/tags/Sublimetext/"/>
+    
+      <category term="中文亂碼" scheme="http://tokenyet.github.io/tags/%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC/"/>
+    
+      <category term="側欄" scheme="http://tokenyet.github.io/tags/%E5%81%B4%E6%AC%84/"/>
+    
+      <category term="Other" scheme="http://tokenyet.github.io/categories/Other/"/>
     
   </entry>
   
@@ -1785,47 +1854,6 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
       <category term="Ubuntu property" scheme="http://tokenyet.github.io/tags/Ubuntu-property/"/>
     
       <category term="tracker-store" scheme="http://tokenyet.github.io/tags/tracker-store/"/>
-    
-      <category term="Linux" scheme="http://tokenyet.github.io/categories/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[在Ubuntu上系統架設VirtualBox]]></title>
-    <link href="http://tokenyet.github.io/2015/07/17/%E5%9C%A8Ubuntu%E4%B8%8A%E7%B3%BB%E7%B5%B1%E6%9E%B6%E8%A8%ADVirtualBox/"/>
-    <id>http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/</id>
-    <published>2015-07-17T09:52:26.000Z</published>
-    <updated>2015-08-19T12:46:27.957Z</updated>
-    <content type="html"><![CDATA[<p>由於工作的需求越來越多，Ubuntu裝exe程式已經不敷使用。<br>開始了必須在Ubuntu上裝Windows系統的旅程。<br>小抱怨一下，越來越多的系統需求，但是處理器也不升級一下。<br>真的是越來越過份了/o\</p>
-<p>正文開始</p>
-<ol>
-<li><p>首先必須到<a href="https://www.virtualbox.org/wiki/Linux_Downloads" target="_blank" rel="external">VirtualBox的官方網站</a>找自己適合的安裝檔，我的是<em>Ubuntu 12.04 LTS (“Precise Pangolin”)  i386 |  AMD64</em>這個版本。</p>
-</li>
-<li><p>cd到指定下載的資料夾(或你放置該檔案的其他位置)</p>
-</li>
-<li><p><code>sudo dpkg -i virtualbox-5.0_5.0.0-101573-Ubuntu-precise_amd64.deb(自己的檔案)</code></p>
-</li>
-<li><p>安裝好後，自行安裝想要的任何系統，Dowen是安裝 Windows 7。</p>
-</li>
-<li><p>假如以上沒有問題，就安裝好了，但是如果你遇上 VirtualBox error: Kernel driver not installed (rc=-1908)，那就請繼續往下看。</p>
-</li>
-<li><p>其實官方網站有說，為了防止Ubuntu有時後會不相容的問題，必須要安裝dkms所以就要使用以下的指令</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo aptitude <span class="operator"><span class="keyword">update</span></span><br><span class="line">sudo aptitude <span class="keyword">install</span> dkms</span><br><span class="line">sudo /etc/init.d/vboxdrv setup</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>這樣應該就沒什麼問題了，希望有幫到像我一樣苦惱的人。</p>
-</li>
-</ol>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>由於工作的需求越來越多，Ubuntu裝exe程式已經不敷使用。<br>開始了必須在Ubuntu上裝Windows系統的旅程。<br>小抱怨一下，越來越多的系統需求，但是處理器也不升級一下。<br>真的是越來越過份了/o\</p>
-<p>正文開始</p>
-<ol>
-<li><]]>
-    </summary>
-    
-      <category term="Ubuntu" scheme="http://tokenyet.github.io/tags/Ubuntu/"/>
-    
-      <category term="VirtualBox" scheme="http://tokenyet.github.io/tags/VirtualBox/"/>
     
       <category term="Linux" scheme="http://tokenyet.github.io/categories/Linux/"/>
     
