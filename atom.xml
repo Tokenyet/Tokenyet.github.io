@@ -173,7 +173,7 @@
     <link href="http://tokenyet.github.io/2016/09/12/%E9%87%8D%E5%BF%83%E5%BA%A7%E6%A8%99%E7%B3%BB%E7%B5%B1/"/>
     <id>http://tokenyet.github.io/2016/09/12/重心座標系統/</id>
     <published>2016-09-12T09:50:37.000Z</published>
-    <updated>2016-09-12T14:12:22.582Z</updated>
+    <updated>2016-09-12T15:02:53.030Z</updated>
     <content type="html"><![CDATA[<h2 id="關於本篇">關於本篇</h2><p>重心座標(Barycentric coordinate)是Dowen應用於地形碰撞偵測上的數學，此外在OpenGL的Tesselation中也會用到，如此重要的座標概念，幾乎沒有中文文獻，或許是因為容易理解，不過對Dowen來說還是花了不少時間。</p>
 <h2 id="重心座標_(Barycentric_coordinate)">重心座標 (Barycentric coordinate)</h2><p>國中的時候我們教過，三角形中腺交於一點稱為重心，而重心公式大家應該都還記得就是三點相加後除以三。</p>
 <img src="/images/Mbay/bayer1.png" width="420">
@@ -203,9 +203,11 @@ v = \frac{(V_0 \cdot V_0)(V_2 \cdot V_1)-(V_0 \cdot V_1)(V_2 \cdot V_0)}{(V_0 \c
 <p>第一步 將向量換回座標:</p>
 <span>$V_2 = u V_0 + v V_1$</span><!-- Has MathJax -->
 <p>第二步 展開，並將$A$移回去:</p>
-<span>$$P = A + u \cdot C - u \cdot A + v \cdot B - v \cdot A \\
-P = (1 - u - v) \cdot A + u \cdot C + v \cdot B
-P = \lambda_A A + \lambda_B B + \lambda_C C$$</span><!-- Has MathJax -->
+<span>$$\begin{aligned} 
+P &amp;= A + u \cdot C - u \cdot A + v \cdot B - v \cdot A \\
+P &amp;= (1 - u - v) \cdot A + u \cdot C + v \cdot B \\
+P &amp;= \lambda_A A + \lambda_B B + \lambda_C C
+\end{aligned}$$</span><!-- Has MathJax -->
 <p>提取出三個$\lambda$成為<span>$(\lambda_A ,\lambda_B, \lambda_C)$</span><!-- Has MathJax -->，就取得重心座標系的座標了。</p>
 <p>而要換成我們一般直角坐標就是利用<span>$P = \lambda_A A + \lambda_B B + \lambda_C C$</span><!-- Has MathJax -->，就可以得到原座標。</p>
 <h4 id="小結">小結</h4><p>本篇從直角坐標系推倒出重心座標系，又從重心座標系轉回直角坐標系，直觀上不出什麼有用的價值，但是在圖學中地形上，我們有一個三角形與一個缺少高度的XZ座標或說UV座標，做法是只看XZ平面，算出測試座標在XZ平面上的哪一個重心座標系，利用重心座標系在三角形平面上的比例將頂點三點的高度做轉換，即可獲得3D直角坐標系的高度座標，即可完成地形的碰撞偵測。</p>
