@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2016-09-19T15:41:13.691Z</updated>
+  <updated>2016-09-19T16:27:48.827Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://tokenyet.github.io/2016/09/19/OpenGL-Development-Journal/"/>
     <id>http://tokenyet.github.io/2016/09/19/OpenGL-Development-Journal/</id>
     <published>2016-09-19T15:20:37.000Z</published>
-    <updated>2016-09-19T15:41:13.691Z</updated>
+    <updated>2016-09-19T16:27:48.827Z</updated>
     <content type="html"><![CDATA[<h2 id="本篇說明">本篇說明</h2><p>開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。</p>
 <p>系統環境: Windows 10<br>開發軟體: Visual Studio 2015<br>硬體設備: i7-3770 and GTX960<br>核心接口: <a href="http://www.glfw.org/" title="GLFW" target="_blank" rel="external">GLFW</a>/<a href="http://glew.sourceforge.net/" title="GLEW" target="_blank" rel="external">GLEW</a>/<a href="http://glm.g-truc.net/" title="GLM" target="_blank" rel="external">GLM</a>/<a href="http://www.assimp.org/" title="Assimp" target="_blank" rel="external">Assimp</a>/<a href="https://bitbucket.org/SpartanJ/soil2" title="SOIL2" target="_blank" rel="external">SOIL2</a><br>輔助插件: <a href="http://www.horsedrawngames.com/shader-syntax-highlighting-in-visual-studio-2013/" title="Nshader" target="_blank" rel="external">Nshader for Visual Studio 2015</a></p>
 <h4 id="其他事項">其他事項</h4><p><strong> 2016/09/05 前的日誌乃日根據記憶回朔，09/05方開始打算紀錄。 </strong></p>
