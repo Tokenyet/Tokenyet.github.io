@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2016-09-19T16:27:48.827Z</updated>
+  <updated>2016-09-23T18:49:09.010Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -16,14 +16,42 @@
   
   <entry>
     <title><![CDATA[OpenGL 遊戲引擎開發日誌]]></title>
-    <link href="http://tokenyet.github.io/2016/09/19/OpenGL-Development-Journal/"/>
-    <id>http://tokenyet.github.io/2016/09/19/OpenGL-Development-Journal/</id>
-    <published>2016-09-19T15:20:37.000Z</published>
-    <updated>2016-09-19T16:27:48.827Z</updated>
+    <link href="http://tokenyet.github.io/2016/09/24/OpenGL-Development-Journal/"/>
+    <id>http://tokenyet.github.io/2016/09/24/OpenGL-Development-Journal/</id>
+    <published>2016-09-23T18:39:37.000Z</published>
+    <updated>2016-09-23T18:49:09.010Z</updated>
     <content type="html"><![CDATA[<h2 id="本篇說明">本篇說明</h2><p>開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。</p>
 <p>系統環境: Windows 10<br>開發軟體: Visual Studio 2015<br>硬體設備: i7-3770 and GTX960<br>核心接口: <a href="http://www.glfw.org/" title="GLFW" target="_blank" rel="external">GLFW</a>/<a href="http://glew.sourceforge.net/" title="GLEW" target="_blank" rel="external">GLEW</a>/<a href="http://glm.g-truc.net/" title="GLM" target="_blank" rel="external">GLM</a>/<a href="http://www.assimp.org/" title="Assimp" target="_blank" rel="external">Assimp</a>/<a href="https://bitbucket.org/SpartanJ/soil2" title="SOIL2" target="_blank" rel="external">SOIL2</a><br>輔助插件: <a href="http://www.horsedrawngames.com/shader-syntax-highlighting-in-visual-studio-2013/" title="Nshader" target="_blank" rel="external">Nshader for Visual Studio 2015</a></p>
 <h4 id="其他事項">其他事項</h4><p><strong> 2016/09/05 前的日誌乃日根據記憶回朔，09/05方開始打算紀錄。 </strong></p>
 <a id="more"></a>
+<h4 id="2016/09/24">2016/09/24</h4><p>過了一周的Assimp動畫實作與各種數學矩陣的轉換後，終於在自己的引擎中可支援骨架動畫，起初實作。不了解背後數學公式與一些OpenGL技巧，導致最後連模組都無法出現，到中期了解數學公式後，在OpenGL中將Int資料填入Shader必須使用 <code>glVertexAttribIPointer</code>。還有<code>glBindAttribLocation</code>的使用時機，導致需要重整ShaderProgram相關程式。最後末期，由於Assimp文件中有些地方解釋模糊，在Stackoverflow發文後，還是靠自己無數的Debug後，才知道該矩陣的意義。</p>
+<p>Modify: </p>
+<ol>
+<li>修改ShaderProgram、StaticShader、MeshShader、TerrainShader。</li>
+<li>修改MeshModel，以支援骨架與動畫資訊。</li>
+<li>修改AssimpLoader，支援骨架與動畫的格式，主要使用COLLADA(*.dae)。</li>
+</ol>
+<p>Debug:</p>
+<ol>
+<li>修復<code>glBindAttribLocation</code>在基底Shader中的呼叫情況。</li>
+<li>從<code>glVertexAttribPointer</code> 修復為<code>glVertexAttribIPointer</code>在Loader載入Vertex Attribute為Int資料上，無法傳入的問題。</li>
+<li>修復骨架矩陣上的各種問題。</li>
+</ol>
+<p>Other:</p>
+<ol>
+<li><a href="http://stackoverflow.com/questions/39632517/assimp-animation-bone-transformation/39666893#39666893" target="_blank" rel="external">Stackoverflow的發問與自解</a>。</li>
+</ol>
+<p>Reminder:</p>
+<ol>
+<li>發表關於<code>glBindAttribLocation</code>的蠢問題文章。</li>
+<li>發表關於如何利用Assimp載入模組與動畫知識的文章。</li>
+</ol>
+
+<div class="container-outside-div">
+		<img src="/images/ODJ/20160924screenshot.gif" style="width: 420px">
+		<p>(模組躺著是因為Blender座標系統與OpenGL座標系統有出入，以後慢慢修復。)</p>
+</div>
+
 <h4 id="2016/09/19">2016/09/19</h4><p>Target: 引入3D模組動畫<br>Progress&amp;Record: </p>
 <ol>
 <li>了解骨架空間矩陣運算</li>
