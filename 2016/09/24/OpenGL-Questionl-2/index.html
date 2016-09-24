@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>OpenGL之沒有蠢問題 2 - BindAttribute | Dowenの世界</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="閒談最近Dowen正在將模組動畫引入到遊戲引擎中，期間遇到的一個超級隱藏Bug就是glBindAttribLocation。引入模組動畫最重要的就是傳入該頂點會使用到的骨架索引與骨架權重，而Dowen這次綁定的位置，離原本定義的Position、Normal、TexCoord稍微遠一點，大概是5、6的位置，所以才發現到原本綁定的方式是錯的。總之，要說的是Shader發生錯誤真的是一丁點資訊都沒有啊">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL之沒有蠢問題 2 - BindAttribute">
+<meta property="og:url" content="http://tokenyet.github.io/2016/09/24/OpenGL-Questionl-2/index.html">
+<meta property="og:site_name" content="Dowenの世界">
+<meta property="og:description" content="閒談最近Dowen正在將模組動畫引入到遊戲引擎中，期間遇到的一個超級隱藏Bug就是glBindAttribLocation。引入模組動畫最重要的就是傳入該頂點會使用到的骨架索引與骨架權重，而Dowen這次綁定的位置，離原本定義的Position、Normal、TexCoord稍微遠一點，大概是5、6的位置，所以才發現到原本綁定的方式是錯的。總之，要說的是Shader發生錯誤真的是一丁點資訊都沒有啊">
+<meta property="og:updated_time" content="2016-09-24T07:34:20.287Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL之沒有蠢問題 2 - BindAttribute">
+<meta name="twitter:description" content="閒談最近Dowen正在將模組動畫引入到遊戲引擎中，期間遇到的一個超級隱藏Bug就是glBindAttribLocation。引入模組動畫最重要的就是傳入該頂點會使用到的骨架索引與骨架權重，而Dowen這次綁定的位置，離原本定義的Position、Normal、TexCoord稍微遠一點，大概是5、6的位置，所以才發現到原本綁定的方式是錯的。總之，要說的是Shader發生錯誤真的是一丁點資訊都沒有啊">
+  
+    <link rel="alternative" href="/atom.xml" title="Dowenの世界" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-65156776-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dowenの世界</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Love Games, Knowledge Sharing.</a>
+        </h2>
+      
+         </div>
+       <div id="header-inner" class="inner">
+         <nav id="main-nav" class="icon-background">
+              
+                
+                  <a class="nav-icon " href="/"><div class=icon-home title='Home'></div></a>
+                
+              
+                
+                  <a class="nav-icon  verticalLine " href="/archives"><div class=icon-archive title='Archives'></div> <!--Archives --></a>
+                
+              
+                
+                  <a class="nav-icon  verticalLine " href="/categories"><div class=icon-categories title='Categories'></div> <!--Categories --></a>
+                
+              
+                
+                  <a class="nav-icon  verticalLine " href="/about"><div class=icon-user title='About'></div> <!--About --></a>
+                
+              
+             </nav>
+           <nav id="sub-nav" class="icon-background">
+             
+                   <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+                 
+               <a id="nav-search-btn" class="nav-icon verticalLine" title="Search"></a>
+             </nav>
+           <div id="search-form-wrap">
+             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tokenyet.github.io"></form>
+             </div>
+         </div>
+     </div>
+ </header>
+      <div class="outer">
+        <section id="main"><article id="post-OpenGL-Questionl-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/24/OpenGL-Questionl-2/" class="article-date">
+  <time datetime="2016-09-24T07:26:28.000Z" itemprop="datePublished">2016-09-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/OpenGL/">OpenGL</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      OpenGL之沒有蠢問題 2 - BindAttribute
+    </h1>
+  
+
+      </header>
+    
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2016/09/24/OpenGL-Questionl-2/" data-id="citgvpbix00008wubmiq9p01y" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2016/09/24/OpenGL-Questionl-2/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="閒談">閒談</h2><p>最近Dowen正在將模組動畫引入到遊戲引擎中，期間遇到的一個超級隱藏Bug就是<code>glBindAttribLocation</code>。引入模組動畫最重要的就是傳入該頂點會使用到的<strong>骨架索引</strong>與<strong>骨架權重</strong>，而Dowen這次綁定的位置，離原本定義的Position、Normal、TexCoord稍微遠一點，大概是5、6的位置，所以才發現到原本綁定的方式是錯的。總之，要說的是Shader發生錯誤真的是一丁點資訊都沒有啊，還認為裝了Nsight可以Debug Shader，除了不太會使用外，只指出了Dowen在圖片載入的地方有些誤用而已。</p>
+<a id="more"></a>
+<h2 id="glBindAttribLocation">glBindAttribLocation</h2><p><code>glBindAttribLocation</code>是一個幫Shader Code綁定沒定義的輸入頂點屬性位置的函式，至於問為什麼要手動定義這個問題，Dowen還無法確切地回答，不過就使用經驗來說，是為了能讓各個Shader統一頂點屬性，在寫VAO用<code>glVertexAttribPointer</code>載入上會比較容易，還有在寫新Shader上，也不用在意每個頂點屬性的位置，但是仍要注意屬性名稱寫對，就可以輕鬆的在程式上操控每個頂點屬性的輸入。</p>
+<p>接下來就是蠢問題示範:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> VertexAttributeLocationRule</span><br><span class="line">&#123;</span><br><span class="line">	position = <span class="number">0</span>,</span><br><span class="line">	texCoord = <span class="number">1</span>,</span><br><span class="line">	normal = <span class="number">2</span>,</span><br><span class="line">	boneID = <span class="number">5</span>,</span><br><span class="line">	boneWeight = <span class="number">6</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">BasicRenderModel Loader::LoadRenderModel(<span class="keyword">float</span> position[], <span class="keyword">int</span> pdataLength, <span class="keyword">int</span> indices[], <span class="keyword">int</span> indexLength, <span class="keyword">float</span> texCoords[], <span class="keyword">int</span> texCoordLength, <span class="keyword">float</span> normals[], <span class="keyword">int</span> normalLength, <span class="keyword">int</span> boneID[], <span class="keyword">float</span> boneWeight[], <span class="keyword">int</span> boneLength)</span><br><span class="line">&#123;</span><br><span class="line">	GLuint vaoID = CreateVAO();</span><br><span class="line">	BindVAO(vaoID);</span><br><span class="line">	BindVertexAttribute(VertexAttributeLocationRule::position, <span class="number">3</span>, position, pdataLength);</span><br><span class="line">	BindVertexAttribute(VertexAttributeLocationRule::texCoord, <span class="number">2</span>, texCoords, texCoordLength);</span><br><span class="line">	BindVertexAttribute(VertexAttributeLocationRule::normal, <span class="number">3</span>, normals, normalLength);</span><br><span class="line">	<span class="keyword">int</span> boneDimension = (<span class="keyword">int</span>)((<span class="keyword">float</span>)boneLength / (<span class="keyword">float</span>)pdataLength * <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">	GLuint vboID;</span><br><span class="line">	glGenBuffers(<span class="number">1</span>, &amp;vboID);</span><br><span class="line">	vbos.push_back(vboID);</span><br><span class="line">	glBindBuffer(GL_ARRAY_BUFFER, vboID);</span><br><span class="line">	glBufferData(GL_ARRAY_BUFFER, boneLength * <span class="keyword">sizeof</span>(GLint), boneID, GL_STATIC_DRAW);</span><br><span class="line">	glVertexAttribIPointer(VertexAttributeLocationRule::boneID, boneDimension, GL_INT, boneDimension * <span class="keyword">sizeof</span>(GLint), (GLvoid*)<span class="number">0</span>);</span><br><span class="line">	glEnableVertexAttribArray(VertexAttributeLocationRule::boneID);</span><br><span class="line">	glBindBuffer(GL_ARRAY_BUFFER, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	BindVertexAttribute(VertexAttributeLocationRule::boneWeight, boneDimension, boneWeight, boneLength);</span><br><span class="line">	BindIndices(indices, indexLength);</span><br><span class="line">	UnbindVAO();</span><br><span class="line">	<span class="keyword">return</span> BasicRenderModel(vaoID, indexLength);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">GLuint ShaderProgram::LoadShader(<span class="keyword">const</span> <span class="keyword">char</span> *vertex_path, <span class="keyword">const</span> <span class="keyword">char</span> *fragment_path,</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span> *tcs_path = <span class="keyword">nullptr</span>, <span class="keyword">const</span> <span class="keyword">char</span> *tes_path = <span class="keyword">nullptr</span>, <span class="keyword">const</span> <span class="keyword">char</span> *geo_path = <span class="keyword">nullptr</span>) </span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 準備頂點著色器  // 創造頂點著色器</span></span><br><span class="line">	GLuint vertShader = CreateBasicShader(<span class="number">0</span>, vertex_path);</span><br><span class="line">	<span class="comment">// 準備像素著色器  // 創造像素著色器</span></span><br><span class="line">	GLuint fragShader = CreateBasicShader(<span class="number">1</span>, fragment_path);</span><br><span class="line">	GLuint tcsShader = -<span class="number">1</span>, tesShader = -<span class="number">1</span>, geoShader = -<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(tcs_path != <span class="keyword">nullptr</span>)</span><br><span class="line">		tcsShader = CreateBasicShader(<span class="number">2</span>, tcs_path);</span><br><span class="line">	<span class="keyword">if</span> (tes_path != <span class="keyword">nullptr</span>)</span><br><span class="line">		tesShader = CreateBasicShader(<span class="number">3</span>, tes_path);</span><br><span class="line">	<span class="keyword">if</span> (geo_path != <span class="keyword">nullptr</span>)</span><br><span class="line">		geoShader = CreateBasicShader(<span class="number">4</span>, geo_path);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*********************建立程式綁定著色器**********************/</span></span><br><span class="line">	<span class="comment">//std::cout &lt;&lt; "Linking program" &lt;&lt; std::endl;</span></span><br><span class="line">	Debug::Log(<span class="string">"Linking program"</span>);</span><br><span class="line">	<span class="comment">// 建立著色器程式 // 創造著色器程式</span></span><br><span class="line">	<span class="comment">//GLuint program = glCreateProgram();</span></span><br><span class="line">	<span class="keyword">this</span>-&gt;program = glCreateProgram();</span><br><span class="line">	<span class="comment">// 將需要的著色器載入到著色器程式中</span></span><br><span class="line">	glAttachShader(program, vertShader);</span><br><span class="line">	glAttachShader(program, fragShader);</span><br><span class="line">	tcsShader == -<span class="number">1</span> ? tcsShader = -<span class="number">1</span>: glAttachShader(program, tcsShader);</span><br><span class="line">	tesShader == -<span class="number">1</span> ? tesShader = -<span class="number">1</span> : glAttachShader(program, tesShader);</span><br><span class="line">	geoShader == -<span class="number">1</span> ? geoShader = -<span class="number">1</span> : glAttachShader(program, geoShader);</span><br><span class="line">	<span class="comment">// 載入完後連結到著色器</span></span><br><span class="line">	glLinkProgram(program);</span><br><span class="line">	GLuint tester1 = glGetAttribLocation(program, <span class="string">"boneID"</span>);</span><br><span class="line">	GLuint tester2 = glGetAttribLocation(program, <span class="string">"boneWeight"</span>);</span><br><span class="line">	<span class="comment">// 確認著色器程式是否成功連結</span></span><br><span class="line">	DebugProgram(program);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Bind Attributes</span></span><br><span class="line">	BindAttributes();</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 刪除不用的著色器</span></span><br><span class="line">	glDeleteShader(vertShader);</span><br><span class="line">	glDeleteShader(fragShader);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> program;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ModelShader::BindAttributes()</span><br><span class="line">&#123;</span><br><span class="line">	StaticShader::BindAttributes();</span><br><span class="line">	BindAttribute(VertexAttributeLocationRule::boneID, <span class="string">"boneID"</span>);</span><br><span class="line">	BindAttribute(VertexAttributeLocationRule::boneWeight, <span class="string">"boneWeight"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ShaderProgram::BindAttribute(<span class="keyword">int</span> attributeLoc, <span class="keyword">const</span> <span class="keyword">char</span>* attributeName)</span><br><span class="line">&#123;</span><br><span class="line">	glBindAttribLocation(<span class="keyword">this</span>-&gt;GetProgram(), attributeLoc, attributeName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上問題已經過簡化，原本<code>BindAttributes()</code>是寫在每個繼承中的Contructor，後來的新寫法是依照Template Pattern重新寫在<code>Init()</code>的函式中。額外提一下，這期間遇到的問題是，Template Pattern在C++中，無法在Contructor調用純虛擬函式，因此只好把每個Shader的初始化分成Contructor與Init兩段。</p>
+<p>回到正題，上方的Code，會導致boneID與boneWeight的綁定初始為3、4，這是為什麼呢?因為position、normal、texCoord已佔領0、1、2，剩下的補位3、4就是boneID與boneWeight。因為<code>BindAttributes</code>或說<code>BindAttribute</code>，又或說<code>glBindAttribLocation</code>被呼叫的時機點是<code>glLinkProgram</code>之後，再來看一下<code>glBindAttribLocation</code>的文件說明。</p>
+<blockquote><h4 id="glBindAttribLocation">glBindAttribLocation</h4><p>glBindAttribLocation can be called <strong>before any vertex shader objects are bound to the specified program object</strong>. It is also permissible to bind a generic attribute index to an attribute variable name that is never used in a vertex shader.</p>
+<footer><strong>@opengl.org</strong><cite><a href="https://www.opengl.org/sdk/docs/man/html/glBindAttribLocation.xhtml" target="_blank" rel="external">www.opengl.org/sdk/docs/man/html/glBindAttribLocation.xhtml</a></cite></footer></blockquote>
+<p>了解狀況後，將呼叫<code>glBindAttribLocation</code>移動到<code>glLinkProgram</code>之前即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">GLuint ShaderProgram::LoadShader(<span class="keyword">const</span> <span class="keyword">char</span> *vertex_path, <span class="keyword">const</span> <span class="keyword">char</span> *fragment_path,</span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span> *tcs_path = <span class="keyword">nullptr</span>, <span class="keyword">const</span> <span class="keyword">char</span> *tes_path = <span class="keyword">nullptr</span>, <span class="keyword">const</span> <span class="keyword">char</span> *geo_path = <span class="keyword">nullptr</span>) </span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 準備頂點著色器  // 創造頂點著色器</span></span><br><span class="line">	GLuint vertShader = CreateBasicShader(<span class="number">0</span>, vertex_path);</span><br><span class="line">	<span class="comment">// 準備像素著色器  // 創造像素著色器</span></span><br><span class="line">	GLuint fragShader = CreateBasicShader(<span class="number">1</span>, fragment_path);</span><br><span class="line">	GLuint tcsShader = -<span class="number">1</span>, tesShader = -<span class="number">1</span>, geoShader = -<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(tcs_path != <span class="keyword">nullptr</span>)</span><br><span class="line">		tcsShader = CreateBasicShader(<span class="number">2</span>, tcs_path);</span><br><span class="line">	<span class="keyword">if</span> (tes_path != <span class="keyword">nullptr</span>)</span><br><span class="line">		tesShader = CreateBasicShader(<span class="number">3</span>, tes_path);</span><br><span class="line">	<span class="keyword">if</span> (geo_path != <span class="keyword">nullptr</span>)</span><br><span class="line">		geoShader = CreateBasicShader(<span class="number">4</span>, geo_path);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*********************建立程式綁定著色器**********************/</span></span><br><span class="line">	<span class="comment">//std::cout &lt;&lt; "Linking program" &lt;&lt; std::endl;</span></span><br><span class="line">	Debug::Log(<span class="string">"Linking program"</span>);</span><br><span class="line">	<span class="comment">// 建立著色器程式 // 創造著色器程式</span></span><br><span class="line">	<span class="comment">//GLuint program = glCreateProgram();</span></span><br><span class="line">	<span class="keyword">this</span>-&gt;program = glCreateProgram();</span><br><span class="line">	<span class="comment">// 將需要的著色器載入到著色器程式中</span></span><br><span class="line">	glAttachShader(program, vertShader);</span><br><span class="line">	glAttachShader(program, fragShader);</span><br><span class="line">	tcsShader == -<span class="number">1</span> ? tcsShader = -<span class="number">1</span>: glAttachShader(program, tcsShader);</span><br><span class="line">	tesShader == -<span class="number">1</span> ? tesShader = -<span class="number">1</span> : glAttachShader(program, tesShader);</span><br><span class="line">	geoShader == -<span class="number">1</span> ? geoShader = -<span class="number">1</span> : glAttachShader(program, geoShader);</span><br><span class="line">	<span class="comment">// Bind Attributes</span></span><br><span class="line">	BindAttributes();</span><br><span class="line">	<span class="comment">// 載入完後連結到著色器</span></span><br><span class="line">	glLinkProgram(program);</span><br><span class="line">	GLuint tester1 = glGetAttribLocation(program, <span class="string">"boneID"</span>);</span><br><span class="line">	GLuint tester2 = glGetAttribLocation(program, <span class="string">"boneWeight"</span>);</span><br><span class="line">	<span class="comment">// 確認著色器程式是否成功連結</span></span><br><span class="line">	DebugProgram(program);</span><br><span class="line">	<span class="comment">// 刪除不用的著色器</span></span><br><span class="line">	glDeleteShader(vertShader);</span><br><span class="line">	glDeleteShader(fragShader);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> program;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="小結">小結</h2><p>該怎麼說，OpenGL function使用有誤真的很難檢測，因為不會有任何警告或錯誤，果然還是得依靠經驗與長年累月的Debug。雖然如此，但是還是滿喜歡從底層搞起，方可看見3D世界中的各種原理，也可以由自身經驗判斷不同遊戲引擎好壞，算是滿開心的一件事。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL問題/">OpenGL問題</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/glVertexAttribPointer/">glVertexAttribPointer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/glVertexAttribPointer-fails/">glVertexAttribPointer fails</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/09/24/OpenGL-Development-Journal/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">OpenGL 遊戲引擎開發日誌</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenCV/">OpenCV</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenGL/">OpenGL</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/數學筆記/">數學筆記</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/網頁相關/">網頁相關</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Barycentric-coordinate/" style="font-size: 10px;">Barycentric coordinate</a> <a href="/tags/Clipping/" style="font-size: 10px;">Clipping</a> <a href="/tags/Development-Journal/" style="font-size: 10px;">Development Journal</a> <a href="/tags/EmguCV/" style="font-size: 10px;">EmguCV</a> <a href="/tags/Euler-Angle/" style="font-size: 10px;">Euler Angle</a> <a href="/tags/Exception/" style="font-size: 10px;">Exception</a> <a href="/tags/Fragment-Shader/" style="font-size: 10px;">Fragment Shader</a> <a href="/tags/GLEW/" style="font-size: 10px;">GLEW</a> <a href="/tags/GLFW/" style="font-size: 10px;">GLFW</a> <a href="/tags/GLM/" style="font-size: 10px;">GLM</a> <a href="/tags/Geometry-Shader/" style="font-size: 10px;">Geometry Shader</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hexo分類/" style="font-size: 10px;">Hexo分類</a> <a href="/tags/Hexo目錄/" style="font-size: 10px;">Hexo目錄</a> <a href="/tags/Intepolation/" style="font-size: 10px;">Intepolation</a> <a href="/tags/Interpolation/" style="font-size: 10px;">Interpolation</a> <a href="/tags/Line/" style="font-size: 10px;">Line</a> <a href="/tags/Metro-App/" style="font-size: 10px;">Metro App</a> <a href="/tags/Modern-UI/" style="font-size: 10px;">Modern UI</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/OpenGL/" style="font-size: 20px;">OpenGL</a> <a href="/tags/OpenGL-Extension/" style="font-size: 11.67px;">OpenGL Extension</a> <a href="/tags/OpenGL-Tutorial/" style="font-size: 16.67px;">OpenGL Tutorial</a> <a href="/tags/OpenGL-intro/" style="font-size: 11.67px;">OpenGL intro</a> <a href="/tags/OpenGL介紹/" style="font-size: 13.33px;">OpenGL介紹</a> <a href="/tags/OpenGL入門教學/" style="font-size: 18.33px;">OpenGL入門教學</a> <a href="/tags/OpenGL問題/" style="font-size: 11.67px;">OpenGL問題</a> <a href="/tags/OpenGL基礎/" style="font-size: 13.33px;">OpenGL基礎</a> <a href="/tags/OpenGL安裝/" style="font-size: 10px;">OpenGL安裝</a> <a href="/tags/OpenGL教學/" style="font-size: 16.67px;">OpenGL教學</a> <a href="/tags/QT/" style="font-size: 10px;">QT</a> <a href="/tags/Rasterization/" style="font-size: 10px;">Rasterization</a> <a href="/tags/Reflect/" style="font-size: 10px;">Reflect</a> <a href="/tags/Refract/" style="font-size: 10px;">Refract</a> <a href="/tags/Rotation/" style="font-size: 10px;">Rotation</a> <a href="/tags/Shader/" style="font-size: 11.67px;">Shader</a> <a href="/tags/Sidebar/" style="font-size: 10px;">Sidebar</a> <a href="/tags/SublimeText3/" style="font-size: 10px;">SublimeText3</a> <a href="/tags/Sublimetext/" style="font-size: 10px;">Sublimetext</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tessellation/" style="font-size: 10px;">Tessellation</a> <a href="/tags/Tessellation-Control-Shader/" style="font-size: 10px;">Tessellation Control Shader</a> <a href="/tags/Tessellation-Evaluation-Shader/" style="font-size: 10px;">Tessellation Evaluation Shader</a> <a href="/tags/Triangle/" style="font-size: 10px;">Triangle</a> <a href="/tags/Ubuntu/" style="font-size: 16.67px;">Ubuntu</a> <a href="/tags/Ubuntu-property/" style="font-size: 10px;">Ubuntu property</a> <a href="/tags/VAO/" style="font-size: 10px;">VAO</a> <a href="/tags/Viewport-Transform/" style="font-size: 10px;">Viewport Transform</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Win10/" style="font-size: 15px;">Win10</a> <a href="/tags/Win7/" style="font-size: 10px;">Win7</a> <a href="/tags/Windows-Store/" style="font-size: 10px;">Windows Store</a> <a href="/tags/Windows10/" style="font-size: 15px;">Windows10</a> <a href="/tags/Windows7/" style="font-size: 10px;">Windows7</a> <a href="/tags/bezier-curve/" style="font-size: 10px;">bezier curve</a> <a href="/tags/canera/" style="font-size: 10px;">canera</a> <a href="/tags/clip-space/" style="font-size: 10px;">clip space</a> <a href="/tags/cubic-bezier-curve/" style="font-size: 10px;">cubic bezier curve</a> <a href="/tags/glGetUniformLocation/" style="font-size: 10px;">glGetUniformLocation</a> <a href="/tags/glGetUniformLocation-bug/" style="font-size: 10px;">glGetUniformLocation bug</a> <a href="/tags/glGetUniformLocation-fails/" style="font-size: 10px;">glGetUniformLocation fails</a> <a href="/tags/glGetUniformLocation-問題/" style="font-size: 10px;">glGetUniformLocation 問題</a> <a href="/tags/glVertexAttribPointer/" style="font-size: 10px;">glVertexAttribPointer</a> <a href="/tags/glVertexAttribPointer-fails/" style="font-size: 10px;">glVertexAttribPointer fails</a> <a href="/tags/local-space/" style="font-size: 10px;">local space</a> <a href="/tags/lookat/" style="font-size: 10px;">lookat</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/ndc/" style="font-size: 10px;">ndc</a> <a href="/tags/ntoskrnl-exe/" style="font-size: 10px;">ntoskrnl.exe</a> <a href="/tags/orthographic/" style="font-size: 10px;">orthographic</a> <a href="/tags/perspective/" style="font-size: 10px;">perspective</a> <a href="/tags/perspective-division/" style="font-size: 10px;">perspective division</a> <a href="/tags/projection/" style="font-size: 10px;">projection</a> <a href="/tags/scale/" style="font-size: 10px;">scale</a> <a href="/tags/tracker-store/" style="font-size: 10px;">tracker-store</a> <a href="/tags/translate/" style="font-size: 10px;">translate</a> <a href="/tags/vector/" style="font-size: 10px;">vector</a> <a href="/tags/view-space/" style="font-size: 10px;">view space</a> <a href="/tags/世界座標/" style="font-size: 10px;">世界座標</a> <a href="/tags/中文亂碼/" style="font-size: 10px;">中文亂碼</a> <a href="/tags/側欄/" style="font-size: 10px;">側欄</a> <a href="/tags/內插/" style="font-size: 11.67px;">內插</a> <a href="/tags/內積/" style="font-size: 10px;">內積</a> <a href="/tags/升級/" style="font-size: 10px;">升級</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/向量/" style="font-size: 10px;">向量</a> <a href="/tags/外積/" style="font-size: 10px;">外積</a> <a href="/tags/座標系統/" style="font-size: 10px;">座標系統</a> <a href="/tags/座標轉換/" style="font-size: 10px;">座標轉換</a> <a href="/tags/折射/" style="font-size: 10px;">折射</a> <a href="/tags/排列失效/" style="font-size: 10px;">排列失效</a> <a href="/tags/攝影機/" style="font-size: 10px;">攝影機</a> <a href="/tags/桌面圖示/" style="font-size: 10px;">桌面圖示</a> <a href="/tags/歐拉角/" style="font-size: 10px;">歐拉角</a> <a href="/tags/正交投影/" style="font-size: 10px;">正交投影</a> <a href="/tags/物體座標/" style="font-size: 10px;">物體座標</a> <a href="/tags/直線/" style="font-size: 10px;">直線</a> <a href="/tags/矩陣/" style="font-size: 10px;">矩陣</a> <a href="/tags/線性代數/" style="font-size: 11.67px;">線性代數</a> <a href="/tags/藍寶書/" style="font-size: 10px;">藍寶書</a> <a href="/tags/質心座標/" style="font-size: 10px;">質心座標</a> <a href="/tags/透視投影/" style="font-size: 10px;">透視投影</a> <a href="/tags/透視除法/" style="font-size: 10px;">透視除法</a> <a href="/tags/重心座標/" style="font-size: 10px;">重心座標</a> <a href="/tags/重新整理/" style="font-size: 10px;">重新整理</a> <a href="/tags/開發日誌/" style="font-size: 10px;">開發日誌</a> <a href="/tags/音量/" style="font-size: 10px;">音量</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/24/OpenGL-Questionl-2/">OpenGL之沒有蠢問題 2 - BindAttribute</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/24/OpenGL-Development-Journal/">OpenGL 遊戲引擎開發日誌</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/12/重心座標系統/">重心座標概念理解與實作</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/12/Sublimetext3-Chinese/">Sublimetext 3 中文側欄與黑側欄</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/04/OpenGL-Questionl-1/">OpenGL之沒有蠢問題 1 - Uniform</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Dowen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">0</a>
+  
+    <a href="/archives" class="mobile-nav-link">1</a>
+  
+    <a href="/categories" class="mobile-nav-link">2</a>
+  
+    <a href="/about" class="mobile-nav-link">3</a>
+  
+</nav> -->
+    
+<script>
+  var disqus_shortname = 'bcmtokenyet';
+  
+  var disqus_url = 'http://tokenyet.github.io/2016/09/24/OpenGL-Questionl-2/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
