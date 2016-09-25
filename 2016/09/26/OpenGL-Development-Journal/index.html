@@ -9,10 +9,11 @@
 系統環境: Windows 10開發軟體: Visual Studio 2015硬體設備: i7-3770 and">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL 遊戲引擎開發日誌">
-<meta property="og:url" content="http://tokenyet.github.io/2016/09/24/OpenGL-Development-Journal/index.html">
+<meta property="og:url" content="http://tokenyet.github.io/2016/09/26/OpenGL-Development-Journal/index.html">
 <meta property="og:site_name" content="Dowenの世界">
 <meta property="og:description" content="本篇說明開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。
 系統環境: Windows 10開發軟體: Visual Studio 2015硬體設備: i7-3770 and">
+<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160926screenshot.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160924screenshot.gif">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160915screenshot1.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160915screenshot2.png">
@@ -26,7 +27,7 @@
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/long-time-dragon.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/flat-terrian.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/flat-terrian-line.png">
-<meta property="og:updated_time" content="2016-09-24T07:32:10.814Z">
+<meta property="og:updated_time" content="2016-09-25T17:38:07.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 遊戲引擎開發日誌">
 <meta name="twitter:description" content="本篇說明開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。
@@ -106,8 +107,8 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main"><article id="post-OpenGL-Development-Journal" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/09/24/OpenGL-Development-Journal/" class="article-date">
-  <time datetime="2016-09-23T18:39:37.000Z" itemprop="datePublished">2016-09-24</time>
+    <a href="/2016/09/26/OpenGL-Development-Journal/" class="article-date">
+  <time datetime="2016-09-25T17:37:23.000Z" itemprop="datePublished">2016-09-26</time>
 </a>
     
   <div class="article-category">
@@ -129,9 +130,9 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/09/24/OpenGL-Development-Journal/" data-id="cita9ot43003k2cubsej3j6c2" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/09/26/OpenGL-Development-Journal/" data-id="cita9ot43003k2cubsej3j6c2" class="article-share-link">Share</a>
       
-        <a href="http://tokenyet.github.io/2016/09/24/OpenGL-Development-Journal/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://tokenyet.github.io/2016/09/26/OpenGL-Development-Journal/#disqus_thread" class="article-comment-link">Comments</a>
       
     </footer>
     <div class="article-entry" itemprop="articleBody">
@@ -140,6 +141,31 @@ ga('send', 'pageview');
 <p>系統環境: Windows 10<br>開發軟體: Visual Studio 2015<br>硬體設備: i7-3770 and GTX960<br>核心接口: <a href="http://www.glfw.org/" title="GLFW" target="_blank" rel="external">GLFW</a>/<a href="http://glew.sourceforge.net/" title="GLEW" target="_blank" rel="external">GLEW</a>/<a href="http://glm.g-truc.net/" title="GLM" target="_blank" rel="external">GLM</a>/<a href="http://www.assimp.org/" title="Assimp" target="_blank" rel="external">Assimp</a>/<a href="https://bitbucket.org/SpartanJ/soil2" title="SOIL2" target="_blank" rel="external">SOIL2</a><br>輔助插件: <a href="http://www.horsedrawngames.com/shader-syntax-highlighting-in-visual-studio-2013/" title="Nshader" target="_blank" rel="external">Nshader for Visual Studio 2015</a></p>
 <h4 id="其他事項">其他事項</h4><p><strong> 2016/09/05 前的日誌乃日根據記憶回朔，09/05方開始打算紀錄。 </strong></p>
 <a id="more"></a>
+<h4 id="2016/09/26">2016/09/26</h4><p>終於完成了一個簡單的人物動畫系統，雖然程式架構上有許多需要改進的部分，但模組動畫的引入實作，到這裡終於可以告一段落，從上個階段完成的讀取單一動畫，到變成一個可以載入多模組動畫的架構，真的是認識到C++許多物件導向與指標的糾葛，如有一日要完整重構，可能目前許多地方都得改成指標才能避免無謂的資料複製與操作。</p>
+<p>Add: </p>
+<ol>
+<li>新增AnimatablePlayer，繼承Player，隨人物移動觸發動畫移動事件。</li>
+<li>新增CustomPlayer，繼承AnimatablePlayer，為實作AnimatablePlayer控制動畫移動。</li>
+<li>新增Animation，將動畫一切資訊與操作從MeshModel移至此。</li>
+</ol>
+<p>Modify:</p>
+<ol>
+<li>修改AssimpLoader，將原本載入MeshModel且動畫資訊的地方，改回只讀MeshModel與骨架資訊。</li>
+<li>修改MeshModel，改回純粹的Mesh模組。</li>
+<li>修改MeshesModel，用來管理整個模組的所有骨架基本資訊(inverseBindPose, index)，並接受自定義動畫名稱與動畫實體，但需注意動畫名稱需與實作AnimatablePlayer者相同。</li>
+<li>修改AssimpLoader，新增專門載入模組動畫的函式。</li>
+</ol>
+
+<div class="container-outside-div">
+		<img src="/images/ODJ/20160926screenshot.png" style="width: 420px">
+		<p>Modify.3中提到的使用者傳入自定義動畫名稱與實體。</p>
+</div>
+
+
+<div class="container-outside-div">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mkb4ys7f4mw" frameborder="0" allowfullscreen></iframe>
+</div>
+
 <h4 id="2016/09/24">2016/09/24</h4><p>過了一周的Assimp動畫實作與各種數學矩陣的轉換後，終於在自己的引擎中可支援骨架動畫，起初實作。不了解背後數學公式與一些OpenGL技巧，導致最後連模組都無法出現，到中期了解數學公式後，在OpenGL中將Int資料填入Shader必須使用 <code>glVertexAttribIPointer</code>。還有<code>glBindAttribLocation</code>的使用時機，導致需要重整ShaderProgram相關程式。最後末期，由於Assimp文件中有些地方解釋模糊，在Stackoverflow發文後，還是靠自己無數的Debug後，才知道該矩陣的意義。</p>
 <p>Modify: </p>
 <ol>
@@ -169,6 +195,7 @@ ga('send', 'pageview');
 <li><a href="http://stackoverflow.com/questions/17127994/opengl-bone-animation-why-do-i-need-inverse-of-bind-pose-when-working-with-gp" target="_blank" rel="external">OpenGL : Bone Animation, Why Do I Need Inverse of Bind Pose When Working with GPU?</a></li>
 <li><a href="https://www.amazon.com/Game-Engine-Architecture-Jason-Gregory/dp/1568814135/ref=sr_1_1?ie=UTF8&amp;qid=1341514685" target="_blank" rel="external">Game Engine Architecture</a></li>
 <li><a href="https://www.blender.org/forum/viewtopic.php?t=26417" target="_blank" rel="external">Blender Matrix to OpenGL Matrix</a></li>
+<li><a href="http://gamedev.stackexchange.com/questions/26382/i-cant-figure-out-how-to-animate-my-loaded-model-with-assimp" target="_blank" rel="external">I can’t figure out how to animate my loaded model with Assimp</a></li>
 </ol>
 
 <div class="container-outside-div">
@@ -353,19 +380,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/2016/09/24/OpenGL-Questionl-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          OpenGL之沒有蠢問題 2 - BindAttribute
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/09/12/重心座標系統/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/09/24/OpenGL-Questionl-2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">重心座標概念理解與實作</div>
+      <div class="article-nav-title">OpenGL之沒有蠢問題 2 - BindAttribute</div>
     </a>
   
 </nav>
@@ -417,11 +435,11 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2016/09/24/OpenGL-Questionl-2/">OpenGL之沒有蠢問題 2 - BindAttribute</a>
+            <a href="/2016/09/26/OpenGL-Development-Journal/">OpenGL 遊戲引擎開發日誌</a>
           </li>
         
           <li>
-            <a href="/2016/09/24/OpenGL-Development-Journal/">OpenGL 遊戲引擎開發日誌</a>
+            <a href="/2016/09/24/OpenGL-Questionl-2/">OpenGL之沒有蠢問題 2 - BindAttribute</a>
           </li>
         
           <li>
@@ -469,7 +487,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'bcmtokenyet';
   
-  var disqus_url = 'http://tokenyet.github.io/2016/09/24/OpenGL-Development-Journal/';
+  var disqus_url = 'http://tokenyet.github.io/2016/09/26/OpenGL-Development-Journal/';
   
   (function(){
     var dsq = document.createElement('script');
