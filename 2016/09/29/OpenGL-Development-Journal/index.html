@@ -9,10 +9,11 @@
 系統環境: Windows 10開發軟體: Visual Studio 2015硬體設備: i7-3770 and">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL 遊戲引擎開發日誌">
-<meta property="og:url" content="http://tokenyet.github.io/2016/09/26/OpenGL-Development-Journal/index.html">
+<meta property="og:url" content="http://tokenyet.github.io/2016/09/29/OpenGL-Development-Journal/index.html">
 <meta property="og:site_name" content="Dowenの世界">
 <meta property="og:description" content="本篇說明開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。
 系統環境: Windows 10開發軟體: Visual Studio 2015硬體設備: i7-3770 and">
+<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160928screenshot.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160926screenshot.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160924screenshot.gif">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160915screenshot1.png">
@@ -27,7 +28,7 @@
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/long-time-dragon.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/flat-terrian.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/flat-terrian-line.png">
-<meta property="og:updated_time" content="2016-09-25T17:38:07.137Z">
+<meta property="og:updated_time" content="2016-09-28T16:13:27.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 遊戲引擎開發日誌">
 <meta name="twitter:description" content="本篇說明開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。
@@ -107,8 +108,8 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main"><article id="post-OpenGL-Development-Journal" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/09/26/OpenGL-Development-Journal/" class="article-date">
-  <time datetime="2016-09-25T17:37:23.000Z" itemprop="datePublished">2016-09-26</time>
+    <a href="/2016/09/29/OpenGL-Development-Journal/" class="article-date">
+  <time datetime="2016-09-28T16:10:23.000Z" itemprop="datePublished">2016-09-29</time>
 </a>
     
   <div class="article-category">
@@ -130,9 +131,9 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/09/26/OpenGL-Development-Journal/" data-id="cita9ot43003k2cubsej3j6c2" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/09/29/OpenGL-Development-Journal/" data-id="cita9ot43003k2cubsej3j6c2" class="article-share-link">Share</a>
       
-        <a href="http://tokenyet.github.io/2016/09/26/OpenGL-Development-Journal/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://tokenyet.github.io/2016/09/29/OpenGL-Development-Journal/#disqus_thread" class="article-comment-link">Comments</a>
       
     </footer>
     <div class="article-entry" itemprop="articleBody">
@@ -141,6 +142,23 @@ ga('send', 'pageview');
 <p>系統環境: Windows 10<br>開發軟體: Visual Studio 2015<br>硬體設備: i7-3770 and GTX960<br>核心接口: <a href="http://www.glfw.org/" title="GLFW" target="_blank" rel="external">GLFW</a>/<a href="http://glew.sourceforge.net/" title="GLEW" target="_blank" rel="external">GLEW</a>/<a href="http://glm.g-truc.net/" title="GLM" target="_blank" rel="external">GLM</a>/<a href="http://www.assimp.org/" title="Assimp" target="_blank" rel="external">Assimp</a>/<a href="https://bitbucket.org/SpartanJ/soil2" title="SOIL2" target="_blank" rel="external">SOIL2</a><br>輔助插件: <a href="http://www.horsedrawngames.com/shader-syntax-highlighting-in-visual-studio-2013/" title="Nshader" target="_blank" rel="external">Nshader for Visual Studio 2015</a></p>
 <h4 id="其他事項">其他事項</h4><p><strong> 2016/09/05 前的日誌乃日根據記憶回朔，09/05方開始打算紀錄。 </strong></p>
 <a id="more"></a>
+<h4 id="2016/09/29">2016/09/29</h4><p>Subject: GUI系統實作<br>Add:</p>
+<ol>
+<li>新增GuiTexture，專門用來顯示在GUI系統中。</li>
+<li>新增GuiRenderer，稱為GUI系統，也可稱為Renderer。</li>
+<li>新增GuiShader，綁定GuiRenderer。</li>
+</ol>
+<p>Note:</p>
+<ol>
+<li>GUI實作不可使用Normalized位置，傳入Shader後做矩陣轉換會導致圖像變形。 (雖然可以想像得出原因，但還不太好解釋)</li>
+<li>將系統架構定義為視窗中間為原點的架構，左右則為視窗的視窗像素寬高，例如原點為$(0,0)$，那$X$軸的範圍就是$\begin{bmatrix}\frac{-width}{2}<br>\thicksim \frac{width}{2}\end{bmatrix}$，而$Y$軸的範圍就是$\begin{bmatrix}\frac{-height}{2}<br>\thicksim \frac{height}{2}\end{bmatrix}$。</li>
+<li>GUI元件做縮放旋轉可依照3D世界的概念，但位移必須額外傳入Shader，詳細解方寫於<strong>Other</strong>中的解答區。</li>
+</ol>
+<p>Other:</p>
+<ol>
+<li>在google找尋解決2D圖片變形的GUI問題，皆沒人解答，Dowen克服後到其中一篇稱為<a href="http://gamedev.stackexchange.com/questions/128052/keep-2d-gui-shape-through-rotation/130654#130654" target="_blank" rel="external">Keep 2d GUI shape through rotation</a>提出解決方案。</li>
+</ol>
+<img src="/images/ODJ/20160928screenshot.png" width="420">
 <h4 id="2016/09/26">2016/09/26</h4><p>終於完成了一個簡單的人物動畫系統，雖然程式架構上有許多需要改進的部分，但模組動畫的引入實作，到這裡終於可以告一段落，從上個階段完成的讀取單一動畫，到變成一個可以載入多模組動畫的架構，真的是認識到C++許多物件導向與指標的糾葛，如有一日要完整重構，可能目前許多地方都得改成指標才能避免無謂的資料複製與操作。</p>
 <p>Add: </p>
 <ol>
@@ -435,7 +453,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2016/09/26/OpenGL-Development-Journal/">OpenGL 遊戲引擎開發日誌</a>
+            <a href="/2016/09/29/OpenGL-Development-Journal/">OpenGL 遊戲引擎開發日誌</a>
           </li>
         
           <li>
@@ -487,7 +505,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'bcmtokenyet';
   
-  var disqus_url = 'http://tokenyet.github.io/2016/09/26/OpenGL-Development-Journal/';
+  var disqus_url = 'http://tokenyet.github.io/2016/09/29/OpenGL-Development-Journal/';
   
   (function(){
     var dsq = document.createElement('script');
@@ -509,5 +527,35 @@ ga('send', 'pageview');
 <script src="/js/script.js" type="text/javascript"></script>
 
   </div>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </body>
 </html>
