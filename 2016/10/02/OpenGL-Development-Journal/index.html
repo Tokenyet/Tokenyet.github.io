@@ -9,7 +9,7 @@
 系統環境: Windows 10開發軟體: Visual Studio 2015硬體設備: i7-3770 and">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL 遊戲引擎開發日誌">
-<meta property="og:url" content="http://tokenyet.github.io/2016/10/01/OpenGL-Development-Journal/index.html">
+<meta property="og:url" content="http://tokenyet.github.io/2016/10/02/OpenGL-Development-Journal/index.html">
 <meta property="og:site_name" content="Dowenの世界">
 <meta property="og:description" content="本篇說明開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。
 系統環境: Windows 10開發軟體: Visual Studio 2015硬體設備: i7-3770 and">
@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/long-time-dragon.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/flat-terrian.png">
 <meta property="og:image" content="http://tokenyet.github.io/images/ODJ/flat-terrian-line.png">
-<meta property="og:updated_time" content="2016-10-01T06:20:59.848Z">
+<meta property="og:updated_time" content="2016-10-02T09:40:28.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 遊戲引擎開發日誌">
 <meta name="twitter:description" content="本篇說明開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。
@@ -109,8 +109,8 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main"><article id="post-OpenGL-Development-Journal" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/10/01/OpenGL-Development-Journal/" class="article-date">
-  <time datetime="2016-10-01T06:20:23.000Z" itemprop="datePublished">2016-10-01</time>
+    <a href="/2016/10/02/OpenGL-Development-Journal/" class="article-date">
+  <time datetime="2016-10-02T09:40:53.000Z" itemprop="datePublished">2016-10-02</time>
 </a>
     
   <div class="article-category">
@@ -132,9 +132,9 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/10/01/OpenGL-Development-Journal/" data-id="cita9ot43003k2cubsej3j6c2" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2016/10/02/OpenGL-Development-Journal/" data-id="cita9ot43003k2cubsej3j6c2" class="article-share-link">Share</a>
       
-        <a href="http://tokenyet.github.io/2016/10/01/OpenGL-Development-Journal/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://tokenyet.github.io/2016/10/02/OpenGL-Development-Journal/#disqus_thread" class="article-comment-link">Comments</a>
       
     </footer>
     <div class="article-entry" itemprop="articleBody">
@@ -143,6 +143,17 @@ ga('send', 'pageview');
 <p>系統環境: Windows 10<br>開發軟體: Visual Studio 2015<br>硬體設備: i7-3770 and GTX960<br>核心接口: <a href="http://www.glfw.org/" title="GLFW" target="_blank" rel="external">GLFW</a>/<a href="http://glew.sourceforge.net/" title="GLEW" target="_blank" rel="external">GLEW</a>/<a href="http://glm.g-truc.net/" title="GLM" target="_blank" rel="external">GLM</a>/<a href="http://www.assimp.org/" title="Assimp" target="_blank" rel="external">Assimp</a>/<a href="https://bitbucket.org/SpartanJ/soil2" title="SOIL2" target="_blank" rel="external">SOIL2</a><br>輔助插件: <a href="http://www.horsedrawngames.com/shader-syntax-highlighting-in-visual-studio-2013/" title="Nshader" target="_blank" rel="external">Nshader for Visual Studio 2015</a>/<a href="https://github.com/stackgl/glslify" title="GLSLIFY" target="_blank" rel="external">Glslify</a></p>
 <h4 id="其他事項">其他事項</h4><p><strong> 2016/09/05 前的日誌乃日根據記憶回朔，09/05方開始打算紀錄。 </strong></p>
 <a id="more"></a>
+<h4 id="2016/10/02">2016/10/02</h4><p>Subject: Skybox<br>Add:</p>
+<ol>
+<li>新增Skybox，目前支援日夜變化，與天體旋轉。</li>
+<li>新增SkyboxShader，繪製天體的Shader，支援迷霧遮蔽天體。</li>
+<li>新增SkyboxRenderer，日夜變化參數控制，繪製單一Skybox。</li>
+</ol>
+
+<div class="container-outside-div">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3aOPsv3wYUM" frameborder="0" allowfullscreen></iframe>
+</div>
+
 <h4 id="2016/10/01">2016/10/01</h4><p>這幾天學了一個強大的工具<strong>glslify</strong>，雖然是屬於Nodejs的範疇，但是並不用懂任何javascript或原生語法，只需要依照管理概念去分散Shader，就可以達到Reuse的最大效用。<br>Subject: 引入多光源系統<br>Add:</p>
 <ol>
 <li>新增DirLight，繼承基本光源，用不到的屬性可用來繪製光源位置。</li>
@@ -474,7 +485,7 @@ ga('send', 'pageview');
       <ul>
         
           <li>
-            <a href="/2016/10/01/OpenGL-Development-Journal/">OpenGL 遊戲引擎開發日誌</a>
+            <a href="/2016/10/02/OpenGL-Development-Journal/">OpenGL 遊戲引擎開發日誌</a>
           </li>
         
           <li>
@@ -526,7 +537,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'bcmtokenyet';
   
-  var disqus_url = 'http://tokenyet.github.io/2016/10/01/OpenGL-Development-Journal/';
+  var disqus_url = 'http://tokenyet.github.io/2016/10/02/OpenGL-Development-Journal/';
   
   (function(){
     var dsq = document.createElement('script');
