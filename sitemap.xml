@@ -2,8 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://tokenyet.github.io/2016/11/05/OpenGL-Development-Journal/</loc>
-    <lastmod>2016-11-05T16:03:16.984Z</lastmod>
+    <loc>http://tokenyet.github.io/2016/11/25/OpenGL-Development-Journal/</loc>
+    <lastmod>2016-11-25T12:01:55.076Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/</loc>
+    <lastmod>2016-09-24T07:34:22.655Z</lastmod>
   </url>
   
   <url>
@@ -39,11 +44,6 @@
   <url>
     <loc>http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/</loc>
     <lastmod>2016-09-05T16:31:16.231Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/</loc>
-    <lastmod>2016-08-25T14:07:36.029Z</lastmod>
   </url>
   
   <url>
