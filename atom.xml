@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2016-12-06T15:08:48.004Z</updated>
+  <updated>2016-12-06T15:10:23.624Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://tokenyet.github.io/2016/12/06/OpenGL-Development-Journal/"/>
     <id>http://tokenyet.github.io/2016/12/06/OpenGL-Development-Journal/</id>
     <published>2016-12-06T15:23:23.000Z</published>
-    <updated>2016-12-06T15:08:48.004Z</updated>
+    <updated>2016-12-06T15:10:23.624Z</updated>
     <content type="html"><![CDATA[<h2 id="本篇說明">本篇說明</h2><p>開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。</p>
 <p>系統環境: Windows 10<br>開發軟體: Visual Studio 2015<br>硬體設備: i7-3770 and GTX960<br>核心接口: <a href="http://www.glfw.org/" title="GLFW" target="_blank" rel="external">GLFW</a>/<a href="http://glew.sourceforge.net/" title="GLEW" target="_blank" rel="external">GLEW</a>/<a href="http://glm.g-truc.net/" title="GLM" target="_blank" rel="external">GLM</a>/<a href="http://www.assimp.org/" title="Assimp" target="_blank" rel="external">Assimp</a>/<a href="https://bitbucket.org/SpartanJ/soil2" title="SOIL2" target="_blank" rel="external">SOIL2</a>/<a href="https://github.com/bulletphysics/bullet3/releases" title="Bullet Physics" target="_blank" rel="external">Bullet Physics</a><br>輔助插件: <a href="http://www.horsedrawngames.com/shader-syntax-highlighting-in-visual-studio-2013/" title="Nshader" target="_blank" rel="external">Nshader for Visual Studio 2015</a>/<a href="https://github.com/stackgl/glslify" title="GLSLIFY" target="_blank" rel="external">Glslify</a></p>
 <h4 id="其他事項">其他事項</h4><p><strong> 2016/09/05 前的日誌乃日根據記憶回朔，09/05方開始打算紀錄。 </strong></p>
@@ -29,7 +29,7 @@
 <p>學習與實作完Half-Edge Collaspe技術後，不是指標無法找尋到對應的邊(Opposite pair)，就是無法削減任何一面，因此又開始了一段痛苦的找問題之旅。</p>
 <p>起初經過不斷測試，懷疑演算法不夠堅固或邏輯有誤，因此找上了專門網格的第三方函式庫「<a href="https://www.openmesh.org/" target="_blank" rel="external">OpenMesh</a>」，導入引擎雖然有些難處，不過經過很多次導入的磨練，這倒不成問題，但問題還是出現了，使用函式庫對網格簡化所提供的<strong>ModQuadric</strong>演算法，也無法消除任何一面，這樣的事情等同宣告問題出在資料來源。</p>
 <p>詳細看過資料來源的時候，經過一些發問與深度查詢，才知道原來Assimp導入的資料是所謂的Non-Manifold網格，當然這是Assimp對OpenGL/DirectX的friendly支援。而這樣的支援出現了問題，無法建立出Adjacency Graph，就無法產生Half-edge structure，而如果自行實作物件讀取器，又無法多檔支援。至於為什麼Assimp的格式會這樣? 仔細想過，如果一個Vertex只支援多個Normal還有多個TexCoord(也許還有bone weight)，那寫讀取器的時候，到底是要怎麼讓Vertex擁有多個資料還要知道是哪個面的? Assimp就將點分為多個不同但同位置的點，然後讓一個Vertex只帶一組Normal和TexCoord。</p>
-<p>想通箇中困難後，本來趨近於放棄實作Lod，但是靈機一動想到，改寫程式架構，使一個物件可以承載多個物件，就可以在適當的時候做切換。這樣的好處是，可以控制簡化後的模型，還有品質也是自己控制的。壞處是，必須先做好多種模型。因此這裡想到了一個很好的解，就是在Blender寫一個專門的lod格式的obj檔，然後寫一個專門的讀取器，可以讀一個物件帶多個EBO，那就解決了。不過壞處是，只支援obj檔就是。</p>
+<p>想通箇中困難後，本來趨近於放棄實作Lod，但是靈機一動想到，改寫程式架構，使一個物件可以承載多個物件，就可以在適當的時候做切換。這樣的好處是，可以控制簡化後的模型，還有品質也是自己控制的。壞處是，必須先做好多種模型。因此這裡想到了一個很好的解，就是在Blender寫一個專門的lod格式的obj檔，然後寫一個專門的讀取器，可以讀一個物件帶多個EBO，那就解決了。不過壞處是，只支援obj檔。</p>
 
 <div class="container-outside-div">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0OViWX_mafo" frameborder="0" allowfullscreen></iframe>
