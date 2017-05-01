@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2016-12-14T14:43:52.077Z</updated>
+  <updated>2017-05-01T10:04:35.527Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -13,6 +13,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[TabberClock 分頁鬧鐘]]></title>
+    <link href="http://tokenyet.github.io/2017/04/30/Tabber-Clock-App-%E4%B8%80%E5%80%8B%E5%8F%AF%E4%BB%A5%E5%88%86%E9%A1%9E%E7%9A%84%E9%AC%A7%E9%90%98/"/>
+    <id>http://tokenyet.github.io/2017/04/30/Tabber-Clock-App-一個可以分類的鬧鐘/</id>
+    <published>2017-04-30T12:36:07.000Z</published>
+    <updated>2017-05-01T10:04:35.527Z</updated>
+    <content type="html"><![CDATA[
+<div>
+		<img src="/images/TabberClock/icon.png" style="width: 200px ;display:inline">
+</div>
+
+<h3 id="開發心得:">開發心得:</h3><p><strong>TabberClock</strong>是我第一個App，花了大概有四個月的時間完成，由於第一次決心要寫一個體面的Android App，所以這次卯足了勁，經過了無數的設計失敗，跟無數的波折，終於克服了Libgdx的環境難關，不過一般寫App的人可能不知道是什麼，簡單來說，我是用遊戲框架開發App，這樣聽起來好處是不是很多呢？錯，學習曲線很高之外，也增進了合作上的困難。硬要說適合就是幾個精英開發者，剛好喜歡或是有一些計算機圖學底子的人來開發，當然不用計算機圖學也是可以，只是如果有你會對框架原始碼各個環節感到很安心，因為都看得懂，又知道如何修改原始框架或擴充原始框架來達成自己的目的。</p>
+<h3 id="For_English_User">For English User</h3><p>This article is google-play-alternative to communicate directly with developer, If you have any suggestion/comments, feel free to talk below with Disqus. Any advice and suggestions will be greatly appreciated :)</p>
+<a id="more"></a>
+<h3 id="App介紹">App介紹</h3><p>說說這個App的好處，當你打開鬧鐘軟體，自然的就是想要新增鬧鐘、刪除鬧鐘、找尋鬧鐘…，這些就會產生<strong>因人而異數量的鬧鈴</strong>。然而，當鬧鈴數量越多，想要提醒的事情越多，<strong>鬧鈴頁面自然就會越加凌亂</strong>，要從鬧鈴清單中<strong>找尋自己設定過或是已響鈴的鬧鈴</strong>，就會顯得支絀。舉個例子，假設你有設定工作相關的鬧鈴、休閒活動相關的鬧鈴、甚至女朋友相關的鬧鈴，那你就必須從一個鬧鈴清單中找尋哪幾條是什麼相關的鬧鈴，才可以修改、刪除、檢視相關鬧鈴，而我開發的App主要是加入了一點分類功能，讓使用者可以歸類不同種類的鬧鈴，讓畫面保持一定的整潔，根據研究顯示，保持整潔的畫面、輕易的找到自己想要的目標也是可以讓人心情舒爽的方式之一呢。</p>
+<p>你可能會問，我如果有需要提醒的事，用行事曆App不就好了？但是，根據不同使用者需求，像是我總是只用鬧鈴來提醒重要的事情或是近的事情，不會用行事曆。此外功能完整的行事曆App，多半可供設定選項之多，對如我這般使用者來講，看得頭昏眼花不知道要看哪裡，倒也是行事曆的優點與缺點。當然可以怪罪這樣的使用者自己的毛很多，不過這就是<strong>「一樣米養百樣人」</strong>的真諦呀。</p>
+<h3 id="本篇目的">本篇目的</h3><p>這篇主要目的是當此App的網路首頁，因此就不需要另開個網頁來進行App討論，也可以透過除了Google Play外的方式與開發者我直接聯繫。</p>
+<p>App in google play:<a href="https://play.google.com/store/apps/details?id=tw.idv.dowen.gamingclock" target="_blank" rel="external">Tabber Clock Beta</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<div>
+		<img src="/images/TabberClock/icon.png" style="width: 200px ;display:inline">
+</div>
+
+<h3 id="開發心得:">開發心得:</h3><p><strong>TabberClock</strong>是我第一個App，花了大概有四個月的時間完成，由於第一次決心要寫一個體面的Android App，所以這次卯足了勁，經過了無數的設計失敗，跟無數的波折，終於克服了Libgdx的環境難關，不過一般寫App的人可能不知道是什麼，簡單來說，我是用遊戲框架開發App，這樣聽起來好處是不是很多呢？錯，學習曲線很高之外，也增進了合作上的困難。硬要說適合就是幾個精英開發者，剛好喜歡或是有一些計算機圖學底子的人來開發，當然不用計算機圖學也是可以，只是如果有你會對框架原始碼各個環節感到很安心，因為都看得懂，又知道如何修改原始框架或擴充原始框架來達成自己的目的。</p>
+<h3 id="For_English_User">For English User</h3><p>This article is google-play-alternative to communicate directly with developer, If you have any suggestion/comments, feel free to talk below with Disqus. Any advice and suggestions will be greatly appreciated :)</p>]]>
+    
+    </summary>
+    
+      <category term="App" scheme="http://tokenyet.github.io/tags/App/"/>
+    
+      <category term="Clock" scheme="http://tokenyet.github.io/tags/Clock/"/>
+    
+      <category term="Libgdx" scheme="http://tokenyet.github.io/tags/Libgdx/"/>
+    
+      <category term="App" scheme="http://tokenyet.github.io/categories/App/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[OpenGL 遊戲引擎開發日誌]]></title>
@@ -2032,38 +2071,6 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
       <category term="Ubuntu" scheme="http://tokenyet.github.io/tags/Ubuntu/"/>
     
       <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[線性代數-座標轉換筆記]]></title>
-    <link href="http://tokenyet.github.io/2015/08/19/%E5%BA%A7%E6%A8%99%E8%BD%89%E6%8F%9B%E7%AD%86%E8%A8%98/"/>
-    <id>http://tokenyet.github.io/2015/08/19/座標轉換筆記/</id>
-    <published>2015-08-19T13:08:52.000Z</published>
-    <updated>2016-08-11T14:45:01.340Z</updated>
-    <content type="html"><![CDATA[<ol>
-<li>旋轉證明</li>
-</ol>
-<p><a title="View with the Desmos Graphing Calculator" href="https://www.desmos.com/calculator/p2xvjukzd7" target="_blank" rel="external">  <img src="https://s3.amazonaws.com/calc_thumbs/production/p2xvjukzd7.png" width="200px" height="200px" style="border:1px solid #ccc; border-radius:5px"></a></p>
-<p>假設紅線端點座標為 $ (x1,y1) $<br>假設藍線端點座標為 $ (x,y) $<br>紅線與藍線之夾角為 $ \theta $<br>籃線與 $X$ 軸之夾角為 $ a $<br>長度為 $ r $<br>則得到<br>$ x1 = x \cos \theta - y \sin \theta $<br>$ y1 = x \sin \theta + y \cos \theta $<br>證明如下:</p>
-<p>經由畢氏定理得知:<br>$ x = r \cos a $<br>$ y = r \sin a $</p>
-<p>$ x1 = r \cos (\theta + a) = r \cos \theta \cos a - r \sin \theta \sin a $<br>$ y1 = r \sin (\theta + a) = r \sin \theta \cos a + r \sin a \cos \theta $</p>
-<p>$ x1 = r \cos \theta \cos a - r \sin \theta \sin a = x \cos \theta - y \sin \theta $<br>$ y1 = r \sin \theta \cos a + r \sin a \cos \theta = x \sin \theta + y \cos \theta $</p>
-<p>備註:<br>$ r \cos a = x $<br>$ r \sin a = y $</p>
-<p>因此得證:<br>$ x1 = x \cos \theta - y \sin \theta $<br>$ y1 = x \sin \theta + y \cos \theta $</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<ol>
-<li>旋轉證明</li>
-</ol>
-<p><a title="View with the Desmos Graphing Calculator" href="https://www.desmos.com/calculator/p2xvjukzd7" target="]]>
-    </summary>
-    
-      <category term="座標轉換" scheme="http://tokenyet.github.io/tags/%E5%BA%A7%E6%A8%99%E8%BD%89%E6%8F%9B/"/>
-    
-      <category term="線性代數" scheme="http://tokenyet.github.io/tags/%E7%B7%9A%E6%80%A7%E4%BB%A3%E6%95%B8/"/>
-    
-      <category term="數學筆記" scheme="http://tokenyet.github.io/categories/%E6%95%B8%E5%AD%B8%E7%AD%86%E8%A8%98/"/>
     
   </entry>
   
