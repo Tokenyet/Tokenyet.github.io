@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Libgdx 遊戲淺研 | Dowenの世界</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="baidu-site-verification" content="ryL4dgnrJp" />
+  <meta name="description" content="前言?序章?Libgdx是我目前最喜歡的遊戲開發引擎，或稱之為框架。它的厲害在於對跨平台的彈性很大，但我最喜歡說的一句話「優勢即是劣勢」，由於彈性很大，所以要磨合的地方就很多。譬如我第一個App，需要自行撰寫Android API，去理解各種Android版本所需的程式碼，現在本篇要展示Libgdx的一些知識技術，由於可選擇各種第三方插件與Libgdx相互融合，所需理解的就是許多的第三方與磨合知識">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Libgdx 遊戲淺研">
+<meta property="og:url" content="http://tokenyet.github.io/2017/06/26/Libgdx-遊戲淺研/index.html">
+<meta property="og:site_name" content="Dowenの世界">
+<meta property="og:description" content="前言?序章?Libgdx是我目前最喜歡的遊戲開發引擎，或稱之為框架。它的厲害在於對跨平台的彈性很大，但我最喜歡說的一句話「優勢即是劣勢」，由於彈性很大，所以要磨合的地方就很多。譬如我第一個App，需要自行撰寫Android API，去理解各種Android版本所需的程式碼，現在本篇要展示Libgdx的一些知識技術，由於可選擇各種第三方插件與Libgdx相互融合，所需理解的就是許多的第三方與磨合知識">
+<meta property="og:image" content="https://libgdx.badlogicgames.com/img/logo.png">
+<meta property="og:image" content="https://enigma-dev.org/docs/wiki/images/a/ab/Box2d.png">
+<meta property="og:image" content="https://camo.githubusercontent.com/be988bf968cc1243f43f5504314d7836cee7881d/687474703a2f2f692e696d6775722e636f6d2f77386f414337332e706e673f31">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/2366334/4677025/64ae592a-55e2-11e4-8a31-31c2941ff995.png">
+<meta property="og:image" content="http://overlap2d.com/wp-content/themes/overlap2d-v3/img/logo.png">
+<meta property="og:image" content="http://www.mapeditor.org/img/tiled-logo-white.png">
+<meta property="og:image" content="https://cdn.codeandweb.com/img/texturepacker512.png">
+<meta property="og:image" content="https://github.com/libgdx/libgdx/wiki/images/particle-editor.png">
+<meta property="og:image" content="http://tokenyet.github.io/images/RunForLife/Desktop.png">
+<meta property="og:image" content="http://tokenyet.github.io/images/RunForLife/Android.jpg">
+<meta property="og:image" content="http://tokenyet.github.io/images/RunForLife/Html5.png">
+<meta property="og:updated_time" content="2017-06-26T09:05:13.749Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Libgdx 遊戲淺研">
+<meta name="twitter:description" content="前言?序章?Libgdx是我目前最喜歡的遊戲開發引擎，或稱之為框架。它的厲害在於對跨平台的彈性很大，但我最喜歡說的一句話「優勢即是劣勢」，由於彈性很大，所以要磨合的地方就很多。譬如我第一個App，需要自行撰寫Android API，去理解各種Android版本所需的程式碼，現在本篇要展示Libgdx的一些知識技術，由於可選擇各種第三方插件與Libgdx相互融合，所需理解的就是許多的第三方與磨合知識">
+  
+    <link rel="alternative" href="/atom.xml" title="Dowenの世界" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-65156776-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dowenの世界</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Love Games, Knowledge Sharing.</a>
+        </h2>
+      
+         </div>
+       <div id="header-inner" class="inner">
+         <nav id="main-nav" class="icon-background">
+              
+                
+                  <a class="nav-icon " href="/"><div class=icon-home title='Home'></div></a>
+                
+              
+                
+                  <a class="nav-icon  verticalLine " href="/archives"><div class=icon-archive title='Archives'></div> <!--Archives --></a>
+                
+              
+                
+                  <a class="nav-icon  verticalLine " href="/categories"><div class=icon-categories title='Categories'></div> <!--Categories --></a>
+                
+              
+                
+                  <a class="nav-icon  verticalLine " href="/about"><div class=icon-user title='About'></div> <!--About --></a>
+                
+              
+             </nav>
+           <nav id="sub-nav" class="icon-background">
+             
+                   <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+                 
+               <a id="nav-search-btn" class="nav-icon verticalLine" title="Search"></a>
+             </nav>
+           <div id="search-form-wrap">
+             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tokenyet.github.io"></form>
+             </div>
+         </div>
+     </div>
+ </header>
+      <div class="outer">
+        <section id="main"><article id="post-Libgdx-遊戲淺研" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/26/Libgdx-遊戲淺研/" class="article-date">
+  <time datetime="2017-06-26T09:03:28.000Z" itemprop="datePublished">2017-06-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Libgdx/">Libgdx</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Libgdx 遊戲淺研
+    </h1>
+  
+
+      </header>
+    
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2017/06/26/Libgdx-遊戲淺研/" data-id="cj4du8ggf0092rsubnygkbntp" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2017/06/26/Libgdx-遊戲淺研/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+<div>
+	<img src="https://libgdx.badlogicgames.com/img/logo.png" style="width: 200px ;display:inline">
+</div>
+
+<h2 id="前言?序章?">前言?序章?</h2><p><a href="https://libgdx.badlogicgames.com/" target="_blank" rel="external"><strong>Libgdx</strong></a>是我目前最喜歡的遊戲開發引擎，或稱之為框架。它的厲害在於對跨平台的彈性很大，但我最喜歡說的一句話「優勢即是劣勢」，由於彈性很大，所以要磨合的地方就很多。譬如我第一個<a href="/2017/04/30/Tabber-Clock-App-一個可以分類的鬧鐘/">App</a>，需要自行撰寫Android API，去理解各種Android版本所需的程式碼，現在本篇要展示Libgdx的一些知識技術，由於可選擇各種第三方插件與Libgdx相互融合，所需理解的就是許多的第三方與磨合知識。最後提一個唯一覺得是缺點的，Libgdx在撰寫UI上，藏有許多可怕的小細節，因此如果要使用Libgdx，就要跟這些細節搏鬥，好在是Open Source，底層是<a href="https://www.lwjgl.org/" target="_blank" rel="external">Lwjgl</a>，所以就算有問題，自己創造亦是一條路！<br><a id="more"></a><br><br><br></p>
+<h2 id="學習?開發?">學習?開發?</h2><p>在讓UI有點醜，經過多次改版才把bug修到很少的第一個App告一段落後，本想開發一款遊戲，但是苦於找不到點子，所以就到各大論壇看一下找點子的方法。不外乎得到的是，出去晃晃、多觀察、多找人聊天啊之類的，最後我選擇了以實作把<strong>爛點子做個Prototype出來</strong>的方法，這個方法強調的是，做好一個Prototype後，才可慢慢增加元素，把遊戲裝飾得更加美好。這個方案我看了很滿意，因此就開始了Libgdx漫長的Prototype開發之旅。</p>
+<p>人家說Prototype要在一兩週最多一個月內完成，由於不知道要做什麼，所以又跑去<a href="https://itch.io/" target="_blank" rel="external">Itch.io</a>，裡面找素材讓自己有做Prototype的靈感，買了些便宜的或看似不錯的素材後，萌生了一個<a href="https://play.google.com/store/apps/details?id=com.linecorp.LGCOOKIE&amp;hl=zh_TW" target="_blank" rel="external">Run game</a>的想法。</p>
+<p>在有素材後，憑藉著有前一款App的開發經歷，本以為可順利打造出一款遊戲，但是事實總是殘酷的，由於以下幾點</p>
+<ol>
+<li>沒有實際Prototype想法，或說沒有很明確要做Run game，那樣純粹的想法。 </li>
+<li>遊戲開發上，總是考量到擴充性問題，所以把OO的觀念放一邊，學了遊戲最佳的架構概念(後面在提)。 </li>
+<li>想玩遍所有Libgdx技術，所以玩了各種插件。 </li>
+<li>想閱歷Libgdx先天們的經驗，東學西學，偷推廣<a href="https://www.youtube.com/user/Profyx/about" target="_blank" rel="external">啟蒙</a>老師。<br><br><br></li>
+</ol>
+<h2 id="插件?選用?">插件?選用?</h2>
+<div>
+	<img src="https://enigma-dev.org/docs/wiki/images/a/ab/Box2d.png" style="width: 200px ;display:inline">
+</div>
+
+<p><a href="http://box2d.org/" target="_blank" rel="external">Box2D</a>，2D遊戲界頂頂有名的物理引擎，由於其<strong>自己自足(Self-Contained)</strong>的特性，且不用相容於任何UI，使其可以在C++、Java…任何語言之間游走。其善於物理碰撞偵測與碰撞過濾器，還有可調式物理參數，讓使用者不必太在意太深細節，而專注於遊戲開發。</p>
+<p>小提一下，由於Box2D世界是屬於Meter，因此初學者滿容易不懂Meter與Pixel如何轉換的問題，這些相關概念，有時間(?)在發篇文吧。<br><br></p>
+
+<div>
+	<img src="https://camo.githubusercontent.com/be988bf968cc1243f43f5504314d7836cee7881d/687474703a2f2f692e696d6775722e636f6d2f77386f414337332e706e673f31" style="width: 200px ;display:inline">
+</div>
+
+<p><a href="https://github.com/libgdx/ashley" target="_blank" rel="external">Ashley</a>，一個擁有大量共同編輯的開源<strong>ECS系統</strong>，何謂ECS，即是<a href="https://en.wikipedia.org/wiki/Entity%E2%80%93component%E2%80%93system" target="_blank" rel="external">Entity Component System</a>，遊戲界中極為重要的系統，以前見<a href="https://www.youtube.com/user/ThinMatrix" target="_blank" rel="external">ThinMatrix</a>寫3D引擎時有用到，當初若我開發3D引擎時有學到就方便多了。</p>
+<p>簡單介紹何謂ECS，Entity代表任何<strong>單位</strong>，可以是攝影機、人物、場景…天地萬物，只要認為有意義皆可，至於何謂有意義，等了解System就懂了。Component代表<strong>元件</strong>，像是血量、位置、速度或狀態…等。System代表<strong>處理系統</strong>，不論是什麼Entity，只根據使用了特定Component(s)的Entity來做處理，因此才有RenderSystem、ParticleSystem，這樣使用特別的系統來處理特別的Entity們(Renderable Componet -&gt; Render System, Particle Component -&gt; Particle System)。<br><br></p>
+
+<div>
+	<img src="https://cloud.githubusercontent.com/assets/2366334/4677025/64ae592a-55e2-11e4-8a31-31c2941ff995.png" style="width: 200px ;display:inline">
+</div>
+
+<p><a href="https://github.com/libgdx/gdx-ai" target="_blank" rel="external">gdx-AI</a>，這個最頭疼的傢伙，由於其文件糟糕程度，使得不是專門領域的人，難得其門而入，而且範例的概念，完全與Ashley背道而馳，因此為了使用gdx-AI，耗費時間甚鉅，學到的仍是皮毛，這裡就不提了，畢竟領悟不夠。</p>
+<p>重要的三大插件都在上面，順便聊一些玩過的東西。<br><br></p>
+
+<div>
+	<img src="http://overlap2d.com/wp-content/themes/overlap2d-v3/img/logo.png" style="width: 200px ;display:inline">
+</div>
+
+<p><a href="http://overlap2d.com/" target="_blank" rel="external">Overlap 2D</a>，本來想用來當遊戲編輯器，但是由於其跨平台性似乎有缺陷，且使用上沒想像中好用，所以放棄了。<br><br></p>
+
+<div>
+	<img src="http://www.mapeditor.org/img/tiled-logo-white.png" style="width: 200px ;display:inline">
+</div>
+
+<p><a href="http://www.mapeditor.org/" target="_blank" rel="external">Tiled</a>，一個很棒的圖塊專業編輯器，還佛心免費，讓我學習了馬力歐開發的好物，不過因為我腦中的Run game不偏圖塊，因此最後沒選擇使用它。<br><br></p>
+
+<div>
+	<img src="https://cdn.codeandweb.com/img/texturepacker512.png" style="width: 200px ;display:inline">
+</div>
+
+<p><a href="https://www.codeandweb.com/texturepacker" target="_blank" rel="external">TexturePacker</a>，不錯的材質包裝器，基礎功能算免費的，用來將分散的材質打包成<a href="https://www.codeandweb.com/texturepacker/tutorials" target="_blank" rel="external">TextureAtlas</a>(其實應用<a href="https://github.com/libgdx/libgdx/wiki/Texture-packer" target="_blank" rel="external">Libgdx內建工具</a>)，，旗下還有<a href="https://www.codeandweb.com/physicseditor" target="_blank" rel="external">PhysicsEditor</a>使用過還算不錯，但要收費，因此後來學習使用免費的<a href="http://www.aurelienribon.com/blog/projects/physics-body-editor/" target="_blank" rel="external">Physics Body Editor</a>，雖然有點麻煩，不過還算堪用。<br><br></p>
+
+<div>
+	<img src="https://github.com/libgdx/libgdx/wiki/images/particle-editor.png" style="width: 200px ;display:inline">
+</div>
+
+<p><a href="https://github.com/libgdx/libgdx/wiki/2D-Particle-Editor" target="_blank" rel="external">2D Particle Editor</a>，內建的特效產生器，學習資源足夠，是個好工具。<br><br><br></p>
+<h2 id="成果?">成果?</h2><p>此篇文章，是因想把專案告一段落，等有時間在把專案弄得更完整。</p>
+<h4 id="目前的成果大致如下:">目前的成果大致如下:</h4><h5 id="遊戲編輯器:">遊戲編輯器:</h5>
+<div class="container-outside-div">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/W-feSDw1GGE" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<p>遊戲編輯器不需要太花俏，基本功能有即可，撰寫的時候，也有想像過如何做一個Platformer遊戲通用的編輯器，不過成本頗高，加上沒什麼想法，編輯器再好也是無用。不如談談裡面的技術，主要透過Json來管控各個遊戲元件與關卡，且將遊戲資源與關卡分成*.brpj與*.lvl兩種，一種連結相依遊戲素材，一種儲存遊戲識別器與位置，就可有個簡單的關卡編輯器，但想深入一點，對話編輯、特殊事件之類的尚無想法耦合，畢竟若每一關用一個Class來做，那好像又超過了，不過也許是多想了，畢竟遊戲是能完成才好，不是完美架構與多重測試的商業軟體。</p>
+<h5 id="視窗/手機/網頁:">視窗/手機/網頁:</h5>
+<div class="container-outside-div">
+	<div class="container-inside-div" style="width: 33%">
+		<img src="/images/RunForLife/Desktop.png">
+		<p>視窗</p>
+	</div>
+	<div class="container-inside-div" style="width: 33%">
+		<img src="/images/RunForLife/Android.jpg">
+		<p>手機</p>
+	</div>
+	<div class="container-inside-div" style="width: 33%">
+		<img src="/images/RunForLife/Html5.png">
+		<p>網頁</p>
+	</div>
+</div>
+
+<p>從做遊戲變成嘗試各種可能後，遊戲變成研究性質的東西，這邊就透露一些學到的技術吧！</p>
+<ol>
+<li>ECS應用於畫面上的各種元件，繪製系統、平行背景系統、移動系統…等。</li>
+<li>Gdxai應用於敵人的製作上，而且投入架構的緣故，把AI完全移植到一個工廠模式上，因此可將不同敵人套用不同AI，希望這模式到PathFinding或一些高深的技術時不會有問題(汗)。</li>
+<li>Box2D用在各種碰撞，只是有tweak成One way walls，讓人物可以從平台下方穿越上方平台，雖然限制需要方形，但網路上還沒有完美多邊形解法。</li>
+<li>Particle-2D，Libdx原生特效產生器，學會如何控制特效後放在綠瓢蟲屁股，其實好像沒什麼難的。</li>
+<li>Lighting Shader，沒使用<a href="https://github.com/libgdx/box2dlights" target="_blank" rel="external">Box2DLight</a>，好歹也是圖學出生的，就親自操刀，把3D光源技術的PointLight Shader搬到了遊戲中，不過若是做光源，Box2DLight已足夠用。若要做類似刺客教條的<a href="http://i.imgur.com/xzOn9RM.jpg" target="_blank" rel="external">鷹眼特效</a>，那就需要客製Shader。題外話，縱然主OpenGL，我仍是ShaderToy中的滄海一粟中的一個小細胞啊。</li>
+</ol>
+<p>跨平台上，視窗版與Android版基本上沒有什麼太大問題，iOS雖沒裝置但應比不上網頁版困難，網頁版的輸出上由於GWT的關係與撰寫Shader，導致輸出各種錯誤，好在經過數十小時的努力下終於建構出網頁版，也因此知道為何PS4/PS3會出現PSP畫質遊戲了，因為某些裝置支援的繪製能力就是比較低弱，網頁就是跨平台中最低弱的輸出平台。</p>
+<p>還有很多繁瑣的地方，畢竟不像<a href="https://unity3d.com/" target="_blank" rel="external">Unity</a>有方便的各種系統，不過引擎只是一種工具，這些總能渡過的。總之仍是推薦使用Libgdx開發2D啦！</p>
+<h2 id="最後的最後?">最後的最後?</h2><p>也許是因太投入在技術，忘了遊戲的感覺，也太久沒有玩到遊戲，都在打Overwatch(?)，所以完全沒有做遊戲的靈感，因此沒有達成做出遊戲上架Google Play的目標。</p>
+<p><em>不過最近想到了一個新專案且與友人合作，如果有成，也許可以暫緩找工作的念頭，如果沒有就去找工作啦!</em></p>
+<p><br><br></p>
+<h4 id="資源">資源</h4><p>給看到最後的人一點別的東西<br><a href="https://www.youtube.com/channel/UCL_5eiPIzm--ppVBxGcSXQQ/videos" target="_blank" rel="external">Let’s make an indie game</a>專家，尤其AI與ECS融合部分。</p>
+<p><a href="https://www.youtube.com/user/Profyx/about" target="_blank" rel="external">Brent Aureli</a>，就是想再提一次這位大神。</p>
+<p><a href="https://learnopengl.com/#!Introduction" target="_blank" rel="external">Learnopengl</a>，我圖學的啟蒙網站。</p>
+<p><a href="https://gamedev.stackexchange.com/questions/31473/what-is-the-role-of-systems-in-a-component-based-entity-architecture" target="_blank" rel="external">ECS detail</a>，詳細的ECS解釋。</p>
+<p><a href="http://answers.unity3d.com/questions/7743/where-can-i-find-music-or-sound-effects-for-my-gam.html" target="_blank" rel="external">Music/Sound-1</a>，找音樂或音效嗎?到這裡吧。</p>
+<p><a href="https://itch.io/t/11676/the-big-list-of-free-sounds" target="_blank" rel="external">Music/Sound-2</a>，找音樂或音效嗎?到這裡吧。</p>
+<p><a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="external">Git最佳概念</a>，相信我，學這套足以打下半邊天！</p>
+<p><a href="https://opengameart.org" target="_blank" rel="external">免費遊戲素材</a>，雖然免費但要看懂一堆License，被這網站License轟炸後，現在略懂一點了。</p>
+<p><a href="https://www.shadertoy.com/" target="_blank" rel="external">ShaderToy</a>，只是提出來讓自己覺得圖學能力還遠遠不夠的網站。</p>
+<p><a href="http://www.iforce2d.net/b2dtut/one-way-walls" target="_blank" rel="external">One way walls</a>，多邊形單向平台解決方案。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Libgdx/">Libgdx</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/04/30/Tabber-Clock-App-一個可以分類的鬧鐘/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">TabberClock 分頁鬧鐘</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/App/">App</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Libgdx/">Libgdx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenCV/">OpenCV</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenGL/">OpenGL</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/數學筆記/">數學筆記</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/網頁相關/">網頁相關</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/App/" style="font-size: 10px;">App</a> <a href="/tags/Barycentric-coordinate/" style="font-size: 10px;">Barycentric coordinate</a> <a href="/tags/Clipping/" style="font-size: 10px;">Clipping</a> <a href="/tags/Clock/" style="font-size: 10px;">Clock</a> <a href="/tags/Development-Journal/" style="font-size: 10px;">Development Journal</a> <a href="/tags/EmguCV/" style="font-size: 10px;">EmguCV</a> <a href="/tags/Euler-Angle/" style="font-size: 10px;">Euler Angle</a> <a href="/tags/Exception/" style="font-size: 10px;">Exception</a> <a href="/tags/Fragment-Shader/" style="font-size: 10px;">Fragment Shader</a> <a href="/tags/GLEW/" style="font-size: 10px;">GLEW</a> <a href="/tags/GLFW/" style="font-size: 10px;">GLFW</a> <a href="/tags/GLM/" style="font-size: 10px;">GLM</a> <a href="/tags/Geometry-Shader/" style="font-size: 10px;">Geometry Shader</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hexo分類/" style="font-size: 10px;">Hexo分類</a> <a href="/tags/Hexo目錄/" style="font-size: 10px;">Hexo目錄</a> <a href="/tags/Intepolation/" style="font-size: 10px;">Intepolation</a> <a href="/tags/Interpolation/" style="font-size: 10px;">Interpolation</a> <a href="/tags/Libgdx/" style="font-size: 11.67px;">Libgdx</a> <a href="/tags/Line/" style="font-size: 10px;">Line</a> <a href="/tags/Metro-App/" style="font-size: 10px;">Metro App</a> <a href="/tags/Modern-UI/" style="font-size: 10px;">Modern UI</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/OpenGL/" style="font-size: 20px;">OpenGL</a> <a href="/tags/OpenGL-Extension/" style="font-size: 11.67px;">OpenGL Extension</a> <a href="/tags/OpenGL-Tutorial/" style="font-size: 16.67px;">OpenGL Tutorial</a> <a href="/tags/OpenGL-intro/" style="font-size: 11.67px;">OpenGL intro</a> <a href="/tags/OpenGL介紹/" style="font-size: 13.33px;">OpenGL介紹</a> <a href="/tags/OpenGL入門教學/" style="font-size: 18.33px;">OpenGL入門教學</a> <a href="/tags/OpenGL問題/" style="font-size: 11.67px;">OpenGL問題</a> <a href="/tags/OpenGL基礎/" style="font-size: 13.33px;">OpenGL基礎</a> <a href="/tags/OpenGL安裝/" style="font-size: 10px;">OpenGL安裝</a> <a href="/tags/OpenGL教學/" style="font-size: 16.67px;">OpenGL教學</a> <a href="/tags/QT/" style="font-size: 10px;">QT</a> <a href="/tags/Rasterization/" style="font-size: 10px;">Rasterization</a> <a href="/tags/Reflect/" style="font-size: 10px;">Reflect</a> <a href="/tags/Refract/" style="font-size: 10px;">Refract</a> <a href="/tags/Rotation/" style="font-size: 10px;">Rotation</a> <a href="/tags/Shader/" style="font-size: 11.67px;">Shader</a> <a href="/tags/Sidebar/" style="font-size: 10px;">Sidebar</a> <a href="/tags/SublimeText3/" style="font-size: 10px;">SublimeText3</a> <a href="/tags/Sublimetext/" style="font-size: 10px;">Sublimetext</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tessellation/" style="font-size: 10px;">Tessellation</a> <a href="/tags/Tessellation-Control-Shader/" style="font-size: 10px;">Tessellation Control Shader</a> <a href="/tags/Tessellation-Evaluation-Shader/" style="font-size: 10px;">Tessellation Evaluation Shader</a> <a href="/tags/Triangle/" style="font-size: 10px;">Triangle</a> <a href="/tags/Ubuntu/" style="font-size: 16.67px;">Ubuntu</a> <a href="/tags/Ubuntu-property/" style="font-size: 10px;">Ubuntu property</a> <a href="/tags/VAO/" style="font-size: 10px;">VAO</a> <a href="/tags/Viewport-Transform/" style="font-size: 10px;">Viewport Transform</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Win10/" style="font-size: 15px;">Win10</a> <a href="/tags/Win7/" style="font-size: 10px;">Win7</a> <a href="/tags/Windows-Store/" style="font-size: 10px;">Windows Store</a> <a href="/tags/Windows10/" style="font-size: 15px;">Windows10</a> <a href="/tags/Windows7/" style="font-size: 10px;">Windows7</a> <a href="/tags/bezier-curve/" style="font-size: 10px;">bezier curve</a> <a href="/tags/canera/" style="font-size: 10px;">canera</a> <a href="/tags/clip-space/" style="font-size: 10px;">clip space</a> <a href="/tags/cubic-bezier-curve/" style="font-size: 10px;">cubic bezier curve</a> <a href="/tags/glGetUniformLocation/" style="font-size: 10px;">glGetUniformLocation</a> <a href="/tags/glGetUniformLocation-bug/" style="font-size: 10px;">glGetUniformLocation bug</a> <a href="/tags/glGetUniformLocation-fails/" style="font-size: 10px;">glGetUniformLocation fails</a> <a href="/tags/glGetUniformLocation-問題/" style="font-size: 10px;">glGetUniformLocation 問題</a> <a href="/tags/glVertexAttribPointer/" style="font-size: 10px;">glVertexAttribPointer</a> <a href="/tags/glVertexAttribPointer-fails/" style="font-size: 10px;">glVertexAttribPointer fails</a> <a href="/tags/local-space/" style="font-size: 10px;">local space</a> <a href="/tags/lookat/" style="font-size: 10px;">lookat</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/ndc/" style="font-size: 10px;">ndc</a> <a href="/tags/ntoskrnl-exe/" style="font-size: 10px;">ntoskrnl.exe</a> <a href="/tags/orthographic/" style="font-size: 10px;">orthographic</a> <a href="/tags/perspective/" style="font-size: 10px;">perspective</a> <a href="/tags/perspective-division/" style="font-size: 10px;">perspective division</a> <a href="/tags/projection/" style="font-size: 10px;">projection</a> <a href="/tags/scale/" style="font-size: 10px;">scale</a> <a href="/tags/tracker-store/" style="font-size: 10px;">tracker-store</a> <a href="/tags/translate/" style="font-size: 10px;">translate</a> <a href="/tags/vector/" style="font-size: 10px;">vector</a> <a href="/tags/view-space/" style="font-size: 10px;">view space</a> <a href="/tags/世界座標/" style="font-size: 10px;">世界座標</a> <a href="/tags/中文亂碼/" style="font-size: 10px;">中文亂碼</a> <a href="/tags/側欄/" style="font-size: 10px;">側欄</a> <a href="/tags/內插/" style="font-size: 11.67px;">內插</a> <a href="/tags/內積/" style="font-size: 10px;">內積</a> <a href="/tags/升級/" style="font-size: 10px;">升級</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/向量/" style="font-size: 10px;">向量</a> <a href="/tags/外積/" style="font-size: 10px;">外積</a> <a href="/tags/座標系統/" style="font-size: 10px;">座標系統</a> <a href="/tags/座標轉換/" style="font-size: 10px;">座標轉換</a> <a href="/tags/折射/" style="font-size: 10px;">折射</a> <a href="/tags/排列失效/" style="font-size: 10px;">排列失效</a> <a href="/tags/攝影機/" style="font-size: 10px;">攝影機</a> <a href="/tags/桌面圖示/" style="font-size: 10px;">桌面圖示</a> <a href="/tags/歐拉角/" style="font-size: 10px;">歐拉角</a> <a href="/tags/正交投影/" style="font-size: 10px;">正交投影</a> <a href="/tags/物體座標/" style="font-size: 10px;">物體座標</a> <a href="/tags/直線/" style="font-size: 10px;">直線</a> <a href="/tags/矩陣/" style="font-size: 10px;">矩陣</a> <a href="/tags/線性代數/" style="font-size: 11.67px;">線性代數</a> <a href="/tags/藍寶書/" style="font-size: 10px;">藍寶書</a> <a href="/tags/質心座標/" style="font-size: 10px;">質心座標</a> <a href="/tags/透視投影/" style="font-size: 10px;">透視投影</a> <a href="/tags/透視除法/" style="font-size: 10px;">透視除法</a> <a href="/tags/重心座標/" style="font-size: 10px;">重心座標</a> <a href="/tags/重新整理/" style="font-size: 10px;">重新整理</a> <a href="/tags/開發日誌/" style="font-size: 10px;">開發日誌</a> <a href="/tags/音量/" style="font-size: 10px;">音量</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/26/Libgdx-遊戲淺研/">Libgdx 遊戲淺研</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/30/Tabber-Clock-App-一個可以分類的鬧鐘/">TabberClock 分頁鬧鐘</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/14/OpenGL-Development-Journal/">OpenGL 遊戲引擎開發日誌</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/24/OpenGL-Questionl-2/">OpenGL之沒有蠢問題 2 - BindAttribute</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/12/重心座標系統/">重心座標概念理解與實作</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Dowen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">0</a>
+  
+    <a href="/archives" class="mobile-nav-link">1</a>
+  
+    <a href="/categories" class="mobile-nav-link">2</a>
+  
+    <a href="/about" class="mobile-nav-link">3</a>
+  
+</nav> -->
+    
+<script>
+  var disqus_shortname = 'bcmtokenyet';
+  
+  var disqus_url = 'http://tokenyet.github.io/2017/06/26/Libgdx-遊戲淺研/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
