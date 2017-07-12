@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2017-06-26T09:05:13.749Z</updated>
+  <updated>2017-07-12T16:50:29.751Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -15,11 +15,72 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[A* Path finding With Libgdx]]></title>
+    <link href="http://tokenyet.github.io/2017/07/13/A-Path-finding-With-Libgdx/"/>
+    <id>http://tokenyet.github.io/2017/07/13/A-Path-finding-With-Libgdx/</id>
+    <published>2017-07-12T17:05:51.000Z</published>
+    <updated>2017-07-12T16:50:29.751Z</updated>
+    <content type="html"><![CDATA[
+<div>
+	<img src="https://upload.wikimedia.org/wikipedia/commons/9/98/AstarExampleEn.gif" style="width: 500px ;display:inline">
+</div>
+
+<h2 id="起源">起源</h2><p>老毛病了，總是想做個遊戲，也想了許多特色跟腦中的構想，但又突然被技術吸引過去，一個死工程師的概念，所以我決定一旦有什麼技術測試完成就立即撰下幾筆。</p>
+<a id="more"></a>
+<p><br><br></p>
+<h2 id="正文">正文</h2><p>在開始講正式的路徑搜尋前，可以先思考如果要自己發明的話，該如何實作。首先假設這裡有個<span>$30x51$</span><!-- Has MathJax -->的網格，最左下是起點，右上是終點，然後沒有障礙物。用眼睛看最佳的路徑，一定是不走回頭路即可。</p>
+<img src="/images/AstarLibgdx/noobstacle.png" width="420">
+<p>但當障礙物一多的時候，哪一條才是真正的最佳路徑呢?哦，抱歉，如果是想找最佳路徑，可能得按上一頁了，因為A*也不是找最佳路徑的演算法。</p>
+<img src="/images/AstarLibgdx/obstacle.png" width="420">
+<p>看上方這張圖，由於是用隨機產生演算法，可能會讓讀者覺得好走，但對電腦就不同了，給一個點跟目標，必須嘗試過往右往上，如果遇到障礙物過多，甚至還要回頭呢。<br><br></p>
+<h4 id="A*_Path_finding(簡稱A*)">A* Path finding(簡稱A*)</h4><p> 情境大概建立起來了，接下來就進入正式的演算法上。該演算法主要的參數有<span>$f\left(G\right), f\left(H\right), f\left(F\right)$</span><!-- Has MathJax -->，G代表與上一步累加的距離，F代表G+H的總和可以說是一個總權重，那H就特別了，稱為<strong>啟發值(Heuristic)</strong>，而要每個人需根據自己需求，改變產生啟發值函式。不瞞讀者，Dowen用的只是數學的距離公式<span>$\sqrt{\left(x_0 - x_1\right)^2 +\left(y_0 - y_1\right)^2}$</span><!-- Has MathJax -->當啟發值而已。<br><br><br>而演算法有些難說明，就搭配<a href="https://en.wikipedia.org/wiki/A*_search_algorithm" target="_blank" rel="external">Wiki的Persudo-code</a>來說明吧。<br><code>closedSet := {}</code>，在每回合演算法執行(Loop)，最佳的節點就會被存在<code>closedSet</code>。<br><code>openSet := {start}</code> 每回合都會加入根據上一回合演算的可能性，其實就是鄰居啦。<br><code>comeFrom</code> 紀錄每個節點的最佳上一步，或說這個點最好的走法是從上個點來的。<br><code>gScore := map with default value of Infinity</code><br>會根據每回合算完後…等等會說到，既知道為何要無限大。<br><code>gScore[start] := 0</code> 同上<br><code>fScore := map with default value of Infinity</code> 同上。<br><code>fScore[start] := heuristic_cost_estimate(start, goal)</code> 同上。<br><code>current := the node in openSet having the lowest fScore[] value</code> 找當前最佳f值來當要走的下一步。<br><code>openSet.Remove(current)</code> 剔除掉當前最佳節點，就不會再算一次。<br><code>closedSet.Add(current)</code> 把算過的放進來。<br><code>if neighbor in closedSet</code> 鄰居是算過的就跳過。<br><code>if neighbor not in openSet</code> 鄰居不在待運算區，就放著等下回合算。<br><code>tentative_gScore := gScore[current] + dist_between(current, neighbor)</code> g權重是由上一個節點和與上個節點的距離所算出來的，所以起始節點是0，右邊可能是1，下面可能是2，然後右邊的右邊從1+距離，下面的任一邊也是。<br><code>if tentative_gScore &gt;= gScore[neighbor]</code> 這裡避免覆蓋已有的最佳g值，由於可能被算過(在openSet內)，所以要確保不會覆蓋最佳值。<br><code>cameFrom[neighbor] := current</code> 幫鄰居設定當前節點是最佳的來源節點。<br><code>gScore[neighbor] := tentative_gScore</code> 覆寫或第一次寫入g值。<br><code>fScore[neighbor] := gScore[neighbor] + heuristic_cost_estimate(neighbor, goal)</code> 只是個總權重值。<br><code>return failure</code> 找不到任何路徑。</p>
+<p><br></p>
+<h4 id="研究結果">研究結果</h4><p>不知道有沒有解釋好，總之「按圖施工，保證成功」，雖然自己實作上，東漏西漏，而且資料結構些許不同，但仍可結合自己的理念完成！</p>
+
+<div class="container-outside-div">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/XEqCkgJzAwg" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<p>影片中，各種綠框框代表Box2D的靜態Body物件，必須寫個方法將物件映射到一個虛擬格子地圖上，之後才可使用。這影片中還有很多問題存在：</p>
+<ol>
+<li>村民碰撞矩形會導致虛擬地圖判斷可行走，實際不可的問題。</li>
+<li>若靜態物體為多邊形，則需要一個公式映射，並且會導致肉眼認為可行走，演算法不行的一致性問題。</li>
+<li>A*演算法尚可經由許多調校，像是格子紀錄用更好的資料結構，Dowen用2D矩陣。還有啟發值產生函式，也還有其他可能性。</li>
+</ol>
+<p>一些優化：<br>A1. 也許將判斷不可行走的區域，設定為直直朝向，或是找到附近可行走區域後，在直直朝向，就可以解決Box2D世界與虛擬地圖的問題。<br>A2. <a href="https://stackoverflow.com/questions/12460939/algorithm-cutting-polygon-by-grid" target="_blank" rel="external">多邊形格子</a>，如果要將多邊形映射完成，首先必須要了解其他演算法，不然就像Dowen一樣，自己限制城矩形吧(誤)。</p>
+<p><br><br></p>
+<h2 id="資源">資源</h2><p><a href="https://www.youtube.com/watch?v=KNXfSOx4eEE" target="_blank" rel="external">A* Pathfinding-1</a></p>
+<p><a href="https://www.youtube.com/watch?v=aKYlikFAV4k&amp;feature=youtu.be" target="_blank" rel="external">A* Pathfinding-2</a></p>
+<p><a href="https://en.wikipedia.org/wiki/A*_search_algorithm" target="_blank" rel="external">A* Pathfinding Wiki</a></p>
+<p><a href="https://github.com/libgdx/libgdx/wiki/Tile-maps" target="_blank" rel="external">Tile maps</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<div>
+	<img src="https://upload.wikimedia.org/wikipedia/commons/9/98/AstarExampleEn.gif" style="width: 500px ;display:inline">
+</div>
+
+<h2 id="起源">起源</h2><p>老毛病了，總是想做個遊戲，也想了許多特色跟腦中的構想，但又突然被技術吸引過去，一個死工程師的概念，所以我決定一旦有什麼技術測試完成就立即撰下幾筆。</p>]]>
+    
+    </summary>
+    
+      <category term="A Star" scheme="http://tokenyet.github.io/tags/A-Star/"/>
+    
+      <category term="A*" scheme="http://tokenyet.github.io/tags/A/"/>
+    
+      <category term="Libgdx" scheme="http://tokenyet.github.io/tags/Libgdx/"/>
+    
+      <category term="path finding" scheme="http://tokenyet.github.io/tags/path-finding/"/>
+    
+      <category term="Libgdx" scheme="http://tokenyet.github.io/categories/Libgdx/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Libgdx 遊戲淺研]]></title>
     <link href="http://tokenyet.github.io/2017/06/26/Libgdx-%E9%81%8A%E6%88%B2%E6%B7%BA%E7%A0%94/"/>
     <id>http://tokenyet.github.io/2017/06/26/Libgdx-遊戲淺研/</id>
     <published>2017-06-26T09:03:28.000Z</published>
-    <updated>2017-06-26T09:05:13.749Z</updated>
+    <updated>2017-06-26T09:05:15.240Z</updated>
     <content type="html"><![CDATA[
 <div>
 	<img src="https://libgdx.badlogicgames.com/img/logo.png" style="width: 200px ;display:inline">
@@ -2117,41 +2178,6 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
       <category term="升級" scheme="http://tokenyet.github.io/tags/%E5%8D%87%E7%B4%9A/"/>
     
       <category term="Windows" scheme="http://tokenyet.github.io/categories/Windows/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Interpolation筆記]]></title>
-    <link href="http://tokenyet.github.io/2015/09/06/Interpolation%E7%AD%86%E8%A8%98/"/>
-    <id>http://tokenyet.github.io/2015/09/06/Interpolation筆記/</id>
-    <published>2015-09-06T06:52:48.000Z</published>
-    <updated>2015-09-06T07:41:25.271Z</updated>
-    <content type="html"><![CDATA[<p><hr></p>
-<h3 id="證明筆記,如有空再補上說明">證明筆記,如有空再補上說明</h3><p><hr><br><strong>1. 線性內插(Linear Interpolation)</strong></p>
-<p>$ y = ax + b , f(x) = ax + b $ </p>
-<p>$ y_i = a x_i + b $</p>
-<p>$ y_{i+1} = a x_{i+1} + b $</p>
-<p>$ y_{i+1} - y_i = a_{i+1} -a x_i $</p>
-<p>$ y_{i+1} - y_i = a (x_{i+1} -a x_i) $</p>
-<p>$ y_{i+1} - y_i/(x_{i+1} -x_i) = a $</p>
-<p>$ y_i = (y_{i+1} - y_i/(x_{i+1} -x_i))x_i + b $</p>
-<p>$ y_i - ax_i = b $</p>
-<p>$ f(x) = (y_{i+1} - yi/(x_{i+1} -x_i))x + yi -ax_i $</p>
-<p>$ f(x) = (y_{i+1} - yi/(x_{i+1} -xi))(x-xi) + yi $</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p><hr></p>
-<h3 id="證明筆記,如有空再補上說明">證明筆記,如有空再補上說明</h3><p><hr><br><strong>1. 線性內插(Linear Interpolation)</strong></p>
-<p>$ y = ax + b , f(x) = ]]>
-    </summary>
-    
-      <category term="Interpolation" scheme="http://tokenyet.github.io/tags/Interpolation/"/>
-    
-      <category term="內插" scheme="http://tokenyet.github.io/tags/%E5%85%A7%E6%8F%92/"/>
-    
-      <category term="線性代數" scheme="http://tokenyet.github.io/tags/%E7%B7%9A%E6%80%A7%E4%BB%A3%E6%95%B8/"/>
-    
-      <category term="數學筆記" scheme="http://tokenyet.github.io/categories/%E6%95%B8%E5%AD%B8%E7%AD%86%E8%A8%98/"/>
     
   </entry>
   
