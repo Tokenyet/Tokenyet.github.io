@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://tokenyet.github.io/"/>
-  <updated>2017-07-12T16:50:29.751Z</updated>
+  <updated>2017-07-13T19:30:34.401Z</updated>
   <id>http://tokenyet.github.io/</id>
   
   <author>
@@ -15,11 +15,69 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[直播平台插件_for_Viewers]]></title>
+    <link href="http://tokenyet.github.io/2017/07/14/%E7%9B%B4%E6%92%AD%E5%B9%B3%E5%8F%B0%E6%8F%92%E4%BB%B6-for-Viewers/"/>
+    <id>http://tokenyet.github.io/2017/07/14/直播平台插件-for-Viewers/</id>
+    <published>2017-07-13T19:07:32.000Z</published>
+    <updated>2017-07-13T19:30:34.401Z</updated>
+    <content type="html"><![CDATA[
+<div class="container-outside-div">
+	<div class="container-inside-div" style="width: 33%">
+		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAACXCAMAAAAvQTlLAAAAllBMVEX///9kQaVfO6MAAABeOKJbNKHt6vRcMqKfjcWHbbhiPqSWgr/f2Ovn4/BNGpr8/P6/s9jNw+GklMhUJ51YLZ+Nd7v18/prS6hpSKjz8/OGb7e1tbXj4+N9YrK6rNVyU63R0dF9fX2xotDGxsZFRUVkZGTa2toyMjJwcHCRkZGrq6vXz+afn586OjoZGRkQEBBCAJZ3Wq+r2MuOAAADb0lEQVR4nO3cXXOiMBQG4PBpi9qA7VapYhW1WnG72///51YB10SCmwQwZ2bPe9Eb7MzTNwemQ9MQp8hmP4uJ4cTxx2Fdekj+dbsyjioTTxnXJxTVKbPd2bU0TeETbwrXp2nIdU4w4vyEtIhFZifXyrRCkINDNvDqOha2JXvTBmGWZGaaIMyUQFxGQj5MA2oCsy0MBlNNmDzeI0NFFk08+w5xB4quzLpLAkUXfXBBunwrAOkKX+7CUnXRRxukK7vTMqq6RveZelWXP2bqCrzW42q65h7D+n5oPX1by0UTZurdvspPJBe/p+XinvVun7buGmq5KDf1cFz+ewDSxU49IBc39YBcWRBAdNGrZz0Ulz8JYLp6FrrQhS50ocuYi76WqX7oxqXOXTRN3vIkWeVadL40N+Dq94r3Mk9R5Vr4XFzqjQy4zq9XngWu8lWCiy50oQtd6EIXutCFLnShC13oQhe6FF1ekEfoKi55RlzWOI8ncLnj8eR4yTLgIrSM6D3T3xhw6QVd6PofXZEH0pVd/rAPyRWNL39AB+TKGJZlg3FFFrvJJvGBuPi23uW3KXTriiZsW98Ku1c7dfFtfatsZurSxbeVKO317dA14FgKs9Wt6+pOVNwZ3ZlrwM3WWHVjdFeuZm115sr4B4RqW125mtyJHboG3CIqz5bY1ZwV2U3bqrrq9tVe1xje2EfLbqR0JzptVV1W4ArzxP8mkL6IP5aHZem1JXDVpMe55pIb0FWf8g1dqSvHsnXb0nOFtmRbE22WjiuV/KcL7dnSc0nPVoO2NFyys9WoLXXXXHa2tO9ELVcqybKTZixFVyi7iI1mS9mVev/+YM5qNluqrnkguYiN21JwvZJUktVCWyquuexsvbfAknYFI9nHadM7sXT9fqoPO+aVB4Qr/h6rjbYIocP6+P0b/7fmPg580Te9tsK6nVH9c8FrY7jbd7Vyz7XvMtpWvctsW7Uuw23VuUy3VeMy3pbYZb4toQtAWyIXhLYELhBtVV0w2qq4oLDI6Jl9TQNkEY8J334w6UNhMXsixBsjMBjwoUBP2oqBuhZAT0zbk4Npgih0R9YQF3LxRZypaYQgS4c4v+CdYLjKzxPdQVvJ2bo4fxXYEZmz7fm82g2kpVytL+f7OgcgMrpYsucOO852Of0wvJw0Xux3X6XnD3eDbQgg5ZkMAAAAAElFTkSuQmCC">
+	</div>
+	<div class="container-inside-div" style="width: 33%">
+		<img src="https://static.wixstatic.com/media/e753eb_b3353ebeaea74a24a5063574e45c999c.png/v1/fill/w_186,h_135,al_c,usm_0.66_1.00_0.01/e753eb_b3353ebeaea74a24a5063574e45c999c.png">
+	</div>
+</div>
+
+<h2 id="閒談">閒談</h2><p>由於有看直播的習慣，對觀看的品質，有自己的一套講究，如果再觀看的時候有什麼覺得怪怪的，就會想盡自己所能把功能輔助寫出來，既然寫出來了，也想分享給有同樣需求的人使用囉！</p>
+<a id="more"></a>
+<h2 id="插件">插件</h2><p><a href="https://github.com/Tokenyet/Twitch-Local-Manager" target="_blank" rel="external"><strong>Twitch管理插件</strong></a> - 特色: </p>
+<ol>
+<li>增大文字。</li>
+<li>亮色過濾。</li>
+<li>暱稱移除。</li>
+<li>刪除文字恢復(效能問題，預設關閉)。<br>備註:根據Twitch愛改版網頁的頻率，部分功能可能失效。</li>
+</ol>
+<p><a href="https://github.com/Tokenyet/17-Volume-Control" target="_blank" rel="external"><strong>17網頁版音量插件</strong></a> - 特色:<br>就…不知為何17故意把網頁版的音量條藏起來，我就加回來了。</p>
+<h2 id="安裝">安裝</h2><ol>
+<li>安裝<a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="external">Tampermonkey</a>。</li>
+<li>開啟Tampermonkey。</li>
+<li>創建空腳本。</li>
+<li>複製插件<code>.js</code>內容，完全取代空腳本。</li>
+<li>重整頁面。</li>
+<li>看看有什麼變化吧。</li>
+</ol>
+<p>歡迎任何人fork插件，讓插件更美好。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<div class="container-outside-div">
+	<div class="container-inside-div" style="width: 33%">
+		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAACXCAMAAAAvQTlLAAAAllBMVEX///9kQaVfO6MAAABeOKJbNKHt6vRcMqKfjcWHbbhiPqSWgr/f2Ovn4/BNGpr8/P6/s9jNw+GklMhUJ51YLZ+Nd7v18/prS6hpSKjz8/OGb7e1tbXj4+N9YrK6rNVyU63R0dF9fX2xotDGxsZFRUVkZGTa2toyMjJwcHCRkZGrq6vXz+afn586OjoZGRkQEBBCAJZ3Wq+r2MuOAAADb0lEQVR4nO3cXXOiMBQG4PBpi9qA7VapYhW1WnG72///51YB10SCmwQwZ2bPe9Eb7MzTNwemQ9MQp8hmP4uJ4cTxx2Fdekj+dbsyjioTTxnXJxTVKbPd2bU0TeETbwrXp2nIdU4w4vyEtIhFZifXyrRCkINDNvDqOha2JXvTBmGWZGaaIMyUQFxGQj5MA2oCsy0MBlNNmDzeI0NFFk08+w5xB4quzLpLAkUXfXBBunwrAOkKX+7CUnXRRxukK7vTMqq6RveZelWXP2bqCrzW42q65h7D+n5oPX1by0UTZurdvspPJBe/p+XinvVun7buGmq5KDf1cFz+ewDSxU49IBc39YBcWRBAdNGrZz0Ulz8JYLp6FrrQhS50ocuYi76WqX7oxqXOXTRN3vIkWeVadL40N+Dq94r3Mk9R5Vr4XFzqjQy4zq9XngWu8lWCiy50oQtd6EIXutCFLnShC13oQhe6FF1ekEfoKi55RlzWOI8ncLnj8eR4yTLgIrSM6D3T3xhw6QVd6PofXZEH0pVd/rAPyRWNL39AB+TKGJZlg3FFFrvJJvGBuPi23uW3KXTriiZsW98Ku1c7dfFtfatsZurSxbeVKO317dA14FgKs9Wt6+pOVNwZ3ZlrwM3WWHVjdFeuZm115sr4B4RqW125mtyJHboG3CIqz5bY1ZwV2U3bqrrq9tVe1xje2EfLbqR0JzptVV1W4ArzxP8mkL6IP5aHZem1JXDVpMe55pIb0FWf8g1dqSvHsnXb0nOFtmRbE22WjiuV/KcL7dnSc0nPVoO2NFyys9WoLXXXXHa2tO9ELVcqybKTZixFVyi7iI1mS9mVev/+YM5qNluqrnkguYiN21JwvZJUktVCWyquuexsvbfAknYFI9nHadM7sXT9fqoPO+aVB4Qr/h6rjbYIocP6+P0b/7fmPg580Te9tsK6nVH9c8FrY7jbd7Vyz7XvMtpWvctsW7Uuw23VuUy3VeMy3pbYZb4toQtAWyIXhLYELhBtVV0w2qq4oLDI6Jl9TQNkEY8J334w6UNhMXsixBsjMBjwoUBP2oqBuhZAT0zbk4Npgih0R9YQF3LxRZypaYQgS4c4v+CdYLjKzxPdQVvJ2bo4fxXYEZmz7fm82g2kpVytL+f7OgcgMrpYsucOO852Of0wvJw0Xux3X6XnD3eDbQgg5ZkMAAAAAElFTkSuQmCC" />
+	</div>
+	<div class="container-inside-div"  style="width: 33%">
+		<img src="https://static.wixstatic.com/media/e753eb_b3353ebeaea74a24a5063574e45c999c.png/v1/fill/w_186,h_135,al_c,usm_0.66_1.00_0.01/e753eb_b3353ebeaea74a24a5063574e45c999c.png" />
+	</div>
+</div>
+
+<h2 id="閒談">閒談</h2><p>由於有看直播的習慣，對觀看的品質，有自己的一套講究，如果再觀看的時候有什麼覺得怪怪的，就會想盡自己所能把功能輔助寫出來，既然寫出來了，也想分享給有同樣需求的人使用囉！</p>]]>
+    
+    </summary>
+    
+      <category term="17直播" scheme="http://tokenyet.github.io/tags/17%E7%9B%B4%E6%92%AD/"/>
+    
+      <category term="Twitch" scheme="http://tokenyet.github.io/tags/Twitch/"/>
+    
+      <category term="直播" scheme="http://tokenyet.github.io/categories/%E7%9B%B4%E6%92%AD/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[A* Path finding With Libgdx]]></title>
     <link href="http://tokenyet.github.io/2017/07/13/A-Path-finding-With-Libgdx/"/>
     <id>http://tokenyet.github.io/2017/07/13/A-Path-finding-With-Libgdx/</id>
     <published>2017-07-12T17:05:51.000Z</published>
-    <updated>2017-07-12T16:50:29.751Z</updated>
+    <updated>2017-07-12T16:50:39.732Z</updated>
     <content type="html"><![CDATA[
 <div>
 	<img src="https://upload.wikimedia.org/wikipedia/commons/9/98/AstarExampleEn.gif" style="width: 500px ;display:inline">
@@ -2122,60 +2180,6 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
       <category term="Windows10" scheme="http://tokenyet.github.io/tags/Windows10/"/>
     
       <category term="ntoskrnl.exe" scheme="http://tokenyet.github.io/tags/ntoskrnl-exe/"/>
-    
-      <category term="Windows" scheme="http://tokenyet.github.io/categories/Windows/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Windows10 升級相關問題]]></title>
-    <link href="http://tokenyet.github.io/2015/09/19/Windows10-%E5%8D%87%E7%B4%9A%E7%9B%B8%E9%97%9C%E5%95%8F%E9%A1%8C/"/>
-    <id>http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/</id>
-    <published>2015-09-18T18:43:56.000Z</published>
-    <updated>2015-09-25T08:49:46.165Z</updated>
-    <content type="html"><![CDATA[<p>第一次進行Windows系列的升級，就遇到了很多問題，為了拯救跟我有相同困擾的人，所以趕緊來發一篇文。</p>
-<hr>
-
-<h2 id="安裝前">安裝前</h2><hr>
-
-<p>遇到的問題之一<br>首先<strong>直接點Windows10圖示</strong>的時候到85%就停住了。 所以通過圖示升級失敗。<br>再來遇到的問題是把<strong>Win10燒到光碟</strong>後想要通過<strong>重開機</strong>的boot模式來進行更新，<br>遇到了要不要移除媒體的奇怪問題，把搖桿跟一些東西移除後，仍不行。</p>
-<font color="gray"><em>這裡順便說一下，有些主機板會因為插了某些3c產品在usb上而導致無法開機，<br>像是Dowen我插入了mp3在usb上之後，就卡在boot畫面無法開機。</em></font>
-
-
-<p>再來，用光碟直接在Windows中點選光碟機進行安裝，<br>安裝過程一開始很順利，但是到了真正要安裝的時候卡在0%然後馬上安裝失敗。<br><strong>0%的解決辦法是 解除安裝防毒軟體</strong><br>之後又遇到了18%安裝失敗<br><strong>18%的解決辦法是 點選$Windows.~BT這個資料夾然後把 <em>唯讀</em> 屬性取消掉</strong><br>18%之後的如果有遇到問題通常就是照著解除唯讀去做，因為你解除了一瞬間，<br>下一個tempo又被系統改回唯讀，我想這是win10升級的一個bug…。<br>在過了18%大關後，只要等待到最後就可以了。</p>
-<hr>
-
-<h2 id="安裝後">安裝後</h2><hr>
-
-<p>第一個遇到的問題就是<em>點任何檔案都無法回應</em><br>然後在觀察錯誤訊息後，發現新酷音(非TSF版)的ChewingServer.exe作祟。<br>先切換輸入法後，發現一切都正常，然後去控制台把新酷音解安裝了!!</p>
-<p>在來就不是問題，而是使用習慣，自己摸索一些東西後，發現有一些東西要額外安裝。</p>
-<p><strong>像是視窗的玻璃特效，必須去上網找<a href="http://pan.baidu.com/s/1c50zc" target="_blank" rel="external">AeroGlass 10240</a></strong></p>
-<p><strong>像是用不習慣一些介面就可以用<a href="http://www.classicshell.net/" target="_blank" rel="external">Classic Shell</a>傳統介面軟體幫你改回來</strong><br>(像點開始時，那兩塊panel)</p>
-<p><strong>像是開始列的透明化調整，可以用<a href="http://chime.tv/products/glass2k.shtml" target="_blank" rel="external">Glass2k</a></strong><br>(ps.這個透明連icon也被透明化，所以使用自行斟酌)</p>
-<hr>
-
-<p>剩下未解決的問題:<br>還有一些比較不習慣的問題，<br>像是輸入法在很多editor上，打字會跑在整個螢幕的左上角。<br>像是開始列右邊的icon有關於系統的都無法移動位置，只能關閉。<br>像是桌面的設定，因為是新風格，不習慣想改回win7連結控制台的那種模式。<br>像是folder開起來後上面跟以前不同。<br>像是開始列的透明度無法自行更改，有點失望。</p>
-<p>win10目前給我的感覺<br>少了一些常用的介面設置，<br>很多軟體的支援度還不夠，<br>拿掉了很多我喜歡的酷炫特效，<br>點開始跳出來的兩大Panel讓我有點不知道看哪，<br>最後的最後輸入法變成win+space也需要適應一番。</p>
-<p>如果有什麼功能忽略沒寫到，歡迎通知我!</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>第一次進行Windows系列的升級，就遇到了很多問題，為了拯救跟我有相同困擾的人，所以趕緊來發一篇文。</p>
-<hr>
-
-<h2 id="安裝前">安裝前</h2><hr>
-
-<p>遇到的問題之一<br>首先<strong>直接點Windows10圖示</strong>的]]>
-    </summary>
-    
-      <category term="Win10" scheme="http://tokenyet.github.io/tags/Win10/"/>
-    
-      <category term="Win7" scheme="http://tokenyet.github.io/tags/Win7/"/>
-    
-      <category term="Windows10" scheme="http://tokenyet.github.io/tags/Windows10/"/>
-    
-      <category term="Windows7" scheme="http://tokenyet.github.io/tags/Windows7/"/>
-    
-      <category term="升級" scheme="http://tokenyet.github.io/tags/%E5%8D%87%E7%B4%9A/"/>
     
       <category term="Windows" scheme="http://tokenyet.github.io/categories/Windows/"/>
     
