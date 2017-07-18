@@ -90,6 +90,58 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-Windows10-System記憶體占用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/25/Windows10-System記憶體占用/" class="article-date">
+  <time datetime="2015-09-25T08:17:23.000Z" itemprop="datePublished">2015-09-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Windows/">Windows</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/25/Windows10-System記憶體占用/">Windows10 System記憶體占用</a>
+    </h1>
+  
+
+      </header>
+    
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/" data-id="cj59d43tp0026g0ubjjjewqdf" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言:<br>升級到Windows10之後，真的是一堆BUGGG阿。<br>認識的人升級到10都跟我說沒什麼問題，只能說相信別人不如自己實測阿。<br>還有輸入法這糟糕的設置，根本只設計給英文使用者嘛。<br>大部分升級的人都說「習慣就好」，我真的很不喜歡這句話。<br>聽過UX嗎?習慣這句話根本就不是UX而是斗M。<br>如果是因為更值得的功能而改變習慣，那在UX上的確有其道理。<br>但是Win8後的輸入法又沒什麼特別的取代性，改了習慣壞了體驗，唉。</p>
+<p>正題:<br>最近開始用VS2013有用到WinAPI，然後用了一段時間後，突然電腦趨近於當機???!!<br>當時我電腦上有Opera，Chrome，Planetside 2，Steam，Line，Telegram，ESET…。<br>然後以為是WinAPI的問題。<br>但是研究後發現是 <font color="red">System (ntoskrnl.exe)</font> 在搞鬼，這東西在Win10上可說是臭名昭彰，還有人藍白當機。</p>
+<p>經由網路上一系列的解法我都嘗試過了，<br>第一個是Regedit<br>在HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Ndu路徑下<br>將 <font color="red">Start</font> 的值從 <font color="red">2</font> 改為 <font color="red">4</font><br>(個人這方法無效)</p>
+<p>第二個是設定(Win10我不解的奇怪新產物)<br>點桌面-&gt;個人化-&gt;設定-&gt;系統-&gt;通知與動作<br>將 <font color="red">顯示關於Windows的通知</font> 關掉!!!<br>(這方法也沒什麼效果..)</p>
+<p>第三個是關閉Superfetch與Prefetch(沒效也可以減少SSD的操勞)<br>Win+R -&gt; services.msc -&gt; Superfetch disable掉<br>到HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters<br>把EnablePrefetcher與EnableSuperfetch改為0</p>
+<p>建議可以三個方法都嘗試，如果只嘗試一個無效的話。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ntoskrnl-exe/">ntoskrnl.exe</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Windows10-升級相關問題" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/09/19/Windows10-升級相關問題/" class="article-date">
@@ -115,7 +167,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/" data-id="cj52tu5bz001ud4ubptmi4gdp" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/" data-id="cj59d43tl001wg0ubwfxoojeo" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -185,7 +237,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/09/06/Interpolation筆記/" data-id="cj52tu5j7009dd4ubzqp3ehsv" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/09/06/Interpolation筆記/" data-id="cj59d43z4009fg0ubgjmatj80" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/09/06/Interpolation筆記/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -243,7 +295,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/" data-id="cj52tu5dk003gd4ubd9ghcwwc" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/" data-id="cj59d43uh003ig0ubndorzz29" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -313,7 +365,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/08/19/座標轉換筆記/" data-id="cj52tu5be000sd4ubzpox7uxp" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/08/19/座標轉換筆記/" data-id="cj59d43t0000tg0ubjx4xu5nc" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/08/19/座標轉換筆記/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -369,7 +421,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/" data-id="cj52tu5d1002pd4ubaa05ieof" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/" data-id="cj59d43u4002rg0ubuqraop0x" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -419,7 +471,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/" data-id="cj52tu5bh000yd4ubi4cc8dya" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/" data-id="cj59d43t4000zg0ubpfp2vt1n" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -484,7 +536,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/" data-id="cj52tu5b9000nd4ubxaduibls" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/" data-id="cj59d43sv000og0ube1n8e7jm" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -534,7 +586,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/" data-id="cj52tu5cm002fd4ubum6mhyiz" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/" data-id="cj59d43tw002hg0ub867l1o4b" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -598,7 +650,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu上安裝Line/" data-id="cj52tu5cw002kd4ubdpyv5dw0" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu上安裝Line/" data-id="cj59d43u1002mg0ubu2ikgnq3" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/13/Ubuntu上安裝Line/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -635,83 +687,6 @@ ga('send', 'pageview');
     <footer class="article-footer">
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Line/">Line</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Ubuntu疑難雜症" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/07/13/Ubuntu疑難雜症/" class="article-date">
-  <time datetime="2015-07-13T02:52:21.000Z" itemprop="datePublished">2015-07-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/13/Ubuntu疑難雜症/">Ubuntu疑難雜症</a>
-    </h1>
-  
-
-      </header>
-    
-    <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu疑難雜症/" data-id="cj52tu5cf002cd4ub0agy86c6" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/07/13/Ubuntu疑難雜症/#disqus_thread" class="article-comment-link">Comments</a>
-      
-    </footer>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前記：<br>由於在實習的工作中需要用到這個人覺得很難使用的Ubuntu系統<br>所以遇到了種種的挫折與困難，全部寫在這裡了。</p>
-<ol>
-<li>瀏覽器的問題<br>安裝瀏覽器的時候我使用過Opera,Chrome,Firefox這三種。<br>1-1. Opera跟Firefox<br>直接下載能看影片，不過額外裝flash會有較好效果，<br>在擴充插件上，Opera跟Firefox在Ubuntu的支援度較高，<br>*如果要知道如何安裝flash插件請參考1-1-1。<br>*安裝firefox參考1-1-2。<br>1-2.Chrome<br>不需裝插件即可觀看影片內建flash<br>但是在某些版本的Ubuntu上不能裝插件，對Ubuntu的支援度較低較低</li>
-</ol>
-<p>Opera<br>推薦度：☆★★★★<br>Firefox<br>推薦度：★★★★★<br>Chrome<br>推薦度：☆☆★★★</p>
-<p>1-1-1.安裝flashplugin<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install flashplugin-installer</span><br></pre></td></tr></table></figure></p>
-<p>1-1-2.安裝firefox<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> update</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="comment">--purge --reinstall install firefox</span></span><br></pre></td></tr></table></figure></p>
-<ol>
-<li><p>There is no public key available for the following key IDs<br>如果遇到以上的問題請重新取得Public Key</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> debian-keyring debian-archive-keyring</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>沒有中文輸入法<br>在遇到沒有中文輸入法的情況，先確認是否有Language Support這個選項。<br>3-1. 若無則先安裝Language Support。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> <span class="keyword">language</span>-selector-gnome</span><br><span class="line">sudo gnome-<span class="keyword">language</span>-selector</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>完成後到Language Support的鍵盤輸入法的地方設定ibus為預設輸入法系統。</p>
-<p>3-2. 若已經有Language Support。則只要先暫時清除ibus安裝新酷音後就可以了。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">purge</span> ibus</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> ibus-chewing</span></span><br></pre></td></tr></table></figure></p>
-<p>*在確認一次：語言支援 -&gt; 鍵盤輸入法系統 ibus<br>重新登入後就可以打中文了。<br>*如果是在 SublimeText3 上測試沒顯示是正常的，Sublimetext 目前並不支援中文輸入在Ubuntu上。</p>
-<ol>
-<li>/etc/apt/Source.list遭更換問題<br>有時候由於你碰到的電腦是屬於某些廠商客制化過的，<br>在apt-get這類的指令輸入上想安裝或作任何事情，都會跳出找不到’apt’之類的選項。<br>這時候就要上網找一個正確的Source.list做更換，或是利用舊的Source.list.old把新的更換掉。<br>*sources.list.old這個內容如果很少的話代表就不能用此方式替換</li>
-</ol>
-<p>個人是先把權限輸入密碼的部份拿掉後，另外作一個執行檔來作迅速的更換。<br>（主要是想將source.list換成可update後，如果廠商來看可以把source.list換回原本的，以防問題）<br>主要的過程如下（不包含拿掉權限密碼的教學部份）<br>先將sources.list（被廠商搞過的檔案）與sources.list.old(正常的檔案）<br>分別保存在一個地方，我是放在名為Backup的資料夾裡面。<br>然後兩個各自分類存到 正常的sources 與 廠商的sources<br>之後在替換上就可以使用以下的方法</p>
-<p>-將正常的sources.list取代原本的萬惡廠商sources.list</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">rm -rf <span class="regexp">/etc/</span>apt/sources.list</span><br><span class="line">cp <span class="regexp">/home/</span>自己的電腦名稱<span class="regexp">/Desktop/</span>SourceList<span class="regexp">/Backup/</span>正常的sources<span class="regexp">/sources.list /</span>etc/apt</span><br></pre></td></tr></table></figure>
-<p>*使用sources.list.old的人，記得將其改名為sources.list。</p>
-<p>-如果廠商來看電腦的話就把sources.list換回它的萬惡檔案<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">rm -rf <span class="regexp">/etc/</span>apt/sources.list</span><br><span class="line">cp <span class="regexp">/home/</span>自己的電腦名稱<span class="regexp">/Desktop/</span>SourceList<span class="regexp">/Backup/</span>廠商的sources<span class="regexp">/sources.list /</span>etc/apt</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>找到同個副檔名的檔案並複製到指定資料夾</li>
-</ol>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find</span> . -name <span class="string">"*.TIF"</span> -exec cp &#123;&#125; <span class="keyword">new</span> \;</span><br></pre></td></tr></table></figure>
-<p>簡單解釋一下<br>這個意思就是說<code>find</code>（找） <code>-name</code>（名字是） <code>&quot;*.TIF&quot;</code>(副檔名是TIF)的所有檔案，<br>並 <code>-exec</code> 執行 <code>cp {} new \;</code>後面的這串是 複製集合 {} 到 new 這個資料夾內。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
 
     </footer>
   </div>
@@ -728,6 +703,58 @@ ga('send', 'pageview');
 
 
   
+    <article id="post-Windows10-System記憶體占用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/25/Windows10-System記憶體占用/" class="article-date">
+  <time datetime="2015-09-25T08:17:23.000Z" itemprop="datePublished">2015-09-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Windows/">Windows</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/25/Windows10-System記憶體占用/">Windows10 System記憶體占用</a>
+    </h1>
+  
+
+      </header>
+    
+    <footer class="article-medium">
+      <a data-url="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/" data-id="cj59d43tp0026g0ubjjjewqdf" class="article-share-link">Share</a>
+      
+        <a href="http://tokenyet.github.io/2015/09/25/Windows10-System記憶體占用/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言:<br>升級到Windows10之後，真的是一堆BUGGG阿。<br>認識的人升級到10都跟我說沒什麼問題，只能說相信別人不如自己實測阿。<br>還有輸入法這糟糕的設置，根本只設計給英文使用者嘛。<br>大部分升級的人都說「習慣就好」，我真的很不喜歡這句話。<br>聽過UX嗎?習慣這句話根本就不是UX而是斗M。<br>如果是因為更值得的功能而改變習慣，那在UX上的確有其道理。<br>但是Win8後的輸入法又沒什麼特別的取代性，改了習慣壞了體驗，唉。</p>
+<p>正題:<br>最近開始用VS2013有用到WinAPI，然後用了一段時間後，突然電腦趨近於當機???!!<br>當時我電腦上有Opera，Chrome，Planetside 2，Steam，Line，Telegram，ESET…。<br>然後以為是WinAPI的問題。<br>但是研究後發現是 <font color="red">System (ntoskrnl.exe)</font> 在搞鬼，這東西在Win10上可說是臭名昭彰，還有人藍白當機。</p>
+<p>經由網路上一系列的解法我都嘗試過了，<br>第一個是Regedit<br>在HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Ndu路徑下<br>將 <font color="red">Start</font> 的值從 <font color="red">2</font> 改為 <font color="red">4</font><br>(個人這方法無效)</p>
+<p>第二個是設定(Win10我不解的奇怪新產物)<br>點桌面-&gt;個人化-&gt;設定-&gt;系統-&gt;通知與動作<br>將 <font color="red">顯示關於Windows的通知</font> 關掉!!!<br>(這方法也沒什麼效果..)</p>
+<p>第三個是關閉Superfetch與Prefetch(沒效也可以減少SSD的操勞)<br>Win+R -&gt; services.msc -&gt; Superfetch disable掉<br>到HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters<br>把EnablePrefetcher與EnableSuperfetch改為0</p>
+<p>建議可以三個方法都嘗試，如果只嘗試一個無效的話。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/System/">System</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Win10/">Win10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows10/">Windows10</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ntoskrnl-exe/">ntoskrnl.exe</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Windows10-升級相關問題" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/09/19/Windows10-升級相關問題/" class="article-date">
@@ -753,7 +780,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/" data-id="cj52tu5bz001ud4ubptmi4gdp" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/" data-id="cj59d43tl001wg0ubwfxoojeo" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/09/19/Windows10-升級相關問題/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -823,7 +850,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/09/06/Interpolation筆記/" data-id="cj52tu5j7009dd4ubzqp3ehsv" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/09/06/Interpolation筆記/" data-id="cj59d43z4009fg0ubgjmatj80" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/09/06/Interpolation筆記/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -881,7 +908,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/" data-id="cj52tu5dk003gd4ubd9ghcwwc" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/" data-id="cj59d43uh003ig0ubndorzz29" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/08/26/QT中安裝OpenGL教學/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -951,7 +978,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/08/19/座標轉換筆記/" data-id="cj52tu5be000sd4ubzpox7uxp" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/08/19/座標轉換筆記/" data-id="cj59d43t0000tg0ubjx4xu5nc" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/08/19/座標轉換筆記/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1007,7 +1034,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/" data-id="cj52tu5d1002pd4ubaa05ieof" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/" data-id="cj59d43u4002rg0ubuqraop0x" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/08/17/Ubuntu Tracker-Store問題/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1057,7 +1084,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/" data-id="cj52tu5bh000yd4ubi4cc8dya" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/" data-id="cj59d43t4000zg0ubpfp2vt1n" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/17/在Ubuntu上系統架設VirtualBox/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1122,7 +1149,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/" data-id="cj52tu5b9000nd4ubxaduibls" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/" data-id="cj59d43sv000og0ube1n8e7jm" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/15/建立契機與為何使用Hexo？/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1172,7 +1199,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/" data-id="cj52tu5cm002fd4ubum6mhyiz" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/" data-id="cj59d43tw002hg0ub867l1o4b" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/13/Ubuntu中使用SublimtText3中文輸入法篇/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1236,7 +1263,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu上安裝Line/" data-id="cj52tu5cw002kd4ubdpyv5dw0" class="article-share-link">Share</a>
+      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu上安裝Line/" data-id="cj59d43u1002mg0ubu2ikgnq3" class="article-share-link">Share</a>
       
         <a href="http://tokenyet.github.io/2015/07/13/Ubuntu上安裝Line/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -1273,83 +1300,6 @@ ga('send', 'pageview');
     <footer class="article-footer">
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Line/">Line</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Ubuntu疑難雜症" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/07/13/Ubuntu疑難雜症/" class="article-date">
-  <time datetime="2015-07-13T02:52:21.000Z" itemprop="datePublished">2015-07-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/13/Ubuntu疑難雜症/">Ubuntu疑難雜症</a>
-    </h1>
-  
-
-      </header>
-    
-    <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2015/07/13/Ubuntu疑難雜症/" data-id="cj52tu5cf002cd4ub0agy86c6" class="article-share-link">Share</a>
-      
-        <a href="http://tokenyet.github.io/2015/07/13/Ubuntu疑難雜症/#disqus_thread" class="article-comment-link">Comments</a>
-      
-    </footer>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前記：<br>由於在實習的工作中需要用到這個人覺得很難使用的Ubuntu系統<br>所以遇到了種種的挫折與困難，全部寫在這裡了。</p>
-<ol>
-<li>瀏覽器的問題<br>安裝瀏覽器的時候我使用過Opera,Chrome,Firefox這三種。<br>1-1. Opera跟Firefox<br>直接下載能看影片，不過額外裝flash會有較好效果，<br>在擴充插件上，Opera跟Firefox在Ubuntu的支援度較高，<br>*如果要知道如何安裝flash插件請參考1-1-1。<br>*安裝firefox參考1-1-2。<br>1-2.Chrome<br>不需裝插件即可觀看影片內建flash<br>但是在某些版本的Ubuntu上不能裝插件，對Ubuntu的支援度較低較低</li>
-</ol>
-<p>Opera<br>推薦度：☆★★★★<br>Firefox<br>推薦度：★★★★★<br>Chrome<br>推薦度：☆☆★★★</p>
-<p>1-1-1.安裝flashplugin<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install flashplugin-installer</span><br></pre></td></tr></table></figure></p>
-<p>1-1-2.安裝firefox<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> update</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="comment">--purge --reinstall install firefox</span></span><br></pre></td></tr></table></figure></p>
-<ol>
-<li><p>There is no public key available for the following key IDs<br>如果遇到以上的問題請重新取得Public Key</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> debian-keyring debian-archive-keyring</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>沒有中文輸入法<br>在遇到沒有中文輸入法的情況，先確認是否有Language Support這個選項。<br>3-1. 若無則先安裝Language Support。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> <span class="keyword">language</span>-selector-gnome</span><br><span class="line">sudo gnome-<span class="keyword">language</span>-selector</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>完成後到Language Support的鍵盤輸入法的地方設定ibus為預設輸入法系統。</p>
-<p>3-2. 若已經有Language Support。則只要先暫時清除ibus安裝新酷音後就可以了。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">purge</span> ibus</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> ibus-chewing</span></span><br></pre></td></tr></table></figure></p>
-<p>*在確認一次：語言支援 -&gt; 鍵盤輸入法系統 ibus<br>重新登入後就可以打中文了。<br>*如果是在 SublimeText3 上測試沒顯示是正常的，Sublimetext 目前並不支援中文輸入在Ubuntu上。</p>
-<ol>
-<li>/etc/apt/Source.list遭更換問題<br>有時候由於你碰到的電腦是屬於某些廠商客制化過的，<br>在apt-get這類的指令輸入上想安裝或作任何事情，都會跳出找不到’apt’之類的選項。<br>這時候就要上網找一個正確的Source.list做更換，或是利用舊的Source.list.old把新的更換掉。<br>*sources.list.old這個內容如果很少的話代表就不能用此方式替換</li>
-</ol>
-<p>個人是先把權限輸入密碼的部份拿掉後，另外作一個執行檔來作迅速的更換。<br>（主要是想將source.list換成可update後，如果廠商來看可以把source.list換回原本的，以防問題）<br>主要的過程如下（不包含拿掉權限密碼的教學部份）<br>先將sources.list（被廠商搞過的檔案）與sources.list.old(正常的檔案）<br>分別保存在一個地方，我是放在名為Backup的資料夾裡面。<br>然後兩個各自分類存到 正常的sources 與 廠商的sources<br>之後在替換上就可以使用以下的方法</p>
-<p>-將正常的sources.list取代原本的萬惡廠商sources.list</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">rm -rf <span class="regexp">/etc/</span>apt/sources.list</span><br><span class="line">cp <span class="regexp">/home/</span>自己的電腦名稱<span class="regexp">/Desktop/</span>SourceList<span class="regexp">/Backup/</span>正常的sources<span class="regexp">/sources.list /</span>etc/apt</span><br></pre></td></tr></table></figure>
-<p>*使用sources.list.old的人，記得將其改名為sources.list。</p>
-<p>-如果廠商來看電腦的話就把sources.list換回它的萬惡檔案<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo -s</span><br><span class="line">rm -rf <span class="regexp">/etc/</span>apt/sources.list</span><br><span class="line">cp <span class="regexp">/home/</span>自己的電腦名稱<span class="regexp">/Desktop/</span>SourceList<span class="regexp">/Backup/</span>廠商的sources<span class="regexp">/sources.list /</span>etc/apt</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>找到同個副檔名的檔案並複製到指定資料夾</li>
-</ol>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find</span> . -name <span class="string">"*.TIF"</span> -exec cp &#123;&#125; <span class="keyword">new</span> \;</span><br></pre></td></tr></table></figure>
-<p>簡單解釋一下<br>這個意思就是說<code>find</code>（找） <code>-name</code>（名字是） <code>&quot;*.TIF&quot;</code>(副檔名是TIF)的所有檔案，<br>並 <code>-exec</code> 執行 <code>cp {} new \;</code>後面的這串是 複製集合 {} 到 new 這個資料夾內。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
 
     </footer>
   </div>
@@ -1371,7 +1321,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/App/">App</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Libgdx/">Libgdx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenCV/">OpenCV</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenGL/">OpenGL</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/數學筆記/">數學筆記</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/直播/">直播</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/網頁相關/">網頁相關</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/App/">App</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Libgdx/">Libgdx</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenCV/">OpenCV</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenGL/">OpenGL</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/數學筆記/">數學筆記</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/直播/">直播</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/網頁相關/">網頁相關</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1380,7 +1330,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/17直播/" style="font-size: 10px;">17直播</a> <a href="/tags/A-Star/" style="font-size: 10px;">A Star</a> <a href="/tags/A/" style="font-size: 10px;">A*</a> <a href="/tags/App/" style="font-size: 10px;">App</a> <a href="/tags/Barycentric-coordinate/" style="font-size: 10px;">Barycentric coordinate</a> <a href="/tags/Clipping/" style="font-size: 10px;">Clipping</a> <a href="/tags/Clock/" style="font-size: 10px;">Clock</a> <a href="/tags/Development-Journal/" style="font-size: 10px;">Development Journal</a> <a href="/tags/EmguCV/" style="font-size: 10px;">EmguCV</a> <a href="/tags/Euler-Angle/" style="font-size: 10px;">Euler Angle</a> <a href="/tags/Exception/" style="font-size: 10px;">Exception</a> <a href="/tags/Fragment-Shader/" style="font-size: 10px;">Fragment Shader</a> <a href="/tags/GLEW/" style="font-size: 10px;">GLEW</a> <a href="/tags/GLFW/" style="font-size: 10px;">GLFW</a> <a href="/tags/GLM/" style="font-size: 10px;">GLM</a> <a href="/tags/Geometry-Shader/" style="font-size: 10px;">Geometry Shader</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hexo分類/" style="font-size: 10px;">Hexo分類</a> <a href="/tags/Hexo目錄/" style="font-size: 10px;">Hexo目錄</a> <a href="/tags/Intepolation/" style="font-size: 10px;">Intepolation</a> <a href="/tags/Interpolation/" style="font-size: 10px;">Interpolation</a> <a href="/tags/Libgdx/" style="font-size: 13.33px;">Libgdx</a> <a href="/tags/Line/" style="font-size: 10px;">Line</a> <a href="/tags/Metro-App/" style="font-size: 10px;">Metro App</a> <a href="/tags/Modern-UI/" style="font-size: 10px;">Modern UI</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/OpenGL/" style="font-size: 20px;">OpenGL</a> <a href="/tags/OpenGL-Extension/" style="font-size: 11.67px;">OpenGL Extension</a> <a href="/tags/OpenGL-Tutorial/" style="font-size: 16.67px;">OpenGL Tutorial</a> <a href="/tags/OpenGL-intro/" style="font-size: 11.67px;">OpenGL intro</a> <a href="/tags/OpenGL介紹/" style="font-size: 13.33px;">OpenGL介紹</a> <a href="/tags/OpenGL入門教學/" style="font-size: 18.33px;">OpenGL入門教學</a> <a href="/tags/OpenGL問題/" style="font-size: 11.67px;">OpenGL問題</a> <a href="/tags/OpenGL基礎/" style="font-size: 13.33px;">OpenGL基礎</a> <a href="/tags/OpenGL安裝/" style="font-size: 10px;">OpenGL安裝</a> <a href="/tags/OpenGL教學/" style="font-size: 16.67px;">OpenGL教學</a> <a href="/tags/QT/" style="font-size: 10px;">QT</a> <a href="/tags/Rasterization/" style="font-size: 10px;">Rasterization</a> <a href="/tags/Reflect/" style="font-size: 10px;">Reflect</a> <a href="/tags/Refract/" style="font-size: 10px;">Refract</a> <a href="/tags/Rotation/" style="font-size: 10px;">Rotation</a> <a href="/tags/Shader/" style="font-size: 11.67px;">Shader</a> <a href="/tags/Sidebar/" style="font-size: 10px;">Sidebar</a> <a href="/tags/SublimeText3/" style="font-size: 10px;">SublimeText3</a> <a href="/tags/Sublimetext/" style="font-size: 10px;">Sublimetext</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tessellation/" style="font-size: 10px;">Tessellation</a> <a href="/tags/Tessellation-Control-Shader/" style="font-size: 10px;">Tessellation Control Shader</a> <a href="/tags/Tessellation-Evaluation-Shader/" style="font-size: 10px;">Tessellation Evaluation Shader</a> <a href="/tags/Triangle/" style="font-size: 10px;">Triangle</a> <a href="/tags/Twitch/" style="font-size: 10px;">Twitch</a> <a href="/tags/Ubuntu/" style="font-size: 16.67px;">Ubuntu</a> <a href="/tags/Ubuntu-property/" style="font-size: 10px;">Ubuntu property</a> <a href="/tags/VAO/" style="font-size: 10px;">VAO</a> <a href="/tags/Viewport-Transform/" style="font-size: 10px;">Viewport Transform</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Win10/" style="font-size: 15px;">Win10</a> <a href="/tags/Win7/" style="font-size: 10px;">Win7</a> <a href="/tags/Windows-Store/" style="font-size: 10px;">Windows Store</a> <a href="/tags/Windows10/" style="font-size: 15px;">Windows10</a> <a href="/tags/Windows7/" style="font-size: 10px;">Windows7</a> <a href="/tags/bezier-curve/" style="font-size: 10px;">bezier curve</a> <a href="/tags/canera/" style="font-size: 10px;">canera</a> <a href="/tags/clip-space/" style="font-size: 10px;">clip space</a> <a href="/tags/cubic-bezier-curve/" style="font-size: 10px;">cubic bezier curve</a> <a href="/tags/glGetUniformLocation/" style="font-size: 10px;">glGetUniformLocation</a> <a href="/tags/glGetUniformLocation-bug/" style="font-size: 10px;">glGetUniformLocation bug</a> <a href="/tags/glGetUniformLocation-fails/" style="font-size: 10px;">glGetUniformLocation fails</a> <a href="/tags/glGetUniformLocation-問題/" style="font-size: 10px;">glGetUniformLocation 問題</a> <a href="/tags/glVertexAttribPointer/" style="font-size: 10px;">glVertexAttribPointer</a> <a href="/tags/glVertexAttribPointer-fails/" style="font-size: 10px;">glVertexAttribPointer fails</a> <a href="/tags/local-space/" style="font-size: 10px;">local space</a> <a href="/tags/lookat/" style="font-size: 10px;">lookat</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/ndc/" style="font-size: 10px;">ndc</a> <a href="/tags/ntoskrnl-exe/" style="font-size: 10px;">ntoskrnl.exe</a> <a href="/tags/orthographic/" style="font-size: 10px;">orthographic</a> <a href="/tags/path-finding/" style="font-size: 10px;">path finding</a> <a href="/tags/perspective/" style="font-size: 10px;">perspective</a> <a href="/tags/perspective-division/" style="font-size: 10px;">perspective division</a> <a href="/tags/projection/" style="font-size: 10px;">projection</a> <a href="/tags/scale/" style="font-size: 10px;">scale</a> <a href="/tags/tracker-store/" style="font-size: 10px;">tracker-store</a> <a href="/tags/translate/" style="font-size: 10px;">translate</a> <a href="/tags/vector/" style="font-size: 10px;">vector</a> <a href="/tags/view-space/" style="font-size: 10px;">view space</a> <a href="/tags/世界座標/" style="font-size: 10px;">世界座標</a> <a href="/tags/中文亂碼/" style="font-size: 10px;">中文亂碼</a> <a href="/tags/側欄/" style="font-size: 10px;">側欄</a> <a href="/tags/內插/" style="font-size: 11.67px;">內插</a> <a href="/tags/內積/" style="font-size: 10px;">內積</a> <a href="/tags/升級/" style="font-size: 10px;">升級</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/向量/" style="font-size: 10px;">向量</a> <a href="/tags/外積/" style="font-size: 10px;">外積</a> <a href="/tags/座標系統/" style="font-size: 10px;">座標系統</a> <a href="/tags/座標轉換/" style="font-size: 10px;">座標轉換</a> <a href="/tags/折射/" style="font-size: 10px;">折射</a> <a href="/tags/排列失效/" style="font-size: 10px;">排列失效</a> <a href="/tags/攝影機/" style="font-size: 10px;">攝影機</a> <a href="/tags/桌面圖示/" style="font-size: 10px;">桌面圖示</a> <a href="/tags/歐拉角/" style="font-size: 10px;">歐拉角</a> <a href="/tags/正交投影/" style="font-size: 10px;">正交投影</a> <a href="/tags/物體座標/" style="font-size: 10px;">物體座標</a> <a href="/tags/直線/" style="font-size: 10px;">直線</a> <a href="/tags/矩陣/" style="font-size: 10px;">矩陣</a> <a href="/tags/線性代數/" style="font-size: 11.67px;">線性代數</a> <a href="/tags/藍寶書/" style="font-size: 10px;">藍寶書</a> <a href="/tags/質心座標/" style="font-size: 10px;">質心座標</a> <a href="/tags/透視投影/" style="font-size: 10px;">透視投影</a> <a href="/tags/透視除法/" style="font-size: 10px;">透視除法</a> <a href="/tags/重心座標/" style="font-size: 10px;">重心座標</a> <a href="/tags/重新整理/" style="font-size: 10px;">重新整理</a> <a href="/tags/開發日誌/" style="font-size: 10px;">開發日誌</a> <a href="/tags/音量/" style="font-size: 10px;">音量</a>
+      <a href="/tags/17直播/" style="font-size: 10px;">17直播</a> <a href="/tags/A-Star/" style="font-size: 10px;">A Star</a> <a href="/tags/A/" style="font-size: 10px;">A*</a> <a href="/tags/App/" style="font-size: 10px;">App</a> <a href="/tags/Barycentric-coordinate/" style="font-size: 10px;">Barycentric coordinate</a> <a href="/tags/Clipping/" style="font-size: 10px;">Clipping</a> <a href="/tags/Clock/" style="font-size: 10px;">Clock</a> <a href="/tags/Development-Journal/" style="font-size: 10px;">Development Journal</a> <a href="/tags/EmguCV/" style="font-size: 10px;">EmguCV</a> <a href="/tags/Euler-Angle/" style="font-size: 10px;">Euler Angle</a> <a href="/tags/Exception/" style="font-size: 10px;">Exception</a> <a href="/tags/Fragment-Shader/" style="font-size: 10px;">Fragment Shader</a> <a href="/tags/GLEW/" style="font-size: 10px;">GLEW</a> <a href="/tags/GLFW/" style="font-size: 10px;">GLFW</a> <a href="/tags/GLM/" style="font-size: 10px;">GLM</a> <a href="/tags/Geometry-Shader/" style="font-size: 10px;">Geometry Shader</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hexo分類/" style="font-size: 10px;">Hexo分類</a> <a href="/tags/Hexo目錄/" style="font-size: 10px;">Hexo目錄</a> <a href="/tags/Intepolation/" style="font-size: 10px;">Intepolation</a> <a href="/tags/Interpolation/" style="font-size: 10px;">Interpolation</a> <a href="/tags/Libgdx/" style="font-size: 13.33px;">Libgdx</a> <a href="/tags/Line/" style="font-size: 10px;">Line</a> <a href="/tags/Metro-App/" style="font-size: 10px;">Metro App</a> <a href="/tags/Modern-UI/" style="font-size: 10px;">Modern UI</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/OpenGL/" style="font-size: 20px;">OpenGL</a> <a href="/tags/OpenGL-Extension/" style="font-size: 11.67px;">OpenGL Extension</a> <a href="/tags/OpenGL-Tutorial/" style="font-size: 16.67px;">OpenGL Tutorial</a> <a href="/tags/OpenGL-intro/" style="font-size: 11.67px;">OpenGL intro</a> <a href="/tags/OpenGL介紹/" style="font-size: 13.33px;">OpenGL介紹</a> <a href="/tags/OpenGL入門教學/" style="font-size: 18.33px;">OpenGL入門教學</a> <a href="/tags/OpenGL問題/" style="font-size: 11.67px;">OpenGL問題</a> <a href="/tags/OpenGL基礎/" style="font-size: 13.33px;">OpenGL基礎</a> <a href="/tags/OpenGL安裝/" style="font-size: 10px;">OpenGL安裝</a> <a href="/tags/OpenGL教學/" style="font-size: 16.67px;">OpenGL教學</a> <a href="/tags/QT/" style="font-size: 10px;">QT</a> <a href="/tags/Rasterization/" style="font-size: 10px;">Rasterization</a> <a href="/tags/Reflect/" style="font-size: 10px;">Reflect</a> <a href="/tags/Refract/" style="font-size: 10px;">Refract</a> <a href="/tags/Rotation/" style="font-size: 10px;">Rotation</a> <a href="/tags/Shader/" style="font-size: 11.67px;">Shader</a> <a href="/tags/Sidebar/" style="font-size: 10px;">Sidebar</a> <a href="/tags/SublimeText3/" style="font-size: 10px;">SublimeText3</a> <a href="/tags/Sublimetext/" style="font-size: 10px;">Sublimetext</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tessellation/" style="font-size: 10px;">Tessellation</a> <a href="/tags/Tessellation-Control-Shader/" style="font-size: 10px;">Tessellation Control Shader</a> <a href="/tags/Tessellation-Evaluation-Shader/" style="font-size: 10px;">Tessellation Evaluation Shader</a> <a href="/tags/Tile/" style="font-size: 10px;">Tile</a> <a href="/tags/Triangle/" style="font-size: 10px;">Triangle</a> <a href="/tags/Twitch/" style="font-size: 10px;">Twitch</a> <a href="/tags/Ubuntu/" style="font-size: 16.67px;">Ubuntu</a> <a href="/tags/Ubuntu-property/" style="font-size: 10px;">Ubuntu property</a> <a href="/tags/VAO/" style="font-size: 10px;">VAO</a> <a href="/tags/Viewport-Transform/" style="font-size: 10px;">Viewport Transform</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Win10/" style="font-size: 15px;">Win10</a> <a href="/tags/Win7/" style="font-size: 10px;">Win7</a> <a href="/tags/Windows-Store/" style="font-size: 10px;">Windows Store</a> <a href="/tags/Windows10/" style="font-size: 15px;">Windows10</a> <a href="/tags/Windows7/" style="font-size: 10px;">Windows7</a> <a href="/tags/bezier-curve/" style="font-size: 10px;">bezier curve</a> <a href="/tags/canera/" style="font-size: 10px;">canera</a> <a href="/tags/clip-space/" style="font-size: 10px;">clip space</a> <a href="/tags/cubic-bezier-curve/" style="font-size: 10px;">cubic bezier curve</a> <a href="/tags/glGetUniformLocation/" style="font-size: 10px;">glGetUniformLocation</a> <a href="/tags/glGetUniformLocation-bug/" style="font-size: 10px;">glGetUniformLocation bug</a> <a href="/tags/glGetUniformLocation-fails/" style="font-size: 10px;">glGetUniformLocation fails</a> <a href="/tags/glGetUniformLocation-問題/" style="font-size: 10px;">glGetUniformLocation 問題</a> <a href="/tags/glVertexAttribPointer/" style="font-size: 10px;">glVertexAttribPointer</a> <a href="/tags/glVertexAttribPointer-fails/" style="font-size: 10px;">glVertexAttribPointer fails</a> <a href="/tags/local-space/" style="font-size: 10px;">local space</a> <a href="/tags/lookat/" style="font-size: 10px;">lookat</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/ndc/" style="font-size: 10px;">ndc</a> <a href="/tags/ntoskrnl-exe/" style="font-size: 10px;">ntoskrnl.exe</a> <a href="/tags/orthographic/" style="font-size: 10px;">orthographic</a> <a href="/tags/path-finding/" style="font-size: 10px;">path finding</a> <a href="/tags/perspective/" style="font-size: 10px;">perspective</a> <a href="/tags/perspective-division/" style="font-size: 10px;">perspective division</a> <a href="/tags/projection/" style="font-size: 10px;">projection</a> <a href="/tags/scale/" style="font-size: 10px;">scale</a> <a href="/tags/tracker-store/" style="font-size: 10px;">tracker-store</a> <a href="/tags/translate/" style="font-size: 10px;">translate</a> <a href="/tags/vector/" style="font-size: 10px;">vector</a> <a href="/tags/view-space/" style="font-size: 10px;">view space</a> <a href="/tags/世界座標/" style="font-size: 10px;">世界座標</a> <a href="/tags/中文亂碼/" style="font-size: 10px;">中文亂碼</a> <a href="/tags/側欄/" style="font-size: 10px;">側欄</a> <a href="/tags/內插/" style="font-size: 11.67px;">內插</a> <a href="/tags/內積/" style="font-size: 10px;">內積</a> <a href="/tags/升級/" style="font-size: 10px;">升級</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/向量/" style="font-size: 10px;">向量</a> <a href="/tags/外積/" style="font-size: 10px;">外積</a> <a href="/tags/座標系統/" style="font-size: 10px;">座標系統</a> <a href="/tags/座標轉換/" style="font-size: 10px;">座標轉換</a> <a href="/tags/折射/" style="font-size: 10px;">折射</a> <a href="/tags/排列失效/" style="font-size: 10px;">排列失效</a> <a href="/tags/攝影機/" style="font-size: 10px;">攝影機</a> <a href="/tags/桌面圖示/" style="font-size: 10px;">桌面圖示</a> <a href="/tags/歐拉角/" style="font-size: 10px;">歐拉角</a> <a href="/tags/正交投影/" style="font-size: 10px;">正交投影</a> <a href="/tags/物體座標/" style="font-size: 10px;">物體座標</a> <a href="/tags/直線/" style="font-size: 10px;">直線</a> <a href="/tags/矩陣/" style="font-size: 10px;">矩陣</a> <a href="/tags/線性代數/" style="font-size: 11.67px;">線性代數</a> <a href="/tags/藍寶書/" style="font-size: 10px;">藍寶書</a> <a href="/tags/質心座標/" style="font-size: 10px;">質心座標</a> <a href="/tags/透視投影/" style="font-size: 10px;">透視投影</a> <a href="/tags/透視除法/" style="font-size: 10px;">透視除法</a> <a href="/tags/重心座標/" style="font-size: 10px;">重心座標</a> <a href="/tags/重新整理/" style="font-size: 10px;">重新整理</a> <a href="/tags/開發日誌/" style="font-size: 10px;">開發日誌</a> <a href="/tags/音量/" style="font-size: 10px;">音量</a>
     </div>
   </div>
 
@@ -1389,7 +1339,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -1399,6 +1349,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/07/18/TileRetriever/">TileRetriever圖格檢索器</a>
+          </li>
         
           <li>
             <a href="/2017/07/14/直播平台插件-for-Viewers/">直播平台插件_for_Viewers</a>
@@ -1416,12 +1370,21 @@ ga('send', 'pageview');
             <a href="/2017/04/30/Tabber-Clock-App-一個可以分類的鬧鐘/">TabberClock 分頁鬧鐘</a>
           </li>
         
-          <li>
-            <a href="/2016/12/14/OpenGL-Development-Journal/">OpenGL 遊戲引擎開發日誌</a>
-          </li>
-        
       </ul>
     </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+      <div class="widget">
+        <ul class="archive-list">
+          
+            <li class='link'><a href='/project/TileRetriever.html'>Tool - Tile Retriever</a></li>
+          
+        </ul>
+      </div>
   </div>
 
   
