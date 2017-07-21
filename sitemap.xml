@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tokenyet.github.io/about/index.html</loc>
+    <lastmod>2017-07-21T11:18:00.421Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://tokenyet.github.io/2017/07/14/%E7%9B%B4%E6%92%AD%E5%B9%B3%E5%8F%B0%E6%8F%92%E4%BB%B6-for-Viewers/</loc>
     <lastmod>2017-07-20T16:21:54.757Z</lastmod>
   </url>
@@ -14,6 +19,11 @@
   <url>
     <loc>http://tokenyet.github.io/project/TileRetriever.html</loc>
     <lastmod>2017-07-18T09:38:23.893Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/</loc>
+    <lastmod>2017-07-18T09:37:01.164Z</lastmod>
   </url>
   
   <url>
@@ -62,11 +72,6 @@
   </url>
   
   <url>
-    <loc>http://tokenyet.github.io/about/index.html</loc>
-    <lastmod>2016-09-05T16:58:39.057Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/</loc>
     <lastmod>2016-09-05T16:33:41.361Z</lastmod>
   </url>
@@ -92,11 +97,6 @@
   </url>
   
   <url>
-    <loc>http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/</loc>
-    <lastmod>2016-08-25T08:26:55.522Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/</loc>
     <lastmod>2016-08-25T08:26:55.101Z</lastmod>
   </url>
@@ -104,11 +104,6 @@
   <url>
     <loc>http://tokenyet.github.io/2015/08/19/%E5%BA%A7%E6%A8%99%E8%BD%89%E6%8F%9B%E7%AD%86%E8%A8%98/</loc>
     <lastmod>2016-08-11T14:45:01.340Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://tokenyet.github.io/about/css/style.css</loc>
-    <lastmod>2016-07-04T04:39:20.580Z</lastmod>
   </url>
   
   <url>
@@ -179,26 +174,6 @@
   <url>
     <loc>http://tokenyet.github.io/categories/index.html</loc>
     <lastmod>2015-07-09T12:50:37.418Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://tokenyet.github.io/about/js/script.js</loc>
-    <lastmod>2015-06-29T22:01:04.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://tokenyet.github.io/about/css/simpleFontawesome.css</loc>
-    <lastmod>2015-06-29T22:01:04.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://tokenyet.github.io/about/simple-works-gallery-master/README.html</loc>
-    <lastmod>2015-06-29T22:01:04.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://tokenyet.github.io/about/simple-works-gallery-master/index.html</loc>
-    <lastmod>2015-06-29T22:01:04.000Z</lastmod>
   </url>
   
 </urlset>
