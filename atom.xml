@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Dowenの世界]]></title>
+  <title><![CDATA[Dowen's World]]></title>
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://tokenyet.github.io/"/>
+  <link href="https://tokenyet.github.io/"/>
   <updated>2017-07-18T14:23:00.622Z</updated>
-  <id>http://tokenyet.github.io/</id>
+  <id>https://tokenyet.github.io/</id>
   
   <author>
     <name><![CDATA[Dowen]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[TileRetriever圖格檢索器]]></title>
-    <link href="http://tokenyet.github.io/2017/07/18/TileRetriever/"/>
-    <id>http://tokenyet.github.io/2017/07/18/TileRetriever/</id>
+    <link href="https://tokenyet.github.io/2017/07/18/TileRetriever/"/>
+    <id>https://tokenyet.github.io/2017/07/18/TileRetriever/</id>
     <published>2017-07-18T09:10:01.000Z</published>
     <updated>2017-07-18T14:23:00.622Z</updated>
     <content type="html"><![CDATA[<img src="/images/TileRetriever/GameSnapshot.png" width="300">
@@ -34,16 +34,16 @@
     
     </summary>
     
-      <category term="Tile" scheme="http://tokenyet.github.io/tags/Tile/"/>
+      <category term="Tile" scheme="https://tokenyet.github.io/tags/Tile/"/>
     
-      <category term="Tool" scheme="http://tokenyet.github.io/categories/Tool/"/>
+      <category term="Tool" scheme="https://tokenyet.github.io/categories/Tool/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[直播平台插件_for_Viewers]]></title>
-    <link href="http://tokenyet.github.io/2017/07/14/%E7%9B%B4%E6%92%AD%E5%B9%B3%E5%8F%B0%E6%8F%92%E4%BB%B6-for-Viewers/"/>
-    <id>http://tokenyet.github.io/2017/07/14/直播平台插件-for-Viewers/</id>
+    <link href="https://tokenyet.github.io/2017/07/14/%E7%9B%B4%E6%92%AD%E5%B9%B3%E5%8F%B0%E6%8F%92%E4%BB%B6-for-Viewers/"/>
+    <id>https://tokenyet.github.io/2017/07/14/直播平台插件-for-Viewers/</id>
     <published>2017-07-13T19:12:32.000Z</published>
     <updated>2017-07-20T16:21:54.757Z</updated>
     <content type="html"><![CDATA[
@@ -90,18 +90,18 @@
     
     </summary>
     
-      <category term="17直播" scheme="http://tokenyet.github.io/tags/17%E7%9B%B4%E6%92%AD/"/>
+      <category term="17直播" scheme="https://tokenyet.github.io/tags/17%E7%9B%B4%E6%92%AD/"/>
     
-      <category term="Twitch" scheme="http://tokenyet.github.io/tags/Twitch/"/>
+      <category term="Twitch" scheme="https://tokenyet.github.io/tags/Twitch/"/>
     
-      <category term="直播" scheme="http://tokenyet.github.io/categories/%E7%9B%B4%E6%92%AD/"/>
+      <category term="直播" scheme="https://tokenyet.github.io/categories/%E7%9B%B4%E6%92%AD/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[A* Path finding With Libgdx]]></title>
-    <link href="http://tokenyet.github.io/2017/07/13/A-Path-finding-With-Libgdx/"/>
-    <id>http://tokenyet.github.io/2017/07/13/A-Path-finding-With-Libgdx/</id>
+    <link href="https://tokenyet.github.io/2017/07/13/A-Path-finding-With-Libgdx/"/>
+    <id>https://tokenyet.github.io/2017/07/13/A-Path-finding-With-Libgdx/</id>
     <published>2017-07-12T17:05:51.000Z</published>
     <updated>2017-07-12T16:50:39.732Z</updated>
     <content type="html"><![CDATA[
@@ -147,22 +147,22 @@
     
     </summary>
     
-      <category term="A Star" scheme="http://tokenyet.github.io/tags/A-Star/"/>
+      <category term="A Star" scheme="https://tokenyet.github.io/tags/A-Star/"/>
     
-      <category term="A*" scheme="http://tokenyet.github.io/tags/A/"/>
+      <category term="A*" scheme="https://tokenyet.github.io/tags/A/"/>
     
-      <category term="Libgdx" scheme="http://tokenyet.github.io/tags/Libgdx/"/>
+      <category term="Libgdx" scheme="https://tokenyet.github.io/tags/Libgdx/"/>
     
-      <category term="path finding" scheme="http://tokenyet.github.io/tags/path-finding/"/>
+      <category term="path finding" scheme="https://tokenyet.github.io/tags/path-finding/"/>
     
-      <category term="Libgdx" scheme="http://tokenyet.github.io/categories/Libgdx/"/>
+      <category term="Libgdx" scheme="https://tokenyet.github.io/categories/Libgdx/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Libgdx 遊戲淺研]]></title>
-    <link href="http://tokenyet.github.io/2017/06/26/Libgdx-%E9%81%8A%E6%88%B2%E6%B7%BA%E7%A0%94/"/>
-    <id>http://tokenyet.github.io/2017/06/26/Libgdx-遊戲淺研/</id>
+    <link href="https://tokenyet.github.io/2017/06/26/Libgdx-%E9%81%8A%E6%88%B2%E6%B7%BA%E7%A0%94/"/>
+    <id>https://tokenyet.github.io/2017/06/26/Libgdx-遊戲淺研/</id>
     <published>2017-06-26T09:03:28.000Z</published>
     <updated>2017-06-26T09:05:15.240Z</updated>
     <content type="html"><![CDATA[
@@ -281,16 +281,16 @@
     
     </summary>
     
-      <category term="Libgdx" scheme="http://tokenyet.github.io/tags/Libgdx/"/>
+      <category term="Libgdx" scheme="https://tokenyet.github.io/tags/Libgdx/"/>
     
-      <category term="Libgdx" scheme="http://tokenyet.github.io/categories/Libgdx/"/>
+      <category term="Libgdx" scheme="https://tokenyet.github.io/categories/Libgdx/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[TabberClock 分頁鬧鐘]]></title>
-    <link href="http://tokenyet.github.io/2017/04/30/Tabber-Clock-App-%E4%B8%80%E5%80%8B%E5%8F%AF%E4%BB%A5%E5%88%86%E9%A1%9E%E7%9A%84%E9%AC%A7%E9%90%98/"/>
-    <id>http://tokenyet.github.io/2017/04/30/Tabber-Clock-App-一個可以分類的鬧鐘/</id>
+    <link href="https://tokenyet.github.io/2017/04/30/Tabber-Clock-App-%E4%B8%80%E5%80%8B%E5%8F%AF%E4%BB%A5%E5%88%86%E9%A1%9E%E7%9A%84%E9%AC%A7%E9%90%98/"/>
+    <id>https://tokenyet.github.io/2017/04/30/Tabber-Clock-App-一個可以分類的鬧鐘/</id>
     <published>2017-04-30T12:36:07.000Z</published>
     <updated>2017-05-01T10:04:35.527Z</updated>
     <content type="html"><![CDATA[
@@ -316,20 +316,20 @@
     
     </summary>
     
-      <category term="App" scheme="http://tokenyet.github.io/tags/App/"/>
+      <category term="App" scheme="https://tokenyet.github.io/tags/App/"/>
     
-      <category term="Clock" scheme="http://tokenyet.github.io/tags/Clock/"/>
+      <category term="Clock" scheme="https://tokenyet.github.io/tags/Clock/"/>
     
-      <category term="Libgdx" scheme="http://tokenyet.github.io/tags/Libgdx/"/>
+      <category term="Libgdx" scheme="https://tokenyet.github.io/tags/Libgdx/"/>
     
-      <category term="App" scheme="http://tokenyet.github.io/categories/App/"/>
+      <category term="App" scheme="https://tokenyet.github.io/categories/App/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[OpenGL 遊戲引擎開發日誌]]></title>
-    <link href="http://tokenyet.github.io/2016/12/14/OpenGL-Development-Journal/"/>
-    <id>http://tokenyet.github.io/2016/12/14/OpenGL-Development-Journal/</id>
+    <link href="https://tokenyet.github.io/2016/12/14/OpenGL-Development-Journal/"/>
+    <id>https://tokenyet.github.io/2016/12/14/OpenGL-Development-Journal/</id>
     <published>2016-12-14T14:50:21.000Z</published>
     <updated>2016-12-14T14:43:52.077Z</updated>
     <content type="html"><![CDATA[<h2 id="本篇說明">本篇說明</h2><p>開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。</p>
@@ -669,20 +669,20 @@ Origin_{bullet}.z \\
     
     </summary>
     
-      <category term="Development Journal" scheme="http://tokenyet.github.io/tags/Development-Journal/"/>
+      <category term="Development Journal" scheme="https://tokenyet.github.io/tags/Development-Journal/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/tags/OpenGL/"/>
     
-      <category term="開發日誌" scheme="http://tokenyet.github.io/tags/%E9%96%8B%E7%99%BC%E6%97%A5%E8%AA%8C/"/>
+      <category term="開發日誌" scheme="https://tokenyet.github.io/tags/%E9%96%8B%E7%99%BC%E6%97%A5%E8%AA%8C/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/categories/OpenGL/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[OpenGL之沒有蠢問題 2 - BindAttribute]]></title>
-    <link href="http://tokenyet.github.io/2016/09/24/OpenGL-Questionl-2/"/>
-    <id>http://tokenyet.github.io/2016/09/24/OpenGL-Questionl-2/</id>
+    <link href="https://tokenyet.github.io/2016/09/24/OpenGL-Questionl-2/"/>
+    <id>https://tokenyet.github.io/2016/09/24/OpenGL-Questionl-2/</id>
     <published>2016-09-24T07:26:28.000Z</published>
     <updated>2016-09-24T07:34:20.287Z</updated>
     <content type="html"><![CDATA[<h2 id="閒談">閒談</h2><p>最近Dowen正在將模組動畫引入到遊戲引擎中，期間遇到的一個超級隱藏Bug就是<code>glBindAttribLocation</code>。引入模組動畫最重要的就是傳入該頂點會使用到的<strong>骨架索引</strong>與<strong>骨架權重</strong>，而Dowen這次綁定的位置，離原本定義的Position、Normal、TexCoord稍微遠一點，大概是5、6的位置，所以才發現到原本綁定的方式是錯的。總之，要說的是Shader發生錯誤真的是一丁點資訊都沒有啊，還認為裝了Nsight可以Debug Shader，除了不太會使用外，只指出了Dowen在圖片載入的地方有些誤用而已。</p>
@@ -703,20 +703,20 @@ Origin_{bullet}.z \\
     
     </summary>
     
-      <category term="OpenGL問題" scheme="http://tokenyet.github.io/tags/OpenGL%E5%95%8F%E9%A1%8C/"/>
+      <category term="OpenGL問題" scheme="https://tokenyet.github.io/tags/OpenGL%E5%95%8F%E9%A1%8C/"/>
     
-      <category term="glVertexAttribPointer" scheme="http://tokenyet.github.io/tags/glVertexAttribPointer/"/>
+      <category term="glVertexAttribPointer" scheme="https://tokenyet.github.io/tags/glVertexAttribPointer/"/>
     
-      <category term="glVertexAttribPointer fails" scheme="http://tokenyet.github.io/tags/glVertexAttribPointer-fails/"/>
+      <category term="glVertexAttribPointer fails" scheme="https://tokenyet.github.io/tags/glVertexAttribPointer-fails/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/categories/OpenGL/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[重心座標概念理解與實作]]></title>
-    <link href="http://tokenyet.github.io/2016/09/12/%E9%87%8D%E5%BF%83%E5%BA%A7%E6%A8%99%E7%B3%BB%E7%B5%B1/"/>
-    <id>http://tokenyet.github.io/2016/09/12/重心座標系統/</id>
+    <link href="https://tokenyet.github.io/2016/09/12/%E9%87%8D%E5%BF%83%E5%BA%A7%E6%A8%99%E7%B3%BB%E7%B5%B1/"/>
+    <id>https://tokenyet.github.io/2016/09/12/重心座標系統/</id>
     <published>2016-09-12T09:50:37.000Z</published>
     <updated>2016-09-12T15:02:53.030Z</updated>
     <content type="html"><![CDATA[<h2 id="關於本篇">關於本篇</h2><p>重心座標(Barycentric coordinate)是Dowen應用於地形碰撞偵測上的數學，此外在OpenGL的Tesselation中也會用到，如此重要的座標概念，幾乎沒有中文文獻，或許是因為容易理解，不過對Dowen來說還是花了不少時間。</p>
@@ -767,20 +767,20 @@ P &amp;= \lambda_A A + \lambda_B B + \lambda_C C
     
     </summary>
     
-      <category term="Barycentric coordinate" scheme="http://tokenyet.github.io/tags/Barycentric-coordinate/"/>
+      <category term="Barycentric coordinate" scheme="https://tokenyet.github.io/tags/Barycentric-coordinate/"/>
     
-      <category term="質心座標" scheme="http://tokenyet.github.io/tags/%E8%B3%AA%E5%BF%83%E5%BA%A7%E6%A8%99/"/>
+      <category term="質心座標" scheme="https://tokenyet.github.io/tags/%E8%B3%AA%E5%BF%83%E5%BA%A7%E6%A8%99/"/>
     
-      <category term="重心座標" scheme="http://tokenyet.github.io/tags/%E9%87%8D%E5%BF%83%E5%BA%A7%E6%A8%99/"/>
+      <category term="重心座標" scheme="https://tokenyet.github.io/tags/%E9%87%8D%E5%BF%83%E5%BA%A7%E6%A8%99/"/>
     
-      <category term="數學筆記" scheme="http://tokenyet.github.io/categories/%E6%95%B8%E5%AD%B8%E7%AD%86%E8%A8%98/"/>
+      <category term="數學筆記" scheme="https://tokenyet.github.io/categories/%E6%95%B8%E5%AD%B8%E7%AD%86%E8%A8%98/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Sublimetext 3 中文側欄與黑側欄]]></title>
-    <link href="http://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/"/>
-    <id>http://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/</id>
+    <link href="https://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/"/>
+    <id>https://tokenyet.github.io/2016/09/12/Sublimetext3-Chinese/</id>
     <published>2016-09-11T18:30:37.000Z</published>
     <updated>2016-09-11T18:51:34.192Z</updated>
     <content type="html"><![CDATA[<h2 id="文前說明">文前說明</h2><p>經過數年，Sublimetext3官方依然沒有對不同解析度中文字體的解決方案，網路上指流傳著一個一定要屈服才可顯示中文的方法<code>&quot;dpi_scale&quot; : 1.0</code>，逼著大螢幕的中文程式設計師使用小到極致的字體來用這套完美的軟體。而如今終於有專家提出藥方，接下來就跟著本篇慢慢實裝到自己的環境吧！</p>
@@ -815,22 +815,22 @@ P &amp;= \lambda_A A + \lambda_B B + \lambda_C C
     
     </summary>
     
-      <category term="Sidebar" scheme="http://tokenyet.github.io/tags/Sidebar/"/>
+      <category term="Sidebar" scheme="https://tokenyet.github.io/tags/Sidebar/"/>
     
-      <category term="Sublimetext" scheme="http://tokenyet.github.io/tags/Sublimetext/"/>
+      <category term="Sublimetext" scheme="https://tokenyet.github.io/tags/Sublimetext/"/>
     
-      <category term="中文亂碼" scheme="http://tokenyet.github.io/tags/%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC/"/>
+      <category term="中文亂碼" scheme="https://tokenyet.github.io/tags/%E4%B8%AD%E6%96%87%E4%BA%82%E7%A2%BC/"/>
     
-      <category term="側欄" scheme="http://tokenyet.github.io/tags/%E5%81%B4%E6%AC%84/"/>
+      <category term="側欄" scheme="https://tokenyet.github.io/tags/%E5%81%B4%E6%AC%84/"/>
     
-      <category term="Other" scheme="http://tokenyet.github.io/categories/Other/"/>
+      <category term="Other" scheme="https://tokenyet.github.io/categories/Other/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[OpenGL之沒有蠢問題 1 - Uniform]]></title>
-    <link href="http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/"/>
-    <id>http://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/</id>
+    <link href="https://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/"/>
+    <id>https://tokenyet.github.io/2016/09/04/OpenGL-Questionl-1/</id>
     <published>2016-09-04T15:10:18.000Z</published>
     <updated>2016-09-05T16:33:41.361Z</updated>
     <content type="html"><![CDATA[<h2 id="閒談">閒談</h2><p>最近在正藉由開發遊戲引擎將以往學過的各種技巧逐步整合起來，像是<strong>Phong</strong>，<strong>Normal Mapping</strong>，<strong>gBuffer</strong>，<strong>Assimp</strong>，<strong>Instancing</strong>，<strong>Parallax Mapping</strong>…等。然後參閱網路上神人的概念，左吸收右吐納總算是有點雛形，但其中遇到最Impress的問題是<code>glGetUniformLocation</code>，就由它來做蠢問題系列的第一集主角吧！</p>
@@ -861,24 +861,24 @@ P &amp;= \lambda_A A + \lambda_B B + \lambda_C C
     
     </summary>
     
-      <category term="OpenGL問題" scheme="http://tokenyet.github.io/tags/OpenGL%E5%95%8F%E9%A1%8C/"/>
+      <category term="OpenGL問題" scheme="https://tokenyet.github.io/tags/OpenGL%E5%95%8F%E9%A1%8C/"/>
     
-      <category term="glGetUniformLocation" scheme="http://tokenyet.github.io/tags/glGetUniformLocation/"/>
+      <category term="glGetUniformLocation" scheme="https://tokenyet.github.io/tags/glGetUniformLocation/"/>
     
-      <category term="glGetUniformLocation bug" scheme="http://tokenyet.github.io/tags/glGetUniformLocation-bug/"/>
+      <category term="glGetUniformLocation bug" scheme="https://tokenyet.github.io/tags/glGetUniformLocation-bug/"/>
     
-      <category term="glGetUniformLocation fails" scheme="http://tokenyet.github.io/tags/glGetUniformLocation-fails/"/>
+      <category term="glGetUniformLocation fails" scheme="https://tokenyet.github.io/tags/glGetUniformLocation-fails/"/>
     
-      <category term="glGetUniformLocation 問題" scheme="http://tokenyet.github.io/tags/glGetUniformLocation-%E5%95%8F%E9%A1%8C/"/>
+      <category term="glGetUniformLocation 問題" scheme="https://tokenyet.github.io/tags/glGetUniformLocation-%E5%95%8F%E9%A1%8C/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/categories/OpenGL/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[OpenGL 藍寶入門教學 5: 資料型態]]></title>
-    <link href="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/"/>
-    <id>http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/</id>
+    <link href="https://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/"/>
+    <id>https://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-5-Data/</id>
     <published>2016-08-25T08:30:29.000Z</published>
     <updated>2016-08-25T14:04:52.298Z</updated>
     <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>本篇將會大略的提及OpenGL中Buffer,Unifrom還有一點點Shader Storage Block的部分，而關於Atomic或同步問題，就先略過。如果對Shader中GPU與CPU不熟，可能會對本篇閱讀有礙。畢竟藍寶書竟然將Shader的部分放在後頭，Shader連結部分都還不熟，就先切入細節Buffer,Uniform的部分。</p>
@@ -939,26 +939,26 @@ P &amp;= \lambda_A A + \lambda_B B + \lambda_C C
     
     </summary>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/tags/OpenGL/"/>
     
-      <category term="OpenGL Extension" scheme="http://tokenyet.github.io/tags/OpenGL-Extension/"/>
+      <category term="OpenGL Extension" scheme="https://tokenyet.github.io/tags/OpenGL-Extension/"/>
     
-      <category term="OpenGL Tutorial" scheme="http://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
+      <category term="OpenGL Tutorial" scheme="https://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
     
-      <category term="OpenGL intro" scheme="http://tokenyet.github.io/tags/OpenGL-intro/"/>
+      <category term="OpenGL intro" scheme="https://tokenyet.github.io/tags/OpenGL-intro/"/>
     
-      <category term="OpenGL入門教學" scheme="http://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
+      <category term="OpenGL入門教學" scheme="https://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
     
-      <category term="OpenGL教學" scheme="http://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
+      <category term="OpenGL教學" scheme="https://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/categories/OpenGL/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[OpenGL 關於藍寶入門教學]]></title>
-    <link href="http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/"/>
-    <id>http://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/</id>
+    <link href="https://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/"/>
+    <id>https://tokenyet.github.io/2016/08/25/OpenGL-Beginner-Tutorial-EX-Read/</id>
     <published>2016-08-25T07:30:29.000Z</published>
     <updated>2016-09-24T07:34:22.655Z</updated>
     <content type="html"><![CDATA[<h2 id="關於本篇說明">關於本篇說明</h2><p>藍寶書本來認為是一本<strong>適合入門</strong>者的書，但是漸漸的發現，完全跟入門無緣。因此標題從「OpenGL 入門教學」更改為「OpenGL 藍寶入門教學」，跟著藍寶書走馬看花，真的<strong>想用藍寶書學習者可以跟著教學走</strong>。打個遊戲的比方來說，如果說學習OpenGL有分為簡單、普通、困難、極難來講，Dowen認為<strong>本書屬於困難到極難</strong>的等級，而自己是普通的一周目玩家，要通關這本書，可能要技巧性的完成，比方說將一些艱深，身為初學者根本用不到且體會不到的部分先略過，僅提及而不深究。</p>
@@ -968,18 +968,18 @@ P &amp;= \lambda_A A + \lambda_B B + \lambda_C C
     <![CDATA[<h2 id="關於本篇說明">關於本篇說明</h2><p>藍寶書本來認為是一本<strong>適合入門</strong>者的書，但是漸漸的發現，完全跟入門無緣。因此標題從「OpenGL 入門教學」更改為「OpenGL 藍寶入門教學」，跟著藍寶書走馬看花，真的<strong>想用]]>
     </summary>
     
-      <category term="OpenGL入門教學" scheme="http://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
+      <category term="OpenGL入門教學" scheme="https://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
     
-      <category term="藍寶書" scheme="http://tokenyet.github.io/tags/%E8%97%8D%E5%AF%B6%E6%9B%B8/"/>
+      <category term="藍寶書" scheme="https://tokenyet.github.io/tags/%E8%97%8D%E5%AF%B6%E6%9B%B8/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/categories/OpenGL/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[OpenGL 藍寶入門教學 4: 數學]]></title>
-    <link href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/"/>
-    <id>http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/</id>
+    <link href="https://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/"/>
+    <id>https://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/</id>
     <published>2016-08-11T08:44:20.000Z</published>
     <updated>2016-09-05T16:31:16.231Z</updated>
     <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>這一章節主要是介紹一些數學的基礎，如果發現哪個部分不熟的話，最好能親自磨練一下，因為以後常常需要的時候，如果不懂箇中原理，那麼在偵錯或是實作上，會遇到一些麻煩。當然領悟過後能寫起來是最推薦的方式，以後忘了的時候瞟一眼就行了。初學者如果看不懂本篇的話，可以暫且跳過無妨，當有用到再回頭看，因為現在的文章是搭配官方藍寶書的章節推進，而藍寶書比較適合中階以上閱讀者，所以本篇對初學者來說應該很吃力。<br>接下來會介紹的內容基本上有:</p>
@@ -1606,102 +1606,102 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
     
     </summary>
     
-      <category term="Euler Angle" scheme="http://tokenyet.github.io/tags/Euler-Angle/"/>
+      <category term="Euler Angle" scheme="https://tokenyet.github.io/tags/Euler-Angle/"/>
     
-      <category term="GLM" scheme="http://tokenyet.github.io/tags/GLM/"/>
+      <category term="GLM" scheme="https://tokenyet.github.io/tags/GLM/"/>
     
-      <category term="Intepolation" scheme="http://tokenyet.github.io/tags/Intepolation/"/>
+      <category term="Intepolation" scheme="https://tokenyet.github.io/tags/Intepolation/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/tags/OpenGL/"/>
     
-      <category term="OpenGL Tutorial" scheme="http://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
+      <category term="OpenGL Tutorial" scheme="https://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
     
-      <category term="OpenGL介紹" scheme="http://tokenyet.github.io/tags/OpenGL%E4%BB%8B%E7%B4%B9/"/>
+      <category term="OpenGL介紹" scheme="https://tokenyet.github.io/tags/OpenGL%E4%BB%8B%E7%B4%B9/"/>
     
-      <category term="OpenGL入門教學" scheme="http://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
+      <category term="OpenGL入門教學" scheme="https://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
     
-      <category term="OpenGL基礎" scheme="http://tokenyet.github.io/tags/OpenGL%E5%9F%BA%E7%A4%8E/"/>
+      <category term="OpenGL基礎" scheme="https://tokenyet.github.io/tags/OpenGL%E5%9F%BA%E7%A4%8E/"/>
     
-      <category term="OpenGL教學" scheme="http://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
+      <category term="OpenGL教學" scheme="https://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
     
-      <category term="Reflect" scheme="http://tokenyet.github.io/tags/Reflect/"/>
+      <category term="Reflect" scheme="https://tokenyet.github.io/tags/Reflect/"/>
     
-      <category term="Refract" scheme="http://tokenyet.github.io/tags/Refract/"/>
+      <category term="Refract" scheme="https://tokenyet.github.io/tags/Refract/"/>
     
-      <category term="Rotation" scheme="http://tokenyet.github.io/tags/Rotation/"/>
+      <category term="Rotation" scheme="https://tokenyet.github.io/tags/Rotation/"/>
     
-      <category term="bezier curve" scheme="http://tokenyet.github.io/tags/bezier-curve/"/>
+      <category term="bezier curve" scheme="https://tokenyet.github.io/tags/bezier-curve/"/>
     
-      <category term="canera" scheme="http://tokenyet.github.io/tags/canera/"/>
+      <category term="canera" scheme="https://tokenyet.github.io/tags/canera/"/>
     
-      <category term="clip space" scheme="http://tokenyet.github.io/tags/clip-space/"/>
+      <category term="clip space" scheme="https://tokenyet.github.io/tags/clip-space/"/>
     
-      <category term="cubic bezier curve" scheme="http://tokenyet.github.io/tags/cubic-bezier-curve/"/>
+      <category term="cubic bezier curve" scheme="https://tokenyet.github.io/tags/cubic-bezier-curve/"/>
     
-      <category term="local space" scheme="http://tokenyet.github.io/tags/local-space/"/>
+      <category term="local space" scheme="https://tokenyet.github.io/tags/local-space/"/>
     
-      <category term="lookat" scheme="http://tokenyet.github.io/tags/lookat/"/>
+      <category term="lookat" scheme="https://tokenyet.github.io/tags/lookat/"/>
     
-      <category term="matrix" scheme="http://tokenyet.github.io/tags/matrix/"/>
+      <category term="matrix" scheme="https://tokenyet.github.io/tags/matrix/"/>
     
-      <category term="ndc" scheme="http://tokenyet.github.io/tags/ndc/"/>
+      <category term="ndc" scheme="https://tokenyet.github.io/tags/ndc/"/>
     
-      <category term="orthographic" scheme="http://tokenyet.github.io/tags/orthographic/"/>
+      <category term="orthographic" scheme="https://tokenyet.github.io/tags/orthographic/"/>
     
-      <category term="perspective" scheme="http://tokenyet.github.io/tags/perspective/"/>
+      <category term="perspective" scheme="https://tokenyet.github.io/tags/perspective/"/>
     
-      <category term="perspective division" scheme="http://tokenyet.github.io/tags/perspective-division/"/>
+      <category term="perspective division" scheme="https://tokenyet.github.io/tags/perspective-division/"/>
     
-      <category term="projection" scheme="http://tokenyet.github.io/tags/projection/"/>
+      <category term="projection" scheme="https://tokenyet.github.io/tags/projection/"/>
     
-      <category term="scale" scheme="http://tokenyet.github.io/tags/scale/"/>
+      <category term="scale" scheme="https://tokenyet.github.io/tags/scale/"/>
     
-      <category term="translate" scheme="http://tokenyet.github.io/tags/translate/"/>
+      <category term="translate" scheme="https://tokenyet.github.io/tags/translate/"/>
     
-      <category term="vector" scheme="http://tokenyet.github.io/tags/vector/"/>
+      <category term="vector" scheme="https://tokenyet.github.io/tags/vector/"/>
     
-      <category term="view space" scheme="http://tokenyet.github.io/tags/view-space/"/>
+      <category term="view space" scheme="https://tokenyet.github.io/tags/view-space/"/>
     
-      <category term="世界座標" scheme="http://tokenyet.github.io/tags/%E4%B8%96%E7%95%8C%E5%BA%A7%E6%A8%99/"/>
+      <category term="世界座標" scheme="https://tokenyet.github.io/tags/%E4%B8%96%E7%95%8C%E5%BA%A7%E6%A8%99/"/>
     
-      <category term="內插" scheme="http://tokenyet.github.io/tags/%E5%85%A7%E6%8F%92/"/>
+      <category term="內插" scheme="https://tokenyet.github.io/tags/%E5%85%A7%E6%8F%92/"/>
     
-      <category term="內積" scheme="http://tokenyet.github.io/tags/%E5%85%A7%E7%A9%8D/"/>
+      <category term="內積" scheme="https://tokenyet.github.io/tags/%E5%85%A7%E7%A9%8D/"/>
     
-      <category term="反射" scheme="http://tokenyet.github.io/tags/%E5%8F%8D%E5%B0%84/"/>
+      <category term="反射" scheme="https://tokenyet.github.io/tags/%E5%8F%8D%E5%B0%84/"/>
     
-      <category term="向量" scheme="http://tokenyet.github.io/tags/%E5%90%91%E9%87%8F/"/>
+      <category term="向量" scheme="https://tokenyet.github.io/tags/%E5%90%91%E9%87%8F/"/>
     
-      <category term="外積" scheme="http://tokenyet.github.io/tags/%E5%A4%96%E7%A9%8D/"/>
+      <category term="外積" scheme="https://tokenyet.github.io/tags/%E5%A4%96%E7%A9%8D/"/>
     
-      <category term="座標系統" scheme="http://tokenyet.github.io/tags/%E5%BA%A7%E6%A8%99%E7%B3%BB%E7%B5%B1/"/>
+      <category term="座標系統" scheme="https://tokenyet.github.io/tags/%E5%BA%A7%E6%A8%99%E7%B3%BB%E7%B5%B1/"/>
     
-      <category term="折射" scheme="http://tokenyet.github.io/tags/%E6%8A%98%E5%B0%84/"/>
+      <category term="折射" scheme="https://tokenyet.github.io/tags/%E6%8A%98%E5%B0%84/"/>
     
-      <category term="攝影機" scheme="http://tokenyet.github.io/tags/%E6%94%9D%E5%BD%B1%E6%A9%9F/"/>
+      <category term="攝影機" scheme="https://tokenyet.github.io/tags/%E6%94%9D%E5%BD%B1%E6%A9%9F/"/>
     
-      <category term="歐拉角" scheme="http://tokenyet.github.io/tags/%E6%AD%90%E6%8B%89%E8%A7%92/"/>
+      <category term="歐拉角" scheme="https://tokenyet.github.io/tags/%E6%AD%90%E6%8B%89%E8%A7%92/"/>
     
-      <category term="正交投影" scheme="http://tokenyet.github.io/tags/%E6%AD%A3%E4%BA%A4%E6%8A%95%E5%BD%B1/"/>
+      <category term="正交投影" scheme="https://tokenyet.github.io/tags/%E6%AD%A3%E4%BA%A4%E6%8A%95%E5%BD%B1/"/>
     
-      <category term="物體座標" scheme="http://tokenyet.github.io/tags/%E7%89%A9%E9%AB%94%E5%BA%A7%E6%A8%99/"/>
+      <category term="物體座標" scheme="https://tokenyet.github.io/tags/%E7%89%A9%E9%AB%94%E5%BA%A7%E6%A8%99/"/>
     
-      <category term="直線" scheme="http://tokenyet.github.io/tags/%E7%9B%B4%E7%B7%9A/"/>
+      <category term="直線" scheme="https://tokenyet.github.io/tags/%E7%9B%B4%E7%B7%9A/"/>
     
-      <category term="矩陣" scheme="http://tokenyet.github.io/tags/%E7%9F%A9%E9%99%A3/"/>
+      <category term="矩陣" scheme="https://tokenyet.github.io/tags/%E7%9F%A9%E9%99%A3/"/>
     
-      <category term="透視投影" scheme="http://tokenyet.github.io/tags/%E9%80%8F%E8%A6%96%E6%8A%95%E5%BD%B1/"/>
+      <category term="透視投影" scheme="https://tokenyet.github.io/tags/%E9%80%8F%E8%A6%96%E6%8A%95%E5%BD%B1/"/>
     
-      <category term="透視除法" scheme="http://tokenyet.github.io/tags/%E9%80%8F%E8%A6%96%E9%99%A4%E6%B3%95/"/>
+      <category term="透視除法" scheme="https://tokenyet.github.io/tags/%E9%80%8F%E8%A6%96%E9%99%A4%E6%B3%95/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/categories/OpenGL/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[OpenGL 藍寶入門教學 3: Pipeline]]></title>
-    <link href="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/"/>
-    <id>http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/</id>
+    <link href="https://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/"/>
+    <id>https://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/</id>
     <published>2016-08-06T06:47:28.000Z</published>
     <updated>2016-08-25T09:54:11.118Z</updated>
     <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。</p>
@@ -1835,44 +1835,44 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
     
     </summary>
     
-      <category term="Clipping" scheme="http://tokenyet.github.io/tags/Clipping/"/>
+      <category term="Clipping" scheme="https://tokenyet.github.io/tags/Clipping/"/>
     
-      <category term="Fragment Shader" scheme="http://tokenyet.github.io/tags/Fragment-Shader/"/>
+      <category term="Fragment Shader" scheme="https://tokenyet.github.io/tags/Fragment-Shader/"/>
     
-      <category term="Geometry Shader" scheme="http://tokenyet.github.io/tags/Geometry-Shader/"/>
+      <category term="Geometry Shader" scheme="https://tokenyet.github.io/tags/Geometry-Shader/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/tags/OpenGL/"/>
     
-      <category term="OpenGL Tutorial" scheme="http://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
+      <category term="OpenGL Tutorial" scheme="https://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
     
-      <category term="OpenGL介紹" scheme="http://tokenyet.github.io/tags/OpenGL%E4%BB%8B%E7%B4%B9/"/>
+      <category term="OpenGL介紹" scheme="https://tokenyet.github.io/tags/OpenGL%E4%BB%8B%E7%B4%B9/"/>
     
-      <category term="OpenGL入門教學" scheme="http://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
+      <category term="OpenGL入門教學" scheme="https://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
     
-      <category term="OpenGL基礎" scheme="http://tokenyet.github.io/tags/OpenGL%E5%9F%BA%E7%A4%8E/"/>
+      <category term="OpenGL基礎" scheme="https://tokenyet.github.io/tags/OpenGL%E5%9F%BA%E7%A4%8E/"/>
     
-      <category term="OpenGL教學" scheme="http://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
+      <category term="OpenGL教學" scheme="https://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
     
-      <category term="Rasterization" scheme="http://tokenyet.github.io/tags/Rasterization/"/>
+      <category term="Rasterization" scheme="https://tokenyet.github.io/tags/Rasterization/"/>
     
-      <category term="Shader" scheme="http://tokenyet.github.io/tags/Shader/"/>
+      <category term="Shader" scheme="https://tokenyet.github.io/tags/Shader/"/>
     
-      <category term="Tessellation" scheme="http://tokenyet.github.io/tags/Tessellation/"/>
+      <category term="Tessellation" scheme="https://tokenyet.github.io/tags/Tessellation/"/>
     
-      <category term="Tessellation Control Shader" scheme="http://tokenyet.github.io/tags/Tessellation-Control-Shader/"/>
+      <category term="Tessellation Control Shader" scheme="https://tokenyet.github.io/tags/Tessellation-Control-Shader/"/>
     
-      <category term="Tessellation Evaluation Shader" scheme="http://tokenyet.github.io/tags/Tessellation-Evaluation-Shader/"/>
+      <category term="Tessellation Evaluation Shader" scheme="https://tokenyet.github.io/tags/Tessellation-Evaluation-Shader/"/>
     
-      <category term="Viewport Transform" scheme="http://tokenyet.github.io/tags/Viewport-Transform/"/>
+      <category term="Viewport Transform" scheme="https://tokenyet.github.io/tags/Viewport-Transform/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/categories/OpenGL/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[OpenGL 藍寶入門教學 2: Strat With Triangle]]></title>
-    <link href="http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/"/>
-    <id>http://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/</id>
+    <link href="https://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/"/>
+    <id>https://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/</id>
     <published>2016-07-10T15:47:49.000Z</published>
     <updated>2016-08-25T08:26:55.101Z</updated>
     <content type="html"><![CDATA[<h2 id="開始前介紹">開始前介紹</h2><p>本系列文將使用<em>OpenGL 4.5</em>版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！</p>
@@ -1930,32 +1930,32 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
     
     </summary>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/tags/OpenGL/"/>
     
-      <category term="OpenGL Tutorial" scheme="http://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
+      <category term="OpenGL Tutorial" scheme="https://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
     
-      <category term="OpenGL介紹" scheme="http://tokenyet.github.io/tags/OpenGL%E4%BB%8B%E7%B4%B9/"/>
+      <category term="OpenGL介紹" scheme="https://tokenyet.github.io/tags/OpenGL%E4%BB%8B%E7%B4%B9/"/>
     
-      <category term="OpenGL入門教學" scheme="http://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
+      <category term="OpenGL入門教學" scheme="https://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
     
-      <category term="OpenGL基礎" scheme="http://tokenyet.github.io/tags/OpenGL%E5%9F%BA%E7%A4%8E/"/>
+      <category term="OpenGL基礎" scheme="https://tokenyet.github.io/tags/OpenGL%E5%9F%BA%E7%A4%8E/"/>
     
-      <category term="OpenGL教學" scheme="http://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
+      <category term="OpenGL教學" scheme="https://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
     
-      <category term="Shader" scheme="http://tokenyet.github.io/tags/Shader/"/>
+      <category term="Shader" scheme="https://tokenyet.github.io/tags/Shader/"/>
     
-      <category term="Triangle" scheme="http://tokenyet.github.io/tags/Triangle/"/>
+      <category term="Triangle" scheme="https://tokenyet.github.io/tags/Triangle/"/>
     
-      <category term="VAO" scheme="http://tokenyet.github.io/tags/VAO/"/>
+      <category term="VAO" scheme="https://tokenyet.github.io/tags/VAO/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/categories/OpenGL/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[OpenGL 藍寶入門教學 1: Setting up Environment]]></title>
-    <link href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/"/>
-    <id>http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/</id>
+    <link href="https://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/"/>
+    <id>https://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/</id>
     <published>2016-07-05T11:14:47.000Z</published>
     <updated>2016-08-25T08:27:02.112Z</updated>
     <content type="html"><![CDATA[<h2 id="環境準備">環境準備</h2><p>開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有興趣再往下閱讀。</p>
@@ -2026,30 +2026,30 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
     
     </summary>
     
-      <category term="GLEW" scheme="http://tokenyet.github.io/tags/GLEW/"/>
+      <category term="GLEW" scheme="https://tokenyet.github.io/tags/GLEW/"/>
     
-      <category term="GLFW" scheme="http://tokenyet.github.io/tags/GLFW/"/>
+      <category term="GLFW" scheme="https://tokenyet.github.io/tags/GLFW/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/tags/OpenGL/"/>
     
-      <category term="OpenGL Tutorial" scheme="http://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
+      <category term="OpenGL Tutorial" scheme="https://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
     
-      <category term="OpenGL入門教學" scheme="http://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
+      <category term="OpenGL入門教學" scheme="https://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
     
-      <category term="OpenGL安裝" scheme="http://tokenyet.github.io/tags/OpenGL%E5%AE%89%E8%A3%9D/"/>
+      <category term="OpenGL安裝" scheme="https://tokenyet.github.io/tags/OpenGL%E5%AE%89%E8%A3%9D/"/>
     
-      <category term="OpenGL教學" scheme="http://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
+      <category term="OpenGL教學" scheme="https://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
     
-      <category term="Visual Studio" scheme="http://tokenyet.github.io/tags/Visual-Studio/"/>
+      <category term="Visual Studio" scheme="https://tokenyet.github.io/tags/Visual-Studio/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/categories/OpenGL/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[OpenGL 藍寶入門教學 0: Introduce]]></title>
-    <link href="http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/"/>
-    <id>http://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/</id>
+    <link href="https://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/"/>
+    <id>https://tokenyet.github.io/2016/06/28/OpenGL-Beginner-Tutorial-0-Introduce/</id>
     <published>2016-06-28T13:36:47.000Z</published>
     <updated>2017-07-18T09:37:01.164Z</updated>
     <content type="html"><![CDATA[<h2 id="前言:">前言:</h2><p>不管開始任何事情之前，必須先對要做的事情先有個了解才能開始，學習OpenGL也不例外。開始前，先說一下我做教學文的風格，由於這是我以一個學中教，教中學的角度來製作，所以可能會有些不精確，希望哪裡有錯誤可以幫忙改正或指教，謝謝。</p>
@@ -2074,26 +2074,26 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
     
     </summary>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/tags/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/tags/OpenGL/"/>
     
-      <category term="OpenGL Extension" scheme="http://tokenyet.github.io/tags/OpenGL-Extension/"/>
+      <category term="OpenGL Extension" scheme="https://tokenyet.github.io/tags/OpenGL-Extension/"/>
     
-      <category term="OpenGL Tutorial" scheme="http://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
+      <category term="OpenGL Tutorial" scheme="https://tokenyet.github.io/tags/OpenGL-Tutorial/"/>
     
-      <category term="OpenGL intro" scheme="http://tokenyet.github.io/tags/OpenGL-intro/"/>
+      <category term="OpenGL intro" scheme="https://tokenyet.github.io/tags/OpenGL-intro/"/>
     
-      <category term="OpenGL入門教學" scheme="http://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
+      <category term="OpenGL入門教學" scheme="https://tokenyet.github.io/tags/OpenGL%E5%85%A5%E9%96%80%E6%95%99%E5%AD%B8/"/>
     
-      <category term="OpenGL教學" scheme="http://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
+      <category term="OpenGL教學" scheme="https://tokenyet.github.io/tags/OpenGL%E6%95%99%E5%AD%B8/"/>
     
-      <category term="OpenGL" scheme="http://tokenyet.github.io/categories/OpenGL/"/>
+      <category term="OpenGL" scheme="https://tokenyet.github.io/categories/OpenGL/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Windows10-音量控制問題]]></title>
-    <link href="http://tokenyet.github.io/2015/10/08/Windows10-%E9%9F%B3%E9%87%8F%E6%8E%A7%E5%88%B6%E5%95%8F%E9%A1%8C/"/>
-    <id>http://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/</id>
+    <link href="https://tokenyet.github.io/2015/10/08/Windows10-%E9%9F%B3%E9%87%8F%E6%8E%A7%E5%88%B6%E5%95%8F%E9%A1%8C/"/>
+    <id>https://tokenyet.github.io/2015/10/08/Windows10-音量控制問題/</id>
     <published>2015-10-08T11:26:20.000Z</published>
     <updated>2015-10-08T11:51:46.471Z</updated>
     <content type="html"><![CDATA[<p>前言:<br>Windows 10問題連連，假設你跟Dowen一樣想玩踩地雷，但是從Windows App載完後發現音量超級大聲，且假設說你喜歡聽自己的音樂，又想聽Windows App的特效的時候，就會發現「什麼?<strong>不能調音量!!</strong>」，因為Win10在Modern UI的這些Metro App中沒有加入適當API，所以在音量混合器中沒有這個選項。<br>因此，繼透明度、Classic Shell…等，為Win10裝插件之旅又開始了。</p>
@@ -2104,26 +2104,26 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
     <![CDATA[<p>前言:<br>Windows 10問題連連，假設你跟Dowen一樣想玩踩地雷，但是從Windows App載完後發現音量超級大聲，且假設說你喜歡聽自己的音樂，又想聽Windows App的特效的時候，就會發現「什麼?<strong>不能調音量!!</strong>」，因為W]]>
     </summary>
     
-      <category term="Metro App" scheme="http://tokenyet.github.io/tags/Metro-App/"/>
+      <category term="Metro App" scheme="https://tokenyet.github.io/tags/Metro-App/"/>
     
-      <category term="Modern UI" scheme="http://tokenyet.github.io/tags/Modern-UI/"/>
+      <category term="Modern UI" scheme="https://tokenyet.github.io/tags/Modern-UI/"/>
     
-      <category term="Win10" scheme="http://tokenyet.github.io/tags/Win10/"/>
+      <category term="Win10" scheme="https://tokenyet.github.io/tags/Win10/"/>
     
-      <category term="Windows Store" scheme="http://tokenyet.github.io/tags/Windows-Store/"/>
+      <category term="Windows Store" scheme="https://tokenyet.github.io/tags/Windows-Store/"/>
     
-      <category term="Windows10" scheme="http://tokenyet.github.io/tags/Windows10/"/>
+      <category term="Windows10" scheme="https://tokenyet.github.io/tags/Windows10/"/>
     
-      <category term="音量" scheme="http://tokenyet.github.io/tags/%E9%9F%B3%E9%87%8F/"/>
+      <category term="音量" scheme="https://tokenyet.github.io/tags/%E9%9F%B3%E9%87%8F/"/>
     
-      <category term="Windows" scheme="http://tokenyet.github.io/categories/Windows/"/>
+      <category term="Windows" scheme="https://tokenyet.github.io/categories/Windows/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[OpenCV例外狀況]]></title>
-    <link href="http://tokenyet.github.io/2015/10/08/OpenCV%E4%BE%8B%E5%A4%96%E7%8B%80%E6%B3%81/"/>
-    <id>http://tokenyet.github.io/2015/10/08/OpenCV例外狀況/</id>
+    <link href="https://tokenyet.github.io/2015/10/08/OpenCV%E4%BE%8B%E5%A4%96%E7%8B%80%E6%B3%81/"/>
+    <id>https://tokenyet.github.io/2015/10/08/OpenCV例外狀況/</id>
     <published>2015-10-08T05:12:51.000Z</published>
     <updated>2015-10-08T11:23:50.316Z</updated>
     <content type="html"><![CDATA[<p>前言:<br>在使用EmguCV的時候，常常在自己的電腦可以，換到其他人電腦的環境後，就萬事皆悲。<br>而在這裡，Dowen寫下幾種解法供大家參考。這裡以EmguCv為例。</p>
@@ -2138,22 +2138,22 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
 <h1 id="針對_TypeInitializer_Exception_錯誤">針對 T]]>
     </summary>
     
-      <category term="EmguCV" scheme="http://tokenyet.github.io/tags/EmguCV/"/>
+      <category term="EmguCV" scheme="https://tokenyet.github.io/tags/EmguCV/"/>
     
-      <category term="Exception" scheme="http://tokenyet.github.io/tags/Exception/"/>
+      <category term="Exception" scheme="https://tokenyet.github.io/tags/Exception/"/>
     
-      <category term="OpenCV" scheme="http://tokenyet.github.io/tags/OpenCV/"/>
+      <category term="OpenCV" scheme="https://tokenyet.github.io/tags/OpenCV/"/>
     
-      <category term="Visual Studio" scheme="http://tokenyet.github.io/tags/Visual-Studio/"/>
+      <category term="Visual Studio" scheme="https://tokenyet.github.io/tags/Visual-Studio/"/>
     
-      <category term="OpenCV" scheme="http://tokenyet.github.io/categories/OpenCV/"/>
+      <category term="OpenCV" scheme="https://tokenyet.github.io/categories/OpenCV/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Windows10 桌面圖示排列失效]]></title>
-    <link href="http://tokenyet.github.io/2015/09/27/Windows10-%E6%A1%8C%E9%9D%A2%E5%9C%96%E7%A4%BA%E6%8E%92%E5%88%97%E5%A4%B1%E6%95%88/"/>
-    <id>http://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/</id>
+    <link href="https://tokenyet.github.io/2015/09/27/Windows10-%E6%A1%8C%E9%9D%A2%E5%9C%96%E7%A4%BA%E6%8E%92%E5%88%97%E5%A4%B1%E6%95%88/"/>
+    <id>https://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/</id>
     <published>2015-09-27T04:47:19.000Z</published>
     <updated>2015-09-27T05:11:31.049Z</updated>
     <content type="html"><![CDATA[<p>升上Win10沒多久後發現桌面圖示無法像以前一樣排列到想要的位置。<br>每次開機就會回到左方自動排列，右鍵重新整理也是如此。</p>
@@ -2168,17 +2168,17 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
 <p>經由ESET論壇的發布，<br>升級上Windwos10後，剛好又是ESET的人才會發生的問題。<br>接下來說明如何解決這問題。<]]>
     </summary>
     
-      <category term="Win10" scheme="http://tokenyet.github.io/tags/Win10/"/>
+      <category term="Win10" scheme="https://tokenyet.github.io/tags/Win10/"/>
     
-      <category term="Windows10" scheme="http://tokenyet.github.io/tags/Windows10/"/>
+      <category term="Windows10" scheme="https://tokenyet.github.io/tags/Windows10/"/>
     
-      <category term="排列失效" scheme="http://tokenyet.github.io/tags/%E6%8E%92%E5%88%97%E5%A4%B1%E6%95%88/"/>
+      <category term="排列失效" scheme="https://tokenyet.github.io/tags/%E6%8E%92%E5%88%97%E5%A4%B1%E6%95%88/"/>
     
-      <category term="桌面圖示" scheme="http://tokenyet.github.io/tags/%E6%A1%8C%E9%9D%A2%E5%9C%96%E7%A4%BA/"/>
+      <category term="桌面圖示" scheme="https://tokenyet.github.io/tags/%E6%A1%8C%E9%9D%A2%E5%9C%96%E7%A4%BA/"/>
     
-      <category term="重新整理" scheme="http://tokenyet.github.io/tags/%E9%87%8D%E6%96%B0%E6%95%B4%E7%90%86/"/>
+      <category term="重新整理" scheme="https://tokenyet.github.io/tags/%E9%87%8D%E6%96%B0%E6%95%B4%E7%90%86/"/>
     
-      <category term="Windows" scheme="http://tokenyet.github.io/categories/Windows/"/>
+      <category term="Windows" scheme="https://tokenyet.github.io/categories/Windows/"/>
     
   </entry>
   

@@ -3,40 +3,40 @@
 <head>
   <meta charset="utf-8">
   
-  <title>OpenGL 遊戲引擎開發日誌 | Dowenの世界</title>
+  <title>OpenGL 遊戲引擎開發日誌 | Dowen&#39;s World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="baidu-site-verification" content="ryL4dgnrJp" />
   <meta name="description" content="本篇說明開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。
 系統環境: Windows 10開發軟體: Visual Studio 2015硬體設備: i7-3770 and">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL 遊戲引擎開發日誌">
-<meta property="og:url" content="http://tokenyet.github.io/2016/12/14/OpenGL-Development-Journal/index.html">
-<meta property="og:site_name" content="Dowenの世界">
+<meta property="og:url" content="https://tokenyet.github.io/2016/12/14/OpenGL-Development-Journal/index.html">
+<meta property="og:site_name" content="Dowen's World">
 <meta property="og:description" content="本篇說明開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。
 系統環境: Windows 10開發軟體: Visual Studio 2015硬體設備: i7-3770 and">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20161001screenshot.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160928screenshot.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160926screenshot.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160924screenshot.gif">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160915screenshot1.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160915screenshot2.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160914screenshot.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160912screenshot.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160911screenshot.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160908screenshot.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160907screenshot.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160906screenshot.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/20160905screenshot.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/long-time-dragon.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/flat-terrian.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/ODJ/flat-terrian-line.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/20161001screenshot.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/20160928screenshot.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/20160926screenshot.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/20160924screenshot.gif">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/20160915screenshot1.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/20160915screenshot2.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/20160914screenshot.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/20160912screenshot.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/20160911screenshot.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/20160908screenshot.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/20160907screenshot.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/20160906screenshot.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/20160905screenshot.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/long-time-dragon.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/flat-terrian.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/ODJ/flat-terrian-line.png">
 <meta property="og:updated_time" content="2016-12-14T14:43:52.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 遊戲引擎開發日誌">
 <meta name="twitter:description" content="本篇說明開發引擎是我用來考驗自己的方式，學習、理解並實作以往學到的各種圖學概念，並用上自己對物件導向與程式語言的熟悉度，希望能完成一個基本的如場景建置、粒子效果、物理碰撞、模組動畫…等等的功能。而更甚之希望當OpenGL或圖學界中有什麼新功能，可以在自己最熟悉的環境中依照概念實作。
 系統環境: Windows 10開發軟體: Visual Studio 2015硬體設備: i7-3770 and">
   
-    <link rel="alternative" href="/atom.xml" title="Dowenの世界" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Dowen&#39;s World" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -67,7 +67,7 @@ ga('send', 'pageview');
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Dowenの世界</a>
+        <a href="/" id="logo">Dowen&#39;s World</a>
       </h1>
       
         <h2 id="subtitle-wrap">
@@ -102,7 +102,7 @@ ga('send', 'pageview');
                <a id="nav-search-btn" class="nav-icon verticalLine" title="Search"></a>
              </nav>
            <div id="search-form-wrap">
-             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tokenyet.github.io"></form>
+             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tokenyet.github.io"></form>
              </div>
          </div>
      </div>
@@ -133,9 +133,9 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/12/14/OpenGL-Development-Journal/" data-id="cj5drxywm0048g8ub0polix4j" class="article-share-link">Share</a>
+      <a data-url="https://tokenyet.github.io/2016/12/14/OpenGL-Development-Journal/" data-id="cj5drxywm0048g8ub0polix4j" class="article-share-link">Share</a>
       
-        <a href="http://tokenyet.github.io/2016/12/14/OpenGL-Development-Journal/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://tokenyet.github.io/2016/12/14/OpenGL-Development-Journal/#disqus_thread" class="article-comment-link">Comments</a>
       
     </footer>
     <div class="article-entry" itemprop="articleBody">
@@ -611,7 +611,7 @@ Origin_{bullet}.z \\
 <script>
   var disqus_shortname = 'bcmtokenyet';
   
-  var disqus_url = 'http://tokenyet.github.io/2016/12/14/OpenGL-Development-Journal/';
+  var disqus_url = 'https://tokenyet.github.io/2016/12/14/OpenGL-Development-Journal/';
   
   (function(){
     var dsq = document.createElement('script');

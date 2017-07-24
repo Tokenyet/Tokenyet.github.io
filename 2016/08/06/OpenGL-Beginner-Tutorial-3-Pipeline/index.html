@@ -3,36 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>OpenGL 藍寶入門教學 3: Pipeline | Dowenの世界</title>
+  <title>OpenGL 藍寶入門教學 3: Pipeline | Dowen&#39;s World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="baidu-site-verification" content="ryL4dgnrJp" />
   <meta name="description" content="開始前介紹為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。
 CPU到GPU第一階段 - Vertex Shader的資料傳送GPU在開始執行Vertex Shader前面，有一個動作稱為Vertex Fetching，這個動作會將我們在程式中寫的一個稱為Vertex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL 藍寶入門教學 3: Pipeline">
-<meta property="og:url" content="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/index.html">
-<meta property="og:site_name" content="Dowenの世界">
+<meta property="og:url" content="https://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/index.html">
+<meta property="og:site_name" content="Dowen's World">
 <meta property="og:description" content="開始前介紹為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。
 CPU到GPU第一階段 - Vertex Shader的資料傳送GPU在開始執行Vertex Shader前面，有一個動作稱為Vertex Fetching，這個動作會將我們在程式中寫的一個稱為Vertex">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/MoveTri.jpg">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/MoveTri.jpg">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/VBO.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/tesselation.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/geometry.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/Vpx.svg">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/Vpy.svg">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/Vpz.svg">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/clockwise.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/counter-clockwise.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/fragment.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT3/gl_pipe.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT3/MoveTri.jpg">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT3/MoveTri.jpg">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT3/VBO.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT3/tesselation.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT3/geometry.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT3/Vpx.svg">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT3/Vpy.svg">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT3/Vpz.svg">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT3/clockwise.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT3/counter-clockwise.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT3/fragment.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT3/gl_pipe.png">
 <meta property="og:updated_time" content="2016-08-25T09:54:11.118Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 藍寶入門教學 3: Pipeline">
 <meta name="twitter:description" content="開始前介紹為了讓有興趣的初學者能踏入這個領域，Dowen把以前觀念上不清楚的部分全部在pipeline中補齊許多。縱使如此也是可能有疑點的部分，如果有疑問盡量在文章下方留言，有空一定回覆:D。
 CPU到GPU第一階段 - Vertex Shader的資料傳送GPU在開始執行Vertex Shader前面，有一個動作稱為Vertex Fetching，這個動作會將我們在程式中寫的一個稱為Vertex">
   
-    <link rel="alternative" href="/atom.xml" title="Dowenの世界" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Dowen&#39;s World" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -63,7 +63,7 @@ ga('send', 'pageview');
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Dowenの世界</a>
+        <a href="/" id="logo">Dowen&#39;s World</a>
       </h1>
       
         <h2 id="subtitle-wrap">
@@ -98,7 +98,7 @@ ga('send', 'pageview');
                <a id="nav-search-btn" class="nav-icon verticalLine" title="Search"></a>
              </nav>
            <div id="search-form-wrap">
-             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tokenyet.github.io"></form>
+             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tokenyet.github.io"></form>
              </div>
          </div>
      </div>
@@ -129,9 +129,9 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cj5drxyxv007bg8ubyfnjaqev" class="article-share-link">Share</a>
+      <a data-url="https://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/" data-id="cj5drxyxv007bg8ubyfnjaqev" class="article-share-link">Share</a>
       
-        <a href="http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/#disqus_thread" class="article-comment-link">Comments</a>
       
     </footer>
     <div class="article-entry" itemprop="articleBody">
@@ -402,7 +402,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'bcmtokenyet';
   
-  var disqus_url = 'http://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/';
+  var disqus_url = 'https://tokenyet.github.io/2016/08/06/OpenGL-Beginner-Tutorial-3-Pipeline/';
   
   (function(){
     var dsq = document.createElement('script');

@@ -3,50 +3,50 @@
 <head>
   <meta charset="utf-8">
   
-  <title>OpenGL 藍寶入門教學 4: 數學 | Dowenの世界</title>
+  <title>OpenGL 藍寶入門教學 4: 數學 | Dowen&#39;s World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="baidu-site-verification" content="ryL4dgnrJp" />
   <meta name="description" content="開始前介紹這一章節主要是介紹一些數學的基礎，如果發現哪個部分不熟的話，最好能親自磨練一下，因為以後常常需要的時候，如果不懂箇中原理，那麼在偵錯或是實作上，會遇到一些麻煩。當然領悟過後能寫起來是最推薦的方式，以後忘了的時候瞟一眼就行了。初學者如果看不懂本篇的話，可以暫且跳過無妨，當有用到再回頭看，因為現在的文章是搭配官方藍寶書的章節推進，而藍寶書比較適合中階以上閱讀者，所以本篇對初學者來說應該很吃力">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL 藍寶入門教學 4: 數學">
-<meta property="og:url" content="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/index.html">
-<meta property="og:site_name" content="Dowenの世界">
+<meta property="og:url" content="https://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/index.html">
+<meta property="og:site_name" content="Dowen's World">
 <meta property="og:description" content="開始前介紹這一章節主要是介紹一些數學的基礎，如果發現哪個部分不熟的話，最好能親自磨練一下，因為以後常常需要的時候，如果不懂箇中原理，那麼在偵錯或是實作上，會遇到一些麻煩。當然領悟過後能寫起來是最推薦的方式，以後忘了的時候瞟一眼就行了。初學者如果看不懂本篇的話，可以暫且跳過無妨，當有用到再回頭看，因為現在的文章是搭配官方藍寶書的章節推進，而藍寶書比較適合中階以上閱讀者，所以本篇對初學者來說應該很吃力">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/Cartesian.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/Cartesian.png">
 <meta property="og:image" content="http://image5.tuku.cn/wallpaper/Landscape%20Wallpapers/10666_1280x800.jpg">
 <meta property="og:image" content="https://s3.amazonaws.com/grapher/exports/ec89zgtdv0.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/local.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/world.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/view.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/pers-near.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/pers-far.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/ortho-near.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/ortho-far.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/Camera.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/pitch.gif">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/yaw.gif">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/pers-near.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/pers-far.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/ortho-near.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/ortho-far.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/persproj.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/persUp.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/persSide.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/perswidthnormal.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/pershightnormal.gif">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/ortho.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/line.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/bicurve.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/cubiccurve.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/includeglm.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/glmresult.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OBT4/glmcorrectresult.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/local.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/world.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/view.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/pers-near.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/pers-far.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/ortho-near.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/ortho-far.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/Camera.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/pitch.gif">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/yaw.gif">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/pers-near.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/pers-far.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/ortho-near.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/ortho-far.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/persproj.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/persUp.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/persSide.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/perswidthnormal.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/pershightnormal.gif">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/ortho.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/line.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/bicurve.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/cubiccurve.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/includeglm.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/glmresult.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OBT4/glmcorrectresult.png">
 <meta property="og:updated_time" content="2016-09-05T16:31:16.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 藍寶入門教學 4: 數學">
 <meta name="twitter:description" content="開始前介紹這一章節主要是介紹一些數學的基礎，如果發現哪個部分不熟的話，最好能親自磨練一下，因為以後常常需要的時候，如果不懂箇中原理，那麼在偵錯或是實作上，會遇到一些麻煩。當然領悟過後能寫起來是最推薦的方式，以後忘了的時候瞟一眼就行了。初學者如果看不懂本篇的話，可以暫且跳過無妨，當有用到再回頭看，因為現在的文章是搭配官方藍寶書的章節推進，而藍寶書比較適合中階以上閱讀者，所以本篇對初學者來說應該很吃力">
   
-    <link rel="alternative" href="/atom.xml" title="Dowenの世界" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Dowen&#39;s World" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -77,7 +77,7 @@ ga('send', 'pageview');
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Dowenの世界</a>
+        <a href="/" id="logo">Dowen&#39;s World</a>
       </h1>
       
         <h2 id="subtitle-wrap">
@@ -112,7 +112,7 @@ ga('send', 'pageview');
                <a id="nav-search-btn" class="nav-icon verticalLine" title="Search"></a>
              </nav>
            <div id="search-form-wrap">
-             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tokenyet.github.io"></form>
+             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tokenyet.github.io"></form>
              </div>
          </div>
      </div>
@@ -143,9 +143,9 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cj5drxyx2004xg8ubfzn7tiu9" class="article-share-link">Share</a>
+      <a data-url="https://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/" data-id="cj5drxyx2004xg8ubfzn7tiu9" class="article-share-link">Share</a>
       
-        <a href="http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/#disqus_thread" class="article-comment-link">Comments</a>
       
     </footer>
     <div class="article-entry" itemprop="articleBody">
@@ -900,7 +900,7 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
 <script>
   var disqus_shortname = 'bcmtokenyet';
   
-  var disqus_url = 'http://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/';
+  var disqus_url = 'https://tokenyet.github.io/2016/08/11/OpenGL-Beginner-Tutorial-4-Math/';
   
   (function(){
     var dsq = document.createElement('script');

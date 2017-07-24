@@ -3,30 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>OpenGL 藍寶入門教學 1: Setting up Environment | Dowenの世界</title>
+  <title>OpenGL 藍寶入門教學 1: Setting up Environment | Dowen&#39;s World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="baidu-site-verification" content="ryL4dgnrJp" />
   <meta name="description" content="環境準備開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL 藍寶入門教學 1: Setting up Environment">
-<meta property="og:url" content="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/index.html">
-<meta property="og:site_name" content="Dowenの世界">
+<meta property="og:url" content="https://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/index.html">
+<meta property="og:site_name" content="Dowen's World">
 <meta property="og:description" content="環境準備開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有">
-<meta property="og:image" content="http://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/VSProperty.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_include.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_lib.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/input.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_input_lib.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_include.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_lib.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_input.png">
-<meta property="og:image" content="http://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/result.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/VSProperty.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_include.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_lib.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/input.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_input_lib.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_include.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_lib.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_input.png">
+<meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/result.png">
 <meta property="og:updated_time" content="2016-08-25T08:27:02.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 藍寶入門教學 1: Setting up Environment">
 <meta name="twitter:description" content="環境準備開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有">
   
-    <link rel="alternative" href="/atom.xml" title="Dowenの世界" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Dowen&#39;s World" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -57,7 +57,7 @@ ga('send', 'pageview');
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Dowenの世界</a>
+        <a href="/" id="logo">Dowen&#39;s World</a>
       </h1>
       
         <h2 id="subtitle-wrap">
@@ -92,7 +92,7 @@ ga('send', 'pageview');
                <a id="nav-search-btn" class="nav-icon verticalLine" title="Search"></a>
              </nav>
            <div id="search-form-wrap">
-             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tokenyet.github.io"></form>
+             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tokenyet.github.io"></form>
              </div>
          </div>
      </div>
@@ -123,9 +123,9 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cj5drxyyg008eg8ubr1gsldu9" class="article-share-link">Share</a>
+      <a data-url="https://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cj5drxyyg008eg8ubr1gsldu9" class="article-share-link">Share</a>
       
-        <a href="http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/#disqus_thread" class="article-comment-link">Comments</a>
       
     </footer>
     <div class="article-entry" itemprop="articleBody">
@@ -331,7 +331,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'bcmtokenyet';
   
-  var disqus_url = 'http://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/';
+  var disqus_url = 'https://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/';
   
   (function(){
     var dsq = document.createElement('script');
