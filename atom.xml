@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://tokenyet.github.io/"/>
-  <updated>2017-07-18T14:23:00.622Z</updated>
+  <updated>2017-08-14T11:18:30.095Z</updated>
   <id>https://tokenyet.github.io/</id>
   
   <author>
@@ -13,6 +13,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Libgdx 關於Rpg大師風格遊戲]]></title>
+    <link href="https://tokenyet.github.io/2017/08/14/Libgdx-RpgLikeGame/"/>
+    <id>https://tokenyet.github.io/2017/08/14/Libgdx-RpgLikeGame/</id>
+    <published>2017-08-14T10:32:03.000Z</published>
+    <updated>2017-08-14T11:18:30.095Z</updated>
+    <content type="html"><![CDATA[
+<div>
+	<img src="/images/rpgmaker-like.png" style="width: 500px ;display:inline">
+</div>
+
+<h2 id="前言">前言</h2><p>本篇為無靈感開發的開發者，欲開發Rpg風格遊戲所留下的心得，簡單講述用非Rpgmaker開發類風格遊戲所需要的知識。其實只是又一胎死腹中的專案啊(汗。<br><a id="more"></a></p>
+<h2 id="正文">正文</h2><p>使用過<a href="http://www.rpgmakerweb.com/" target="_blank" rel="external">Rpg製作大師</a>的人都知道，製作<strong>Rpg風格遊戲(後文皆稱如此)</strong>，使用介面中各種方便的工具，配合第三方大師們的插件，就可以讓自己的遊戲越來越完美，並讓有邏輯的遊戲創作者利用其事件系統，就可以創造出一款基本的Rpg風格遊戲，而且<a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-mv" target="_blank" rel="external">MV版本</a>還支援輸出手機的功能了！</p>
+<p>但若不使用其強大的製作工具，又想開發類似風格，就必須要一些工具與知識來輔助。首先Dowen當然是使用<a href="https://libgdx.badlogicgames.com/" target="_blank" rel="external">Libgdx</a>來進行開發。用來製作地圖使用的是<a href="http://www.mapeditor.org/" target="_blank" rel="external">Tiled</a>。</p>
+<p><a href="http://www.mapeditor.org/" target="_blank" rel="external">Tiled</a>網路上有各種教學資源就不多說，只是連結<a href="https://libgdx.badlogicgames.com/" target="_blank" rel="external">Libgdx</a>時，會有些許困擾。首先最上方的圖應該注意到了，有各種樹、房子、柵欄，其實還有些帶編號的物件。如果直接將檔案匯入遊戲會發現，所有物件都像是一張圖，接下來這邊有兩個解決辦法：</p>
+<ol>
+<li><p>拉多邊形建立碰撞。 其好處是建立地圖時，就可以直接的與物理世界做結合，但缺點就是無法連結實體物件，像是一棵樹，想要同步移除幾乎是不可能的。</p>
+</li>
+<li><p>建立虛擬的框格物件，使用客製編號，在程式中對應位置建立物件，其壞處是每個東西，樹、房子、柵欄，都必須要透過程式內部定義好，才可以根據虛擬框格對應位置，當然有幾百個物件就要定義幾百個藍圖。好處也是極端的多，畢竟進入程式，每個物件想擁有物理屬性，想搭配特效，想自己會動，擁有數不盡的好處。</p>
+</li>
+</ol>
+<p>身為一個程式，理所當然使用第二招，目前使用還算順暢，只是如果程式比例一開始沒訂製好，例如人物放大兩倍，那物理矩形全部都需要重新定義，也是最糟糕的一環。</p>
+<p>建立好場景與各種物件後，來基本的物件移動，其中有兩個問題。</p>
+<ol>
+<li>物理移動需要進行調校。</li>
+<li>人物移動遇到障礙物處理。</li>
+</ol>
+<p>第一個問題，參考<a href="https://stackoverflow.com/questions/24516945/calculate-correct-impluse-or-force-to-move-a-box2d-body-to-a-specific-position" target="_blank" rel="external">物理的力與衝量</a>就可以解決問題。</p>
+<p>第二個問題又有很多解決方案，根據網路上觀察的Rpg風格遊戲，有幾種處理方式。<br>1.根據手指(滑鼠)指標直線移動<br>2.使用四方按鈕來代替移動<br>3.點擊位置，自動移動。</p>
+<p>前兩個方案就不用說了，算是簡單的實作，第三個倒是需要技巧的問題，Dowen見過有Google Play上有遊戲的方式特別神奇，像是Dowen使用<a href="/2016/07/13/A-Path-finding-With-Libgdx">A* Pathfinding</a>，而某遊戲，雖然不知道是使用何引擎，不過其使用偏1.與3.的混合方法，有點詭異但還滿順暢的。</p>
+<p>最後提一下，由於二維沒有深度，所以角色被遮蔽的效果可以靠Y軸來達成，等等見到成果，就可以看到效果。</p>
+<h2 id="成果">成果</h2><p>基本上Prototype會遇到的問題，都提到了，就來看不才的Prototype吧！<br>
+<div class="container-outside-div">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/-1eKlTW6s9g" frameborder="0" allowfullscreen></iframe>
+</div>
+<br>
+<div class="container-outside-div">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/doaUaLdqnYI" frameborder="0" allowfullscreen></iframe>
+</div>
+</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<div>
+	<img src="/images/rpgmaker-like.png" style="width: 500px ;display:inline">
+</div>
+
+<h2 id="前言">前言</h2><p>本篇為無靈感開發的開發者，欲開發Rpg風格遊戲所留下的心得，簡單講述用非Rpgmaker開發類風格遊戲所需要的知識。其實只是又一胎死腹中的專案啊(汗。<br>]]>
+    
+    </summary>
+    
+      <category term="Libgdx" scheme="https://tokenyet.github.io/tags/Libgdx/"/>
+    
+      <category term="Rpgmaker" scheme="https://tokenyet.github.io/tags/Rpgmaker/"/>
+    
+      <category term="Libgdx" scheme="https://tokenyet.github.io/categories/Libgdx/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[TileRetriever圖格檢索器]]></title>
@@ -292,7 +350,7 @@
     <link href="https://tokenyet.github.io/2017/04/30/Tabber-Clock-App-%E4%B8%80%E5%80%8B%E5%8F%AF%E4%BB%A5%E5%88%86%E9%A1%9E%E7%9A%84%E9%AC%A7%E9%90%98/"/>
     <id>https://tokenyet.github.io/2017/04/30/Tabber-Clock-App-一個可以分類的鬧鐘/</id>
     <published>2017-04-30T12:36:07.000Z</published>
-    <updated>2017-05-01T10:04:35.527Z</updated>
+    <updated>2017-08-14T10:32:55.051Z</updated>
     <content type="html"><![CDATA[
 <div>
 		<img src="/images/TabberClock/icon.png" style="width: 200px ;display:inline">
@@ -2147,38 +2205,6 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
       <category term="Visual Studio" scheme="https://tokenyet.github.io/tags/Visual-Studio/"/>
     
       <category term="OpenCV" scheme="https://tokenyet.github.io/categories/OpenCV/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Windows10 桌面圖示排列失效]]></title>
-    <link href="https://tokenyet.github.io/2015/09/27/Windows10-%E6%A1%8C%E9%9D%A2%E5%9C%96%E7%A4%BA%E6%8E%92%E5%88%97%E5%A4%B1%E6%95%88/"/>
-    <id>https://tokenyet.github.io/2015/09/27/Windows10-桌面圖示排列失效/</id>
-    <published>2015-09-27T04:47:19.000Z</published>
-    <updated>2015-09-27T05:11:31.049Z</updated>
-    <content type="html"><![CDATA[<p>升上Win10沒多久後發現桌面圖示無法像以前一樣排列到想要的位置。<br>每次開機就會回到左方自動排列，右鍵重新整理也是如此。</p>
-<p>經由ESET論壇的發布，<br>升級上Windwos10後，剛好又是ESET的人才會發生的問題。<br>接下來說明如何解決這問題。<br>(引用自ESET forums:AREZCO)</p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HKEY_CLASSES_ROOT<span class="command">\Wow</span>6432Node<span class="command">\CLSID</span><span class="command">\&#123;</span>42aedc87-2188-41fd-b9a3-0c966feabec1<span class="special">&#125;</span><span class="command">\InProcServer</span>32<span class="command">\</span><br><span class="line"></span>HKEY_CLASSES_ROOT<span class="command">\CLSID</span><span class="command">\&#123;</span>42aedc87-2188-41fd-b9a3-0c966feabec1<span class="special">&#125;</span><span class="command">\InProcServer</span>32\</span><br></pre></td></tr></table></figure>
-<p>對於這兩個檔案<br>選取 預設(Default) 將值從 <code>%SystemRoot%\SysWow64\shell32.dll</code> 取代為 <code>%SystemRoot%\system32\windows.storage.dll</code>.</p>
-<p>但你可能會發生權限不夠的問題。<br>這時候在做上述動作之前，必須先取得權限。<br>對<code>InProcServer32</code>右鍵按<code>使用權限</code> (Use Permission)，之後選<code>進階</code> (Advanced)，<br>在上方<code>擁有者</code> (Owner)的位置點選<code>變更</code>，之後繼續點選<code>進階</code> (Advanced)，<br>再來點選<code>立即選找</code> (Find Now) 選擇<code>Administrators</code>後，按下確定。<br>之後回到剛剛看到擁有者點選變更的視窗中，勾選以下:<br><code>取代子容器與物件的擁有者</code> (Replace owner on subcontainers and objects)<br><code>以可從此物件繼承的權限項目取代所有子物件的權限項目</code> (Replace all child object permission entries…)<br>最後回到一開始使用權限的視窗，選擇Administrator並勾選<code>完全控制</code> (Full Control)<br>就取得該註冊資料夾的權限。</p>
-<p>完成後，<code>重開電腦</code> (Reboot)應該就可以得到改善。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>升上Win10沒多久後發現桌面圖示無法像以前一樣排列到想要的位置。<br>每次開機就會回到左方自動排列，右鍵重新整理也是如此。</p>
-<p>經由ESET論壇的發布，<br>升級上Windwos10後，剛好又是ESET的人才會發生的問題。<br>接下來說明如何解決這問題。<]]>
-    </summary>
-    
-      <category term="Win10" scheme="https://tokenyet.github.io/tags/Win10/"/>
-    
-      <category term="Windows10" scheme="https://tokenyet.github.io/tags/Windows10/"/>
-    
-      <category term="排列失效" scheme="https://tokenyet.github.io/tags/%E6%8E%92%E5%88%97%E5%A4%B1%E6%95%88/"/>
-    
-      <category term="桌面圖示" scheme="https://tokenyet.github.io/tags/%E6%A1%8C%E9%9D%A2%E5%9C%96%E7%A4%BA/"/>
-    
-      <category term="重新整理" scheme="https://tokenyet.github.io/tags/%E9%87%8D%E6%96%B0%E6%95%B4%E7%90%86/"/>
-    
-      <category term="Windows" scheme="https://tokenyet.github.io/categories/Windows/"/>
     
   </entry>
   

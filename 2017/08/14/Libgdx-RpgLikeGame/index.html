@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Libgdx 關於Rpg大師風格遊戲 | Dowen&#39;s World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="baidu-site-verification" content="ryL4dgnrJp" />
+  <meta name="description" content="前言本篇為無靈感開發的開發者，欲開發Rpg風格遊戲所留下的心得，簡單講述用非Rpgmaker開發類風格遊戲所需要的知識。其實只是又一胎死腹中的專案啊(汗。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Libgdx 關於Rpg大師風格遊戲">
+<meta property="og:url" content="https://tokenyet.github.io/2017/08/14/Libgdx-RpgLikeGame/index.html">
+<meta property="og:site_name" content="Dowen's World">
+<meta property="og:description" content="前言本篇為無靈感開發的開發者，欲開發Rpg風格遊戲所留下的心得，簡單講述用非Rpgmaker開發類風格遊戲所需要的知識。其實只是又一胎死腹中的專案啊(汗。">
+<meta property="og:image" content="https://tokenyet.github.io/images/rpgmaker-like.png">
+<meta property="og:updated_time" content="2017-08-14T11:18:30.095Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Libgdx 關於Rpg大師風格遊戲">
+<meta name="twitter:description" content="前言本篇為無靈感開發的開發者，欲開發Rpg風格遊戲所留下的心得，簡單講述用非Rpgmaker開發類風格遊戲所需要的知識。其實只是又一胎死腹中的專案啊(汗。">
+  
+    <link rel="alternative" href="/atom.xml" title="Dowen&#39;s World" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-65156776-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dowen&#39;s World</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Love Games, Knowledge Sharing.</a>
+        </h2>
+      
+         </div>
+       <div id="header-inner" class="inner">
+         <nav id="main-nav" class="icon-background">
+              
+                
+                  <a class="nav-icon " href="/"><div class=icon-home title='Home'></div></a>
+                
+              
+                
+                  <a class="nav-icon  verticalLine " href="/archives"><div class=icon-archive title='Archives'></div> <!--Archives --></a>
+                
+              
+                
+                  <a class="nav-icon  verticalLine " href="/categories"><div class=icon-categories title='Categories'></div> <!--Categories --></a>
+                
+              
+                
+                  <a class="nav-icon  verticalLine " href="/about"><div class=icon-user title='About'></div> <!--About --></a>
+                
+              
+             </nav>
+           <nav id="sub-nav" class="icon-background">
+             
+                   <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+                 
+               <a id="nav-search-btn" class="nav-icon verticalLine" title="Search"></a>
+             </nav>
+           <div id="search-form-wrap">
+             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tokenyet.github.io"></form>
+             </div>
+         </div>
+     </div>
+ </header>
+      <div class="outer">
+        <section id="main"><article id="post-Libgdx-RpgLikeGame" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/14/Libgdx-RpgLikeGame/" class="article-date">
+  <time datetime="2017-08-14T10:32:03.000Z" itemprop="datePublished">2017-08-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Libgdx/">Libgdx</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Libgdx 關於Rpg大師風格遊戲
+    </h1>
+  
+
+      </header>
+    
+    <footer class="article-medium">
+      <a data-url="https://tokenyet.github.io/2017/08/14/Libgdx-RpgLikeGame/" data-id="cj6c2g9n6009e6cubvcsmeyyp" class="article-share-link">Share</a>
+      
+        <a href="https://tokenyet.github.io/2017/08/14/Libgdx-RpgLikeGame/#disqus_thread" class="article-comment-link">Comments</a>
+      
+    </footer>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+<div>
+	<img src="/images/rpgmaker-like.png" style="width: 500px ;display:inline">
+</div>
+
+<h2 id="前言">前言</h2><p>本篇為無靈感開發的開發者，欲開發Rpg風格遊戲所留下的心得，簡單講述用非Rpgmaker開發類風格遊戲所需要的知識。其實只是又一胎死腹中的專案啊(汗。<br><a id="more"></a></p>
+<h2 id="正文">正文</h2><p>使用過<a href="http://www.rpgmakerweb.com/" target="_blank" rel="external">Rpg製作大師</a>的人都知道，製作<strong>Rpg風格遊戲(後文皆稱如此)</strong>，使用介面中各種方便的工具，配合第三方大師們的插件，就可以讓自己的遊戲越來越完美，並讓有邏輯的遊戲創作者利用其事件系統，就可以創造出一款基本的Rpg風格遊戲，而且<a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-mv" target="_blank" rel="external">MV版本</a>還支援輸出手機的功能了！</p>
+<p>但若不使用其強大的製作工具，又想開發類似風格，就必須要一些工具與知識來輔助。首先Dowen當然是使用<a href="https://libgdx.badlogicgames.com/" target="_blank" rel="external">Libgdx</a>來進行開發。用來製作地圖使用的是<a href="http://www.mapeditor.org/" target="_blank" rel="external">Tiled</a>。</p>
+<p><a href="http://www.mapeditor.org/" target="_blank" rel="external">Tiled</a>網路上有各種教學資源就不多說，只是連結<a href="https://libgdx.badlogicgames.com/" target="_blank" rel="external">Libgdx</a>時，會有些許困擾。首先最上方的圖應該注意到了，有各種樹、房子、柵欄，其實還有些帶編號的物件。如果直接將檔案匯入遊戲會發現，所有物件都像是一張圖，接下來這邊有兩個解決辦法：</p>
+<ol>
+<li><p>拉多邊形建立碰撞。 其好處是建立地圖時，就可以直接的與物理世界做結合，但缺點就是無法連結實體物件，像是一棵樹，想要同步移除幾乎是不可能的。</p>
+</li>
+<li><p>建立虛擬的框格物件，使用客製編號，在程式中對應位置建立物件，其壞處是每個東西，樹、房子、柵欄，都必須要透過程式內部定義好，才可以根據虛擬框格對應位置，當然有幾百個物件就要定義幾百個藍圖。好處也是極端的多，畢竟進入程式，每個物件想擁有物理屬性，想搭配特效，想自己會動，擁有數不盡的好處。</p>
+</li>
+</ol>
+<p>身為一個程式，理所當然使用第二招，目前使用還算順暢，只是如果程式比例一開始沒訂製好，例如人物放大兩倍，那物理矩形全部都需要重新定義，也是最糟糕的一環。</p>
+<p>建立好場景與各種物件後，來基本的物件移動，其中有兩個問題。</p>
+<ol>
+<li>物理移動需要進行調校。</li>
+<li>人物移動遇到障礙物處理。</li>
+</ol>
+<p>第一個問題，參考<a href="https://stackoverflow.com/questions/24516945/calculate-correct-impluse-or-force-to-move-a-box2d-body-to-a-specific-position" target="_blank" rel="external">物理的力與衝量</a>就可以解決問題。</p>
+<p>第二個問題又有很多解決方案，根據網路上觀察的Rpg風格遊戲，有幾種處理方式。<br>1.根據手指(滑鼠)指標直線移動<br>2.使用四方按鈕來代替移動<br>3.點擊位置，自動移動。</p>
+<p>前兩個方案就不用說了，算是簡單的實作，第三個倒是需要技巧的問題，Dowen見過有Google Play上有遊戲的方式特別神奇，像是Dowen使用<a href="/2016/07/13/A-Path-finding-With-Libgdx">A* Pathfinding</a>，而某遊戲，雖然不知道是使用何引擎，不過其使用偏1.與3.的混合方法，有點詭異但還滿順暢的。</p>
+<p>最後提一下，由於二維沒有深度，所以角色被遮蔽的效果可以靠Y軸來達成，等等見到成果，就可以看到效果。</p>
+<h2 id="成果">成果</h2><p>基本上Prototype會遇到的問題，都提到了，就來看不才的Prototype吧！<br>
+<div class="container-outside-div">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/-1eKlTW6s9g" frameborder="0" allowfullscreen></iframe>
+</div>
+<br>
+<div class="container-outside-div">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/doaUaLdqnYI" frameborder="0" allowfullscreen></iframe>
+</div>
+</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Libgdx/">Libgdx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rpgmaker/">Rpgmaker</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/18/TileRetriever/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">TileRetriever圖格檢索器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/App/">App</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Libgdx/">Libgdx</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenCV/">OpenCV</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenGL/">OpenGL</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tool/">Tool</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/數學筆記/">數學筆記</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/直播/">直播</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/網頁相關/">網頁相關</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/17直播/" style="font-size: 10px;">17直播</a> <a href="/tags/A-Star/" style="font-size: 10px;">A Star</a> <a href="/tags/A/" style="font-size: 10px;">A*</a> <a href="/tags/App/" style="font-size: 10px;">App</a> <a href="/tags/Barycentric-coordinate/" style="font-size: 10px;">Barycentric coordinate</a> <a href="/tags/Clipping/" style="font-size: 10px;">Clipping</a> <a href="/tags/Clock/" style="font-size: 10px;">Clock</a> <a href="/tags/Development-Journal/" style="font-size: 10px;">Development Journal</a> <a href="/tags/EmguCV/" style="font-size: 10px;">EmguCV</a> <a href="/tags/Euler-Angle/" style="font-size: 10px;">Euler Angle</a> <a href="/tags/Exception/" style="font-size: 10px;">Exception</a> <a href="/tags/Fragment-Shader/" style="font-size: 10px;">Fragment Shader</a> <a href="/tags/GLEW/" style="font-size: 10px;">GLEW</a> <a href="/tags/GLFW/" style="font-size: 10px;">GLFW</a> <a href="/tags/GLM/" style="font-size: 10px;">GLM</a> <a href="/tags/Geometry-Shader/" style="font-size: 10px;">Geometry Shader</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hexo分類/" style="font-size: 10px;">Hexo分類</a> <a href="/tags/Hexo目錄/" style="font-size: 10px;">Hexo目錄</a> <a href="/tags/Intepolation/" style="font-size: 10px;">Intepolation</a> <a href="/tags/Interpolation/" style="font-size: 10px;">Interpolation</a> <a href="/tags/Libgdx/" style="font-size: 15px;">Libgdx</a> <a href="/tags/Line/" style="font-size: 10px;">Line</a> <a href="/tags/Metro-App/" style="font-size: 10px;">Metro App</a> <a href="/tags/Modern-UI/" style="font-size: 10px;">Modern UI</a> <a href="/tags/OpenCV/" style="font-size: 10px;">OpenCV</a> <a href="/tags/OpenGL/" style="font-size: 20px;">OpenGL</a> <a href="/tags/OpenGL-Extension/" style="font-size: 11.67px;">OpenGL Extension</a> <a href="/tags/OpenGL-Tutorial/" style="font-size: 16.67px;">OpenGL Tutorial</a> <a href="/tags/OpenGL-intro/" style="font-size: 11.67px;">OpenGL intro</a> <a href="/tags/OpenGL介紹/" style="font-size: 13.33px;">OpenGL介紹</a> <a href="/tags/OpenGL入門教學/" style="font-size: 18.33px;">OpenGL入門教學</a> <a href="/tags/OpenGL問題/" style="font-size: 11.67px;">OpenGL問題</a> <a href="/tags/OpenGL基礎/" style="font-size: 13.33px;">OpenGL基礎</a> <a href="/tags/OpenGL安裝/" style="font-size: 10px;">OpenGL安裝</a> <a href="/tags/OpenGL教學/" style="font-size: 16.67px;">OpenGL教學</a> <a href="/tags/QT/" style="font-size: 10px;">QT</a> <a href="/tags/Rasterization/" style="font-size: 10px;">Rasterization</a> <a href="/tags/Reflect/" style="font-size: 10px;">Reflect</a> <a href="/tags/Refract/" style="font-size: 10px;">Refract</a> <a href="/tags/Rotation/" style="font-size: 10px;">Rotation</a> <a href="/tags/Rpgmaker/" style="font-size: 10px;">Rpgmaker</a> <a href="/tags/Shader/" style="font-size: 11.67px;">Shader</a> <a href="/tags/Sidebar/" style="font-size: 10px;">Sidebar</a> <a href="/tags/SublimeText3/" style="font-size: 10px;">SublimeText3</a> <a href="/tags/Sublimetext/" style="font-size: 10px;">Sublimetext</a> <a href="/tags/System/" style="font-size: 10px;">System</a> <a href="/tags/Tessellation/" style="font-size: 10px;">Tessellation</a> <a href="/tags/Tessellation-Control-Shader/" style="font-size: 10px;">Tessellation Control Shader</a> <a href="/tags/Tessellation-Evaluation-Shader/" style="font-size: 10px;">Tessellation Evaluation Shader</a> <a href="/tags/Tile/" style="font-size: 10px;">Tile</a> <a href="/tags/Triangle/" style="font-size: 10px;">Triangle</a> <a href="/tags/Twitch/" style="font-size: 10px;">Twitch</a> <a href="/tags/Ubuntu/" style="font-size: 16.67px;">Ubuntu</a> <a href="/tags/Ubuntu-property/" style="font-size: 10px;">Ubuntu property</a> <a href="/tags/VAO/" style="font-size: 10px;">VAO</a> <a href="/tags/Viewport-Transform/" style="font-size: 10px;">Viewport Transform</a> <a href="/tags/VirtualBox/" style="font-size: 10px;">VirtualBox</a> <a href="/tags/Visual-Studio/" style="font-size: 11.67px;">Visual Studio</a> <a href="/tags/Win10/" style="font-size: 15px;">Win10</a> <a href="/tags/Win7/" style="font-size: 10px;">Win7</a> <a href="/tags/Windows-Store/" style="font-size: 10px;">Windows Store</a> <a href="/tags/Windows10/" style="font-size: 15px;">Windows10</a> <a href="/tags/Windows7/" style="font-size: 10px;">Windows7</a> <a href="/tags/bezier-curve/" style="font-size: 10px;">bezier curve</a> <a href="/tags/canera/" style="font-size: 10px;">canera</a> <a href="/tags/clip-space/" style="font-size: 10px;">clip space</a> <a href="/tags/cubic-bezier-curve/" style="font-size: 10px;">cubic bezier curve</a> <a href="/tags/glGetUniformLocation/" style="font-size: 10px;">glGetUniformLocation</a> <a href="/tags/glGetUniformLocation-bug/" style="font-size: 10px;">glGetUniformLocation bug</a> <a href="/tags/glGetUniformLocation-fails/" style="font-size: 10px;">glGetUniformLocation fails</a> <a href="/tags/glGetUniformLocation-問題/" style="font-size: 10px;">glGetUniformLocation 問題</a> <a href="/tags/glVertexAttribPointer/" style="font-size: 10px;">glVertexAttribPointer</a> <a href="/tags/glVertexAttribPointer-fails/" style="font-size: 10px;">glVertexAttribPointer fails</a> <a href="/tags/local-space/" style="font-size: 10px;">local space</a> <a href="/tags/lookat/" style="font-size: 10px;">lookat</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/ndc/" style="font-size: 10px;">ndc</a> <a href="/tags/ntoskrnl-exe/" style="font-size: 10px;">ntoskrnl.exe</a> <a href="/tags/orthographic/" style="font-size: 10px;">orthographic</a> <a href="/tags/path-finding/" style="font-size: 10px;">path finding</a> <a href="/tags/perspective/" style="font-size: 10px;">perspective</a> <a href="/tags/perspective-division/" style="font-size: 10px;">perspective division</a> <a href="/tags/projection/" style="font-size: 10px;">projection</a> <a href="/tags/scale/" style="font-size: 10px;">scale</a> <a href="/tags/tracker-store/" style="font-size: 10px;">tracker-store</a> <a href="/tags/translate/" style="font-size: 10px;">translate</a> <a href="/tags/vector/" style="font-size: 10px;">vector</a> <a href="/tags/view-space/" style="font-size: 10px;">view space</a> <a href="/tags/世界座標/" style="font-size: 10px;">世界座標</a> <a href="/tags/中文亂碼/" style="font-size: 10px;">中文亂碼</a> <a href="/tags/側欄/" style="font-size: 10px;">側欄</a> <a href="/tags/內插/" style="font-size: 11.67px;">內插</a> <a href="/tags/內積/" style="font-size: 10px;">內積</a> <a href="/tags/升級/" style="font-size: 10px;">升級</a> <a href="/tags/反射/" style="font-size: 10px;">反射</a> <a href="/tags/向量/" style="font-size: 10px;">向量</a> <a href="/tags/外積/" style="font-size: 10px;">外積</a> <a href="/tags/座標系統/" style="font-size: 10px;">座標系統</a> <a href="/tags/座標轉換/" style="font-size: 10px;">座標轉換</a> <a href="/tags/折射/" style="font-size: 10px;">折射</a> <a href="/tags/排列失效/" style="font-size: 10px;">排列失效</a> <a href="/tags/攝影機/" style="font-size: 10px;">攝影機</a> <a href="/tags/桌面圖示/" style="font-size: 10px;">桌面圖示</a> <a href="/tags/歐拉角/" style="font-size: 10px;">歐拉角</a> <a href="/tags/正交投影/" style="font-size: 10px;">正交投影</a> <a href="/tags/物體座標/" style="font-size: 10px;">物體座標</a> <a href="/tags/直線/" style="font-size: 10px;">直線</a> <a href="/tags/矩陣/" style="font-size: 10px;">矩陣</a> <a href="/tags/線性代數/" style="font-size: 11.67px;">線性代數</a> <a href="/tags/藍寶書/" style="font-size: 10px;">藍寶書</a> <a href="/tags/質心座標/" style="font-size: 10px;">質心座標</a> <a href="/tags/透視投影/" style="font-size: 10px;">透視投影</a> <a href="/tags/透視除法/" style="font-size: 10px;">透視除法</a> <a href="/tags/重心座標/" style="font-size: 10px;">重心座標</a> <a href="/tags/重新整理/" style="font-size: 10px;">重新整理</a> <a href="/tags/開發日誌/" style="font-size: 10px;">開發日誌</a> <a href="/tags/音量/" style="font-size: 10px;">音量</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/14/Libgdx-RpgLikeGame/">Libgdx 關於Rpg大師風格遊戲</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/18/TileRetriever/">TileRetriever圖格檢索器</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/14/直播平台插件-for-Viewers/">直播平台插件_for_Viewers</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/13/A-Path-finding-With-Libgdx/">A* Path finding With Libgdx</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/26/Libgdx-遊戲淺研/">Libgdx 遊戲淺研</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+      <div class="widget">
+        <ul class="archive-list">
+          
+            <li class='link'><a href='/project/TileRetriever.html'>Tool - Tile Retriever</a></li>
+          
+        </ul>
+      </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Dowen<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">0</a>
+  
+    <a href="/archives" class="mobile-nav-link">1</a>
+  
+    <a href="/categories" class="mobile-nav-link">2</a>
+  
+    <a href="/about" class="mobile-nav-link">3</a>
+  
+</nav> -->
+    
+<script>
+  var disqus_shortname = 'bcmtokenyet';
+  
+  var disqus_url = 'https://tokenyet.github.io/2017/08/14/Libgdx-RpgLikeGame/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
