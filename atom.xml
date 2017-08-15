@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://tokenyet.github.io/"/>
-  <updated>2017-08-14T11:18:30.095Z</updated>
+  <updated>2017-08-15T06:10:35.518Z</updated>
   <id>https://tokenyet.github.io/</id>
   
   <author>
@@ -19,10 +19,10 @@
     <link href="https://tokenyet.github.io/2017/08/14/Libgdx-RpgLikeGame/"/>
     <id>https://tokenyet.github.io/2017/08/14/Libgdx-RpgLikeGame/</id>
     <published>2017-08-14T10:32:03.000Z</published>
-    <updated>2017-08-14T11:18:30.095Z</updated>
+    <updated>2017-08-15T06:10:35.518Z</updated>
     <content type="html"><![CDATA[
 <div>
-	<img src="/images/rpgmaker-like.png" style="width: 500px ;display:inline">
+	<img src="/images/rpglike/rpgmaker-like.png" style="width: 500px ;display:inline">
 </div>
 
 <h2 id="前言">前言</h2><p>本篇為無靈感開發的開發者，欲開發Rpg風格遊戲所留下的心得，簡單講述用非Rpgmaker開發類風格遊戲所需要的知識。其實只是又一胎死腹中的專案啊(汗。<br><a id="more"></a></p>
@@ -57,7 +57,7 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<div>
-	<img src="/images/rpgmaker-like.png" style="width: 500px ;display:inline">
+	<img src="/images/rpglike/rpgmaker-like.png" style="width: 500px ;display:inline">
 </div>
 
 <h2 id="前言">前言</h2><p>本篇為無靈感開發的開發者，欲開發Rpg風格遊戲所留下的心得，簡單講述用非Rpgmaker開發類風格遊戲所需要的知識。其實只是又一胎死腹中的專案啊(汗。<br>]]>
