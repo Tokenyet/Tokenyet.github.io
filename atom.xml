@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Love Games, Knowledge Sharing.]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://tokenyet.github.io/"/>
-  <updated>2017-08-15T06:10:35.518Z</updated>
+  <updated>2017-09-05T16:27:23.496Z</updated>
   <id>https://tokenyet.github.io/</id>
   
   <author>
@@ -13,6 +13,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Libgdx 紙娃娃系統淺談]]></title>
+    <link href="https://tokenyet.github.io/2017/09/06/Libgdx-AvatarSystem-Easy/"/>
+    <id>https://tokenyet.github.io/2017/09/06/Libgdx-AvatarSystem-Easy/</id>
+    <published>2017-09-05T16:08:10.000Z</published>
+    <updated>2017-09-05T16:27:23.496Z</updated>
+    <content type="html"><![CDATA[
+<div>
+	<img src="/images/easyAvatar/avatarsystem.png" style="width: 500px ;display:inline">
+</div>
+
+<a id="more"></a>
+<h2 id="正文">正文</h2><p>本篇主要是解釋在2D系統下，實現紙娃娃系統的方式，希望有興趣或高手可以來指導討論。</p>
+<p>首先，就我所知紙娃娃系統有兩種方式實踐：</p>
+<ol>
+<li>利用Spritesheet的疊合，有一個沒穿衣服沒頭髮的基礎Spritesheet，然後疊上同等大小Spritesheet的頭髮、眼睛、衣服、武器，就可以達成紙娃娃系統的實踐。</li>
+<li>利用3D技術概念，模組根據骨架來做旋轉的方式。而在2D中，則需要美術有使用過2D骨架的使用經驗，若使用的軟體有支援引擎，甚至可以在遊戲中控制骨架選轉擺出各種Pose。</li>
+</ol>
+<p>根據程式的能力Dowen當然是選用第二種…，不對是第一種方法，因為網路上沒有找到有套用2D骨架的素材，而且就算有，也未必該骨架有支援引擎的插件，</p>
+<p>這邊就來推薦幾個2D骨架軟體：</p>
+<ol>
+<li><a href="https://brashmonkey.com/#" target="_blank" rel="external">Spriter</a>，一款有免費與付費的2D骨架軟體，其實這款沒用過，不過評價不錯。</li>
+<li><a href="http://dragonbones.com/" target="_blank" rel="external">Dragonbones</a>，這款是中國開發的2D骨架軟體，完全免費，而且擁有許多中文教學，所以滿推薦入門者的。</li>
+<li><a href="http://zh.esotericsoftware.com/" target="_blank" rel="external">Spine</a>，業界公認唯一最好的2D骨架軟體，這款只有試用版與付費版，而且支援的引擎相當之多，而且最重要的是，這款工具是使用Libgdx做的，所以學Libgdx不是完全沒好處的哦！(?)</li>
+</ol>
+<p>至於你問為什麼不會畫畫還敢推薦，這個嘛，Dowen的推薦看看就好，因為開發時，觀察市場變化與評價，上面是Dowen得出幾個算社群大名聲大的軟體，可惜台灣會的美術好像不是很多。</p>
+<h2 id="成果">成果</h2>
+<div class="container-outside-div">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/syQEdZAlP1w" frameborder="0" allowfullscreen></iframe>
+</div>
+
+]]></content>
+    <summary type="html">
+    <![CDATA[<div>
+	<img src="/images/easyAvatar/avatarsystem.png" style="width: 500px ;display:inline">
+</div>]]>
+    
+    </summary>
+    
+      <category term="Avatar System" scheme="https://tokenyet.github.io/tags/Avatar-System/"/>
+    
+      <category term="Dragonbones" scheme="https://tokenyet.github.io/tags/Dragonbones/"/>
+    
+      <category term="Libgdx" scheme="https://tokenyet.github.io/tags/Libgdx/"/>
+    
+      <category term="Rpgmaker" scheme="https://tokenyet.github.io/tags/Rpgmaker/"/>
+    
+      <category term="Spine" scheme="https://tokenyet.github.io/tags/Spine/"/>
+    
+      <category term="Spriter" scheme="https://tokenyet.github.io/tags/Spriter/"/>
+    
+      <category term="紙娃娃系統" scheme="https://tokenyet.github.io/tags/%E7%B4%99%E5%A8%83%E5%A8%83%E7%B3%BB%E7%B5%B1/"/>
+    
+      <category term="Libgdx" scheme="https://tokenyet.github.io/categories/Libgdx/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Libgdx 關於Rpg大師風格遊戲]]></title>
@@ -2175,36 +2232,6 @@ glm::mat4 helloMatrix = glm::mat4(glm::vec4(<span class="number">1.0</span>,<spa
       <category term="音量" scheme="https://tokenyet.github.io/tags/%E9%9F%B3%E9%87%8F/"/>
     
       <category term="Windows" scheme="https://tokenyet.github.io/categories/Windows/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[OpenCV例外狀況]]></title>
-    <link href="https://tokenyet.github.io/2015/10/08/OpenCV%E4%BE%8B%E5%A4%96%E7%8B%80%E6%B3%81/"/>
-    <id>https://tokenyet.github.io/2015/10/08/OpenCV例外狀況/</id>
-    <published>2015-10-08T05:12:51.000Z</published>
-    <updated>2015-10-08T11:23:50.316Z</updated>
-    <content type="html"><![CDATA[<p>前言:<br>在使用EmguCV的時候，常常在自己的電腦可以，換到其他人電腦的環境後，就萬事皆悲。<br>而在這裡，Dowen寫下幾種解法供大家參考。這裡以EmguCv為例。</p>
-<h1 id="針對_TypeInitializer_Exception_錯誤">針對 TypeInitializer Exception 錯誤</h1><p>解法1. 查看自己的環境設定是否有設定好<br>沒事的話環境PATH的地方建議設定x86即可<br>然後再試試看能不能執行。</p>
-<p>解法2. 在Visual Studio加入參考的地方加入 <code>cvextern.dll, Emgu.CV.dll, Emgu.CV.UI.dll, Emgu.Util.dll</code><br>然後再執行看看是否能運行。<br>建議測試的時候可以加入指令測試。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">using Emgu.CV;&#10;using Emgu.CV.Structure;&#10;&#10;Image&#60;Bgra,Byte&#62; test = new Image&#60;Bgra,Byte&#62;(1,1);</span><br></pre></td></tr></table></figure>
-<p>解法3. 如果最後還是搞不定請將 <code>emgucv-windows-universal 2.4.10.1940\bin\x86</code>下所有檔案<br>複製到你專案底下的 <code>Debug\bin\</code> 裡面(執行檔.EXE的旁邊)。</p>
-<p>總結一下，解法3應該是最後的方法，因為如果將Dll丟進專案內會導致環境變大。<br>對了，為什麼只有針對 TypeInitializer Exception 呢?因為目前還沒遇到其他例外。<br>如往後有遇到在補上囉。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>前言:<br>在使用EmguCV的時候，常常在自己的電腦可以，換到其他人電腦的環境後，就萬事皆悲。<br>而在這裡，Dowen寫下幾種解法供大家參考。這裡以EmguCv為例。</p>
-<h1 id="針對_TypeInitializer_Exception_錯誤">針對 T]]>
-    </summary>
-    
-      <category term="EmguCV" scheme="https://tokenyet.github.io/tags/EmguCV/"/>
-    
-      <category term="Exception" scheme="https://tokenyet.github.io/tags/Exception/"/>
-    
-      <category term="OpenCV" scheme="https://tokenyet.github.io/tags/OpenCV/"/>
-    
-      <category term="Visual Studio" scheme="https://tokenyet.github.io/tags/Visual-Studio/"/>
-    
-      <category term="OpenCV" scheme="https://tokenyet.github.io/categories/OpenCV/"/>
     
   </entry>
   
