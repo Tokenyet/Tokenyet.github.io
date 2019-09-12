@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>OpenGL 藍寶入門教學 1: Setting up Environment | Dowen&#39;s World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="baidu-site-verification" content="ryL4dgnrJp" />
+  <meta name="baidu-site-verification" content="ryL4dgnrJp">
   <meta name="description" content="環境準備開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有">
+<meta name="keywords" content="Visual Studio,OpenGL,OpenGL教學,OpenGL入門教學,OpenGL Tutorial,GLFW,GLEW,OpenGL安裝">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL 藍寶入門教學 1: Setting up Environment">
 <meta property="og:url" content="https://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/index.html">
-<meta property="og:site_name" content="Dowen's World">
+<meta property="og:site_name" content="Dowen&#39;s World">
 <meta property="og:description" content="環境準備開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有">
+<meta property="og:locale" content="zh_tw">
 <meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/VSProperty.png">
 <meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_include.png">
 <meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glfw_lib.png">
@@ -21,10 +23,11 @@
 <meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_lib.png">
 <meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_input.png">
 <meta property="og:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/result.png">
-<meta property="og:updated_time" content="2016-08-25T08:27:02.112Z">
+<meta property="og:updated_time" content="2016-08-25T08:27:02.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 藍寶入門教學 1: Setting up Environment">
 <meta name="twitter:description" content="環境準備開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有">
+<meta name="twitter:image" content="https://tokenyet.github.io/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/VSProperty.png">
   
     <link rel="alternative" href="/atom.xml" title="Dowen&#39;s World" type="application/atom+xml">
   
@@ -32,7 +35,14 @@
     <link rel="icon" href="/favicon.png">
   
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-6282899881501227",
+            enable_page_level_ads: true
+      });
+  </script>
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -48,7 +58,7 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
 
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -92,7 +102,7 @@ ga('send', 'pageview');
                <a id="nav-search-btn" class="nav-icon verticalLine" title="Search"></a>
              </nav>
            <div id="search-form-wrap">
-             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tokenyet.github.io"></form>
+             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tokenyet.github.io"></form>
              </div>
          </div>
      </div>
@@ -123,16 +133,16 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="https://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="cj6c2g9mi008e6cubvc0vu98s" class="article-share-link">Share</a>
+      <a data-url="https://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/" data-id="ck0g9yrz90009pwubeevpayfg" class="article-share-link">Share</a>
       
         <a href="https://tokenyet.github.io/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/#disqus_thread" class="article-comment-link">Comments</a>
       
     </footer>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="環境準備">環境準備</h2><p>開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有興趣再往下閱讀。</p>
-<h2 id="GLFW">GLFW</h2><p><a href="http://www.glfw.org/" target="_blank" rel="external">GLFW</a>主要是將在不同平台( Linux, Windows, Mac ) 間常用的一些使用者需求給獨立出來，這些使用者需求像是Keyboard的資訊、Mouse資訊、視窗建置….等等。將這些不同的使用者需求都統整成一個API就是其中一個GLFW在做的事，此外另一個工作是將OpenGL繪製的東西從buffer顯示到螢幕上的工作，還有一些零零總總的細節操作，最重要的是用了GLFW其實已包含OpenGL的Header，當建置好後，直接可以撰寫OpenGL的Code。</p>
-<p>首先先到<a href="http://www.glfw.org/download.html" target="_blank" rel="external">GLFW官方下載</a>中找一個名為「32-bit Windows binaries」的元件 ( 注意! 64-bit Windows binaries的建議不要使用，Dowen我在建置的時候會遇到非常多問題)，抓下來後接下來就照著以下的圖片設置。</p>
+        <h2 id="環境準備"><a href="#環境準備" class="headerlink" title="環境準備"></a>環境準備</h2><p>開始之前還是要先講一下，讀者可以選擇各種不同的 Framework 與 Library ，像是SDL,FREEGLUT,GLFW之類的，不過不管選擇哪一種，主要的OpenGL流程都是一樣的，只是有些不同的Code或Lib必須要在官方網站自行去看，本篇要講的是GLFW+GLEW在Visual Stuido 2015中的環境建置，如果不是來建置環境的讀者可以跳過本篇，或是對GLFW與GLEW有興趣再往下閱讀。</p>
+<h2 id="GLFW"><a href="#GLFW" class="headerlink" title="GLFW"></a>GLFW</h2><p><a href="http://www.glfw.org/" target="_blank" rel="noopener">GLFW</a>主要是將在不同平台( Linux, Windows, Mac ) 間常用的一些使用者需求給獨立出來，這些使用者需求像是Keyboard的資訊、Mouse資訊、視窗建置….等等。將這些不同的使用者需求都統整成一個API就是其中一個GLFW在做的事，此外另一個工作是將OpenGL繪製的東西從buffer顯示到螢幕上的工作，還有一些零零總總的細節操作，最重要的是用了GLFW其實已包含OpenGL的Header，當建置好後，直接可以撰寫OpenGL的Code。</p>
+<p>首先先到<a href="http://www.glfw.org/download.html" target="_blank" rel="noopener">GLFW官方下載</a>中找一個名為「32-bit Windows binaries」的元件 ( 注意! 64-bit Windows binaries的建議不要使用，Dowen我在建置的時候會遇到非常多問題)，抓下來後接下來就照著以下的圖片設置。</p>
 <p>將GLFW放到任何認為合適的地方，之後再點選VS的專案-&gt;屬性，再點選VC++目錄，然後我們主要要變動的有以下兩個，Include目錄與程式庫目錄。<br><img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/VSProperty.png" width="600"><br>設定好Include與Library。<br><a id="more"></a><br>
 <div class="container-outside-div">
 	<div class="container-inside-div">
@@ -153,7 +163,7 @@ ga('send', 'pageview');
 	</div>
 </div>
 </p>
-<h2 id="GLEW">GLEW</h2><p><a href="http://glew.sourceforge.net/" target="_blank" rel="external">GLEW</a>提供了Modern OpenGL中的各種函式，如果沒有使用GLEW或其他函式庫的人，在撰寫Modern OpenGL的時候就要寫類似這樣的Code。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *name = <span class="string">"glGenBuffers"</span>;</span><br><span class="line"><span class="keyword">void</span> *p = (<span class="keyword">void</span> *)wglGetProcAddress(name);</span><br><span class="line"><span class="keyword">if</span>(p == <span class="number">0</span> ||</span><br><span class="line">(p == (<span class="keyword">void</span>*)<span class="number">0x1</span>) || (p == (<span class="keyword">void</span>*)<span class="number">0x2</span>) || (p == (<span class="keyword">void</span>*)<span class="number">0x3</span>) ||</span><br><span class="line">(p == (<span class="keyword">void</span>*)-<span class="number">1</span>) )</span><br><span class="line">&#123;</span><br><span class="line">	HMODULE module = LoadLibraryA(<span class="string">"opengl32.dll"</span>);</span><br><span class="line">	p = (<span class="keyword">void</span> *)GetProcAddress(module, name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="GLEW"><a href="#GLEW" class="headerlink" title="GLEW"></a>GLEW</h2><p><a href="http://glew.sourceforge.net/" target="_blank" rel="noopener">GLEW</a>提供了Modern OpenGL中的各種函式，如果沒有使用GLEW或其他函式庫的人，在撰寫Modern OpenGL的時候就要寫類似這樣的Code。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *name = <span class="string">"glGenBuffers"</span>;</span><br><span class="line"><span class="keyword">void</span> *p = (<span class="keyword">void</span> *)wglGetProcAddress(name);</span><br><span class="line"><span class="keyword">if</span>(p == <span class="number">0</span> ||</span><br><span class="line">(p == (<span class="keyword">void</span>*)<span class="number">0x1</span>) || (p == (<span class="keyword">void</span>*)<span class="number">0x2</span>) || (p == (<span class="keyword">void</span>*)<span class="number">0x3</span>) ||</span><br><span class="line">(p == (<span class="keyword">void</span>*)<span class="number">-1</span>) )</span><br><span class="line">&#123;</span><br><span class="line">	HMODULE <span class="keyword">module</span> = LoadLibraryA(<span class="string">"opengl32.dll"</span>);</span><br><span class="line">	p = (<span class="keyword">void</span> *)GetProcAddress(<span class="keyword">module</span>, name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>在這邊取得的p代表的就是glGenBuffers的function，這段在寫Code上很常使用，Modern OpenGL使用了這樣的機制的優點是利於任何時候或是任何廠商在自己的顯卡驅動中加入新的function，缺點是我們在寫的時候就要每次去向記憶體提取function。所幸GLEW幫我們解決了這樣的問題，讓我們在使用最新的OpenGL時，免去不斷向記憶體取得新函式的手續。</p>
 <p>在設定上就像GLFW一樣，要設定三個地方。<br>
 <div class="container-outside-div">
@@ -167,20 +177,20 @@ ga('send', 'pageview');
 </p>
 <img src="/images/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment/glew_input.png" width="420">
 <p>這樣一切的環境就準備好了。</p>
-<h2 id="基礎視窗環境建置">基礎視窗環境建置</h2><p>先將<a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial/main.cpp" target="_blank" rel="external">基礎的程式碼</a>貼到自己的環境中，直接測試看看，完成沒問題後，以下將一步一步講解每一Part。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GLEW ( help you using functions without retreiving functions )</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> GLEW_STATIC</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;GL\glew.h&gt;</span></span><br><span class="line"><span class="comment">// GLFW ( make you a windows that support opengl operation to work fine with your platform )</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;GLFW\glfw3.h&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="基礎視窗環境建置"><a href="#基礎視窗環境建置" class="headerlink" title="基礎視窗環境建置"></a>基礎視窗環境建置</h2><p>先將<a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial/main.cpp" target="_blank" rel="noopener">基礎的程式碼</a>貼到自己的環境中，直接測試看看，完成沒問題後，以下將一步一步講解每一Part。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GLEW ( help you using functions without retreiving functions )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GLEW_STATIC</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL\glew.h&gt;</span></span></span><br><span class="line"><span class="comment">// GLFW ( make you a windows that support opengl operation to work fine with your platform )</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW\glfw3.h&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p>這裡的GLEW_STATIC剛好對應之前的libaray <code>glew32s.lib</code>，之所以要用STATIC是因為這樣直接省去需要額外加入dll的部分，dll的部分GLEW把它分開到bin的資料夾內，當然如果讀者想使用動態的方式也無不可。</p>
 <ul>
 <li>Static Linking: 優點是將整個資訊全部塞進自己的binary檔。</li>
 <li>Dynamic Linking: 優點是binary小，檔案各自分開乾淨。</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Init and Check GLFW working properly</span></span><br><span class="line"><span class="keyword">int</span> glfwInitCheck = glfwInit();</span><br><span class="line"><span class="keyword">if</span> (glfwInitCheck == GLFW_FALSE)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"glfw initilization failed."</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Init and Check GLFW working properly</span></span><br><span class="line"><span class="keyword">int</span> glfwInitCheck = glfwInit();</span><br><span class="line"><span class="keyword">if</span> (glfwInitCheck == GLFW_FALSE)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"glfw initilization failed."</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>這裡確定你glfw是否能夠初始化正確。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line">glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);</span><br><span class="line">GLFWwindow* window = glfwCreateWindow(<span class="number">640</span>, <span class="number">480</span>, <span class="string">"OpenGL Tutorial"</span>, NULL, NULL);</span><br><span class="line"><span class="keyword">if</span> (window == <span class="keyword">nullptr</span>) <span class="comment">// window creation failed</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">glfwMakeContextCurrent(window);</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line">glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);</span><br><span class="line">GLFWwindow* window = glfwCreateWindow(<span class="number">640</span>, <span class="number">480</span>, <span class="string">"OpenGL Tutorial"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line"><span class="keyword">if</span> (window == <span class="literal">nullptr</span>) <span class="comment">// window creation failed</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line">glfwMakeContextCurrent(window);</span><br></pre></td></tr></table></figure>
 <p><code>glfwWindowHint</code>代表的是對<code>glfwCreateWindow</code>所創造出的視窗來做事前設定，而<code>GLFW_OPENGL_PROFILE</code>設定成<code>GLFW_OPENGL_CORE_PROFILE</code>的意義是，如果我們在使用到OpenGL的function中有用到一些3.3版本之前而且新OpenGL不支援的語法的時候，就會強制跳出錯誤，這樣可以避免誤用一些過時的function。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Set GLFW callback functions</span></span><br><span class="line">glfwSetErrorCallback(error_callback);</span><br><span class="line">glfwSetKeyCallback(window, key_callback);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Get error from GLFW for debuging</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">error_callback</span><span class="params">(<span class="keyword">int</span> error, <span class="keyword">const</span> <span class="keyword">char</span>* description)</span></span>;</span><br><span class="line"><span class="comment">// Get keywords from GLFW windows</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">key_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> key, <span class="keyword">int</span> scancode, <span class="keyword">int</span> action, <span class="keyword">int</span> mods)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>這邊結尾為<code>callback</code>的就是我們偵測這些使用者事件的時候會觸發的function，這裡用到的技巧當然就是callback，就是將你寫的function丟進去，然後當事件觸發的時候就通知你這個function做事，然後這些可以callback的function定義都是要自行去GLFW的document查詢，像是這裡用的就是錯誤回饋<code>glfwSetErrorCallback</code>跟針對視窗的keyboard回饋<code>glfwSetKeyCallback</code>。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// According to source code, this make you to access successfully full extension from some latest driver without error.</span></span><br><span class="line">glewExperimental = GL_TRUE;</span><br><span class="line"><span class="comment">// Initialize GLEW to setup the OpenGL Function pointers</span></span><br><span class="line"><span class="keyword">if</span> (glewInit() != GLEW_OK)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to initialize GLEW"</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">	<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// According to source code, this make you to access successfully full extension from some latest driver without error.</span></span><br><span class="line">glewExperimental = GL_TRUE;</span><br><span class="line"><span class="comment">// Initialize GLEW to setup the OpenGL Function pointers</span></span><br><span class="line"><span class="keyword">if</span> (glewInit() != GLEW_OK)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to initialize GLEW"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>開始調用GLEW的初始化，這樣你才可以使用一些modern的function，此外如果不成功仍然會報錯，不過GLEW在剛開始還沒用到任何modern的時候，譬如本篇文章，你還不會有任何感受。對了這邊有個值得注意的是<code>glewExperimental</code>設定為<code>GL_TRUE</code>所代表的是，除了他內建定義的那些extension之外，你仍然可以使用上方提過的那個冗長語法，來取得最新的extension function，因為GLEW並不一定會更新的如此及時，所以這個打開來就是解開一些限制。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Define the viewport dimensions (if you will change the winodw size, put these in loop)</span></span><br><span class="line"><span class="keyword">int</span> width, height;</span><br><span class="line">glfwGetFramebufferSize(window, &amp;width, &amp;height);</span><br><span class="line">glViewport(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br></pre></td></tr></table></figure>
 <p><code>glfwGetFramebufferSize</code>是用來取得視窗的長寬，當然寫在loop前面的意思是說，我定義的長寬並不會Resize，所以不需要放在loop中，而<code>glViewport</code>則是輸出至螢幕的設定，就是將你的畫面輸出到螢幕的時候，應該乘上多少的倍率，因為畫面輸出前都會保持長寬都是1.0的一張1.0x1.0的小圖，而輸出時的倍率與起始位置就是從(0,0)然後長為width，寬為height，然後裡面在算出倍率，之後圖片再輸出的時候就會自動從起始點然後以算出的倍率做縮放，之後顯示在視窗中，當然如果你定義的不符合你的視窗大小，就會有畫過多或過少的問題。</p>
@@ -310,7 +320,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Dowen<br>
+      &copy; 2019 Dowen<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -346,11 +356,11 @@ ga('send', 'pageview');
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
+<script src="/js/script.js"></script>
 
   </div>
 </body>

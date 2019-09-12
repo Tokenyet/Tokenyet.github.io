@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>Libgdx 關於Rpg大師風格遊戲 | Dowen&#39;s World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="baidu-site-verification" content="ryL4dgnrJp" />
+  <meta name="baidu-site-verification" content="ryL4dgnrJp">
   <meta name="description" content="前言本篇為無靈感開發的開發者，欲開發Rpg風格遊戲所留下的心得，簡單講述用非Rpgmaker開發類風格遊戲所需要的知識。其實只是又一胎死腹中的專案啊(汗。">
+<meta name="keywords" content="Libgdx,Rpgmaker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Libgdx 關於Rpg大師風格遊戲">
 <meta property="og:url" content="https://tokenyet.github.io/2017/08/14/Libgdx-RpgLikeGame/index.html">
-<meta property="og:site_name" content="Dowen's World">
+<meta property="og:site_name" content="Dowen&#39;s World">
 <meta property="og:description" content="前言本篇為無靈感開發的開發者，欲開發Rpg風格遊戲所留下的心得，簡單講述用非Rpgmaker開發類風格遊戲所需要的知識。其實只是又一胎死腹中的專案啊(汗。">
+<meta property="og:locale" content="zh_tw">
 <meta property="og:image" content="https://tokenyet.github.io/images/rpglike/rpgmaker-like.png">
-<meta property="og:updated_time" content="2017-08-15T06:10:35.518Z">
+<meta property="og:updated_time" content="2017-08-17T04:32:42.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Libgdx 關於Rpg大師風格遊戲">
 <meta name="twitter:description" content="前言本篇為無靈感開發的開發者，欲開發Rpg風格遊戲所留下的心得，簡單講述用非Rpgmaker開發類風格遊戲所需要的知識。其實只是又一胎死腹中的專案啊(汗。">
+<meta name="twitter:image" content="https://tokenyet.github.io/images/rpglike/rpgmaker-like.png">
   
     <link rel="alternative" href="/atom.xml" title="Dowen&#39;s World" type="application/atom+xml">
   
@@ -24,7 +27,14 @@
     <link rel="icon" href="/favicon.png">
   
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-6282899881501227",
+            enable_page_level_ads: true
+      });
+  </script>
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -40,7 +50,7 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
 
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -84,7 +94,7 @@ ga('send', 'pageview');
                <a id="nav-search-btn" class="nav-icon verticalLine" title="Search"></a>
              </nav>
            <div id="search-form-wrap">
-             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tokenyet.github.io"></form>
+             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tokenyet.github.io"></form>
              </div>
          </div>
      </div>
@@ -115,7 +125,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="https://tokenyet.github.io/2017/08/14/Libgdx-RpgLikeGame/" data-id="cj6c2g9n6009e6cubvcsmeyyp" class="article-share-link">Share</a>
+      <a data-url="https://tokenyet.github.io/2017/08/14/Libgdx-RpgLikeGame/" data-id="ck0g9yrz40005pwub7uupxn3i" class="article-share-link">Share</a>
       
         <a href="https://tokenyet.github.io/2017/08/14/Libgdx-RpgLikeGame/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -127,10 +137,10 @@ ga('send', 'pageview');
 	<img src="/images/rpglike/rpgmaker-like.png" style="width: 500px ;display:inline">
 </div>
 
-<h2 id="前言">前言</h2><p>本篇為無靈感開發的開發者，欲開發Rpg風格遊戲所留下的心得，簡單講述用非Rpgmaker開發類風格遊戲所需要的知識。其實只是又一胎死腹中的專案啊(汗。<br><a id="more"></a></p>
-<h2 id="正文">正文</h2><p>使用過<a href="http://www.rpgmakerweb.com/" target="_blank" rel="external">Rpg製作大師</a>的人都知道，製作<strong>Rpg風格遊戲(後文皆稱如此)</strong>，使用介面中各種方便的工具，配合第三方大師們的插件，就可以讓自己的遊戲越來越完美，並讓有邏輯的遊戲創作者利用其事件系統，就可以創造出一款基本的Rpg風格遊戲，而且<a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-mv" target="_blank" rel="external">MV版本</a>還支援輸出手機的功能了！</p>
-<p>但若不使用其強大的製作工具，又想開發類似風格，就必須要一些工具與知識來輔助。首先Dowen當然是使用<a href="https://libgdx.badlogicgames.com/" target="_blank" rel="external">Libgdx</a>來進行開發。用來製作地圖使用的是<a href="http://www.mapeditor.org/" target="_blank" rel="external">Tiled</a>。</p>
-<p><a href="http://www.mapeditor.org/" target="_blank" rel="external">Tiled</a>網路上有各種教學資源就不多說，只是連結<a href="https://libgdx.badlogicgames.com/" target="_blank" rel="external">Libgdx</a>時，會有些許困擾。首先最上方的圖應該注意到了，有各種樹、房子、柵欄，其實還有些帶編號的物件。如果直接將檔案匯入遊戲會發現，所有物件都像是一張圖，接下來這邊有兩個解決辦法：</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本篇為無靈感開發的開發者，欲開發Rpg風格遊戲所留下的心得，簡單講述用非Rpgmaker開發類風格遊戲所需要的知識。其實只是又一胎死腹中的專案啊(汗。<br><a id="more"></a></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>使用過<a href="http://www.rpgmakerweb.com/" target="_blank" rel="noopener">Rpg製作大師</a>的人都知道，製作<strong>Rpg風格遊戲(後文皆稱如此)</strong>，使用介面中各種方便的工具，配合第三方大師們的插件，就可以讓自己的遊戲越來越完美，並讓有邏輯的遊戲創作者利用其事件系統，就可以創造出一款基本的Rpg風格遊戲，而且<a href="http://www.rpgmakerweb.com/products/programs/rpg-maker-mv" target="_blank" rel="noopener">MV版本</a>還支援輸出手機的功能了！</p>
+<p>但若不使用其強大的製作工具，又想開發類似風格，就必須要一些工具與知識來輔助。首先Dowen當然是使用<a href="https://libgdx.badlogicgames.com/" target="_blank" rel="noopener">Libgdx</a>來進行開發。用來製作地圖使用的是<a href="http://www.mapeditor.org/" target="_blank" rel="noopener">Tiled</a>。</p>
+<p><a href="http://www.mapeditor.org/" target="_blank" rel="noopener">Tiled</a>網路上有各種教學資源就不多說，只是連結<a href="https://libgdx.badlogicgames.com/" target="_blank" rel="noopener">Libgdx</a>時，會有些許困擾。首先最上方的圖應該注意到了，有各種樹、房子、柵欄，其實還有些帶編號的物件。如果直接將檔案匯入遊戲會發現，所有物件都像是一張圖，接下來這邊有兩個解決辦法：</p>
 <ol>
 <li><p>拉多邊形建立碰撞。 其好處是建立地圖時，就可以直接的與物理世界做結合，但缺點就是無法連結實體物件，像是一棵樹，想要同步移除幾乎是不可能的。</p>
 </li>
@@ -143,11 +153,11 @@ ga('send', 'pageview');
 <li>物理移動需要進行調校。</li>
 <li>人物移動遇到障礙物處理。</li>
 </ol>
-<p>第一個問題，參考<a href="https://stackoverflow.com/questions/24516945/calculate-correct-impluse-or-force-to-move-a-box2d-body-to-a-specific-position" target="_blank" rel="external">物理的力與衝量</a>就可以解決問題。</p>
+<p>第一個問題，參考<a href="https://stackoverflow.com/questions/24516945/calculate-correct-impluse-or-force-to-move-a-box2d-body-to-a-specific-position" target="_blank" rel="noopener">物理的力與衝量</a>就可以解決問題。</p>
 <p>第二個問題又有很多解決方案，根據網路上觀察的Rpg風格遊戲，有幾種處理方式。<br>1.根據手指(滑鼠)指標直線移動<br>2.使用四方按鈕來代替移動<br>3.點擊位置，自動移動。</p>
 <p>前兩個方案就不用說了，算是簡單的實作，第三個倒是需要技巧的問題，Dowen見過有Google Play上有遊戲的方式特別神奇，像是Dowen使用<a href="/2016/07/13/A-Path-finding-With-Libgdx">A* Pathfinding</a>，而某遊戲，雖然不知道是使用何引擎，不過其使用偏1.與3.的混合方法，有點詭異但還滿順暢的。</p>
 <p>最後提一下，由於二維沒有深度，所以角色被遮蔽的效果可以靠Y軸來達成，等等見到成果，就可以看到效果。</p>
-<h2 id="成果">成果</h2><p>基本上Prototype會遇到的問題，都提到了，就來看不才的Prototype吧！<br>
+<h2 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h2><p>基本上Prototype會遇到的問題，都提到了，就來看不才的Prototype吧！<br>
 <div class="container-outside-div">
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/-1eKlTW6s9g" frameborder="0" allowfullscreen></iframe>
 </div>
@@ -277,7 +287,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Dowen<br>
+      &copy; 2019 Dowen<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -313,11 +323,11 @@ ga('send', 'pageview');
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
+<script src="/js/script.js"></script>
 
   </div>
 </body>

@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>TileRetriever圖格檢索器 | Dowen&#39;s World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="baidu-site-verification" content="ryL4dgnrJp" />
-  <meta name="description" content="由來最近正在開發一款Tile為美術核心的遊戲，本來使用Tiled，將場景各個物件擺好後，再新增一個Object層，來擺放一些幾何的元素，讓Box2D進行碰撞。y在場景與碰撞都設定好後，剩下的人物則需要在Object層指定位置，額外在程式中產生。人物的額外產生不是問題，因為每個動作影格都是固定Size的，但場景物件支援可以拆除或新增就不同了，畢竟場景元素都是Tile組成，例如一棟房子可能會是各種Ti">
+  <meta name="baidu-site-verification" content="ryL4dgnrJp">
+  <meta name="description" content="由來最近正在開發一款Tile為美術核心的遊戲，本來使用Tiled，將場景各個物件擺好後，再新增一個Object層，來擺放一些幾何的元素，讓Box2D進行碰撞。y在場景與碰撞都設定好後，剩下的人物則需要在Object層指定位置，額外在程式中產生。人物的額外產生不是問題，因為每個動作影格都是固定Size的，但場景物件支援可以拆除或新增就不同了，畢竟場景元素都是Tile組成，例如一棟房子可能會是各種T">
+<meta name="keywords" content="Tile">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TileRetriever圖格檢索器">
 <meta property="og:url" content="https://tokenyet.github.io/2017/07/18/TileRetriever/index.html">
-<meta property="og:site_name" content="Dowen's World">
-<meta property="og:description" content="由來最近正在開發一款Tile為美術核心的遊戲，本來使用Tiled，將場景各個物件擺好後，再新增一個Object層，來擺放一些幾何的元素，讓Box2D進行碰撞。y在場景與碰撞都設定好後，剩下的人物則需要在Object層指定位置，額外在程式中產生。人物的額外產生不是問題，因為每個動作影格都是固定Size的，但場景物件支援可以拆除或新增就不同了，畢竟場景元素都是Tile組成，例如一棟房子可能會是各種Ti">
+<meta property="og:site_name" content="Dowen&#39;s World">
+<meta property="og:description" content="由來最近正在開發一款Tile為美術核心的遊戲，本來使用Tiled，將場景各個物件擺好後，再新增一個Object層，來擺放一些幾何的元素，讓Box2D進行碰撞。y在場景與碰撞都設定好後，剩下的人物則需要在Object層指定位置，額外在程式中產生。人物的額外產生不是問題，因為每個動作影格都是固定Size的，但場景物件支援可以拆除或新增就不同了，畢竟場景元素都是Tile組成，例如一棟房子可能會是各種T">
+<meta property="og:locale" content="zh_tw">
 <meta property="og:image" content="https://tokenyet.github.io/images/TileRetriever/GameSnapshot.png">
 <meta property="og:image" content="https://tokenyet.github.io/images/TileRetriever/Example.png">
 <meta property="og:updated_time" content="2017-07-18T14:23:00.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TileRetriever圖格檢索器">
-<meta name="twitter:description" content="由來最近正在開發一款Tile為美術核心的遊戲，本來使用Tiled，將場景各個物件擺好後，再新增一個Object層，來擺放一些幾何的元素，讓Box2D進行碰撞。y在場景與碰撞都設定好後，剩下的人物則需要在Object層指定位置，額外在程式中產生。人物的額外產生不是問題，因為每個動作影格都是固定Size的，但場景物件支援可以拆除或新增就不同了，畢竟場景元素都是Tile組成，例如一棟房子可能會是各種Ti">
+<meta name="twitter:description" content="由來最近正在開發一款Tile為美術核心的遊戲，本來使用Tiled，將場景各個物件擺好後，再新增一個Object層，來擺放一些幾何的元素，讓Box2D進行碰撞。y在場景與碰撞都設定好後，剩下的人物則需要在Object層指定位置，額外在程式中產生。人物的額外產生不是問題，因為每個動作影格都是固定Size的，但場景物件支援可以拆除或新增就不同了，畢竟場景元素都是Tile組成，例如一棟房子可能會是各種T">
+<meta name="twitter:image" content="https://tokenyet.github.io/images/TileRetriever/GameSnapshot.png">
   
     <link rel="alternative" href="/atom.xml" title="Dowen&#39;s World" type="application/atom+xml">
   
@@ -25,7 +28,14 @@
     <link rel="icon" href="/favicon.png">
   
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-6282899881501227",
+            enable_page_level_ads: true
+      });
+  </script>
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -41,7 +51,7 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
 
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -85,7 +95,7 @@ ga('send', 'pageview');
                <a id="nav-search-btn" class="nav-icon verticalLine" title="Search"></a>
              </nav>
            <div id="search-form-wrap">
-             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tokenyet.github.io"></form>
+             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tokenyet.github.io"></form>
              </div>
          </div>
      </div>
@@ -116,7 +126,7 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="https://tokenyet.github.io/2017/07/18/TileRetriever/" data-id="cj6c2g9jc002s6cub0iqcrwr4" class="article-share-link">Share</a>
+      <a data-url="https://tokenyet.github.io/2017/07/18/TileRetriever/" data-id="ck0g9yrzq000lpwubi6jkwks7" class="article-share-link">Share</a>
       
         <a href="https://tokenyet.github.io/2017/07/18/TileRetriever/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -124,12 +134,12 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <img src="/images/TileRetriever/GameSnapshot.png" width="300">
-<h2 id="由來">由來</h2><p>最近正在開發一款<strong>Tile</strong>為美術核心的遊戲，本來使用<a href="http://www.mapeditor.org/" title="Tiled" target="_blank" rel="external">Tiled</a>，將場景各個物件擺好後，再新增一個Object層，來擺放一些幾何的元素，讓<a href="http://www.mapeditor.org/" title="Box2D" target="_blank" rel="external">Box2D</a>進行碰撞。y在場景與碰撞都設定好後，剩下的人物則需要在Object層指定位置，額外在程式中產生。人物的額外產生不是問題，因為每個動作影格都是固定Size的，但場景物件支援可以拆除或新增就不同了，畢竟場景元素都是<strong>Tile</strong>組成，例如一棟房子可能會是<strong>各種Tile的集合體</strong>，更甚之，一個房子還會有其他招牌什麼的，這樣就會使房子變成許多層Tile的集合體，因此也沒有固定的碰撞區域或固定圖格。<br><a id="more"></a><br><br></p>
-<h2 id="截圖">截圖</h2><p>撇開程式要處理多層級Tile不說，還有其物理碰撞。這篇主要是要介紹Dowen花了點小時間製作的<a href="/project/TileRetriever.html">TileRetriever</a>，用處在於程式中製作物件時，可以輕鬆得知各個Tile分別在圖格座標系的$ (x, y) $位置，如下圖所示：</p>
+<h2 id="由來"><a href="#由來" class="headerlink" title="由來"></a>由來</h2><p>最近正在開發一款<strong>Tile</strong>為美術核心的遊戲，本來使用<a href="http://www.mapeditor.org/" title="Tiled" target="_blank" rel="noopener">Tiled</a>，將場景各個物件擺好後，再新增一個Object層，來擺放一些幾何的元素，讓<a href="http://www.mapeditor.org/" title="Box2D" target="_blank" rel="noopener">Box2D</a>進行碰撞。y在場景與碰撞都設定好後，剩下的人物則需要在Object層指定位置，額外在程式中產生。人物的額外產生不是問題，因為每個動作影格都是固定Size的，但場景物件支援可以拆除或新增就不同了，畢竟場景元素都是<strong>Tile</strong>組成，例如一棟房子可能會是<strong>各種Tile的集合體</strong>，更甚之，一個房子還會有其他招牌什麼的，這樣就會使房子變成許多層Tile的集合體，因此也沒有固定的碰撞區域或固定圖格。<br><a id="more"></a><br><br></p>
+<h2 id="截圖"><a href="#截圖" class="headerlink" title="截圖"></a>截圖</h2><p>撇開程式要處理多層級Tile不說，還有其物理碰撞。這篇主要是要介紹Dowen花了點小時間製作的<a href="/project/TileRetriever.html">TileRetriever</a>，用處在於程式中製作物件時，可以輕鬆得知各個Tile分別在圖格座標系的$ (x, y) $位置，如下圖所示：</p>
 <img src="/images/TileRetriever/Example.png" width="1280">
 <p>如果要產生一棟房子，勢必要知道各個Tile所在位置，像是得知如下格式:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">int</span>[] TILE = &#123; <span class="comment">// x,y ....</span></span><br><span class="line">        <span class="number">33</span>,<span class="number">0</span>,<span class="number">34</span>,<span class="number">0</span>,<span class="number">34</span>,<span class="number">0</span>,<span class="number">34</span>,<span class="number">0</span>,<span class="number">34</span>,<span class="number">0</span>,<span class="number">35</span>,<span class="number">0</span>,</span><br><span class="line">        <span class="number">33</span>,<span class="number">1</span>,<span class="number">34</span>,<span class="number">1</span>,<span class="number">34</span>,<span class="number">1</span>,<span class="number">34</span>,<span class="number">1</span>,<span class="number">34</span>,<span class="number">1</span>,<span class="number">35</span>,<span class="number">1</span>,</span><br><span class="line">        <span class="number">33</span>,<span class="number">2</span>,<span class="number">34</span>,<span class="number">2</span>,<span class="number">34</span>,<span class="number">2</span>,<span class="number">34</span>,<span class="number">2</span>,<span class="number">34</span>,<span class="number">2</span>,<span class="number">35</span>,<span class="number">2</span>,</span><br><span class="line">        <span class="number">1</span> ,<span class="number">4</span>, <span class="number">2</span>,<span class="number">4</span>, <span class="number">4</span>,<span class="number">4</span>, <span class="number">5</span>,<span class="number">4</span>, <span class="number">6</span>,<span class="number">4</span>, <span class="number">3</span>,<span class="number">4</span>,</span><br><span class="line">        <span class="number">1</span> ,<span class="number">5</span>, <span class="number">2</span>,<span class="number">5</span>, <span class="number">4</span>,<span class="number">5</span>, <span class="number">5</span>,<span class="number">5</span>, <span class="number">6</span>,<span class="number">5</span>, <span class="number">3</span>,<span class="number">5</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>就可以產生出最開始遊戲截圖中的房子(雖然還有些額外資訊要給)。</p>
-<p>其實本來想找網路上有沒有相關檢視器，可以幫忙做這件事，但是搜尋好久無果，且<a href="http://www.mapeditor.org/" title="Tiled" target="_blank" rel="external">Tiled</a>只提供長寬資訊，所以就拿Javascript來打造一個囉！如果有人需要進階改版，請跟Dowen說一下，再開個 <a href="https://github.com/" title="github" target="_blank" rel="external">github</a> 一起維護 :)</p>
+<p>其實本來想找網路上有沒有相關檢視器，可以幫忙做這件事，但是搜尋好久無果，且<a href="http://www.mapeditor.org/" title="Tiled" target="_blank" rel="noopener">Tiled</a>只提供長寬資訊，所以就拿Javascript來打造一個囉！如果有人需要進階改版，請跟Dowen說一下，再開個 <a href="https://github.com/" title="github" target="_blank" rel="noopener">github</a> 一起維護 :)</p>
 
       
     </div>
@@ -251,7 +261,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Dowen<br>
+      &copy; 2019 Dowen<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -287,30 +297,17 @@ ga('send', 'pageview');
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
+<script src="/js/script.js"></script>
 
   </div>
-<!-- mathjax config similar to math.stackexchange -->
 
+<!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
 
 <script type="text/x-mathjax-config">
@@ -324,5 +321,6 @@ ga('send', 'pageview');
 
 <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+<!-- End: Injected MathJax -->
 </body>
 </html>

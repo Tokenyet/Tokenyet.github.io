@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>OpenGL 藍寶入門教學 2: Strat With Triangle | Dowen&#39;s World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="baidu-site-verification" content="ryL4dgnrJp" />
-  <meta name="description" content="開始前介紹本系列文將使用OpenGL 4.5版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！
-從點開始要畫一個三角形之前，總要會在畫面上畫出一個點來。在那之前，由於使用的是Modern版OpenGL，所以做任何事都要準備兩個東西，其中一個是「Vertex Array Object」，簡稱VAO，另一個則是Shader，包含基礎的兩">
+  <meta name="baidu-site-verification" content="ryL4dgnrJp">
+  <meta name="description" content="開始前介紹本系列文將使用OpenGL 4.5版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！ 從點開始要畫一個三角形之前，總要會在畫面上畫出一個點來。在那之前，由於使用的是Modern版OpenGL，所以做任何事都要準備兩個東西，其中一個是「Vertex Array Object」，簡稱VAO，另一個則是Shader，包含基礎的兩">
+<meta name="keywords" content="OpenGL,OpenGL教學,OpenGL入門教學,OpenGL Tutorial,OpenGL介紹,Shader,OpenGL基礎,VAO,Triangle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL 藍寶入門教學 2: Strat With Triangle">
 <meta property="og:url" content="https://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/index.html">
-<meta property="og:site_name" content="Dowen's World">
-<meta property="og:description" content="開始前介紹本系列文將使用OpenGL 4.5版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！
-從點開始要畫一個三角形之前，總要會在畫面上畫出一個點來。在那之前，由於使用的是Modern版OpenGL，所以做任何事都要準備兩個東西，其中一個是「Vertex Array Object」，簡稱VAO，另一個則是Shader，包含基礎的兩">
+<meta property="og:site_name" content="Dowen&#39;s World">
+<meta property="og:description" content="開始前介紹本系列文將使用OpenGL 4.5版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！ 從點開始要畫一個三角形之前，總要會在畫面上畫出一個點來。在那之前，由於使用的是Modern版OpenGL，所以做任何事都要準備兩個東西，其中一個是「Vertex Array Object」，簡稱VAO，另一個則是Shader，包含基礎的兩">
+<meta property="og:locale" content="zh_tw">
 <meta property="og:image" content="https://tokenyet.github.io/images/OBT2/opengl_easy_pipeline.png">
 <meta property="og:image" content="https://tokenyet.github.io/images/OBT2/nothingresult.png">
 <meta property="og:image" content="https://tokenyet.github.io/images/OBT2/goodresult.png">
 <meta property="og:image" content="https://tokenyet.github.io/images/OBT2/finalresult.png">
-<meta property="og:updated_time" content="2016-08-25T08:26:55.101Z">
+<meta property="og:updated_time" content="2016-08-25T08:26:55.102Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL 藍寶入門教學 2: Strat With Triangle">
-<meta name="twitter:description" content="開始前介紹本系列文將使用OpenGL 4.5版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！
-從點開始要畫一個三角形之前，總要會在畫面上畫出一個點來。在那之前，由於使用的是Modern版OpenGL，所以做任何事都要準備兩個東西，其中一個是「Vertex Array Object」，簡稱VAO，另一個則是Shader，包含基礎的兩">
+<meta name="twitter:description" content="開始前介紹本系列文將使用OpenGL 4.5版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！ 從點開始要畫一個三角形之前，總要會在畫面上畫出一個點來。在那之前，由於使用的是Modern版OpenGL，所以做任何事都要準備兩個東西，其中一個是「Vertex Array Object」，簡稱VAO，另一個則是Shader，包含基礎的兩">
+<meta name="twitter:image" content="https://tokenyet.github.io/images/OBT2/opengl_easy_pipeline.png">
   
     <link rel="alternative" href="/atom.xml" title="Dowen&#39;s World" type="application/atom+xml">
   
@@ -30,7 +30,14 @@
     <link rel="icon" href="/favicon.png">
   
   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-6282899881501227",
+            enable_page_level_ads: true
+      });
+  </script>
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -46,7 +53,7 @@ ga('send', 'pageview');
 <!-- End Google Analytics -->
 
 
-</head>
+</head></html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -90,7 +97,7 @@ ga('send', 'pageview');
                <a id="nav-search-btn" class="nav-icon verticalLine" title="Search"></a>
              </nav>
            <div id="search-form-wrap">
-             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tokenyet.github.io"></form>
+             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tokenyet.github.io"></form>
              </div>
          </div>
      </div>
@@ -121,34 +128,34 @@ ga('send', 'pageview');
       </header>
     
     <footer class="article-medium">
-      <a data-url="https://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="cj6c2g9m800816cubqnnsw77n" class="article-share-link">Share</a>
+      <a data-url="https://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/" data-id="ck0g9yrzd000apwubk43ch41v" class="article-share-link">Share</a>
       
         <a href="https://tokenyet.github.io/2016/07/10/OpenGL-Beginner-Tutorial-2-Triangle/#disqus_thread" class="article-comment-link">Comments</a>
       
     </footer>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="開始前介紹">開始前介紹</h2><p>本系列文將使用<em>OpenGL 4.5</em>版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！</p>
-<h2 id="從點開始">從點開始</h2><p>要畫一個三角形之前，總要會在畫面上畫出一個點來。在那之前，由於使用的是Modern版OpenGL，所以做任何事都要準備兩個東西，其中一個是<em>「Vertex Array Object」</em>，簡稱<em>VAO</em>，另一個則是Shader，包含基礎的兩個稱為Vertex Shader與Fragment Shader。</p>
+        <h2 id="開始前介紹"><a href="#開始前介紹" class="headerlink" title="開始前介紹"></a>開始前介紹</h2><p>本系列文將使用<em>OpenGL 4.5</em>版本，並以作者能理解的方式教學，如有細節誤解或是講錯的部分，或跳太快應先講什麼後講什麼的地方，請不吝多多指教！謝謝！</p>
+<h2 id="從點開始"><a href="#從點開始" class="headerlink" title="從點開始"></a>從點開始</h2><p>要畫一個三角形之前，總要會在畫面上畫出一個點來。在那之前，由於使用的是Modern版OpenGL，所以做任何事都要準備兩個東西，其中一個是<em>「Vertex Array Object」</em>，簡稱<em>VAO</em>，另一個則是Shader，包含基礎的兩個稱為Vertex Shader與Fragment Shader。</p>
 <ul>
 <li>Shader: 其實並不只有Vertex Shader與Fragment Shader，還有Geomerty Shader、Tessellation Control Shader、Tessellation Evaluation Shader，由於屬於初階文章，所以暫不探討。而Shader其中必寫的其實只有Fragment就好，詳細請上網考查。</li>
 </ul>
 <p>首先在了解畫一個點需要準備貌似很多東西時，會認為很繁瑣。當深入一點後，將了解僅是一連串常用的手續，以後只要複製貼上加修改。而這裡就先示意部分的OpenGL pipeline，也就是讀者將碰到的pipeline，倘若一次列出全部流程，會猶豫一陣子。<br><img src="/images/OBT2/opengl_easy_pipeline.png" width="600"><br>上方的流程是說明，使用者可以<em>以某種方式</em>將一些資料傳給Vertex Shader，本文章目前不會先做傳資料的動作，先給一個小概念。 而傳完之後Vertex Shader仍會以<em>某種方式</em>將資料傳給流程中的下一個Shader，就是Fragment Shader，最後Fragment Shader 跑完之後會將圖片輸出到螢幕上。</p>
 <p>理解到OpenGL基礎流程後，接下來就是從實作中學習，如果沒有環境的讀者可以參考<a href="/2016/07/05/OpenGL-Beginner-Tutorial-1-Setting_Up_Enviroment">上篇</a>中的Code來建立基礎環境。<br><a id="more"></a></p>
-<h3 id="為OpenGL搭起一個Shader的介面">為OpenGL搭起一個Shader的介面</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);</span><br><span class="line">GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);</span><br><span class="line">glShaderSource(vertexShader, <span class="number">1</span>, &amp;vertexShaderSource, NULL);</span><br><span class="line">glShaderSource(fragmentShader, <span class="number">1</span>, &amp;fragmentShaderSource, NULL);</span><br><span class="line">glCompileShader(vertexShader);</span><br><span class="line">glCompileShader(fragmentShader);</span><br></pre></td></tr></table></figure>
+<h3 id="為OpenGL搭起一個Shader的介面"><a href="#為OpenGL搭起一個Shader的介面" class="headerlink" title="為OpenGL搭起一個Shader的介面"></a>為OpenGL搭起一個Shader的介面</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);</span><br><span class="line">GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);</span><br><span class="line">glShaderSource(vertexShader, <span class="number">1</span>, &amp;vertexShaderSource, <span class="literal">NULL</span>);</span><br><span class="line">glShaderSource(fragmentShader, <span class="number">1</span>, &amp;fragmentShaderSource, <span class="literal">NULL</span>);</span><br><span class="line">glCompileShader(vertexShader);</span><br><span class="line">glCompileShader(fragmentShader);</span><br></pre></td></tr></table></figure>
 <p>這裡必須先提到 「數字代表物件，物件管理是OpenGL的事」，OpenGL在實作上由於需符合C/C++，所以物件管理的方式是給我們從Create Function中抽一個序號，然後那個序號就是你的物件編號，有這物件編號後，我們必須<em>妥善保存</em>，然後在任何需要的時候可以跟OpenGL說要設定/刪除，先來解釋一下上面的例子就會明白。<br>首先我們準備了抽序號的物件<code>vertexShader</code>然後向<code>glCreateShader</code>要求一些東西，而這裡要求創建Vertex Shader的命令。之後要設定這個<code>vertexShader</code>物件的各種屬性，則是透過將編號(vertexShader)傳給OpenGL函式<code>glShaderSource</code>進行設定，這裡的設定是將shader的程式碼傳過去設定，可能認為傳程式碼很奇怪，但Shader就是一個給我們程式設計的地方。</p>
-<p><em>void glShaderSource(GLuint shader, GLsizei count, const GLchar <em>*string, const GLint </em>length);</em></p>
+<p><em>void glShaderSource(GLuint shader, GLsizei count, const GLchar *<em>string, const GLint </em>length);</em></p>
 <ul>
 <li>第一個參數指要用哪個Shader物件。</li>
 <li>第二個是Source Code的String指標跟length指標的個數。</li>
 <li>第三個是程式碼整體的雙重指標。</li>
 <li>第四個是你每一個指標所包含的字串長度應該讀取多少，使用NULL代表就是不指定，讀取到NULL為止。</li>
 </ul>
-<h3 id="Shader編譯後變成_Shader_Program">Shader編譯後變成 Shader Program</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GLuint program = glCreateProgram();</span><br><span class="line">glAttachShader(program, vertexShader);</span><br><span class="line">glAttachShader(program, fragmentShader);</span><br><span class="line">glLinkProgram(program);</span><br><span class="line">...</span><br><span class="line"><span class="comment">// in loop before you want to draw something</span></span><br><span class="line">glUseProgram(program)</span><br></pre></td></tr></table></figure>
+<h3 id="Shader編譯後變成-Shader-Program"><a href="#Shader編譯後變成-Shader-Program" class="headerlink" title="Shader編譯後變成 Shader Program"></a>Shader編譯後變成 Shader Program</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GLuint program = glCreateProgram();</span><br><span class="line">glAttachShader(program, vertexShader);</span><br><span class="line">glAttachShader(program, fragmentShader);</span><br><span class="line">glLinkProgram(program);</span><br><span class="line">...</span><br><span class="line"><span class="comment">// in loop before you want to draw something</span></span><br><span class="line">glUseProgram(program)</span><br></pre></td></tr></table></figure>
 <p>同樣是設定，這裡將剛剛產生的Shader設定在<code>program</code>裡面，接下來的<code>glLinkProgram</code>代表準備好各種Shader後的Compile，就是不給更改了，也就變成一個程式。然後在需要繪製前在使用簡單的<code>glUseProgram</code>就可以在你繪製前，套用要使用的Shader Program。</p>
-<h3 id="Shader_的程式碼">Shader 的程式碼</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> GLchar *vertexShaderSource =</span><br><span class="line">	<span class="string">"#version 450 core\n"</span></span><br><span class="line">	<span class="string">"\n"</span></span><br><span class="line">	<span class="string">"void main(void)\n"</span></span><br><span class="line">	<span class="string">"&#123;\n"</span></span><br><span class="line">	<span class="string">"	gl_Position = vec4(0.0, 1.0, 0.5, 1.0);\n"</span></span><br><span class="line">	<span class="string">"&#125;\n"</span>;</span><br><span class="line"><span class="keyword">const</span> GLchar *fragmentShaderSource =</span><br><span class="line">	<span class="string">"#version 450 core\n"</span></span><br><span class="line">	<span class="string">"\n"</span></span><br><span class="line">	<span class="string">"out vec4 color;\n"</span></span><br><span class="line">	<span class="string">"\n"</span></span><br><span class="line">	<span class="string">"void main(void)\n"</span></span><br><span class="line">	<span class="string">"&#123;\n"</span></span><br><span class="line">	<span class="string">"	color = vec4(0.0, 0.0, 1.0, 1.0);\n"</span></span><br><span class="line">	<span class="string">"&#125;\n"</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Shader-的程式碼"><a href="#Shader-的程式碼" class="headerlink" title="Shader 的程式碼"></a>Shader 的程式碼</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> GLchar *vertexShaderSource =</span><br><span class="line">	<span class="string">"#version 450 core\n"</span></span><br><span class="line">	<span class="string">"\n"</span></span><br><span class="line">	<span class="string">"void main(void)\n"</span></span><br><span class="line">	<span class="string">"&#123;\n"</span></span><br><span class="line">	<span class="string">"	gl_Position = vec4(0.0, 1.0, 0.5, 1.0);\n"</span></span><br><span class="line">	<span class="string">"&#125;\n"</span>;</span><br><span class="line"><span class="keyword">const</span> GLchar *fragmentShaderSource =</span><br><span class="line">	<span class="string">"#version 450 core\n"</span></span><br><span class="line">	<span class="string">"\n"</span></span><br><span class="line">	<span class="string">"out vec4 color;\n"</span></span><br><span class="line">	<span class="string">"\n"</span></span><br><span class="line">	<span class="string">"void main(void)\n"</span></span><br><span class="line">	<span class="string">"&#123;\n"</span></span><br><span class="line">	<span class="string">"	color = vec4(0.0, 0.0, 1.0, 1.0);\n"</span></span><br><span class="line">	<span class="string">"&#125;\n"</span>;</span><br></pre></td></tr></table></figure>
 <p><code>vertexShaderSource</code>跟<code>fragmentShaderSource</code>是程式碼，就像寫程式一樣要先有Code才能用IDE編譯，而這裡是將Code丟給OpenGL編譯成一個program，如先前的範例。而如何簡單撰寫一個Shader? 根據官方所述，主要是由C下去變形，所以在C的基礎中能做，基本上都可以使用，而一個良好的Shader Code需要標明版本 <code>#version 450 core</code> 與進入點 <code>main</code> 。 有了之後以上就是最基礎的shader, <code>gl_Position</code> 代表的是以NDC空間中的位置，NDC空間簡單解釋就是說到Vertex Shader 這段，未來要做的是將三維空間轉換成NDC空間，未來講MVP矩陣的時候會提到，這裡只要想成Z指向螢幕外,Y是數學所學的上方,X是右方即可，超過1.0跟-1.0會超出螢幕範圍這樣。</p>
-<h3 id="Vertex_Array_Object">Vertex Array Object</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GLuint vertexArrayObject;</span><br><span class="line">glCreateVertexArrays(<span class="number">1</span>, &amp;vertexArrayObject);</span><br></pre></td></tr></table></figure>
+<h3 id="Vertex-Array-Object"><a href="#Vertex-Array-Object" class="headerlink" title="Vertex Array Object"></a>Vertex Array Object</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GLuint vertexArrayObject;</span><br><span class="line">glCreateVertexArrays(<span class="number">1</span>, &amp;vertexArrayObject);</span><br></pre></td></tr></table></figure>
 <p>VAO設定到Shader作為Input本篇先不做說明，但必要讓讀者知道的是，OpenGL一定要在有VAO的狀況下才能進行繪製，縱使你產生出來是空的也好。像是下面這樣。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">glUseProgram(program);</span><br><span class="line"><span class="comment">//shader.UseProgram();</span></span><br><span class="line">glBindVertexArray(vertexArrayObject);</span><br><span class="line">glDrawArrays(GL_POINTS, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">glBindVertexArray(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
 <p>使用Shader Program後綁定輸入點(VAO)，VAO的概念算是當你有Shader Program後，<code>glBindVertexArray</code>綁定的VAO就會在<code>glDrawArrays</code>的時候被傳進Shader。</p>
 <p><em>void glDrawArrays(GLenum mode, GLint first, GLsizei count)</em></p>
@@ -159,17 +166,17 @@ ga('send', 'pageview');
 </ul>
 <p>完成以上的建置後就會長得像以下的的圖。<br><img src="/images/OBT2/nothingresult.png" width="420"></p>
 <p>什麼?你看不出來? 在Loop中加上<code>glPointSize(40.0f);</code>吧！<br><img src="/images/OBT2/goodresult.png" width="420"><br>將要繪製的一個像素放大四十倍後繪製，終於可以看出來了，至於原理如何，由於是在光柵化的時候做的，內建的地方就不去探討。</p>
-<h3 id="Shader大整形">Shader大整形</h3><p>既然已經嘗試完畢我們就來正式開始，將Shader那一大坨的東西改成從檔案裏面讀取，再加上除錯處理，新增一個Class吧！<br><a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial%20-%201/Shader.cpp" target="_blank" rel="external">Shader</a> Class的程式碼在這裡可以參考，由於程式碼主要的地方沒變，只有架構改變，就不討論OO的地方。</p>
-<p>有了之後就可以將之前的Shader程式碼通通砍掉然後創建一個Shader Class來幫助我們輕鬆建立一個Shader Program，還有Debug的功能！之後只要將程式碼改成下方這樣就可以輕鬆使用。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Shader <span class="title">shader</span><span class="params">("shader/basic.vert", "shader/basic.frag")</span></span>;</span><br><span class="line">...</span><br><span class="line">shader.UseProgram(); <span class="comment">// in loop</span></span><br></pre></td></tr></table></figure></p>
-<p>至於那兩個檔案其實並不一定要叫<code>xxx.vert</code>或<code>xxx.frag</code>，不過在OpenGL開發者中，大部分都這樣命名，而且有相關<a href="https://github.com/samizzo/nshader" target="_blank" rel="external">Highlight的插件</a>，所以讀者可以考慮習慣看看。<br>這是<a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial%20-%201/shader/basic.vert" target="_blank" rel="external">basic.vert</a>跟<a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial%20-%201/shader/basic.frag" target="_blank" rel="external">basic.frag</a>的程式碼。</p>
-<h3 id="三角形">三角形</h3><p>接下來，正式要畫一個三角形，不過我們先用不正式的畫法，到下篇文章再慢慢推進Shader(GPU)與CPU的互動。</p>
+<h3 id="Shader大整形"><a href="#Shader大整形" class="headerlink" title="Shader大整形"></a>Shader大整形</h3><p>既然已經嘗試完畢我們就來正式開始，將Shader那一大坨的東西改成從檔案裏面讀取，再加上除錯處理，新增一個Class吧！<br><a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial%20-%201/Shader.cpp" target="_blank" rel="noopener">Shader</a> Class的程式碼在這裡可以參考，由於程式碼主要的地方沒變，只有架構改變，就不討論OO的地方。</p>
+<p>有了之後就可以將之前的Shader程式碼通通砍掉然後創建一個Shader Class來幫助我們輕鬆建立一個Shader Program，還有Debug的功能！之後只要將程式碼改成下方這樣就可以輕鬆使用。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Shader <span class="title">shader</span><span class="params">(<span class="string">"shader/basic.vert"</span>, <span class="string">"shader/basic.frag"</span>)</span></span>;</span><br><span class="line">...</span><br><span class="line">shader.UseProgram(); <span class="comment">// in loop</span></span><br></pre></td></tr></table></figure></p>
+<p>至於那兩個檔案其實並不一定要叫<code>xxx.vert</code>或<code>xxx.frag</code>，不過在OpenGL開發者中，大部分都這樣命名，而且有相關<a href="https://github.com/samizzo/nshader" target="_blank" rel="noopener">Highlight的插件</a>，所以讀者可以考慮習慣看看。<br>這是<a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial%20-%201/shader/basic.vert" target="_blank" rel="noopener">basic.vert</a>跟<a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial%20-%201/shader/basic.frag" target="_blank" rel="noopener">basic.frag</a>的程式碼。</p>
+<h3 id="三角形"><a href="#三角形" class="headerlink" title="三角形"></a>三角形</h3><p>接下來，正式要畫一個三角形，不過我們先用不正式的畫法，到下篇文章再慢慢推進Shader(GPU)與CPU的互動。</p>
 <p>將 basic.vert 修改成以下。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#version 450 core</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">	<span class="keyword">const</span> vec4 vertices[<span class="number">3</span>] = vec4[<span class="number">3</span>](vec4(<span class="number">0.25</span>,-<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>),</span><br><span class="line">					vec4(-<span class="number">0.25</span>,-<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>),</span><br><span class="line">					vec4(<span class="number">0.25</span>,<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>));</span><br><span class="line">	gl_Position = vertices[gl_VertexID];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#version 450 core</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">const</span> vec4 vertices[<span class="number">3</span>] = vec4[<span class="number">3</span>](vec4(<span class="number">0.25</span>,<span class="number">-0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>),</span><br><span class="line">					vec4(<span class="number">-0.25</span>,<span class="number">-0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>),</span><br><span class="line">					vec4(<span class="number">0.25</span>,<span class="number">0.25</span>,<span class="number">0.5</span>,<span class="number">1.0</span>));</span><br><span class="line">	gl_Position = vertices[gl_VertexID];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>裡面內建的vecX是OpenGL提供你的一個型態，就是所謂的向量，這在shader中語法稱為glsl，而且很容易進行數學矩陣與向量的相乘。此外這裡有個新的東西是<code>gl_VertexID</code>，這個ID指的是，你在外面使用繪製命令的時候，代表繪製第幾個Vertex的編號。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shader.UseProgram();</span><br><span class="line">glBindVertexArray(vertexArrayObject);</span><br><span class="line">glDrawArrays(GL_TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">glBindVertexArray(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
 <p>將loop內改成繪製三角形後，後面改成3個點，當然VAO是空的，只是強迫根據Shader的內容畫三次，每次<code>gl_VertexID</code>會根據繪製的索引而不同。</p>
 <p>接下來畫面應該會長這樣子。<br><img src="/images/OBT2/finalresult.png" width="420"></p>
-<p>附上最後的<a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial%20-%201/main.cpp" target="_blank" rel="external">Code</a>。</p>
+<p>附上最後的<a href="https://github.com/Tokenyet/OpenGL_Basic_Tutorial/blob/master/OpenGL_Basic_Tutorial%20-%201/main.cpp" target="_blank" rel="noopener">Code</a>。</p>
 <p>小結:<br>在寫的時候，不知道怎樣算清楚怎樣不清楚，這並不是我最初的學習，有學過一段時間，現在是搭配看原文書加上自己的經驗與網路的參考來撰寫文章，滿擔心只是寫出一堆沒人看得懂的東西 :(</p>
 
       
@@ -292,7 +299,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Dowen<br>
+      &copy; 2019 Dowen<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -328,11 +335,11 @@ ga('send', 'pageview');
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
+<script src="/js/script.js"></script>
 
   </div>
 </body>
