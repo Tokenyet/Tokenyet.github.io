@@ -7,7 +7,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { formatISO } from "date-fns";
-import { getCategories, getTags } from "@/features/blog/adapter/postRepository";
+import { getCategories } from "@/features/blog/adapter/postRepository";
 import type { Post } from "@/features/blog/entity/types";
 import type { Project } from "@/features/projects/entity/types";
 import { absoluteUrl, siteConfig } from "@/site/config";
@@ -17,7 +17,6 @@ const staticRoutes = [
   "/about/",
   "/archives/",
   "/categories/",
-  "/tags/",
   "/projects/",
 ];
 
@@ -82,7 +81,6 @@ function buildSitemapXml(posts: Post[], projects: Project[]): string {
     ...staticRoutes,
     ...posts.map((post) => post.routePath),
     ...getCategories().map((category) => `/categories/${category.slug}/`),
-    ...getTags().map((tag) => `/tags/${tag.slug}/`),
     ...projects.flatMap((project) => [
       `/projects/${project.slug}/`,
       `/projects/${project.slug}/privacy/`,

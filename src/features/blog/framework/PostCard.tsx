@@ -45,16 +45,6 @@ export function PostCard({ post }: PostCardProps) {
         <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-600">
           {post.description}
         </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {post.tags.slice(0, 8).map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full border border-zinc-200 px-2.5 py-1 text-xs text-zinc-500"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
       </div>
     </article>
   );

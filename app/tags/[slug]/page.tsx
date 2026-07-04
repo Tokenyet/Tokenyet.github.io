@@ -24,6 +24,10 @@ export async function generateMetadata({
     alternates: {
       canonical: `/tags/${slug}/`,
     },
+    robots: {
+      index: false,
+      follow: true,
+    },
   };
 }
 

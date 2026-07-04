@@ -77,19 +77,6 @@ export default async function PostPage({
           <h1 className="mt-4 text-3xl font-semibold tracking-normal text-zinc-950 sm:text-4xl">
             {post.title}
           </h1>
-          {post.tags.length > 0 ? (
-            <div className="mt-5 flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <Link
-                  key={tag}
-                  href={`/tags/${taxonomySlug(tag)}/`}
-                  className="rounded-full border border-zinc-200 px-2.5 py-1 text-xs text-zinc-500 hover:border-emerald-300 hover:text-emerald-700"
-                >
-                  {tag}
-                </Link>
-              ))}
-            </div>
-          ) : null}
         </header>
         <ArticleBody html={post.contentHtml} />
       </article>
