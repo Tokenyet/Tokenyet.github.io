@@ -15,9 +15,8 @@ export default function AboutPage() {
 
   return (
     <PageShell
-      eyebrow="About"
       title={about.title}
-      description="舊站自我介紹內容已轉移；過時的第三方 gallery script 沒有在新站執行。"
+      description="關於 Dowen 的背景、興趣與學習方向。"
     >
       <article className="max-w-[var(--article-width)]">
         <ArticleBody html={about.html} />

@@ -15,9 +15,8 @@ export default function CategoriesPage() {
 
   return (
     <PageShell
-      eyebrow="Categories"
       title="Categories"
-      description="依舊站分類整理文章。"
+      description="依主題瀏覽文章。"
     >
       <TaxonomyList basePath="/categories" items={categories} />
     </PageShell>
