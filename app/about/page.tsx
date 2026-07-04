@@ -48,13 +48,6 @@ const highlights = [
   "AI 起飛之後，什麼都能碰的錯覺變得更強，也更提醒自己要回到驗證、語境和可維護性。",
 ];
 
-const nextProfileInputs = [
-  "目前主要負責的產品領域、技術棧或代表性專案。",
-  "你想被記住的工程強項：例如前端、桌面工具、平台整合、效能、開發者體驗。",
-  "可以公開的作品連結、GitHub、履歷或聯絡方式。",
-  "更偏向嚴肅履歷頁、個人品牌頁，還是帶一點幽默感的工程師介紹。",
-];
-
 export default function AboutPage() {
   const legacyAbout = getAboutPage();
 
@@ -160,27 +153,6 @@ export default function AboutPage() {
               </p>
             ))}
           </div>
-        </section>
-
-        <section className="grid gap-8 lg:grid-cols-[260px_minmax(0,1fr)]">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
-              To refine
-            </p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-normal text-zinc-950">
-              下一版最值得補的資訊。
-            </h2>
-          </div>
-          <ul className="grid gap-3 sm:grid-cols-2">
-            {nextProfileInputs.map((item) => (
-              <li
-                key={item}
-                className="rounded-md border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm leading-6 text-zinc-700"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
         </section>
 
         <details className="group max-w-[var(--article-width)] border-t border-zinc-200 pt-5">
