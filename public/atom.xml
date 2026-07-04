@@ -65,7 +65,7 @@
 </ol>
 <p>第一個問題，參考<a href="https://stackoverflow.com/questions/24516945/calculate-correct-impluse-or-force-to-move-a-box2d-body-to-a-specific-position" target="_blank" rel="noopener">物理的力與衝量</a>就可以解決問題。</p>
 <p>第二個問題又有很多解決方案，根據網路上觀察的Rpg風格遊戲，有幾種處理方式。<br>1.根據手指(滑鼠)指標直線移動<br>2.使用四方按鈕來代替移動<br>3.點擊位置，自動移動。</p>
-<p>前兩個方案就不用說了，算是簡單的實作，第三個倒是需要技巧的問題，Dowen見過有Google Play上有遊戲的方式特別神奇，像是Dowen使用<a href="/2016/07/13/A-Path-finding-With-Libgdx">A* Pathfinding</a>，而某遊戲，雖然不知道是使用何引擎，不過其使用偏1.與3.的混合方法，有點詭異但還滿順暢的。</p>
+<p>前兩個方案就不用說了，算是簡單的實作，第三個倒是需要技巧的問題，Dowen見過有Google Play上有遊戲的方式特別神奇，像是Dowen使用<a href="/2017/07/13/A-Path-finding-With-Libgdx/">A* Pathfinding</a>，而某遊戲，雖然不知道是使用何引擎，不過其使用偏1.與3.的混合方法，有點詭異但還滿順暢的。</p>
 <p>最後提一下，由於二維沒有深度，所以角色被遮蔽的效果可以靠Y軸來達成，等等見到成果，就可以看到效果。</p>
 <h2 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h2><p>基本上Prototype會遇到的問題，都提到了，就來看不才的Prototype吧！<br>
 </p><div class="container-outside-div">
@@ -86,12 +86,8 @@
     <content type="html"><![CDATA[<figure class="legacy-image"><img src="/images/TileRetriever/GameSnapshot.png" alt="" loading="lazy" style="max-width: min(100%, 300px)"></figure>
 <h2 id="由來" tabindex="-1"><a class="heading-anchor" href="#由來" aria-hidden="true">#</a> 由來</h2>
 <p>最近正在開發一款<strong>Tile</strong>為美術核心的遊戲，本來使用<a href="http://www.mapeditor.org/" title="Tiled" target="_blank" rel="noopener noreferrer">Tiled</a>，將場景各個物件擺好後，再新增一個Object層，來擺放一些幾何的元素，讓<a href="http://www.mapeditor.org/" title="Box2D" target="_blank" rel="noopener noreferrer">Box2D</a>進行碰撞。y在場景與碰撞都設定好後，剩下的人物則需要在Object層指定位置，額外在程式中產生。人物的額外產生不是問題，因為每個動作影格都是固定Size的，但場景物件支援可以拆除或新增就不同了，畢竟場景元素都是<strong>Tile</strong>組成，例如一棟房子可能會是<strong>各種Tile的集合體</strong>，更甚之，一個房子還會有其他招牌什麼的，這樣就會使房子變成許多層Tile的集合體，因此也沒有固定的碰撞區域或固定圖格。</p>
-</br>
-</br>
-## 截圖 ##
-撇開程式要處理多層級Tile不說，還有其物理碰撞。這篇主要是要介紹Dowen花了點小時間製作的[TileRetriever](/project/TileRetriever.html)，用處在於程式中製作物件時，可以輕鬆得知各個Tile分別在圖格座標系的$ (x, y) $位置，如下圖所示：
-</br>
-</br>
+<h2 id="截圖" tabindex="-1"><a class="heading-anchor" href="#截圖" aria-hidden="true">#</a> 截圖</h2>
+<p>撇開程式要處理多層級Tile不說，還有其物理碰撞。這篇主要是要介紹Dowen花了點小時間製作的<a href="/project/TileRetriever.html">TileRetriever</a>，用處在於程式中製作物件時，可以輕鬆得知各個Tile分別在圖格座標系的$ (x, y) $位置，如下圖所示：</p>
 <figure class="legacy-image"><img src="/images/TileRetriever/Example.png" alt="" loading="lazy" style="max-width: min(100%, 1280px)"></figure>
 <p>如果要產生一棟房子，勢必要知道各個Tile所在位置，像是得知如下格式:</p>
 <pre class="code-block"><code class="hljs language-java">    <span class="hljs-keyword">final</span> <span class="hljs-type">int</span>[] TILE = { <span class="hljs-comment">// x,y ....</span>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TileRetriever</title>
+    <style>
+      body {
+        color: #18181b;
+        font-family: Arial, sans-serif;
+        margin: 24px;
+      }
+
+      canvas {
+        border: 1px solid #d4d4d8;
+        display: block;
+        max-width: 100%;
+      }
+
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      input {
+        border: 1px solid #d4d4d8;
+        border-radius: 4px;
+        padding: 6px 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TileRetriever</h1>
+    <p>Upload a tile image and move the cursor over the canvas to inspect tile coordinates.</p>
+    <form id="settings">
+      <label>
+        Tile width
+        <input id="tileWidth" type="number" value="16" min="1">
+      </label>
+      <label>
+        Tile height
+        <input id="tileHeight" type="number" value="16" min="1">
+      </label>
+      <input type="file" accept="image/*" onchange="readFile(this)">
+    </form>
+    <script>
+      const gameArea = {
+        canvas: document.createElement("canvas"),
+        context: null,
+        background: new Image(),
+        start() {
+          this.canvas.width = 480;
+          this.canvas.height = 270;
+          this.context = this.canvas.getContext("2d");
+          document.body.insertBefore(this.canvas, document.getElementById("settings"));
+          this.context.fillStyle = "#f4f4f5";
+          this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        },
+      };
+
+      function readFile(input) {
+        if (!input.files || !input.files[0]) {
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const image = new Image();
+          image.src = event.target.result;
+          gameArea.background = image;
+          image.onload = () => renderGrid(image);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+
+      function renderGrid(image) {
+        const tileWidth = Number.parseInt(document.getElementById("tileWidth").value, 10);
+        const tileHeight = Number.parseInt(document.getElementById("tileHeight").value, 10);
+        const ctx = gameArea.context;
+        const rects = [];
+
+        gameArea.canvas.width = image.width;
+        gameArea.canvas.height = image.height;
+        ctx.drawImage(image, 0, 0);
+
+        for (let x = 0; x < image.width; x += tileWidth) {
+          for (let y = 0; y < image.height; y += tileHeight) {
+            rects.push({ x, y, w: tileWidth, h: tileHeight });
+          }
+        }
+
+        gameArea.canvas.onmousemove = (event) => {
+          const bounds = gameArea.canvas.getBoundingClientRect();
+          const scaleX = gameArea.canvas.width / bounds.width;
+          const scaleY = gameArea.canvas.height / bounds.height;
+          const pointerX = (event.clientX - bounds.left) * scaleX;
+          const pointerY = (event.clientY - bounds.top) * scaleY;
+
+          ctx.clearRect(0, 0, gameArea.canvas.width, gameArea.canvas.height);
+          ctx.drawImage(gameArea.background, 0, 0);
+          ctx.font = "12px Arial";
+          ctx.fillStyle = "rgba(0, 0, 0, 0.68)";
+
+          for (const rect of rects) {
+            ctx.beginPath();
+            ctx.rect(rect.x, rect.y, rect.w, rect.h);
+            if (ctx.isPointInPath(pointerX, pointerY)) {
+              ctx.fillStyle = "rgba(16, 185, 129, 0.32)";
+              ctx.fill();
+              ctx.fillStyle = "#18181b";
+              ctx.fillText(
+                `(${rect.x / tileWidth}, ${rect.y / tileHeight})`,
+                rect.x + 2,
+                rect.y + Math.max(12, tileHeight / 2),
+              );
+            }
+          }
+        };
+      }
+
+      gameArea.start();
+    </script>
+  </body>
+</html>

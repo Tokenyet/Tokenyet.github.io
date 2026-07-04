@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "audit:content": "tsx scripts/audit-content.ts",
+    "audit:links": "tsx scripts/audit-static-links.ts",
     "generate:static": "tsx scripts/generate-static-files.ts",
     "prebuild": "pnpm audit:content && pnpm generate:static",
     "build": "next build --turbopack",

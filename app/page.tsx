@@ -30,7 +30,7 @@ export default function HomePage() {
             技術筆記、遊戲開發、桌面工具與重新開始的部落格。
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-200">
-            舊 Hexo 文章已保留原網址與顯示能力；新站也整理了 side project 的固定驗證路徑。
+            記錄遊戲開發、圖形程式、桌面工具與日常技術筆記。
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link

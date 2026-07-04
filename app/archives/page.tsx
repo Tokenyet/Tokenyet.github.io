@@ -18,7 +18,7 @@ export default function ArchivesPage() {
     <PageShell
       eyebrow="Archives"
       title="All Posts"
-      description="舊 Hexo 文章依原發表日期保留，文章 URL 也維持原本的 year/month/day/title 結構。"
+      description="依時間整理過去的技術筆記、遊戲開發紀錄與工具實驗。"
     >
       <div className="space-y-10">
         {groups.map((group) => (

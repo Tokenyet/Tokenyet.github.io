@@ -17,7 +17,7 @@ export default function ProjectsPage() {
     <PageShell
       eyebrow="Projects"
       title="Side Projects"
-      description="每個 side project 都有穩定路徑，可以放產品介紹、隱私權政策與第三方平台驗證需要的頁面。"
+      description="整理正在維護、準備發布或曾經實驗過的工具與作品。"
     >
       <div className="divide-y divide-zinc-200 border-y border-zinc-200">
         {projects.map((project) => (

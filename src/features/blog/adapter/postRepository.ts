@@ -260,6 +260,10 @@ function normalizeLegacyUrls(html: string): string {
   return html
     .replaceAll("https://tokenyet.github.io", siteConfig.baseUrl)
     .replaceAll("http://tokenyet.github.io", siteConfig.baseUrl)
+    .replaceAll(
+      "/2016/07/13/A-Path-finding-With-Libgdx",
+      "/2017/07/13/A-Path-finding-With-Libgdx/",
+    )
     .replaceAll("//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML", "");
 }
 

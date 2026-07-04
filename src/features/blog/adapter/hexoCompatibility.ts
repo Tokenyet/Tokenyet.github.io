@@ -35,6 +35,7 @@ export function auditHexoTags(
 
 export function transformHexoMarkdown(markdown: string): string {
   return markdown
+    .replace(/<\/br>/gi, "\n\n")
     .replace(
       /\{%\s*raw\s*%\}([\s\S]*?)\{%\s*endraw\s*%\}/g,
       (_match, body: string) => `\n\n${body.trim()}\n\n`,
