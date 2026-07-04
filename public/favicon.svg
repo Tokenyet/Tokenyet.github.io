@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Dowen's World">
+  <defs>
+    <linearGradient id="bg" x1="96" y1="40" x2="420" y2="472" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#10b981" />
+      <stop offset="1" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="shine" x1="134" y1="76" x2="398" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.26" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)" />
+  <path d="M77 384 384 77h51v121L198 435H77z" fill="url(#shine)" />
+  <rect x="28" y="28" width="456" height="456" rx="92" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="24" />
+  <text
+    x="256"
+    y="337"
+    fill="#ffffff"
+    font-family="Segoe UI, Arial, sans-serif"
+    font-size="304"
+    font-weight="800"
+    text-anchor="middle"
+  >D</text>
+</svg>
