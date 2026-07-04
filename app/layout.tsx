@@ -62,7 +62,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW" className={`${notoSans.variable} ${notoSansTc.variable}`}>
-      <body className="min-h-screen bg-zinc-50 text-zinc-950 antialiased">
+      <body
+        suppressHydrationWarning
+        className="min-h-screen bg-zinc-50 text-zinc-950 antialiased"
+      >
         <div className="flex min-h-screen flex-col">
           <Header />
           <div className="flex-1">{children}</div>
