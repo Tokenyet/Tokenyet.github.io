@@ -2,11 +2,7 @@ import type { Metadata } from "next";
 import {
   BriefcaseBusiness,
   Code2,
-  Compass,
-  Hammer,
   Mountain,
-  Shapes,
-  type LucideIcon,
 } from "lucide-react";
 import { getAboutPage } from "@/features/blog/adapter/pageRepository";
 import { ArticleBody } from "@/features/blog/framework/ArticleBody";
@@ -14,39 +10,11 @@ import { PageShell } from "@/shared/framework/PageShell";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Dowen 的工程背景、工作方式與個人路徑。",
+  description: "Dowen 的自我介紹、興趣與個人路徑。",
   alternates: {
     canonical: "/about/",
   },
 };
-
-const principles: Array<{
-  title: string;
-  body: string;
-  Icon: LucideIcon;
-}> = [
-  {
-    title: "先把問題拆小",
-    body: "比起急著套技術名詞，我更在意需求是否清楚、風險是否被看見，以及第一個可驗證版本能不能快速跑起來。",
-    Icon: Compass,
-  },
-  {
-    title: "實作要能交付",
-    body: "從實習、接案到產品團隊，最有用的經驗通常不是把東西寫完，而是讓它能被維護、被驗證、被下一個人接手。",
-    Icon: Hammer,
-  },
-  {
-    title: "保留好奇心",
-    body: "程式、影像、3D、遊戲與 AI 工具都曾經是入口；現在更重要的是把這些興趣整理成可用的工程判斷。",
-    Icon: Shapes,
-  },
-];
-
-const highlights = [
-  "早期會因為無聊寫工具、拆網頁、研究互動效果，也摸過 YouTube 內容和 3D 動畫。",
-  "工作路徑從實習、Freelancer、短暫的遊戲業嘗試，到現在在台灣 LINE 參與產品開發。",
-  "AI 起飛之後，什麼都能碰的錯覺變得更強，也更提醒自己要回到驗證、語境和可維護性。",
-];
 
 export default function AboutPage() {
   const legacyAbout = getAboutPage();
@@ -55,28 +23,24 @@ export default function AboutPage() {
     <PageShell
       eyebrow="About"
       title="About Dowen"
-      description="工程、產品與個人實驗之間的實作路徑。"
+      description="一些興趣、工作路徑與仍在掙扎的現在。"
     >
       <div className="space-y-14">
         <section className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_390px] lg:items-center">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
-              Software Engineer
+              自我介紹
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-normal text-zinc-950 sm:text-4xl">
-              把模糊問題拆到能驗證，然後讓解法真的跑起來。
+              從寫程式的興趣，到投入各種奇怪領域。
             </h2>
             <div className="mt-6 space-y-5 text-base leading-8 text-zinc-700">
               <p>
-                我不是一路照著標準履歷長大的工程師。早期只是因為無聊會寫點程式，
-                也玩過 YouTube、3D 動畫和一些說不上正式但足夠讓人著迷的技術實驗。
-                後來從實習、Freelancer、進入遊戲業三天後離職，再到有幸加入台灣 LINE，
-                這些轉折讓我對「能不能真的交付」比對漂亮的技術敘事更敏感。
+                玩過 YouTube、3D 動畫，消耗各種熱誠。閉門造車失利，
+                從實習、Freelancer、進入遊戲業三天後離職，再到有幸加入台灣 LINE。
               </p>
               <p>
-                現在的我更像是在產品、工程和工具之間來回校準的人。AI 起飛之後，
-                似乎什麼都會，又似乎什麼都不會；也因此更需要把問題定義清楚，
-                把假設放進實作裡驗證，並留下下一次仍然能理解的結構。
+                跌跌撞撞，運氣尚存一息。最後希望不被 AI 吞噬。
               </p>
             </div>
 
@@ -112,47 +76,6 @@ export default function AboutPage() {
           </div>
 
           <AboutTrajectoryIllustration />
-        </section>
-
-        <section
-          aria-labelledby="working-style"
-          className="grid gap-4 md:grid-cols-3"
-        >
-          <h2 id="working-style" className="sr-only">
-            Working style
-          </h2>
-          {principles.map(({ title, body, Icon }) => (
-            <article
-              key={title}
-              className="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm"
-            >
-              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-zinc-950 text-white">
-                <Icon size={20} aria-hidden="true" />
-              </div>
-              <h3 className="mt-4 text-lg font-semibold tracking-normal text-zinc-950">
-                {title}
-              </h3>
-              <p className="mt-3 text-sm leading-6 text-zinc-600">{body}</p>
-            </article>
-          ))}
-        </section>
-
-        <section className="grid gap-8 border-y border-zinc-200 py-10 lg:grid-cols-[260px_minmax(0,1fr)]">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
-              Background
-            </p>
-            <h2 className="mt-2 text-2xl font-semibold tracking-normal text-zinc-950">
-              不是完整自傳，只是目前版本的工程脈絡。
-            </h2>
-          </div>
-          <div className="space-y-4">
-            {highlights.map((item) => (
-              <p key={item} className="text-base leading-8 text-zinc-700">
-                {item}
-              </p>
-            ))}
-          </div>
         </section>
 
         <details className="group max-w-[var(--article-width)] border-t border-zinc-200 pt-5">
