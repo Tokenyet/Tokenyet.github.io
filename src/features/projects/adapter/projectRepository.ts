@@ -95,14 +95,6 @@ const projects: Project[] = [
         href: "https://chromewebstore.google.com/detail/video-theater/hmgmipmaekaeamkgohlimpfomgnhmcfc",
       },
       {
-        label: "官方頁面",
-        href: "https://www.dowen.idv.tw/video_theater/",
-      },
-      {
-        label: "隱私政策",
-        href: "https://www.dowen.idv.tw/video_theater/privacy.html",
-      },
-      {
         label: "GitHub",
         href: "https://github.com/Tokenyet/video_theater",
       },
