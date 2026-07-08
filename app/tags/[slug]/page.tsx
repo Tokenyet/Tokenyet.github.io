@@ -20,7 +20,7 @@ export async function generateMetadata({
   const label = blog.getTaxonomyLabel("tag", slug);
 
   return {
-    title: label ? `Tag: ${label}` : "Tag",
+    title: label ? `標籤：${label}` : "標籤",
     alternates: {
       canonical: `/tags/${slug}/`,
     },
@@ -45,5 +45,9 @@ export default async function TagPage({
     notFound();
   }
 
-  return <PageShell eyebrow="Tag" title={label} description={`${posts.length} posts`}><PostList posts={posts} /></PageShell>;
+  return (
+    <PageShell eyebrow="標籤" title={label} description={`${posts.length} 篇文章`}>
+      <PostList posts={posts} />
+    </PageShell>
+  );
 }

@@ -5,7 +5,8 @@ import { PageShell } from "@/shared/framework/PageShell";
 import { formatDate } from "@/shared/utils/date";
 
 export const metadata: Metadata = {
-  title: "Archives",
+  title: "文章",
+  description: "Dowen 的技術筆記、舊文章與偶爾整理的工程紀錄。",
   alternates: {
     canonical: "/archives/",
   },
@@ -16,9 +17,9 @@ export default function ArchivesPage() {
 
   return (
     <PageShell
-      eyebrow="Archives"
-      title="All Posts"
-      description="依時間整理過去的技術筆記、遊戲開發紀錄與工具實驗。"
+      eyebrow="文章"
+      title="技術筆記與舊文章"
+      description="依時間整理過去的技術筆記、遊戲開發紀錄與工具實驗。作品集是首頁主體，文章保留作為脈絡與技術證據。"
     >
       <div className="space-y-10">
         {groups.map((group) => (

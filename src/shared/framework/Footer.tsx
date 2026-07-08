@@ -12,14 +12,20 @@ export function Footer() {
           </p>
         </div>
         <div className="flex flex-wrap gap-3 text-sm">
+          <Link className="hover:text-white" href="/projects/">
+            作品
+          </Link>
+          <Link className="hover:text-white" href="/archives/">
+            文章
+          </Link>
           <Link className="hover:text-white" href="/atom.xml">
             Atom
           </Link>
           <Link className="hover:text-white" href="/sitemap.xml">
-            Sitemap
+            網站地圖
           </Link>
           <Link className="hover:text-white" href="/projects/maildesk/privacy/">
-            MailDesk Privacy
+            MailDesk 隱私
           </Link>
         </div>
       </div>

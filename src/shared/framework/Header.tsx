@@ -11,7 +11,7 @@ export function Header() {
           </p>
           <p className="text-sm text-zinc-500">{siteConfig.subtitle}</p>
         </Link>
-        <nav aria-label="Primary navigation" className="flex flex-wrap gap-1">
+        <nav aria-label="主要導覽" className="flex flex-wrap gap-1">
           {siteConfig.navItems.map((item) => (
             <Link
               key={item.href}

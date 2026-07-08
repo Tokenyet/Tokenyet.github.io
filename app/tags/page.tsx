@@ -4,7 +4,7 @@ import { GetBlogDataUseCase } from "@/features/blog/usecase/GetBlogDataUseCase";
 import { PageShell } from "@/shared/framework/PageShell";
 
 export const metadata: Metadata = {
-  title: "Tags",
+  title: "標籤",
   alternates: {
     canonical: "/tags/",
   },
@@ -19,8 +19,8 @@ export default function TagsPage() {
 
   return (
     <PageShell
-      eyebrow="Tags"
-      title="Tags"
+      eyebrow="標籤"
+      title="標籤"
       description="依舊站標籤整理文章。"
     >
       <TaxonomyList basePath="/tags" items={tags} />

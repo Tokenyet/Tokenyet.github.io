@@ -27,7 +27,7 @@ export function getAboutPage(): { title: string; html: string } {
   const safeBody = body.split("## 作品 ##")[0]?.trim() ?? body;
 
   return {
-    title: String(parsed.data.title || "About Dowen"),
+    title: String(parsed.data.title || "關於 Dowen"),
     html: renderMarkdown(safeBody),
   };
 }

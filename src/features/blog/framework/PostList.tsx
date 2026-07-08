@@ -7,7 +7,7 @@ interface PostListProps {
 
 export function PostList({ posts }: PostListProps) {
   if (posts.length === 0) {
-    return <p className="text-zinc-600">No posts found.</p>;
+    return <p className="text-zinc-600">目前沒有文章。</p>;
   }
 
   return (

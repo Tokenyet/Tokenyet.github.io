@@ -83,7 +83,7 @@ function buildSitemapXml(posts: Post[], projects: Project[]): string {
     ...getCategories().map((category) => `/categories/${category.slug}/`),
     ...projects.flatMap((project) => [
       `/projects/${project.slug}/`,
-      `/projects/${project.slug}/privacy/`,
+      ...(project.privacyPath ? [project.privacyPath] : []),
     ]),
   ]);
 

@@ -5,9 +5,10 @@
  */
 
 export const siteConfig = {
-  title: "Dowen's World",
-  subtitle: "Love Games, Knowledge Sharing.",
-  description: "記錄著學習中的任何事物。",
+  title: "Dowen",
+  subtitle: "工程作品集與偶爾整理的技術筆記。",
+  description:
+    "工程作品集、產品型個人專案，以及偶爾整理的技術文章。",
   author: "Dowen",
   locale: "zh_TW",
   baseUrl: "https://www.dowen.idv.tw",
@@ -15,11 +16,10 @@ export const siteConfig = {
   googleSiteVerification:
     process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() || "",
   navItems: [
-    { href: "/", label: "Home" },
-    { href: "/archives/", label: "Archives" },
-    { href: "/categories/", label: "Categories" },
-    { href: "/projects/", label: "Projects" },
-    { href: "/about/", label: "About" },
+    { href: "/", label: "首頁" },
+    { href: "/projects/", label: "作品" },
+    { href: "/archives/", label: "文章" },
+    { href: "/about/", label: "關於" },
   ],
 };
 

@@ -8,6 +8,7 @@ export const dynamicParams = false;
 export function generateStaticParams() {
   return new GetProjectsUseCase()
     .getProjects()
+    .filter((project) => project.privacyPath)
     .map((project) => ({ slug: project.slug }));
 }
 
@@ -20,10 +21,10 @@ export async function generateMetadata({
   const project = new GetProjectsUseCase().getProjectBySlug(slug);
 
   return {
-    title: project ? `${project.name} Privacy Policy` : "Privacy Policy",
+    title: project ? `${project.name} 隱私政策` : "隱私政策",
     description: project
-      ? `Privacy policy for ${project.name}.`
-      : "Privacy policy.",
+      ? `${project.name} 的隱私政策。`
+      : "隱私政策。",
     alternates: {
       canonical: `/projects/${slug}/privacy/`,
     },
@@ -38,21 +39,20 @@ export default async function ProjectPrivacyPage({
   const { slug } = await params;
   const project = new GetProjectsUseCase().getProjectBySlug(slug);
 
-  if (!project) {
+  if (!project || !project.privacyPath || !project.dataUse) {
     notFound();
   }
 
   return (
     <PageShell
-      eyebrow="Privacy"
-      title={`${project.name} Privacy Policy`}
-      description={`Last updated: ${project.updatedAt}`}
+      eyebrow="隱私"
+      title={`${project.name} 隱私政策`}
+      description={`最後更新：${project.updatedAt}`}
     >
       <article className="max-w-[var(--article-width)] space-y-8">
         <p className="text-base leading-7 text-zinc-700">
-          {project.name} is a Windows desktop mail client focused on Gmail workflows.
-          This policy explains what data {project.name} accesses, how that data is used,
-          and where it is stored.
+          {project.name} 是以 Gmail 工作流程為核心的 Windows 桌面郵件工具。
+          本政策說明 {project.name} 會存取哪些資料、如何使用資料，以及資料儲存位置。
         </p>
         {project.dataUse.map((section) => (
           <section key={section.title}>

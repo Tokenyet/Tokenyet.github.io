@@ -22,7 +22,7 @@ export async function generateMetadata({
   const label = blog.getTaxonomyLabel("category", slug);
 
   return {
-    title: label ? `Category: ${label}` : "Category",
+    title: label ? `分類：${label}` : "分類",
     alternates: {
       canonical: `/categories/${slug}/`,
     },
@@ -44,7 +44,7 @@ export default async function CategoryPage({
   }
 
   return (
-    <PageShell eyebrow="Category" title={label} description={`${posts.length} posts`}>
+    <PageShell eyebrow="分類" title={label} description={`${posts.length} 篇文章`}>
       <PostList posts={posts} />
     </PageShell>
   );

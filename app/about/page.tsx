@@ -9,8 +9,8 @@ import { ArticleBody } from "@/features/blog/framework/ArticleBody";
 import { PageShell } from "@/shared/framework/PageShell";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "Dowen 的自我介紹、興趣與個人路徑。",
+  title: "關於",
+  description: "Dowen 的工程背景、作品方向與技術興趣。",
   alternates: {
     canonical: "/about/",
   },
@@ -21,26 +21,27 @@ export default function AboutPage() {
 
   return (
     <PageShell
-      eyebrow="About"
-      title="About Dowen"
-      description="一些興趣、工作路徑與仍在掙扎的現在。"
+      eyebrow="關於"
+      title="關於 Dowen"
+      description="產品型工程、桌面工具、瀏覽器擴充套件、遊戲與圖形實驗。"
     >
       <div className="space-y-14">
         <section className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_390px] lg:items-center">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
-              自我介紹
+              工程背景
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-normal text-zinc-950 sm:text-4xl">
-              從寫程式的興趣，到投入各種奇怪領域。
+              從遊戲與圖形實驗出發，持續把想法做成可驗證的工具。
             </h2>
             <div className="mt-6 space-y-5 text-base leading-8 text-zinc-700">
               <p>
-                玩過 YouTube、3D 動畫，消耗各種熱誠。閉門造車失利，
-                從實習、Freelancer、進入遊戲業三天後離職，再到有幸加入台灣 LINE。
+                我關心的是把需求切成能落地的工程邊界：桌面 App、瀏覽器擴充套件、
+                原生主機、即時 WebSocket 流程、Windows 自動化，以及能被重複驗證的發布路徑。
               </p>
               <p>
-                跌跌撞撞，運氣尚存一息。最後希望不被 AI 吞噬。
+                早期寫過 LibGDX、OpenGL、遊戲原型和技術筆記；近期更常把工具做成
+                本機優先、可測試、能說清楚權限與資料邊界的產品型個人專案。
               </p>
             </div>
 
@@ -48,7 +49,7 @@ export default function AboutPage() {
               <div className="border-l-2 border-emerald-500 pl-4">
                 <dt className="flex items-center gap-2 text-sm font-medium text-zinc-500">
                   <BriefcaseBusiness size={16} aria-hidden="true" />
-                  Current
+                  目前
                 </dt>
                 <dd className="mt-1 text-base font-semibold text-zinc-950">
                   台灣 LINE
@@ -57,7 +58,7 @@ export default function AboutPage() {
               <div className="border-l-2 border-sky-500 pl-4">
                 <dt className="flex items-center gap-2 text-sm font-medium text-zinc-500">
                   <Code2 size={16} aria-hidden="true" />
-                  Range
+                  範圍
                 </dt>
                 <dd className="mt-1 text-base font-semibold text-zinc-950">
                   工程 / 內容 / 3D / 遊戲
@@ -66,7 +67,7 @@ export default function AboutPage() {
               <div className="border-l-2 border-amber-500 pl-4">
                 <dt className="flex items-center gap-2 text-sm font-medium text-zinc-500">
                   <Mountain size={16} aria-hidden="true" />
-                  Life stat
+                  生活紀錄
                 </dt>
                 <dd className="mt-1 text-base font-semibold text-zinc-950">
                   象山 100+ 次
@@ -80,8 +81,8 @@ export default function AboutPage() {
 
         <details className="group max-w-[var(--article-width)] border-t border-zinc-200 pt-5">
           <summary className="inline-flex cursor-pointer items-center gap-2 rounded-md border border-zinc-300 px-3 py-1.5 text-xs font-medium text-zinc-500 transition-colors hover:border-zinc-400 hover:text-zinc-800">
-            <span className="group-open:hidden">legacy 自傳</span>
-            <span className="hidden group-open:inline">收合 legacy 自傳</span>
+            <span className="group-open:hidden">舊版自傳</span>
+            <span className="hidden group-open:inline">收合舊版自傳</span>
           </summary>
           <article className="mt-6 rounded-lg border border-zinc-200 bg-white p-5">
             <ArticleBody html={legacyAbout.html} />
@@ -101,11 +102,9 @@ function AboutTrajectoryIllustration() {
         aria-labelledby="about-trajectory-title about-trajectory-desc"
         className="h-auto w-full"
       >
-        <title id="about-trajectory-title">Dowen experience trajectory</title>
+        <title id="about-trajectory-title">Dowen 的經歷路徑</title>
         <desc id="about-trajectory-desc">
-          A compact illustrated path connecting code experiments, media, 3D,
-          freelance work, a brief game industry stop, LINE, AI, and repeated
-          hikes on Elephant Mountain.
+          一條連接程式實驗、媒體、3D、接案、短暫遊戲業經驗、LINE、AI 與象山的路徑。
         </desc>
         <defs>
           <linearGradient id="trajectory-line" x1="52" x2="314" y1="286" y2="78">
@@ -134,11 +133,11 @@ function AboutTrajectoryIllustration() {
           opacity="0.18"
         />
 
-        <TrajectoryNode cx={58} cy={286} fill="#10b981" label="code" />
+        <TrajectoryNode cx={58} cy={286} fill="#10b981" label="程式" />
         <TrajectoryNode cx={112} cy={238} fill="#14b8a6" label="YouTube" />
         <TrajectoryNode cx={166} cy={176} fill="#0284c7" label="3D" />
-        <TrajectoryNode cx={218} cy={148} fill="#6366f1" label="freelance" />
-        <TrajectoryNode cx={258} cy={130} fill="#e11d48" label="game" />
+        <TrajectoryNode cx={218} cy={148} fill="#6366f1" label="接案" />
+        <TrajectoryNode cx={258} cy={130} fill="#e11d48" label="遊戲" />
         <TrajectoryNode cx={296} cy={94} fill="#06b6d4" label="LINE" />
 
         <g transform="translate(224 224)">
@@ -156,7 +155,7 @@ function AboutTrajectoryIllustration() {
             fontWeight="700"
             textAnchor="middle"
           >
-            AI era
+            AI 時代
           </text>
         </g>
 
@@ -168,7 +167,7 @@ function AboutTrajectoryIllustration() {
             opacity="0.85"
           />
           <text x="18" y="72" fill="#52525b" fontSize="13" fontWeight="700">
-            Elephant Mt. x100+
+            象山 100+
           </text>
         </g>
       </svg>
