@@ -5,7 +5,7 @@ export function Header() {
   return (
     <header className="border-b border-zinc-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
-        <Link href="/" className="group">
+        <Link href="/" className="group" aria-label="Dowen，回首頁">
           <p className="text-xl font-semibold tracking-normal text-zinc-950">
             {siteConfig.title}
           </p>

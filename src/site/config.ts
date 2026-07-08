@@ -6,9 +6,8 @@
 
 export const siteConfig = {
   title: "Dowen",
-  subtitle: "工程作品集與偶爾整理的技術筆記。",
-  description:
-    "工程作品集、產品型個人專案，以及偶爾整理的技術文章。",
+  subtitle: "個人專案與偶爾整理的技術筆記。",
+  description: "個人專案、工具實驗，以及偶爾整理的技術文章。",
   author: "Dowen",
   locale: "zh_TW",
   baseUrl: "https://www.dowen.idv.tw",
@@ -16,8 +15,7 @@ export const siteConfig = {
   googleSiteVerification:
     process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() || "",
   navItems: [
-    { href: "/", label: "首頁" },
-    { href: "/projects/", label: "作品" },
+    { href: "/projects/", label: "專案" },
     { href: "/archives/", label: "文章" },
     { href: "/about/", label: "關於" },
   ],

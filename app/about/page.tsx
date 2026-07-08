@@ -10,7 +10,7 @@ import { PageShell } from "@/shared/framework/PageShell";
 
 export const metadata: Metadata = {
   title: "關於",
-  description: "Dowen 的工程背景、作品方向與技術興趣。",
+  description: "Dowen 的工程背景、專案方向與技術興趣。",
   alternates: {
     canonical: "/about/",
   },

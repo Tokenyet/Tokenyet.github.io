@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Dowen</title>
-  <subtitle>工程作品集、產品型個人專案，以及偶爾整理的技術文章。</subtitle>
+  <subtitle>個人專案、工具實驗，以及偶爾整理的技術文章。</subtitle>
   <link href="https://www.dowen.idv.tw/atom.xml" rel="self"/>
   <link href="https://www.dowen.idv.tw"/>
   <id>https://www.dowen.idv.tw</id>

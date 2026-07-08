@@ -26,14 +26,14 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 lg:grid-cols-[minmax(0,1fr)_310px] lg:items-end lg:py-16">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
-              工程作品集
+              專案
             </p>
             <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-normal text-zinc-950 sm:text-5xl">
-              把想法做成真的能用、也能被驗證的作品。
+              想法成真，撫平痛點。
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-600">
-              這裡整理我做過的工程作品、產品型個人專案、桌面工具、
-              瀏覽器擴充套件、即時互動實驗，以及偶爾寫下來的技術筆記。
+              這裡整理我做過的個人專案、桌面工具、瀏覽器擴充套件、
+              即時互動實驗，以及偶爾寫下來的技術筆記。
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
@@ -41,7 +41,7 @@ export default function HomePage() {
                 className="inline-flex items-center gap-2 rounded-md bg-zinc-950 px-4 py-2 text-sm font-semibold text-white hover:bg-zinc-800"
               >
                 <FolderKanban size={16} />
-                看作品
+                看專案
               </Link>
               <Link
                 href="/archives/"
@@ -65,14 +65,14 @@ export default function HomePage() {
         <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
-              精選作品
+              精選專案
             </h2>
           </div>
           <Link
             href="/projects/"
             className="inline-flex items-center gap-2 text-sm font-semibold text-zinc-700 hover:text-emerald-700"
           >
-            全部作品
+            全部專案
             <ArrowRight size={16} />
           </Link>
         </div>
@@ -113,7 +113,7 @@ export default function HomePage() {
               這個網站現在的方向
             </h2>
             <p className="mt-3 text-sm leading-6 text-zinc-600">
-              作品集是第一層，文章是第二層證據。舊部落格內容仍保留，
+              專案是第一層，文章是第二層證據。舊部落格內容仍保留，
               但首頁會優先呈現可被快速理解的工程成果與專案脈絡。
             </p>
             <Link
@@ -217,7 +217,7 @@ function ProjectPreview({ project }: { project: Project }) {
       </div>
       <div className="mt-8 font-mono text-sm leading-6 text-zinc-300">
         <p>
-          <span className="text-emerald-300">作品</span>/{project.slug}
+          <span className="text-emerald-300">專案</span>/{project.slug}
         </p>
         <p>
           <span className="text-sky-300">角色</span> {project.role}

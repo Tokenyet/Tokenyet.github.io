@@ -100,7 +100,7 @@ function ProjectMedia({ project }: { project: Project }) {
       </div>
       <div className="mt-8 font-mono text-sm leading-6 text-zinc-300">
         <p>
-          <span className="text-emerald-300">作品</span>/{project.slug}
+          <span className="text-emerald-300">專案</span>/{project.slug}
         </p>
         <p>
           <span className="text-sky-300">角色</span> {project.role}

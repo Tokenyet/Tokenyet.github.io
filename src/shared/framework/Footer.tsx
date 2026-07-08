@@ -13,7 +13,7 @@ export function Footer() {
         </div>
         <div className="flex flex-wrap gap-3 text-sm">
           <Link className="hover:text-white" href="/projects/">
-            作品
+            專案
           </Link>
           <Link className="hover:text-white" href="/archives/">
             文章

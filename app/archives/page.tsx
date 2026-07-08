@@ -19,7 +19,7 @@ export default function ArchivesPage() {
     <PageShell
       eyebrow="文章"
       title="技術筆記與舊文章"
-      description="依時間整理過去的技術筆記、遊戲開發紀錄與工具實驗。作品集是首頁主體，文章保留作為脈絡與技術證據。"
+      description="依時間整理過去的技術筆記、遊戲開發紀錄與工具實驗。專案是網站主體，文章保留作為脈絡與技術證據。"
     >
       <div className="space-y-10">
         {groups.map((group) => (

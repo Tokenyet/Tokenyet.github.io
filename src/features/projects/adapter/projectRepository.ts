@@ -280,7 +280,7 @@ const projects: Project[] = [
       },
       {
         title: "成果",
-        body: "完成本機 sideload 版本與 release bundle；目前沒有確認公開 Chrome Web Store 頁或公開 GitHub repo，因此作品頁不放商店連結。",
+        body: "完成本機 sideload 版本與 release bundle；目前沒有確認公開 Chrome Web Store 頁或公開 GitHub repo，因此專案頁不放商店連結。",
       },
     ],
   },
